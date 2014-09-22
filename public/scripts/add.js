@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 
 	function checkEnglish () {
-		if (eng == true)
+		if (eng === true)
 			$('.en').prop('disabled', true);
 		else
 			$('.en').prop('disabled', false).show();
@@ -51,7 +51,7 @@ $(document).ready(function() {
 
 	function snakeForward () {
 		var elem = $(this).parent().find('select');
-		elem.first().clone().insertAfter(elem.last())
+		elem.first().clone().insertAfter(elem.last());
 	}
 
 	function snakeBack () {
@@ -70,7 +70,7 @@ $(document).ready(function() {
 		} else {
 			$(".navigator").css('position', 'relative').css('margin-left', '0px');
 		}
-	};
+	}
 
 	$(window).on('scroll', StickyTags);
 	$('.toggle_eng').on('click', toggleEnglish);

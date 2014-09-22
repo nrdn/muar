@@ -28,7 +28,7 @@ $(document).ready(function() {
 		},
 		uploadFinished: function(i, file, response, time) {
 			$('.form_image_main').css('background-image','url(' + response + ')');
-			console.log(response)
+			console.log(response);
 		},
 		progressUpdated: function(i, file, progress) {
 
@@ -61,7 +61,7 @@ $(document).ready(function() {
 			var image = $('<div />', {'class': 'image_second_preview', 'style': 'background-image:url(' + response + ')'});
 			var description = $('<div />', {'class': 'image_second_description', 'contenteditable': true, 'text':'Описание'});
 			$('.form_images_second').append(image.append(description));
-			console.log(response)
+			console.log(response);
 		},
 		progressUpdated: function(i, file, progress) {
 
@@ -93,7 +93,7 @@ $(document).ready(function() {
 			var image = $('<div />', {'class': 'image_maps_preview', 'style': 'background-image:url(' + response + ')'});
 			var description = $('<div />', {'class': 'image_maps_description', 'contenteditable': true, 'text':'Описание'});
 			$('.form_images_maps').append(image.append(description));
-			console.log(response)
+			console.log(response);
 		},
 		progressUpdated: function(i, file, progress) {
 
@@ -125,7 +125,7 @@ $(document).ready(function() {
 
 		var title = $('.form_title').html();
 		var description = $('.form_description').html();
-		var old = $('.form_old').is(':checked') ? true : false
+		var old = $('.form_old').is(':checked') ? true : false;
 		var category = $('.form_category').val();
 
 		var images_main = $('.form_image_main').attr('style').match(/\(([^)]+)\)/)[0].slice(1,-1).replace('http://' + window.location.host, '');
@@ -153,13 +153,13 @@ $(document).ready(function() {
 			main: images_main,
 			second: images_second_upload,
 			maps: images_maps_upload
-		}
+		};
 
 
 		var ru = {
 			title: title,
 			description: description
-		}
+		};
 
 		$.post('', {
 			ru: ru,
@@ -169,7 +169,7 @@ $(document).ready(function() {
 		}).done(function(project) {
 
 
-			window.location.reload()
+			window.location.reload();
 
 
 		});
