@@ -22,7 +22,7 @@ var paths = {
 
 
 gulp.task('nodemon', function() {
-  nodemon({ script: 'app.js', ext: 'js', ignore: paths.nodemon.ignore })
+	nodemon({ script: 'app.js', ext: 'js', ignore: paths.nodemon.ignore })
 });
 
 gulp.task('stylus', function () {
@@ -41,7 +41,7 @@ gulp.task('watch_stylus', function () {
 	var watcher = gulp.watch(paths.stylus.src, ['stylus']);
 
 	watcher.on('change', function(event) {
-	  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 	});
 });
 
@@ -57,7 +57,7 @@ gulp.task('watch_js', function () {
 	var watcher = gulp.watch(paths.client_js.src, ['js']);
 
 	watcher.on('change', function(event) {
-	  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 	});
 });
 
