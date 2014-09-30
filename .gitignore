@@ -1,4 +1,5 @@
 /node_modules*
+/db*
 /maket*
 /subl*
 /public/build/js*
