@@ -8,11 +8,11 @@ var gulp = require('gulp'),
 
 var paths = {
 	stylus: {
-		src: ['public/styles/*.styl'],
+		src: ['public/src/styl/*.styl'],
 		dest: 'public/build/css'
 	},
 	client_js: {
-		src: ['public/scripts/*.js'],
+		src: ['public/src/js/*.js'],
 		dest: 'public/build/js'
 	},
 	nodemon: {
