@@ -36,6 +36,14 @@ var eraSchema = new Schema({
 		start: Date,
 		end: Date
 	},
+	subAges: [{
+		title: String,
+		tag: String
+	}],
+	objects: [{
+		subAge: String,
+		object: { type: Schema.Types.ObjectId, ref: 'Object' }
+	}],
 	date: {type: Date, default: Date.now}
 });
 
@@ -50,7 +58,7 @@ var objectSchema = new Schema({
 	},
 	meta: {
 		adress: String,
-		dates: {
+		interval: {
 			start: Date,
 			end: Date
 		}
@@ -73,7 +81,7 @@ var subjectSchema = new Schema({
 	},
 	meta: {
 		inventory: String,
-		dates: {
+		interval: {
 			start: Date,
 			end: Date
 		}
@@ -90,6 +98,12 @@ var architectSchema = new Schema({
 	description: {
 		ru: String,
 		en: String
+	},
+	meta: {
+		interval: {
+			start: Date,
+			end: Date
+		}
 	},
 	photos: [String],
 	date: {type: Date, default: Date.now}
