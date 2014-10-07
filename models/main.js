@@ -23,6 +23,78 @@ var postSchema = new Schema({
 	date: {type: Date, default: Date.now}
 });
 
+var eraSchema = new Schema({
+	title: {
+		ru: String,
+		en: String
+	},
+	description: {
+		ru: String,
+		en: String
+	},
+	interval: {
+		start: Date,
+		end: Date
+	},
+	date: {type: Date, default: Date.now}
+});
+
+var objectSchema = new Schema({
+	title: {
+		ru: String,
+		en: String
+	},
+	description: {
+		ru: String,
+		en: String
+	},
+	meta: {
+		adress: String,
+		dates: {
+			start: Date,
+			end: Date
+		}
+	},
+	architects: [{ type: Schema.Types.ObjectId, ref: 'Architect' }],
+	category: String,
+	images: [String],
+	subjects: [{ type: Schema.Types.ObjectId, ref: 'Subject' }],
+	date: {type: Date, default: Date.now}
+});
+
+var subjectSchema = new Schema({
+	title: {
+		ru: String,
+		en: String
+	},
+	description: {
+		ru: String,
+		en: String
+	},
+	meta: {
+		inventory: String,
+		dates: {
+			start: Date,
+			end: Date
+		}
+	},
+	images: [String],
+	date: {type: Date, default: Date.now}
+});
+
+var architectSchema = new Schema({
+	name: {
+		ru: String,
+		en: String
+	},
+	description: {
+		ru: String,
+		en: String
+	},
+	photos: [String],
+	date: {type: Date, default: Date.now}
+});
+
 
 // ------------------------
 // *** Exports Block ***
@@ -31,3 +103,7 @@ var postSchema = new Schema({
 
 module.exports.User = mongoose.model('User', userSchema);
 module.exports.Post = mongoose.model('Post', postSchema);
+module.exports.Era = mongoose.model('Era', eraSchema);
+module.exports.Object = mongoose.model('Object', objectSchema);
+module.exports.Subject = mongoose.model('Subject', subjectSchema);
+module.exports.Architect = mongoose.model('Architect', architectSchema);
