@@ -40,10 +40,6 @@ var eraSchema = new Schema({
 		title: String,
 		tag: String
 	}],
-	objects: [{
-		subAge: String,
-		object: { type: Schema.Types.ObjectId, ref: 'Object' }
-	}],
 	date: {type: Date, default: Date.now}
 });
 
@@ -56,6 +52,10 @@ var objectSchema = new Schema({
 		ru: String,
 		en: String
 	},
+	history: {
+		era: { type: Schema.Types.ObjectId, ref: 'Era' },
+		subAge: String,
+	},
 	meta: {
 		adress: String,
 		interval: {
@@ -65,7 +65,10 @@ var objectSchema = new Schema({
 	},
 	architects: [{ type: Schema.Types.ObjectId, ref: 'Architect' }],
 	category: String,
-	images: [String],
+	images: [{
+		title: String,
+		path: String
+	}],
 	subjects: [{ type: Schema.Types.ObjectId, ref: 'Subject' }],
 	date: {type: Date, default: Date.now}
 });
@@ -86,7 +89,10 @@ var subjectSchema = new Schema({
 			end: Date
 		}
 	},
-	images: [String],
+	images: [{
+		title: String,
+		path: String
+	}],
 	date: {type: Date, default: Date.now}
 });
 
@@ -105,7 +111,7 @@ var architectSchema = new Schema({
 			end: Date
 		}
 	},
-	photos: [String],
+	photo: String,
 	date: {type: Date, default: Date.now}
 });
 
