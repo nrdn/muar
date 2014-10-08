@@ -12,6 +12,7 @@ exports.main = function(req, res) {
 		'objects': {
 			$push: {
 				title: '$title',
+				image: '$images.main',
 				interval: '$ineterval'
 			}
 		}
