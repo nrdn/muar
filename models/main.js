@@ -64,7 +64,7 @@ var objectSchema = new Schema({
 		}
 	},
 	architects: [{ type: Schema.Types.ObjectId, ref: 'Architect' }],
-	category: String,
+	categorys: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
 	images: [{
 		title: String,
 		path: String
@@ -115,6 +115,18 @@ var architectSchema = new Schema({
 	date: {type: Date, default: Date.now}
 });
 
+var categorySchema = new Schema({
+	title: {
+		ru: String,
+		en: String
+	},
+	description: {
+		ru: String,
+		en: String
+	},
+	images: String,
+	date: {type: Date, default: Date.now}
+});
 
 // ------------------------
 // *** Exports Block ***
@@ -127,3 +139,4 @@ module.exports.Era = mongoose.model('Era', eraSchema);
 module.exports.Object = mongoose.model('Object', objectSchema);
 module.exports.Subject = mongoose.model('Subject', subjectSchema);
 module.exports.Architect = mongoose.model('Architect', architectSchema);
+module.exports.Category = mongoose.model('Category', categorySchema);
