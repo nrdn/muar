@@ -1,0 +1,24 @@
+extends ../../layout
+
+block title
+	title СПИСОК СТИЛЕЙ
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
+
+block content_scripts
+	script(type='text/javascript', src='/build/js/lists.js')
+
+block content
+	a.back_link(href='/auth') < Назад
+	.title СПИСОК СТИЛЕЙ
+	br
+	a.add(href='/auth/era/add') добавить стиль
+	br
+	br
+	.main_menu_block
+		each era in eras
+			.post
+				a.rm_era(href='#', id=era._id)= 'удалить '
+				!=' | '
+				a(href='/auth/eras/edit/' + era._id)= era.title.ru

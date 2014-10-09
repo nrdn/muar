@@ -16,6 +16,7 @@ var express = require('express'),
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+app.set('json spaces', 2);
 app.locals.pretty = true;
 
 app.use(express.static(__dirname + '/public'));
@@ -54,7 +55,9 @@ var blog = require('./routes/blog.js');
 var auth = require('./routes/auth.js');
 var content = require('./routes/content.js');
 var files = require('./routes/files.js');
-var admin = require('./routes/admin.js');
+var a_posts = require('./routes/admin/posts.js');
+var a_eras = require('./routes/admin/eras.js');
+var test = require('./routes/admin/test.js');
 
 
 // ------------------------
@@ -96,7 +99,7 @@ function toMatrix(arr, row) {
 
 
 // ------------------------
-// *** Routes Block ***
+// *** Main Routers Block ***
 // ------------------------
 
 
@@ -116,20 +119,46 @@ app.route('/posts').get(blog.posts);
 app.route('/posts/:id').get(blog.post);
 
 
+// ------------------------
+// *** Admin Routers Block ***
+// ------------------------
+
+
 // === Admin posts Route
-app.route('/auth/posts').get(checkAuth, admin.posts_list);
+app.route('/auth/posts').get(checkAuth, a_posts.list);
 
 
 // === Admin @add post Route
 app.route('/auth/posts/add')
-	 .get(checkAuth, admin.posts_add)
-	 .post(checkAuth, admin.posts_add_form);
+	 .get(checkAuth, a_posts.add)
+	 .post(checkAuth, a_posts.add_form);
 
 
 // === Admin @edit post Route
 app.route('/auth/posts/edit/:id')
-	 .get(checkAuth, admin.posts_edit)
-	 .post(checkAuth, admin.posts_edit_form);
+	 .get(checkAuth, a_posts.edit)
+	 .post(checkAuth, a_posts.edit_form);
+
+
+// === Admin eras Route
+app.route('/auth/eras').get(checkAuth, a_eras.list);
+
+
+// === Admin @add eras Route
+app.route('/auth/eras/add')
+	 .get(checkAuth, a_eras.add)
+	 .post(checkAuth, a_eras.add_form);
+
+
+// === Admin @edit eras Route
+app.route('/auth/eras/edit/:id')
+	 .get(checkAuth, a_eras.edit)
+	 .post(checkAuth, a_eras.edit_form);
+
+
+// ------------------------
+// *** Auth Routers Block ***
+// ------------------------
 
 
 // === Auth Route
@@ -152,8 +181,18 @@ app.route('/registr')
 	 .post(auth.registr_form);
 
 
+// ------------------------
+// *** Static Routers Block ***
+// ------------------------
+
+
 // === Contacts Route
 app.route('/contacts').get(content.contacts);
+
+
+// ------------------------
+// *** Old Routers Block ***
+// ------------------------
 
 
 // === Files #sitemap.xml Route
@@ -162,6 +201,20 @@ app.route('/sitemap.xml').get(files.sitemap);
 
 // === Files #robots.txt Route
 app.route('/robots.txt').get(files.robots);
+
+
+// ------------------------
+// *** Test Routers Block ***
+// ------------------------
+
+app.route('/test')
+	 .get(main.test)
+
+app.route('/c_era')
+	 .get(test.createEra)
+
+app.route('/c_object')
+	 .get(test.createObject)
 
 
 // ------------------------

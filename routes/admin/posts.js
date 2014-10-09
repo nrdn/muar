@@ -1,4 +1,4 @@
-var Post = require('../models/main.js').Post;
+var Post = require('../../models/main.js').Post;
 
 
 // ------------------------
@@ -6,7 +6,7 @@ var Post = require('../models/main.js').Post;
 // ------------------------
 
 
-exports.posts_list = function(req, res) {
+exports.list = function(req, res) {
   Post.find().exec(function(err, posts) {
     res.render('auth/posts/', {posts: posts});
   });
@@ -18,11 +18,11 @@ exports.posts_list = function(req, res) {
 // ------------------------
 
 
-exports.posts_add = function(req, res) {
+exports.add = function(req, res) {
   res.render('auth/posts/add.jade');
 }
 
-exports.posts_add_form = function(req, res) {
+exports.add_form = function(req, res) {
   var post = req.body;
   var files = req.files;
   var date = new Date();
@@ -46,7 +46,7 @@ exports.posts_add_form = function(req, res) {
 // ------------------------
 
 
-exports.posts_edit = function(req, res) {
+exports.edit = function(req, res) {
   var id = req.params.id;
 
   Post.findById(id).exec(function(err, post) {
@@ -54,7 +54,7 @@ exports.posts_edit = function(req, res) {
   });
 }
 
-exports.posts_edit_form = function(req, res) {
+exports.edit_form = function(req, res) {
   var post = req.body;
   var id = req.params.id;
   var date = new Date();
