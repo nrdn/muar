@@ -1,7 +1,7 @@
 extends ../../layout
 
 block title
-	title СПИСОК СТИЛЕЙ
+	title СПИСОК ОБЪЕКТОВ
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
@@ -11,14 +11,14 @@ block content_scripts
 
 block content
 	a.back_link(href='/auth') < Назад
-	.title СПИСОК СТИЛЕЙ
+	.title СПИСОК ОБЪЕКТОВ
 	br
-	a.add(href='/auth/eras/add') добавить стиль
+	a.add(href='/auth/objects/add') добавить объект
 	br
 	br
 	.main_menu_block
-		each era in eras
-			.era
-				a.rm_era(href='#', id=era._id)= 'удалить '
+		each object in objects
+			.object
+				a.rm_object(href='#', id=object._id)= 'удалить '
 				!=' | '
-				a(href='/auth/eras/edit/' + era._id)= era.title.ru
+				a(href='/auth/eras/edit/' + object._id)= object.title.ru

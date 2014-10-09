@@ -55,8 +55,10 @@ var blog = require('./routes/blog.js');
 var auth = require('./routes/auth.js');
 var content = require('./routes/content.js');
 var files = require('./routes/files.js');
+
 var a_posts = require('./routes/admin/posts.js');
 var a_eras = require('./routes/admin/eras.js');
+var a_objects = require('./routes/admin/objects.js');
 var test = require('./routes/admin/test.js');
 
 
@@ -154,6 +156,22 @@ app.route('/auth/eras/add')
 app.route('/auth/eras/edit/:id')
 	 .get(checkAuth, a_eras.edit)
 	 .post(checkAuth, a_eras.edit_form);
+
+
+// === Admin objects Route
+app.route('/auth/objects').get(checkAuth, a_objects.list);
+
+
+// === Admin @add objects Route
+app.route('/auth/objects/add')
+	 .get(checkAuth, a_objects.add)
+	 .post(checkAuth, a_objects.add_form);
+
+
+// === Admin @edit objects Route
+app.route('/auth/objects/edit/:id')
+	 .get(checkAuth, a_objects.edit)
+	 .post(checkAuth, a_objects.edit_form);
 
 
 // ------------------------
