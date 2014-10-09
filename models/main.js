@@ -131,6 +131,15 @@ var categorySchema = new Schema({
 	date: {type: Date, default: Date.now}
 });
 
+
+// ------------------------
+// *** Index Block ***
+// ------------------------
+
+
+// eraSchema.index({'title.ru': 'text', 'title.en': 'text'}, {default_language: 'ru'});
+
+
 // ------------------------
 // *** Exports Block ***
 // ------------------------
