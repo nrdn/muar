@@ -25,15 +25,17 @@ exports.add = function(req, res) {
 exports.add_form = function(req, res) {
   var post = req.body;
   var files = req.files;
-  var date = new Date();
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-
   var object = new Object();
 
   object.title.ru = post.ru.title;
   object.description.ru = post.ru.description;
-  object.date = new Date(Date.UTC(post.date.year, post.date.month, post.date.date, hours, minutes));
+
+  object.history.era = post.era;
+  object.history.ages = post.ages;
+
+  object.meta.interval.start = new Date(Date.UTC(post.date.year, post.date.month, post.date.date));
+  object.meta.interval.end = new Date(Date.UTC(post.date.year, post.date.month, post.date.date));
+  object.meta.adress = post.adress;
 
   object.save(function(err, object) {
     res.redirect('/auth/objects');
@@ -57,15 +59,22 @@ exports.edit = function(req, res) {
 exports.edit_form = function(req, res) {
   var post = req.body;
   var id = req.params.id;
-  var date = new Date();
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
 
   Object.findById(id).exec(function(err, object) {
 
     object.title.ru = post.ru.title;
     object.description.ru = post.ru.description;
-    object.date = new Date(Date.UTC(post.date.year, post.date.month, post.date.date, hours, minutes));
+
+    object.history.era = post.era;
+    object.history.ages = post.ages;
+
+    object.architects = post.architects;
+    object.categorys = post.categorys;
+    object.subjects = post.subjects;
+
+    object.meta.interval.start = new Date(Date.UTC(post.date.year, post.date.month, post.date.date));
+    object.meta.interval.end = new Date(Date.UTC(post.date.year, post.date.month, post.date.date));
+    object.meta.adress = post.adress;
 
     object.save(function(err, object) {
       res.redirect('/auth/eras');

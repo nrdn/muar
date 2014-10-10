@@ -16,6 +16,7 @@ var express = require('express'),
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+
 app.set('json spaces', 2);
 app.locals.pretty = true;
 

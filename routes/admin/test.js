@@ -7,13 +7,17 @@ exports.createEra = function(req, res) {
 	era.description.ru = 'Супер стиль';
 	era.interval.start = new Date(Date.UTC(2014, 3, 5));
 	era.interval.end = new Date(Date.UTC(2014, 6, 12));
-	era.subAges = [
+	era.ages = [
 	{
-		title: 'Ранний',
+		title: {
+			ru: 'Ранний'
+		},
 		tag: 'before'
 	},
 	{
-		title: 'Поздний',
+		title: {
+			ru: 'Поздний'
+		},
 		tag: 'after'
 	}];
 
@@ -29,7 +33,7 @@ exports.createObject = function(req, res) {
 			object.title.ru = 'Я объект ' + i;
 			object.description.ru = 'Супер объект ' + i;
 			object.history.era = eras[0]._id;
-			object.history.subAge = 'after';
+			object.history.ages = ['after'];
 			object.meta.adress = 'Я адрес ' + i;
 			object.meta.interval.start = new Date(Date.UTC(2014, 3, 5));
 			object.meta.interval.end = new Date(Date.UTC(2014, 6, 12));

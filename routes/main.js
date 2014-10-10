@@ -10,7 +10,7 @@ exports.test = function(req, res) {
 	.group({
 		'_id': {
 			era: '$history.era',
-			subAge: '$history.subAge'
+			ages: '$history.ages'
 		},
 		'objects': {
 			$push: {
@@ -23,13 +23,13 @@ exports.test = function(req, res) {
 	.project({
 		'_id': 0,
 		'era': '$_id.era',
-		'subAge': {
-			'tag': '$_id.subAge',
+		'ages': {
+			'tag': '$_id.ages',
 			'objects': '$objects'
 		}
 	})
 	.exec(function(err, eras) {
-		Era.populate(eras, {path: 'era', model: 'Era', select: '-_id -date -__v -description -subAges._id'}, function(err, eras) {
+		Era.populate(eras, {path: 'era', model: 'Era', select: '-_id -date -__v -description -ages._id'}, function(err, eras) {
 			res.json(eras);
 		});
 	});

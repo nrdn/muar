@@ -36,8 +36,11 @@ var eraSchema = new Schema({
 		start: Date,
 		end: Date
 	},
-	subAges: [{
-		title: String,
+	ages: [{
+		title: {
+			ru: String,
+			en: String
+		},
 		tag: String
 	}],
 	date: {type: Date, default: Date.now}
@@ -54,7 +57,7 @@ var objectSchema = new Schema({
 	},
 	history: {
 		era: { type: Schema.Types.ObjectId, ref: 'Era' },
-		subAge: String,
+		ages: [String],
 	},
 	meta: {
 		adress: String,
@@ -127,7 +130,7 @@ var categorySchema = new Schema({
 		ru: String,
 		en: String
 	},
-	images: String,
+	images: [String],
 	date: {type: Date, default: Date.now}
 });
 
