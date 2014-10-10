@@ -7,6 +7,7 @@ exports.index = function(req, res) {
 
 exports.test = function(req, res) {
 	Object.aggregate()
+	.unwind('history.ages')
 	.group({
 		'_id': {
 			era: '$history.era',
@@ -23,13 +24,13 @@ exports.test = function(req, res) {
 	.project({
 		'_id': 0,
 		'era': '$_id.era',
-		'ages': {
+		'age': {
 			'tag': '$_id.ages',
 			'objects': '$objects'
 		}
 	})
 	.exec(function(err, eras) {
-		Era.populate(eras, {path: 'era', model: 'Era', select: '-_id -date -__v -description -ages._id'}, function(err, eras) {
+		Era.populate(eras, {path: 'era', model: 'Era', select: '-_id -date -__v -description -ages'}, function(err, eras) {
 			res.json(eras);
 		});
 	});
