@@ -7,27 +7,37 @@ exports.index = function(req, res) {
 
 exports.test = function(req, res) {
 	Object.aggregate()
+	.sort('meta.interval.start meta.interval.end')
 	.unwind('history.ages')
 	.group({
 		'_id': {
 			era: '$history.era',
-			ages: '$history.ages'
+			age: '$history.ages'
 		},
 		'objects': {
 			$push: {
+				_id: '$_id',
 				title: '$title',
-				image: '$images.main',
-				interval: '$ineterval'
+				interval: '$meta.interval',
+				image: '$images.main'
+			}
+		}
+	})
+	.group({
+		'_id': {
+			era: '$_id.era'
+		},
+		'ages': {
+			$push: {
+				age: '$_id.age',
+				objects: '$objects'
 			}
 		}
 	})
 	.project({
 		'_id': 0,
 		'era': '$_id.era',
-		'age': {
-			'tag': '$_id.ages',
-			'objects': '$objects'
-		}
+		'ages': '$ages'
 	})
 	.exec(function(err, eras) {
 		Era.populate(eras, {path: 'era', model: 'Era', select: '-_id -date -__v -description -ages'}, function(err, eras) {

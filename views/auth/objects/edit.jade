@@ -14,28 +14,28 @@ block content
 	- year = year.getFullYear()
 	- var months = ['ЯНВАРЬ', 'ФЕВРАЛЬ', 'МАРТ', 'АПРЕЛЬ', 'МАЙ', 'ИЮНЬ', 'ИЮЛЬ', 'АВГУСТ', 'СЕНТЯБРЬ', 'ОКТЯБРЬ', 'НОЯБРЬ', 'ДЕКАБРЬ']
 	.form_block
-		a.back_link(href='/auth/eras') < Назад
+		a.back_link(href='/auth/objects') < Назад
 		.title РЕДАКТИРОВАТЬ СТИЛЬ
 		form(action="", method="post")
 			.form_title Название:
-			input.ru(type="text", name="ru[title]", value=era.title.ru)
+			input.ru(type="text", name="ru[title]", value=object.title.ru)
 			input.en(type="text", name="en[title]", disabled)
 			.form_title Описание:
-			textarea.ru(name="ru[description]", rows="8",)= era.description.ru
+			textarea.ru(name="ru[description]", rows="8",)= object.description.ru
 			textarea.en(name="en[description]", rows="8", disabled)
 			.form_title Дата:
 			select(name='date[date]')
 				option(value='') Дата
 				- for (var i=1; i<32; i++)
-					option(value=i, selected=(i == era.date.getDate()))= i
+					option(value=i, selected=(i == object.date.getDate()))= i
 			select(name='date[month]')
 				option(value='') Месяц
 				each month, i in months
-					option(value=i, selected=(i == era.date.getMonth()))= month
+					option(value=i, selected=(i == object.date.getMonth()))= month
 			select(name='date[year]')
 				option(value='') Год
-				option(value=year, selected=(year == era.date.getFullYear()))= year
-				option(value=year - 1, selected=(year - 1 == era.date.getFullYear()))= year - 1
+				option(value=year, selected=(year == object.date.getFullYear()))= year
+				option(value=year - 1, selected=(year - 1 == object.date.getFullYear()))= year - 1
 			//- .form_title Фото:
 			//- input(type="file", name="photo")
 			br
