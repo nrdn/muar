@@ -1,4 +1,5 @@
 var Object = require('../../models/main.js').Object;
+var Era = require('../../models/main.js').Era;
 
 
 // ------------------------
@@ -19,7 +20,9 @@ exports.list = function(req, res) {
 
 
 exports.add = function(req, res) {
-  res.render('auth/objects/add.jade');
+  Era.find().exec(function(err, eras) {
+    res.render('auth/objects/add.jade', {eras: eras});
+  });
 }
 
 exports.add_form = function(req, res) {
