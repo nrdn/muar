@@ -48,11 +48,19 @@ $(document).ready(function() {
 // *** Constructors Block ***
 // ------------------------
 
+	$('.sub').hide().eq(0).show().children('input').attr('disabled', false);
+	$('.glob').change(function() {
+		var index = $(this).children('option:selected').index();
+	  $('.sub').hide().eq(index).show();
+	  $('.sub').children('input').attr('disabled', true);
+	  $('.sub').eq(index).children('input').attr('disabled', false);
+	});
+
 
 	function snakeForward () {
 		var snake = $('.snake');
 		snake.first().clone()
-			.find('option').prop('selected', false).end()
+			.find('input').val('').end()
 			.insertAfter(snake.last());
 	}
 

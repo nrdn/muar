@@ -28,10 +28,14 @@ block content
 			.form_title Интервал конец:
 			input.ru(type="text", name="interval[end]",)
 			.form_title Стиль:
-			select(name='era')
+			select.glob(name='era')
 				each era in eras
 					option(value=era._id)= era.title.ru
-			b= eras[0].ages[0]
+			each era in eras
+				span.sub
+					each age in era.ages
+						input(type='checkbox', value=age._id, disabled=true)
+						!= age.title.ru
 			//- .form_title Фото:
 			//- input(type="file", name="photo")
 			br
