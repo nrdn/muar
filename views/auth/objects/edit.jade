@@ -1,41 +1,41 @@
 extends ../../layout
 
 block title
-	title РЕДАКТИРОВАТЬ ПОСТ
+	title РЕДАКТИРОВАТЬ ОБЪЕКТ
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
 
 block content_scripts
-	script(type='text/javascript', src='/build/css/add.js')
+	script(type='text/javascript', src='/build/js/add.js')
 
 block content
-	- var year = new Date()
-	- year = year.getFullYear()
-	- var months = ['ЯНВАРЬ', 'ФЕВРАЛЬ', 'МАРТ', 'АПРЕЛЬ', 'МАЙ', 'ИЮНЬ', 'ИЮЛЬ', 'АВГУСТ', 'СЕНТЯБРЬ', 'ОКТЯБРЬ', 'НОЯБРЬ', 'ДЕКАБРЬ']
 	.form_block
 		a.back_link(href='/auth/objects') < Назад
-		.title РЕДАКТИРОВАТЬ СТИЛЬ
+		.title РЕДАКТИРОВАТЬ ОБЪЕКТ
 		form(action="", method="post")
 			.form_title Название:
 			input.ru(type="text", name="ru[title]", value=object.title.ru)
 			input.en(type="text", name="en[title]", disabled)
+			.form_title Адрес:
+			input.ru(type="text", name="ru[adress]", value=object.meta.adress.ru)
+			input.en(type="text", name="en[adress]", disabled)
 			.form_title Описание:
-			textarea.ru(name="ru[description]", rows="8",)= object.description.ru
+			textarea.ru(name="ru[description]", rows="8",)=object.description.ru
 			textarea.en(name="en[description]", rows="8", disabled)
-			.form_title Дата:
-			select(name='date[date]')
-				option(value='') Дата
-				- for (var i=1; i<32; i++)
-					option(value=i, selected=(i == object.date.getDate()))= i
-			select(name='date[month]')
-				option(value='') Месяц
-				each month, i in months
-					option(value=i, selected=(i == object.date.getMonth()))= month
-			select(name='date[year]')
-				option(value='') Год
-				option(value=year, selected=(year == object.date.getFullYear()))= year
-				option(value=year - 1, selected=(year - 1 == object.date.getFullYear()))= year - 1
+			.form_title Интервал начало:
+			input.ru(type="text", name="interval[start]", value=object.meta.interval.start.getUTCFullYear())
+			.form_title Интервал конец:
+			input.ru(type="text", name="interval[end]", value=object.meta.interval.end.getUTCFullYear())
+			.form_title Стиль:
+			select.glob(name='era')
+				each era in eras
+					option(value=era._id, selected=era._id.toString() == object.history.era.toString())= era.title.ru
+			each era in eras
+				span.sub
+					each age in era.ages
+						input(type='checkbox', name='ages', value=age._id, disabled=true)
+						!= age.title.ru
 			//- .form_title Фото:
 			//- input(type="file", name="photo")
 			br

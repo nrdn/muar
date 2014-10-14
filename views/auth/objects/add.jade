@@ -10,9 +10,6 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/add.js')
 
 block content
-	- var year = new Date()
-	- year = year.getFullYear()
-	- var months = ['ЯНВАРЬ', 'ФЕВРАЛЬ', 'МАРТ', 'АПРЕЛЬ', 'МАЙ', 'ИЮНЬ', 'ИЮЛЬ', 'АВГУСТ', 'СЕНТЯБРЬ', 'ОКТЯБРЬ', 'НОЯБРЬ', 'ДЕКАБРЬ']
 	.form_block
 		a.back_link(href='/auth/objects') < Назад
 		.title ДОБАВИТЬ ОБЪЕКТ
@@ -20,6 +17,9 @@ block content
 			.form_title Название:
 			input.ru(type="text", name="ru[title]",)
 			input.en(type="text", name="en[title]", disabled)
+			.form_title Адрес:
+			input.ru(type="text", name="ru[adress]",)
+			input.en(type="text", name="en[adress]", disabled)
 			.form_title Описание:
 			textarea.ru(name="ru[description]", rows="8",)
 			textarea.en(name="en[description]", rows="8", disabled)
@@ -34,7 +34,7 @@ block content
 			each era in eras
 				span.sub
 					each age in era.ages
-						input(type='checkbox', value=age._id, disabled=true)
+						input(type='checkbox', name='ages', value=age._id, disabled=true)
 						!= age.title.ru
 			//- .form_title Фото:
 			//- input(type="file", name="photo")

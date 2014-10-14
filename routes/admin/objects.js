@@ -36,9 +36,9 @@ exports.add_form = function(req, res) {
   object.history.era = post.era;
   object.history.ages = post.ages;
 
-  object.meta.interval.start = new Date(Date.UTC(post.date.year, post.date.month, post.date.date));
-  object.meta.interval.end = new Date(Date.UTC(post.date.year, post.date.month, post.date.date));
-  object.meta.adress = post.adress;
+  object.meta.interval.start = new Date(Date.UTC(post.interval.start, 1, 1));
+  object.meta.interval.end = new Date(Date.UTC(post.interval.end, 1, 1));
+  object.meta.adress.ru = post.ru.adress;
 
   object.save(function(err, object) {
     res.redirect('/auth/objects');
@@ -54,8 +54,10 @@ exports.add_form = function(req, res) {
 exports.edit = function(req, res) {
   var id = req.params.id;
 
-  Object.findById(id).exec(function(err, object) {
-    res.render('auth/objects/edit.jade', {object: object});
+  Era.find().exec(function(err, eras) {
+    Object.findById(id).exec(function(err, object) {
+      res.render('auth/objects/edit.jade', {object: object, eras: eras});
+    });
   });
 }
 
@@ -71,13 +73,9 @@ exports.edit_form = function(req, res) {
     object.history.era = post.era;
     object.history.ages = post.ages;
 
-    object.architects = post.architects;
-    object.categorys = post.categorys;
-    object.subjects = post.subjects;
-
-    object.meta.interval.start = new Date(Date.UTC(post.date.year, post.date.month, post.date.date));
-    object.meta.interval.end = new Date(Date.UTC(post.date.year, post.date.month, post.date.date));
-    object.meta.adress = post.adress;
+    object.meta.interval.start = new Date(Date.UTC(post.interval.start, 1, 1));
+    object.meta.interval.end = new Date(Date.UTC(post.interval.end, 1, 1));
+    object.meta.adress.ru = post.ru.adress;
 
     object.save(function(err, object) {
       res.redirect('/auth/eras');

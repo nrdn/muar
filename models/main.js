@@ -63,7 +63,10 @@ var objectSchema = new Schema({
 		ages: [Schema.Types.ObjectId],
 	},
 	meta: {
-		adress: String,
+		adress: {
+			ru: String,
+			en: String
+		},
 		interval: {
 			start: Date,
 			end: Date
