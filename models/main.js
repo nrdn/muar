@@ -41,7 +41,10 @@ var eraSchema = new Schema({
 			ru: String,
 			en: String
 		},
-		tag: String
+		interval: {
+			start: Date,
+			end: Date
+		}
 	}],
 	date: {type: Date, default: Date.now}
 });
@@ -57,7 +60,7 @@ var objectSchema = new Schema({
 	},
 	history: {
 		era: { type: Schema.Types.ObjectId, ref: 'Era' },
-		ages: [String],
+		ages: [Schema.Types.ObjectId],
 	},
 	meta: {
 		adress: String,

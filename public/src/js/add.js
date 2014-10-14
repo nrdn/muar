@@ -50,41 +50,22 @@ $(document).ready(function() {
 
 
 	function snakeForward () {
-		var elem = $(this).parent().find('select');
-		elem.first().clone().insertAfter(elem.last());
+		var snake = $('.snake');
+		snake.first().clone()
+			.find('option').prop('selected', false).end()
+			.insertAfter(snake.last());
 	}
 
 	function snakeBack () {
-		if ($(this).parent().find('select').size() == 1) return null;
-		$(this).parent().find('select :last').remove();
+		if ($('.snake').size() == 1) return null;
+		$(this).parent('.snake').remove();
 	}
 
-	function StickyTags() {
-		var offset = 0;
-		var sticky = false;
-		var top = $(window).scrollTop();
 
-		if ($(".form_block").offset().top < top) {
-			$(".navigator").css('position', 'fixed').css('margin-left', '950px').css('top', '0px');
-			sticky = true;
-		} else {
-			$(".navigator").css('position', 'relative').css('margin-left', '0px');
-		}
-	}
-
-	$(window).on('scroll', StickyTags);
 	$('.toggle_eng').on('click', toggleEnglish);
-	$('.back').on('click', snakeBack);
+	$(document).on('click', '.back', snakeBack);
 	$('.forward').on('click', snakeForward);
 
-	$('.form_submit').click(function() {
-		var areas = $('textarea');
-		areas.each(function() {
-			var newValue = $(this).val().replace(/\n/g, "<br />");
-			$(this).val(newValue);
-		});
-		$('form').submit();
-	});
 
 	$('form').submit(function(event) {
 		var areas = $('textarea');
