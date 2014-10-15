@@ -1,13 +1,14 @@
 extends ../../layout
 
 block title
-	title РЕДАКТИРОВАТЬ ПОСТ
+	title РЕДАКТИРОВАТЬ СТИЛЬ
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
 
 block content_scripts
 	script(type='text/javascript', src='/build/js/add.js')
+	script(type='text/javascript', src='/build/js/edit_era.js')
 
 block content
 	- var year = new Date()
