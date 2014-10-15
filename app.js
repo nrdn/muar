@@ -52,12 +52,10 @@ app.use(function(req, res, next) {
 
 
 var main = require('./routes/main.js');
-var blog = require('./routes/blog.js');
 var auth = require('./routes/auth.js');
 var content = require('./routes/content.js');
 var files = require('./routes/files.js');
 
-var a_posts = require('./routes/admin/posts.js');
 var a_eras = require('./routes/admin/eras.js');
 var a_objects = require('./routes/admin/objects.js');
 var test = require('./routes/admin/test.js');
@@ -114,33 +112,9 @@ app.route('/').get(main.index);
 app.route('/lang/:locale').get(main.locale);
 
 
-// === Blog posts Route
-app.route('/posts').get(blog.posts);
-
-
-// === Blog post Route
-app.route('/posts/:id').get(blog.post);
-
-
 // ------------------------
 // *** Admin Routers Block ***
 // ------------------------
-
-
-// === Admin posts Route
-app.route('/auth/posts').get(checkAuth, a_posts.list);
-
-
-// === Admin @add post Route
-app.route('/auth/posts/add')
-	 .get(checkAuth, a_posts.add)
-	 .post(checkAuth, a_posts.add_form);
-
-
-// === Admin @edit post Route
-app.route('/auth/posts/edit/:id')
-	 .get(checkAuth, a_posts.edit)
-	 .post(checkAuth, a_posts.edit_form);
 
 
 // === Admin eras Route
