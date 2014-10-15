@@ -222,7 +222,7 @@ app.route('/robots.txt').get(files.robots);
 
 
 app.route('/test')
-	 .get(main.test)
+	 .get(test.json)
 
 app.route('/c_era')
 	 .get(test.createEra)
