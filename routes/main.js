@@ -36,7 +36,7 @@ exports.index = function(req, res) {
 		'ages': '$ages'
 	})
 	.exec(function(err, eras) {
-		Era.populate(eras, {path: 'era', model: 'Era', select: '-_id -date -__v -description -ages'}, function(err, eras) {
+		Era.populate(eras, {path: 'era', model: 'Era', select: '-_id -date -__v -description'}, function(err, eras) {
 			res.render('main', {eras: eras});
 		});
 	});
@@ -77,7 +77,7 @@ exports.test = function(req, res) {
 		'ages': '$ages'
 	})
 	.exec(function(err, eras) {
-		Era.populate(eras, {path: 'era', model: 'Era', select: '-_id -date -__v -description -ages'}, function(err, eras) {
+		Era.populate(eras, {path: 'era', model: 'Era', select: '-_id -date -__v -description'}, function(err, eras) {
 			res.json(eras);
 		});
 	});
