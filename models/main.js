@@ -9,20 +9,6 @@ var userSchema = new Schema({
 	date: {type: Date, default: Date.now},
 });
 
-var postSchema = new Schema({
-	title: {
-		ru: String,
-		en: String
-	},
-	description: {
-		ru: String,
-		en: String
-	},
-	category: String,
-	photo: String,
-	date: {type: Date, default: Date.now}
-});
-
 var eraSchema = new Schema({
 	title: {
 		ru: String,
@@ -155,7 +141,6 @@ var categorySchema = new Schema({
 
 
 module.exports.User = mongoose.model('User', userSchema);
-module.exports.Post = mongoose.model('Post', postSchema);
 module.exports.Era = mongoose.model('Era', eraSchema);
 module.exports.Object = mongoose.model('Object', objectSchema);
 module.exports.Subject = mongoose.model('Subject', subjectSchema);
