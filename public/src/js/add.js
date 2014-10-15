@@ -33,20 +33,36 @@ $(document).ready(function() {
 
 
 // ------------------------
-// *** Navigator Block ***
-// ------------------------
-
-
-	$('.nav_item').click(function(event) {
-		index = $(this).index('.nav_item');
-
-		$('.form_section').eq(index).scrollintoview();
-	});
-
-
-// ------------------------
 // *** Constructors Block ***
 // ------------------------
+
+
+	$(document).on('keyup change', '.snake input', function() {
+		$(this).parent('.snake').children('.save').attr('disabled', false);
+	});
+
+	$(document).on('click', '.save', function() {
+		var $this = $(this);
+		var $snake = $this.parent('.snake');
+
+		if ($snake.attr('id')) {
+			var age_id = $snake.attr('id');
+			var age = {
+				_id: age_id,
+				ru: {
+					title: $snake.children('.age_title').val()
+				},
+				interval: {
+					start: $snake.children('.age_start').val(),
+					end: $snake.children('.age_end').val()
+				}
+			};
+			$.post('/auth/eras/ages/edit/', {age: age}).done(function(data) {
+				$this.attr('disabled', true);
+			});
+		}
+	});
+
 
 	$('.sub').hide().eq(0).show().children('input').attr('disabled', false);
 	$('.glob').change(function() {
@@ -59,7 +75,7 @@ $(document).ready(function() {
 
 	function snakeForward () {
 		var snake = $('.snake');
-		snake.first().clone()
+		snake.first().clone().removeAttr('id')
 			.find('input').val('').end()
 			.insertAfter(snake.last());
 	}

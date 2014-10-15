@@ -159,6 +159,11 @@ app.route('/auth/eras/edit/:id')
 	 .post(checkAuth, a_eras.edit_form);
 
 
+// === Admin @edit eras > ages Route
+app.route('/auth/eras/ages/edit')
+	 .post(checkAuth, a_eras.edit_ages_form);
+
+
 // === Admin objects Route
 app.route('/auth/objects').get(checkAuth, a_objects.list);
 

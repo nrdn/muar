@@ -27,18 +27,16 @@ block content
 			input.ru(type="text", name="interval[start]", value=era.interval.start.getUTCFullYear())
 			.form_title Интервал конец:
 			input.ru(type="text", name="interval[end]", value=era.interval.end.getUTCFullYear())
-			.form_title Периоды:
-			each age in era.ages
-				.snake
-					button.back(type='button') удалить
-					input(type="text", name="ages[title][]", placeholder="Название", value=age.title.ru)
-					input(type="text", name="ages[interval][start][]", placeholder="Начало", value=age.interval.start.getUTCFullYear())
-					input(type="text", name="ages[interval][end][]", placeholder="Конец", value=age.interval.end.getUTCFullYear())
-					button.save(type='button') сохранить
-			br
-			button(type='button').forward добавить период
-			//- .form_title Фото:
-			//- input(type="file", name="photo")
 			br
 			br
-			input(type='submit', value='отправить')
+			input(type='submit', value='сохранить')
+		.form_title Периоды:
+		each age in era.ages
+			.snake(id=age._id)
+				button.back(type='button') удалить
+				input.age_title(type="text", name="ages[title][]", placeholder="Название", value=age.title.ru)
+				input.age_start(type="text", name="ages[interval][start][]", placeholder="Начало", value=age.interval.start.getUTCFullYear())
+				input.age_end(type="text", name="ages[interval][end][]", placeholder="Конец", value=age.interval.end.getUTCFullYear())
+				button.save(type='button', disabled) сохранить
+		br
+		button(type='button').forward добавить период
