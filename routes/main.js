@@ -40,8 +40,10 @@ exports.columns = function(req, res) {
 		'ages': '$ages'
 	})
 	.exec(function(err, eras) {
-		Era.populate(eras, {path: 'era', model: 'Era', select: '-_id -date -__v -description'}, function(err, eras) {
-			res.render('main/columns.jade', {eras: eras});
+		Era.populate(eras, {path: 'era', select: '-_id -date -__v -description -ages -sub'}, function(err, eras) {
+			Era.populate(eras, {path: 'ages.age', select: '-_id -date -__v -description -ages -sub'}, function(err, eras) {
+				res.render('main/columns.jade', {eras: eras});
+			});
 		});
 	});
 }
@@ -81,8 +83,10 @@ exports.test = function(req, res) {
 		'ages': '$ages'
 	})
 	.exec(function(err, eras) {
-		Era.populate(eras, {path: 'era', model: 'Era', select: '-_id -date -__v -description'}, function(err, eras) {
-			res.json(eras);
+		Era.populate(eras, {path: 'era', select: '-_id -date -__v -description -ages -sub'}, function(err, eras) {
+			Era.populate(eras, {path: 'ages.age', select: '-_id -date -__v -description -ages -sub'}, function(err, eras) {
+				res.json(eras);
+			});
 		});
 	});
 }

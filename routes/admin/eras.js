@@ -7,7 +7,7 @@ var Era = require('../../models/main.js').Era;
 
 
 exports.list = function(req, res) {
-  Era.find().exec(function(err, eras) {
+  Era.find().where('sub').equals(false).exec(function(err, eras) {
     res.render('auth/eras/', {eras: eras});
   });
 }
@@ -26,28 +26,11 @@ exports.add_form = function(req, res) {
   var post = req.body;
   var files = req.files;
   var era = new Era();
-  var ages = [];
-  var post_ages = post.ages;
 
   era.title.ru = post.ru.title;
   era.description.ru = post.ru.description;
   era.interval.start = new Date(Date.UTC(post.interval.start, 1, 1));
   era.interval.end = new Date(Date.UTC(post.interval.end, 1, 1));
-
-  post_ages.title.forEach(function(el, index) {
-    var age = {
-      title: {
-        ru: post_ages.title[index]
-      },
-      interval: {
-        start: new Date(Date.UTC(post_ages.interval.start[index], 1,1)),
-        end: new Date(Date.UTC(post_ages.interval.end[index], 1,1))
-      }
-    }
-    ages.push(age);
-  });
-
-  era.ages = ages;
 
   era.save(function(err, era) {
     res.redirect('/auth/eras');
@@ -71,8 +54,6 @@ exports.edit = function(req, res) {
 exports.edit_form = function(req, res) {
   var post = req.body;
   var id = req.params.id;
-  // var ages = [];
-  // var post_ages = post.ages;
 
   Era.findById(id).exec(function(err, era) {
 
@@ -81,23 +62,53 @@ exports.edit_form = function(req, res) {
     era.interval.start = new Date(Date.UTC(post.interval.start, 1, 1));
     era.interval.end = new Date(Date.UTC(post.interval.end, 1, 1));
 
-    // post_ages.title.forEach(function(el, index) {
-    //   var age = {
-    //     title: {
-    //       ru: post_ages.title[index]
-    //     },
-    //     interval: {
-    //       start: new Date(Date.UTC(post_ages.interval.start[index], 1,1)),
-    //       end: new Date(Date.UTC(post_ages.interval.end[index], 1,1))
-    //     }
-    //   }
-    //   ages.push(age);
-    // });
-
-    // era.ages = ages;
-
     era.save(function(err, era) {
       res.redirect('/auth/eras');
+    });
+  });
+}
+
+
+// ------------------------
+// *** Admin Ages Block ***
+// ------------------------
+
+
+exports.list_ages = function(req, res) {
+  var id = req.params.id;
+  Era.findById(id).populate('ages').exec(function(err, era) {
+    res.render('auth/ages', {era: era});
+  });
+}
+
+
+// ------------------------
+// *** Add Ages Block ***
+// ------------------------
+
+
+exports.add_ages = function(req, res) {
+  res.render('auth/ages/add.jade');
+}
+
+exports.add_ages_form = function(req, res) {
+  var post = req.body;
+  var files = req.files;
+  var age = new Era();
+  var id = req.params.id;
+
+  age.title.ru = post.ru.title;
+  age.description.ru = post.ru.description;
+  age.interval.start = new Date(Date.UTC(post.interval.start, 1, 1));
+  age.interval.end = new Date(Date.UTC(post.interval.end, 1, 1));
+  age.sub = true;
+
+  age.save(function(err, age) {
+    Era.findById(id).exec(function(err, era) {
+      era.ages.push(age._id);
+      era.save(function(err, era) {
+        res.redirect('/auth/eras');
+      });
     });
   });
 }
@@ -108,14 +119,23 @@ exports.edit_form = function(req, res) {
 // ------------------------
 
 
+exports.edit_ages = function(req, res) {
+  res.render('auth/ages/edit.jade');
+}
+
 exports.edit_ages_form = function(req, res) {
   var post = req.body;
-  Era.findOne({'ages._id': post.age._id}).exec(function(err, era) {
-    era.ages.id(post.age._id).title.ru = post.age.ru.title;
-    era.ages.id(post.age._id).interval.start = new Date(Date.UTC(post.age.interval.start, 1,1));
-    era.ages.id(post.age._id).interval.end = new Date(Date.UTC(post.age.interval.end, 1,1));
-    era.save(function() {
-      res.send('ok');
+  var id = req.params.age_id;
+
+  Era.findById(id).exec(function(err, age) {
+
+    age.title.ru = post.ru.title;
+    age.description.ru = post.ru.description;
+    age.interval.start = new Date(Date.UTC(post.interval.start, 1, 1));
+    age.interval.end = new Date(Date.UTC(post.interval.end, 1, 1));
+
+    age.save(function(err, age) {
+      res.redirect('/auth/eras');
     });
   });
 }

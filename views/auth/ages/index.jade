@@ -1,0 +1,24 @@
+extends ../../layout
+
+block title
+	title СПИСОК ПЕРИОДОВ ДЛЯ СТИЛЯ
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
+
+block content_scripts
+	script(type='text/javascript', src='/build/js/lists.js')
+
+block content
+	a.back_link(href='/auth') < Назад
+	.title= 'СПИСОК ПЕРИОДОВ ДЛЯ СТИЛЯ ' + era.title.ru.toUpperCase()
+	br
+	a.add(href='/auth/eras/' + era._id + '/ages/add') добавить период
+	br
+	br
+	.main_menu_block
+		each age in era.ages
+			.age
+				a.rm_age(href='#', id=age._id)= 'удалить '
+				!=' | '
+				a(href='/auth/eras/edit/' + age._id)= age.title.ru

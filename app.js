@@ -136,8 +136,20 @@ app.route('/auth/eras/edit/:id')
 	 .post(checkAuth, a_eras.edit_form);
 
 
-// === Admin @edit eras > ages Route
-app.route('/auth/eras/ages/edit')
+// === Admin ages Route
+app.route('/auth/eras/:id/ages')
+	 .get(checkAuth, a_eras.list_ages);
+
+
+// === Admin @add ages Route
+app.route('/auth/eras/:id/ages/add')
+	 .get(checkAuth, a_eras.add_ages)
+	 .post(checkAuth, a_eras.add_ages_form);
+
+
+// === Admin @edit ages Route
+app.route('/auth/eras/:era_id/ages/edit/:age_id')
+	 .get(checkAuth, a_eras.edit_ages)
 	 .post(checkAuth, a_eras.edit_ages_form);
 
 

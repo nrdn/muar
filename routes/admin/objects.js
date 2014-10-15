@@ -20,7 +20,7 @@ exports.list = function(req, res) {
 
 
 exports.add = function(req, res) {
-  Era.find().exec(function(err, eras) {
+  Era.find().where('sub').equals(false).populate('ages').exec(function(err, eras) {
     res.render('auth/objects/add.jade', {eras: eras});
   });
 }
@@ -54,7 +54,7 @@ exports.add_form = function(req, res) {
 exports.edit = function(req, res) {
   var id = req.params.id;
 
-  Era.find().exec(function(err, eras) {
+  Era.find().where('sub').equals(false).populate('ages').exec(function(err, eras) {
     Object.findById(id).exec(function(err, object) {
       res.render('auth/objects/edit.jade', {object: object, eras: eras});
     });

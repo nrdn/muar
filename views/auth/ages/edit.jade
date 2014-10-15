@@ -1,13 +1,14 @@
 extends ../../layout
 
 block title
-	title РЕДАКТИРОВАТЬ СТИЛЬ
+	title РЕДАКТИРОВАТЬ ПЕРИОД
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
 
 block content_scripts
 	script(type='text/javascript', src='/build/js/add.js')
+	script(type='text/javascript', src='/build/js/edit_era.js')
 
 block content
 	- var year = new Date()
@@ -15,7 +16,7 @@ block content
 	- var months = ['ЯНВАРЬ', 'ФЕВРАЛЬ', 'МАРТ', 'АПРЕЛЬ', 'МАЙ', 'ИЮНЬ', 'ИЮЛЬ', 'АВГУСТ', 'СЕНТЯБРЬ', 'ОКТЯБРЬ', 'НОЯБРЬ', 'ДЕКАБРЬ']
 	.form_block
 		a.back_link(href='/auth/eras') < Назад
-		.title РЕДАКТИРОВАТЬ СТИЛЬ
+		.title РЕДАКТИРОВАТЬ ПЕРИОД
 		form(action="", method="post")
 			.form_title Название:
 			input.ru(type="text", name="ru[title]", value=era.title.ru)

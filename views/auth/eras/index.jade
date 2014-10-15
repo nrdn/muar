@@ -22,3 +22,5 @@ block content
 				a.rm_era(href='#', id=era._id)= 'удалить '
 				!=' | '
 				a(href='/auth/eras/edit/' + era._id)= era.title.ru
+				!=' --> '
+				a(href='/auth/eras/' + era._id + '/ages') периоды
