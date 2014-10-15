@@ -107,6 +107,9 @@ function toMatrix(arr, row) {
 // === Main Route
 app.route('/').get(main.index);
 
+// === Columns Route
+app.route('/columns').get(main.columns);
+
 
 // === Locale Route
 app.route('/lang/:locale').get(main.locale);

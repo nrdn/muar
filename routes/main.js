@@ -2,6 +2,10 @@ var Era = require('../models/main.js').Era;
 var Object = require('../models/main.js').Object;
 
 exports.index = function(req, res) {
+	res.render('main');
+}
+
+exports.columns = function(req, res) {
 	Object.aggregate()
 	.sort('meta.interval.start meta.interval.end')
 	.unwind('history.ages')
@@ -37,7 +41,7 @@ exports.index = function(req, res) {
 	})
 	.exec(function(err, eras) {
 		Era.populate(eras, {path: 'era', model: 'Era', select: '-_id -date -__v -description'}, function(err, eras) {
-			res.render('main', {eras: eras});
+			res.render('main/columns.jade', {eras: eras});
 		});
 	});
 }
