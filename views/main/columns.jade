@@ -11,14 +11,16 @@ block content_scripts
 
 
 block content
-	h1 Колонки
+	.styles_header_title_control
+		.styles_header_title Колонки
 	each era in eras
-		h2= 'Стиль: ' + era.era.title.ru + ' ( ' + era.era.interval.start.getUTCFullYear() + ' - ' + era.era.interval.end.getUTCFullYear() + ' ) '
-		each age in era.ages
-			//- - var age_populate = era.era.ages.filter(function(era_age) { return era_age._id.toString() == age.age.toString() })[0]
-			h3= 'Подстиль: ' + age.age.title.ru
-			b Список объектов:
-			br
-			each object in age.objects
-				i= object.title.ru + ' (  ' + object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear() + ' ) '
-				br
+		.styles_container
+			h2= era.era.title.ru + ' ( ' + era.era.interval.start.getUTCFullYear() + ' - ' + era.era.interval.end.getUTCFullYear() + ' ) '
+			each age in era.ages
+				//- - var age_populate = era.era.ages.filter(function(era_age) { return era_age._id.toString() == age.age.toString() })[0]
+				h3= age.age.title.ru
+				each object in age.objects
+					.object_block
+						.object_block_image
+						.object_block_title=object.title.ru
+						.object_block_date=object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear()

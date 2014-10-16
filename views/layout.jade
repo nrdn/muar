@@ -3,15 +3,20 @@ html
 	head
 		include header
 	body
+		- var date = new Date()
 		//- include counters
-		.main_block
-			.header_block
-				.head_title_block
-					.title_contacts 119019, ул. Воздвиженка, 5/25
-					.title_phone Приемная +7 (499) 691-21-09
-				a(href='/').logo МУАР
-				.logo_under Музей архитектуры имени Щусева
-			.content_block
-				block content
-			- var date = new Date()
-			.footer_block= 'МУАР 2001 - ' + date.getFullYear()
+		.header_block
+			.header_block_inner
+				.top_line_block
+					.top_menu_block
+						a(href='#') Коллекции
+						a(href='list') Предметный указатель
+						a(href='#') О виртуальном музее
+					.top_search_block(contenteditable) Поиск...
+				a.header_logo(href="/")
+				.header_title
+
+		.content_block
+			block content
+		.footer_block
+			.footer_block_inner
