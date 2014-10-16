@@ -120,7 +120,10 @@ exports.add_ages_form = function(req, res) {
 
 
 exports.edit_ages = function(req, res) {
-  res.render('auth/ages/edit.jade');
+  var id = req.params.age_id;
+  Era.findById(id).exec(function(err, age) {
+    res.render('auth/ages/edit.jade', {age: age});
+  });
 }
 
 exports.edit_ages_form = function(req, res) {

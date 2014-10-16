@@ -10,7 +10,7 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/lists.js')
 
 block content
-	a.back_link(href='/auth') < Назад
+	a.back_link(href='/auth/eras') < Назад
 	.title= 'СПИСОК ПЕРИОДОВ ДЛЯ СТИЛЯ ' + era.title.ru.toUpperCase()
 	br
 	a.add(href='/auth/eras/' + era._id + '/ages/add') добавить период
@@ -21,4 +21,4 @@ block content
 			.age
 				a.rm_age(href='#', id=age._id)= 'удалить '
 				!=' | '
-				a(href='/auth/eras/edit/' + age._id)= age.title.ru
+				a(href='/auth/eras/' + era._id + '/ages/edit/' + age._id)= age.title.ru
