@@ -5,6 +5,7 @@ block title
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/main.css' + version)
+	link(rel='stylesheet', type='text/css', href='/build/css/columns.css' + version)
 
 block content_scripts
 	script(type='text/javascript', src='/build/js/main.js' + version)
@@ -17,7 +18,6 @@ block content
 		.styles_container
 			h2= era.era.title.ru + ' ( ' + era.era.interval.start.getUTCFullYear() + ' - ' + era.era.interval.end.getUTCFullYear() + ' ) '
 			each age in era.ages
-				//- - var age_populate = era.era.ages.filter(function(era_age) { return era_age._id.toString() == age.age.toString() })[0]
 				h3= age.age.title.ru
 				each object in age.objects
 					.object_block
