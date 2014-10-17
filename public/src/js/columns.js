@@ -3,7 +3,7 @@ var m_left = 0; // Отступ блока с колонками слева
 var col_vis = 4; // Количество видимых колонок
 $(document).ready(function() {
     var per_l = $('.styles_container .periods_col').length-col_vis;
-    var m_left_r = $('.styles_container').width();
+    var m_left_r = $('.styles_container').width()+3;
     console.log(per_l+' '+m_left_r);
 
 
