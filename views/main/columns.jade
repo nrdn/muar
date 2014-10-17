@@ -1,7 +1,8 @@
 extends ../layout
 
-block title
-	title МУАР
+block paths
+	- var title= 'МУАР'
+	- var header_title ='Колонки'
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/main.css' + version)
@@ -12,8 +13,6 @@ block content_scripts
 
 
 block content
-	.styles_header_title_control
-		.styles_header_title Колонки
 	each era in eras
 		.styles_container
 			h2= era.era.title.ru + ' ( ' + era.era.interval.start.getUTCFullYear() + ' - ' + era.era.interval.end.getUTCFullYear() + ' ) '

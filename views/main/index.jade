@@ -1,7 +1,9 @@
 extends ../layout
 
 block title
-	title МУАР
+	- var title= 'МУАР'
+	- var header_title= 'Главная'
+
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/main.css' + version)
@@ -11,7 +13,5 @@ block content_scripts
 
 
 block content
-	.styles_header_title_control
-		.styles_header_title Главная
 	.main_block
 		a(href='/columns') колонки стилей
