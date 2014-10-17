@@ -1,10 +1,36 @@
 .header_block
   position fixed
 
+.styles_controls {
+  width: 100%;
+  position: relative;
+}
+
+.styles_controls_back, .styles_controls_front
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  height: 29px;
+  width: 12px;
+  font-size: 36px;
+  line-height: 32px;
+  cursor: pointer;
+
+.styles_controls_front
+  right: 0;
+  text-align: right;
+
 .header_title_control
   position fixed
   top 75px
   background #fff
+  width 100%
+  border none
+
+.header_title_control_inner
+  width 1022px
+  margin 0 auto
+  border-bottom 2px solid #000
 
 .content_block
   white-space nowrap
@@ -32,6 +58,12 @@
 .styles_container h2
   position absolute
   white-space normal
+
+.styles_container h3
+  font-size: 18px;
+  text-align: center;
+  line-height: 19px;
+  margin-top: 7px;
 
 .periods_col {
   //width 25%
