@@ -1,8 +1,7 @@
 extends ../layout
 
 block title
-	- var title= 'МУАР'
-	- var header_title= 'Главная'
+	title МУАР
 
 
 block content_style
@@ -11,6 +10,9 @@ block content_style
 block content_scripts
 	script(type='text/javascript', src='/build/js/main.js' + version)
 
+
+block content_title
+	.content_title МУАР
 
 block content
 	.main_block

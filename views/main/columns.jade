@@ -1,8 +1,7 @@
 extends ../layout
 
-block paths
-	- var title= 'МУАР'
-	- var header_title ='Колонки'
+block title
+	title МУАР
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/main.css' + version)
@@ -10,26 +9,28 @@ block content_style
 
 block content_scripts
 	script(type='text/javascript', src='/build/js/main.js' + version)
+	script(type='text/javascript', src='/build/js/columns.js' + version)
 
-
-block content
+block content_title
 	.header_title_control
 		.header_title_control_inner
 			.styles_controls
 					.styles_controls_back &lt;
 					.styles_controls_front &gt;
-			.header_title= header_title
+			.content_title Колонки
+
+block content
 	.content_block_inner
-		each era in eras
-			.styles_container(style="")
-				h2= era.era.title.ru + ' (' + era.era.interval.start.getUTCFullYear() + ' - ' + era.era.interval.end.getUTCFullYear() + ') '
-				each age in era.ages
-					.periods_col
-						.periods_col_objects
-							.periods_col_objects_inner
-								h3= age.age.title.ru
-								each object in age.objects
-									.object_block
-										.object_block_image
-										.object_block_title=object.title.ru
-										.object_block_date=object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear()
+		.content_block_styles
+			each era in eras
+				.styles_container(data_style_name=era.era.title.ru)
+					each age in era.ages
+						.periods_col
+							.periods_col_objects
+								.periods_col_objects_inner
+									h3= age.age.title.ru
+									each object in age.objects
+										.object_block
+											.object_block_image
+											.object_block_title=object.title.ru
+											.object_block_date=object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear()

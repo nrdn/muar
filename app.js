@@ -111,6 +111,10 @@ app.route('/').get(main.index);
 app.route('/columns').get(main.columns);
 
 
+// === Columns Route
+app.route('/columns/alt').get(main.columns_alt);
+
+
 // === Locale Route
 app.route('/lang/:locale').get(main.locale);
 
