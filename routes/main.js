@@ -42,6 +42,7 @@ exports.columns = function(req, res) {
 	.exec(function(err, eras) {
 		Era.populate(eras, {path: 'era', select: '-_id -date -__v -description -ages -sub'}, function(err, eras) {
 			Era.populate(eras, {path: 'ages.age', select: '-_id -date -__v -description -ages -sub'}, function(err, eras) {
+				eras.sort(function(a, b) {return a.era.interval.start > b.era.interval.start});
 				res.render('main/columns.jade', {eras: eras});
 			});
 		});
