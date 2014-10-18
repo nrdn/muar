@@ -1,6 +1,6 @@
 var st_cont_l = 0; // Количество стилей
 var st_vis = 1; // Количество видимых стилей
-var style_num = 1; //Номер стиля при загрузке
+var style_num = 0; //Номер стиля при загрузке
 var styles_container_margin = 0; //Отступ контейнера стилей
 var styles_container_width = 0; // Ширина контейнера стилей
 
@@ -22,6 +22,8 @@ $(document).ready(function() {
 			$('.content_block_styles').css({'margin-left':-styles_container_margin});
 			//console.log(styles_container_margin);
 			$('.content_title').text($('.styles_container').eq(style_num).attr('data_style_name'));
+			$('.period_line').removeClass('active');
+			$('.period').eq(style_num).find('.period_line').addClass('active');
 		};
 		show_styles(style_num);
 
@@ -42,5 +44,10 @@ $(document).ready(function() {
 			//console.log(style_num);
 			show_styles(style_num);
 		}
+	});
+
+	$('.period').on('click', function() {
+		styles_container_margin = 0;
+			show_styles($(this).index());
 	});
 });

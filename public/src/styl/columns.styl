@@ -3,8 +3,8 @@
   position fixed
 
 .styles_controls
-  width: 100%
-  position: relative
+  width 100%
+  position relative
 
 .styles_controls_back, .styles_controls_front
   position absolute
@@ -63,9 +63,8 @@
   overflow hidden
   white-space nowrap
   min-width 100%
-  .inner_blocks
+  &.inner_blocks
     background #fc0
-
 
 .styles_container h2
   position absolute
@@ -79,14 +78,14 @@
   margin-top 7px
   font-weight normal
 
-.periods_col {
+.periods_col
   //width 25%
   width 256px
   display inline-block
   min-height 100%
   position relative
   overflow hidden
-}
+
 
 .periods_col_objects
   overflow scroll
@@ -116,3 +115,94 @@
   line-height 21px
   white-space normal
 
+.footer
+  position fixed
+  left 0
+  z-index 20
+  background #fff
+  bottom 0
+  height 57px
+  width 100%
+
+.periods
+  width 1022px
+  margin 0 auto
+  display block
+  overflow hidden
+
+.period
+  float left
+  width 14.28%
+  cursor pointer
+
+.period_title
+    text-align center
+    font-size 13px
+    height 26px
+    white-space nowrap
+    line-height 32px
+
+.period_line
+    height 11px
+    border-top 2px solid transparent
+    border-bottom 2px solid transparent
+    position relative
+
+.period_line_inner
+    position absolute
+    top 50%
+    margin-top -1px
+    border-top 2px solid transparent
+    width 100%
+
+.period
+  &:nth-child(1)
+    .period_line_inner
+    .period_line:hover
+    .period_line.active
+      border-color #f00
+
+  &:nth-child(2)
+    .period_line_inner
+    .period_line:hover
+    .period_line.active
+      border-color #0f0
+  &:nth-child(3)
+    .period_line_inner
+    .period_line:hover
+    .period_line.active
+      border-color #00f
+
+  &:nth-child(4)
+    .period_line_inner
+    .period_line:hover
+    .period_line.active
+      border-color #ff109a
+
+  &:nth-child(5)
+    .period_line_inner
+    .period_line:hover
+    .period_line.active
+      border-color #006889
+
+  &:nth-child(6)
+    .period_line_inner
+    .period_line:hover
+    .period_line.active
+      border-color #000
+
+  &:nth-child(7)
+    .period_line_inner
+    .period_line:hover
+    .period_line.active
+      border-color #f00
+
+.period_dates
+    font-size 13px
+    margin-top 2px
+    position relative
+    height 17px
+
+.period_dates div
+    position absolute
+    top 0

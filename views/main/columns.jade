@@ -34,3 +34,54 @@ block content
 											.object_block_image
 											.object_block_title=object.title.ru
 											.object_block_date=object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear()
+	.footer
+		.periods
+				each era in eras
+					.period
+						.period_title=era.era.title.ru
+						.period_line
+							.period_line_inner
+						.period_dates
+							.date0=era.era.interval.start.getUTCFullYear()
+							.date2=era.era.interval.end.getUTCFullYear()
+
+
+
+//-
+				.period.period_nar_bar
+					.period_title Нарышкинское барокко
+					.period_line
+						.period_line_inner
+					.period_dates
+						.date1 1700
+				.period.period_bar
+					.period_title Барокко
+					.period_line
+						.period_line_inner
+					.period_dates
+						.date1 1770
+				.period.period_class.active
+					.period_title Классицизм
+					.period_line
+						.period_line_inner
+					.period_dates
+						.date1 1800
+				.period.period_eklect
+					.period_title Эклектика
+					.period_line
+						.period_line_inner
+					.period_dates
+						.date1 1870
+				.period.period_modern
+					.period_title Модерн
+					.period_line
+						.period_line_inner
+					.period_dates
+						.date1 1900
+				.period.period_konstr
+					.period_title Конструктивизм
+					.period_line
+						.period_line_inner
+					.period_dates
+						.date1 1920
+						.date3 1930
