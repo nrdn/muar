@@ -17,14 +17,14 @@ $(document).ready(function() {
 				$(this).attr({'data-length': styles_container_width}).css({'min-width':styles_container_width});
 				if (styles_container_width > styles_block_width) {
 					$(this).addClass('inner_blocks');
-				};
+				}
 			});
 			$('.content_block_styles').css({'margin-left':-styles_container_margin});
 			//console.log(styles_container_margin);
 			$('.content_title').text($('.styles_container').eq(style_num).attr('data_style_name'));
 			$('.period_line').removeClass('active');
 			$('.period').eq(style_num).find('.period_line').addClass('active');
-		};
+		}
 		show_styles(style_num);
 
 
