@@ -1,6 +1,6 @@
 var st_cont_l = 0; // Количество стилей
 var st_vis = 1; // Количество видимых стилей
-var style_num = 2; //Номер стиля при загрузке
+var style_num = 1; //Номер стиля при загрузке
 var styles_container_margin = 0; //Отступ контейнера стилей
 var styles_container_width = 0; // Ширина контейнера стилей
 
