@@ -2,7 +2,9 @@ var Era = require('../models/main.js').Era;
 var Object = require('../models/main.js').Object;
 
 exports.index = function(req, res) {
-	res.render('main');
+	Era.find().where('sub').equals(false).exec(function(err, eras) {
+		res.render('main', {eras: eras});
+	});
 }
 
 exports.columns = function(req, res) {

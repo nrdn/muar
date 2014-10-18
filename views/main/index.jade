@@ -17,3 +17,7 @@ block content_title
 block content
 	.main_block
 		a(href='/columns') Временная шкала
+		br
+		each era in eras
+			b= era.title.ru
+			br
