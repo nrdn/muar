@@ -1,3 +1,7 @@
+var gm = require('gm').subClass({ imageMagick: true });
+var path = require('path');
+var appDir = path.dirname(require.main.filename);
+
 var Era = require('../../models/main.js').Era;
 var Object = require('../../models/main.js').Object;
 
@@ -44,45 +48,15 @@ exports.json = function(req, res) {
 	});
 }
 
-exports.createEra = function(req, res) {
-	var era = new Era();
-	era.title.ru = 'Классицизм';
-	era.description.ru = 'Супер стиль';
-	era.interval.start = new Date(Date.UTC(2014, 3, 5));
-	era.interval.end = new Date(Date.UTC(2014, 6, 12));
-	era.ages = [
-	{
-		title: {
-			ru: 'Ранний'
-		},
-		tag: 'before'
-	},
-	{
-		title: {
-			ru: 'Поздний'
-		},
-		tag: 'after'
-	}];
-
-	era.save(function(err, era) {
-		res.send('ok');
-	});
+exports.tiles_upload = function(req, res) {
+	res.render('test/upload');
 }
 
-exports.createObject = function(req, res) {
-	Era.find().exec(function(err, eras) {
-		for (var i = 0; i < 10; i++) {
-			var object = new Object();
-			object.title.ru = 'Я объект ' + i;
-			object.description.ru = 'Супер объект ' + i;
-			object.history.era = eras[0]._id;
-			object.history.ages = ['after'];
-			object.meta.adress = 'Я адрес ' + i;
-			object.meta.interval.start = new Date(Date.UTC(2014, 3, 5));
-			object.meta.interval.end = new Date(Date.UTC(2014, 6, 12));
-			object.save();
-		};
+exports.tiles_upload_form = function(req, res) {
+	var post = req.files;
+	console.log(appDir + '/public/tiles/%d.jpg')
 
-		res.send('ok');
+	gm().in('-crop', '100x100').in(post.image.path).write(appDir + '/public/tiles/%d.jpg', function(err) {
+		res.redirect('back');
 	});
 }
