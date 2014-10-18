@@ -16,4 +16,14 @@ block content_title
 
 block content
 	.main_block
+		.special_block
+		.periods
+				each era in eras
+					.period
+						.period_title=era.era.title.ru
+						.period_line
+							.period_line_inner
+						.period_dates
+							.date0=era.era.interval.start.getUTCFullYear()
+							.date2=era.era.interval.end.getUTCFullYear()
 		a(href='/columns') Временная шкала
