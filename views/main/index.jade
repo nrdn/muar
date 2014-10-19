@@ -21,12 +21,11 @@ block content
 		//-each era in eras
 			b= era.title.ru
 			br
-		.periods
-			each era in eras
-				.period
-					.period_title=era.title.ru
-					.period_line
-						.period_line_inner
-					.period_dates
-						.date0=era.interval.start.getUTCFullYear()
-						.date2=era.interval.end.getUTCFullYear()
+		each era in eras
+			.period
+				.period_title=era.title.ru
+				.period_line
+					.period_line_inner
+				.period_dates
+					.date0=era.interval.start.getUTCFullYear()
+					.date2=era.interval.end.getUTCFullYear()

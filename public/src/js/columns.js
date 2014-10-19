@@ -5,6 +5,10 @@ var styles_container_margin = 0; //Отступ контейнера стиле�
 var styles_container_width = 0; // Ширина контейнера стилей
 
 $(document).ready(function() {
+		if(window.location.hash) {
+			style_num = window.location.hash.replace(/#/g, '');
+			console.log(style_num);
+		}
 		var styles_block_width = $('.content_block_styles').width();	// Ширина контейнера стиля
 		var styles_containers_length = $('.styles_container').length; // Количество контейнеров стилей
 

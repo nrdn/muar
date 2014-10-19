@@ -1,0 +1,107 @@
+.period
+  float left
+  width 14.28%
+  cursor pointer
+  padding-top 140px
+
+.period_title
+  text-align center
+  font-size 18px
+  height 26px
+  white-space nowrap
+  line-height 32px
+  overflow hidden
+  position relative
+  &:after
+    content ''
+    display block
+    position absolute
+    right 0
+    top 0
+    width 20px
+    height 26px
+    background linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 55%,rgba(255,255,255,1) 100%)
+
+.period_line
+  height 11px
+  border-top 1px solid transparent
+  border-bottom 1px solid transparent
+  position relative
+
+.period_line_inner
+  position absolute
+  top 50%
+  margin-top -1px
+  border-top 1px solid transparent
+  width 100%
+
+.period_line
+  height 11px
+  border-top 1px solid transparent
+  border-bottom 1px solid transparent
+  position relative
+
+.period_line_inner
+  position absolute
+  top 50%
+  margin-top -1px
+  border-top 1px solid transparent
+  width 100%
+
+.period
+  &:nth-child(1)
+    .period_line_inner
+    .period_line:hover
+    .period_line.active
+      border-color #f00
+
+  &:nth-child(2)
+    .period_line_inner
+    .period_line:hover
+    .period_line.active
+      border-color #0f0
+  &:nth-child(3)
+    .period_line_inner
+    .period_line:hover
+    .period_line.active
+      border-color #00f
+
+  &:nth-child(4)
+    .period_line_inner
+    .period_line:hover
+    .period_line.active
+      border-color #ff109a
+
+  &:nth-child(5)
+    .period_line_inner
+    .period_line:hover
+    .period_line.active
+      border-color #006889
+
+  &:nth-child(6)
+    .period_line_inner
+    .period_line:hover
+    .period_line.active
+      border-color #000
+
+  &:nth-child(7)
+    .period_line_inner
+    .period_line:hover
+    .period_line.active
+      border-color #f00
+
+.period_dates
+  font-size 13px
+  margin-top 2px
+  position relative
+  height 17px
+
+.period_dates div
+  position absolute
+  top 0
+
+.period_dates .date0
+  left 5px
+
+.period_dates .date2
+  right 5px
