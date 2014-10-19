@@ -15,6 +15,10 @@ block content_title
 	.header_title_control
 		.header_title_control_inner
 			.styles_controls
+					.styles_controls_view_block
+						.styles_classic_toggle
+						.styles_list
+						.styles_sort
 					.styles_controls_back &lt;
 					.styles_controls_front &gt;
 			.content_title Колонки
@@ -30,7 +34,7 @@ block content
 								.periods_col_objects_inner
 									h3= age.age.title.ru
 									each object in age.objects
-										.object_block
+										a.object_block(href='/objects/' + object.object_id)
 											.object_block_image
 											.object_block_title=object.title.ru
 											.object_block_date=object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear()

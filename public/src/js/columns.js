@@ -32,7 +32,6 @@ $(document).ready(function() {
 		styles_container_margin = 0;
   	if (style_num < styles_containers_length - st_vis) {
   		style_num = ++style_num;
-  		//console.log(style_num);
 			show_styles(style_num);
 		}
 	});
@@ -41,7 +40,6 @@ $(document).ready(function() {
 		styles_container_margin = 0;
 		if (style_num > 0) {
 			style_num = --style_num;
-			//console.log(style_num);
 			show_styles(style_num);
 		}
 	});
