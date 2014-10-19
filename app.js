@@ -52,6 +52,7 @@ app.use(function(req, res, next) {
 
 
 var main = require('./routes/main.js');
+var objects = require('./routes/objects.js');
 var auth = require('./routes/auth.js');
 var content = require('./routes/content.js');
 var files = require('./routes/files.js');
@@ -113,6 +114,9 @@ app.route('/columns').get(main.columns);
 
 // === Columns Route
 app.route('/columns/alt').get(main.columns_alt);
+
+// === Object Route
+app.route('/objects/:id').get(objects.object);
 
 
 // === Locale Route
