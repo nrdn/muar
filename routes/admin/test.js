@@ -97,7 +97,8 @@ exports.tiles_upload_form = function(req, res) {
 		fs.mkdir(appDir + '/public/tiles/' + item.level, function() {
 			gm()
 				.in(post.image.path)
-				// .in('-resize', item.size)
+				.in('-resize', item.size)
+				.in('-gravity', 'Center')
 				.in('-crop', '100x100')
 				.in('-set', 'filename:tile')
 				.in('%[fx:page.y/100]_%[fx:page.x/100]')
