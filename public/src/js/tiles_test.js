@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 	L.tileLayer('/tiles/{z}/image_tile_{y}_{x}.jpg',{
 	minZoom: 1,
-	maxZoom: 1,
+	maxZoom: 4,
 	attribution: '',
 	tileSize: '100',
 	tms: false,

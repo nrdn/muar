@@ -1,5 +1,7 @@
 var gm = require('gm').subClass({ imageMagick: true });
 var path = require('path');
+var async = require('async');
+var fs = require('fs');
 var appDir = path.dirname(require.main.filename);
 
 var Era = require('../../models/main.js').Era;
@@ -72,13 +74,38 @@ exports.tiles_upload_form = function(req, res) {
 	// 	res.redirect('back');
 	// });
 
+	var arr = [
+		{
+			size: '100%',
+			level: '4'
+		},
+		{
+			size: '50%',
+			level: '3'
+		},
+		{
+			size: '25%',
+			level: '2'
+		},
+		{
+			size: '12.5%',
+			level: '1'
+		}
+	];
 
-	gm()
-		.in(post.image.path)
-		.in('-crop', '100x100')
-		.in('-set', 'filename:tile')
-		.in('%[fx:page.y/100]_%[fx:page.x/100]')
-		.write(appDir + '/public/tiles/4/image_tile_%[filename:tile].jpg', function(err) {
+	async.forEach(arr, function(item, callback) {
+		fs.mkdir(appDir + '/public/tiles/' + item.level, function() {
+			gm()
+				.in(post.image.path)
+				// .in('-resize', item.size)
+				.in('-crop', '100x100')
+				.in('-set', 'filename:tile')
+				.in('%[fx:page.y/100]_%[fx:page.x/100]')
+				.write(appDir + '/public/tiles/' + item.level + '/image_tile_%[filename:tile].jpg', function(err) {
+				callback();
+			});
+		});
+	}, function() {
 		res.redirect('back');
 	});
 }
