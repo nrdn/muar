@@ -55,15 +55,29 @@ exports.tiles_upload = function(req, res) {
 exports.tiles_upload_form = function(req, res) {
 	var post = req.files;
 
-	gm(post.image.path).size({bufferStream: true}, function(err, size) {
-	  this.resize(size.width / 2, size.height / 2);
-	  this.in('-crop', '100x100');
-	  this.write(appDir + '/public/tiles/%d.jpg', function (err) {
-	    res.redirect('back');
-	  });
-	});
+	// gm(post.image.path).size({bufferStream: true}, function(err, size) {
+	//   this.resize(size.width / 2, size.height / 2);
+	//   this.in('-crop', '100x100');
+	//   this.in('-set', 'filename:tile');
+	//   this.in('%[fx:page.y/100]_%[fx:page.x/100]');
+	//   this.in('+repage');
+	//   this.in('+adjoin');
+	//   this.write(appDir + '/public/tiles/image_tile%[filename:tile].jpg', function (err) {
+	//     res.redirect('back');
+	//   });
+	// });
+
 
 	// gm().in('-crop', '100x100').in(post.image.path).write(appDir + '/public/tiles/%d.jpg', function(err) {
 	// 	res.redirect('back');
 	// });
+
+	gm()
+		.in(post.image.path)
+		.in('-crop', '100x100')
+		.in('-set', 'filename:tile')
+		.in('%[fx:page.y/100]_%[fx:page.x/100]')
+		.write(appDir + '/public/tiles/image_tile_%[filename:tile].jpg', function(err) {
+		res.redirect('back');
+	});
 }
