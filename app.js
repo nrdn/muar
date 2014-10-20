@@ -237,7 +237,7 @@ app.route('/test')
 
 
 app.route('/tiles_upload')
-	 .get(test.tiles_upload)
+	 .get(checkAuth, test.tiles_upload)
 	 .post(test.tiles_upload_form)
 
 app.route('/tiles_test')

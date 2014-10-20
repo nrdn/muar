@@ -7,6 +7,19 @@ var appDir = path.dirname(require.main.filename);
 var Era = require('../../models/main.js').Era;
 var Object = require('../../models/main.js').Object;
 
+
+var deleteFolderRecursive = function(path) {
+	if ( fs.existsSync(path) ) {
+		fs.readdirSync(path).forEach(function(file, index){
+			var curPath = path + '/' + file;
+			fs.statSync(curPath).isDirectory()
+				? fs.statSync(curPath).isDirectory()
+				: fs.unlinkSync(curPath);
+		});
+		fs.rmdirSync(path);
+	}
+}
+
 exports.json = function(req, res) {
 	Object.aggregate()
 	.sort('meta.interval.start meta.interval.end')
@@ -103,7 +116,7 @@ exports.tiles_upload_form = function(req, res) {
 				.in('-set', 'filename:tile')
 				.in('%[fx:page.y/100]_%[fx:page.x/100]')
 				.write(appDir + '/public/tiles/' + item.level + '/image_tile_%[filename:tile].jpg', function(err) {
-				callback();
+					callback();
 			});
 		});
 	}, function() {
