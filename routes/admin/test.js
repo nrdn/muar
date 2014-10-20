@@ -111,17 +111,22 @@ exports.tiles_upload_form = function(req, res) {
 			gm()
 				.in(post.image.path)
 				.in('-resize', item.size)
-				.in('-gravity', 'Center')
-				.in('-crop', '100x100')
-				.in('-set', 'filename:tile')
-				.in('%[fx:page.y/100]_%[fx:page.x/100]')
-				.write(appDir + '/public/tiles/' + item.level + '/image_tile_%[filename:tile].jpg', function(err) {
-					callback();
+				.write(appDir + '/public/tiles/' + item.level + '/original.jpg', function(err) {
+					gm()
+						.in(appDir + '/public/tiles/' + item.level + '/original.jpg')
+						.in('-crop', '100x100')
+						.in('-set', 'filename:tile')
+						.in('%[fx:page.y/100]_%[fx:page.x/100]')
+						.write(appDir + '/public/tiles/' + item.level + '/image_tile_%[filename:tile].jpg', function(err) {
+							fs.unlink(appDir + '/public/tiles/' + item.level + '/original.jpg', function() {
+								callback();
+							});
+						});
+				});
 			});
+		}, function() {
+			res.redirect('back');
 		});
-	}, function() {
-		res.redirect('back');
-	});
 }
 
 
