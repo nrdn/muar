@@ -72,12 +72,18 @@ exports.tiles_upload_form = function(req, res) {
 	// 	res.redirect('back');
 	// });
 
+
 	gm()
 		.in(post.image.path)
 		.in('-crop', '100x100')
 		.in('-set', 'filename:tile')
 		.in('%[fx:page.y/100]_%[fx:page.x/100]')
-		.write(appDir + '/public/tiles/image_tile_%[filename:tile].jpg', function(err) {
+		.write(appDir + '/public/tiles/4/image_tile_%[filename:tile].jpg', function(err) {
 		res.redirect('back');
 	});
+}
+
+
+exports.tiles_test= function(req, res) {
+	res.render('test/tiles');
 }
