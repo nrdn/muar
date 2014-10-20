@@ -1,0 +1,30 @@
+extends ../layout
+
+block title
+	title МУАР
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/main.css' + version)
+	link(rel='stylesheet', type='text/css', href='/build/css/columns.css' + version)
+
+block content_scripts
+	script(type='text/javascript', src='/build/js/main.js' + version)
+
+block content_title
+	.content_title Колонки
+
+block content
+	.content_block_inner
+		each era in eras
+			.styles_container(style="")
+				h2= era.era.title.ru + ' (' + era.era.interval.start.getUTCFullYear() + ' - ' + era.era.interval.end.getUTCFullYear() + ') '
+				each age in era.ages
+					.periods_col
+						.periods_col_objects
+							.periods_col_objects_inner
+								h3= age.age.title.ru
+								each object in age.objects
+									.object_block
+										.object_block_image
+										.object_block_title=object.title.ru
+										.object_block_date=object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear()

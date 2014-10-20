@@ -112,8 +112,11 @@ app.route('/').get(main.index);
 app.route('/columns').get(main.columns);
 
 
-// === Columns Route
+// === Columns alt Route
 app.route('/columns/alt').get(main.columns_alt);
+
+// === Columns alt two Route
+app.route('/columns/alt_two').get(main.columns_alt_two);
 
 // === Object Route
 app.route('/objects/:id').get(objects.object);
