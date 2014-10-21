@@ -9,7 +9,7 @@ exports.preview = function(req, res) {
   date = date.getTime();
   var newPath = '/images/preview/' + date + '.' + files.image.extension;
 
-  gm(files.image.path).resize(1600, false).quality(80).noProfile().write(appDir + '/public' + newPath, function() {
+  gm(files.image.path).resize(1600, false).quality(80).write(appDir + '/public' + newPath, function() {
     res.send(newPath);
   });
 }
