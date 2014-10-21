@@ -8,9 +8,18 @@ $(document).ready(function() {
 	});
 
 
+	$('.ages').hide().eq(0).show().children('input').attr('disabled', false);
+	$('.era').change(function() {
+		var index = $(this).children('option:selected').index();
+	  $('.ages').hide().eq(index).show();
+	  $('.ages').children('input').attr('disabled', true);
+	  $('.ages').eq(index).children('input').attr('disabled', false);
+	});
+
+
 
 	$('.form_image_main').filedrop({
-		url: '/upload',
+		url: '/preview',
 		paramname: 'image',
 		fallback_id: 'image_main_fallback',
 		allowedfiletypes: ['image/jpeg','image/png','image/gif'],
@@ -28,6 +37,7 @@ $(document).ready(function() {
 		},
 		uploadFinished: function(i, file, response, time) {
 			$('.form_image_main').css('background-image','url(' + response + ')');
+			$('.form_image_main').attr('path', response);
 			console.log(response);
 		},
 		progressUpdated: function(i, file, progress) {
@@ -41,7 +51,7 @@ $(document).ready(function() {
 
 
 	$('.form_images_second').filedrop({
-		url: '/upload',
+		url: '/preview',
 		paramname: 'image',
 		// fallback_id: 'images_second_fallback',
 		allowedfiletypes: ['image/jpeg','image/png','image/gif'],
@@ -58,7 +68,7 @@ $(document).ready(function() {
 
 		},
 		uploadFinished: function(i, file, response, time) {
-			var image = $('<div />', {'class': 'image_second_preview', 'style': 'background-image:url(' + response + ')'});
+			var image = $('<div />', {'class': 'image_second_preview', 'path': response, 'style': 'background-image:url(' + response + ')'});
 			var description = $('<div />', {'class': 'image_second_description', 'contenteditable': true, 'text':'Описание'});
 			$('.form_images_second').append(image.append(description));
 			console.log(response);
@@ -74,19 +84,29 @@ $(document).ready(function() {
 
 	$('.submit').click(function(event) {
 		var images_second_upload = [];
+		// var old = $('.form_old').is(':checked') ? true : false;
 
 		var title = $('.form_title').html();
 		var description = $('.form_description').html();
-		var old = $('.form_old').is(':checked') ? true : false;
+
 		var category = $('.form_category').val();
 
-		var images_main = $('.form_image_main').attr('style').match(/\(([^)]+)\)/)[0].slice(1,-1).replace('http://' + window.location.host, '');
+		var adress = $('.form_adress').val();
+		var interval_start = $('.interval_start').val();
+		var interval_end = $('.interval_end').val();
+
+		var era = $('.era').val();
+		var ages = $('.age').filter(':checked').map(function() {
+			return $(this).val();
+		});
+
+		var images_main = $('.form_image_main').attr('path');
 		var images_second = $('.image_second_preview');
 
 
 		images_second.each(function(index, el) {
 			images_second_upload.push({
-				path: $(this).attr('style').match(/\(([^)]+)\)/)[0].slice(1,-1).replace('http://' + window.location.host, ''),
+				path: $(this).attr('path'),
 				description: $(this).children('.image_second_description').text()
 			});
 		});
@@ -96,18 +116,33 @@ $(document).ready(function() {
 			second: images_second_upload
 		};
 
-
 		var ru = {
 			title: title,
 			description: description
 		};
 
+		var history = {
+			era: era,
+			// ages: ages
+		}
+
+		var meta = {
+			interval: {
+				start: interval_start,
+				end: interval_end
+			},
+			adress: {
+				ru: adress
+			}
+		}
+
 		$.post('', {
 			ru: ru,
-			old: old,
+			meta: meta,
+			history: history,
 			images: images,
 			category: category
-		}).done(function(project) {
+		}).done(function(object) {
 			window.location.reload();
 		});
 	});

@@ -59,6 +59,7 @@ var files = require('./routes/files.js');
 
 var a_eras = require('./routes/admin/eras.js');
 var a_objects = require('./routes/admin/objects.js');
+var options = require('./routes/admin/options.js');
 var test = require('./routes/admin/test.js');
 
 
@@ -225,6 +226,15 @@ app.route('/sitemap.xml').get(files.sitemap);
 
 // === Files #robots.txt Route
 app.route('/robots.txt').get(files.robots);
+
+
+// ------------------------
+// *** Options Routers Block ***
+// ------------------------
+
+
+app.route('/preview')
+	 .post(options.preview)
 
 
 // ------------------------
