@@ -1,16 +1,25 @@
 $(document).ready(function() {
 	$('.form_description').popline({disable:['color']});
 	$('.form_images_second').sortable({placeholder: 'column_placeholder', cancel: '.image_second_description'});
-	$('.form_images_maps').sortable({placeholder: 'column_placeholder', cancel: '.image_maps_description'});
 
-	$(document).on('dblclick', '.image_second_preview, .image_maps_preview', function() {
+
+	$(document).on('dblclick', '.image_second_preview', function() {
 		$(this).remove();
+	});
+
+
+	$('.ages').hide().eq(0).show().children('input').attr('disabled', false);
+	$('.era').change(function() {
+		var index = $(this).children('option:selected').index();
+	  $('.ages').hide().eq(index).show();
+	  $('.ages').children('input').attr('disabled', true);
+	  $('.ages').eq(index).children('input').attr('disabled', false);
 	});
 
 
 
 	$('.form_image_main').filedrop({
-		url: '/upload',
+		url: '/preview',
 		paramname: 'image',
 		fallback_id: 'image_main_fallback',
 		allowedfiletypes: ['image/jpeg','image/png','image/gif'],
@@ -28,6 +37,7 @@ $(document).ready(function() {
 		},
 		uploadFinished: function(i, file, response, time) {
 			$('.form_image_main').css('background-image','url(' + response + ')');
+			$('.form_image_main').attr('path', response);
 			console.log(response);
 		},
 		progressUpdated: function(i, file, progress) {
@@ -41,7 +51,7 @@ $(document).ready(function() {
 
 
 	$('.form_images_second').filedrop({
-		url: '/upload',
+		url: '/preview',
 		paramname: 'image',
 		// fallback_id: 'images_second_fallback',
 		allowedfiletypes: ['image/jpeg','image/png','image/gif'],
@@ -58,7 +68,7 @@ $(document).ready(function() {
 
 		},
 		uploadFinished: function(i, file, response, time) {
-			var image = $('<div />', {'class': 'image_second_preview', 'style': 'background-image:url(' + response + ')'});
+			var image = $('<div />', {'class': 'image_second_preview', 'path': response, 'style': 'background-image:url(' + response + ')'});
 			var description = $('<div />', {'class': 'image_second_description', 'contenteditable': true, 'text':'Описание'});
 			$('.form_images_second').append(image.append(description));
 			console.log(response);
@@ -72,106 +82,70 @@ $(document).ready(function() {
 	});
 
 
-	$('.form_images_maps').filedrop({
-		url: '/upload',
-		paramname: 'image',
-		// fallback_id: 'images_second_fallback',
-		allowedfiletypes: ['image/jpeg','image/png','image/gif'],
-		allowedfileextensions: ['.jpg','.jpeg','.png','.gif'],
-		maxfiles: 5,
-		maxfilesize: 8,
-		dragOver: function() {
-			$(this).css('outline', '2px solid red');
-		},
-		dragLeave: function() {
-			$(this).css('outline', 'none');
-		},
-		uploadStarted: function(i, file, len) {
-
-		},
-		uploadFinished: function(i, file, response, time) {
-			var image = $('<div />', {'class': 'image_maps_preview', 'style': 'background-image:url(' + response + ')'});
-			var description = $('<div />', {'class': 'image_maps_description', 'contenteditable': true, 'text':'Описание'});
-			$('.form_images_maps').append(image.append(description));
-			console.log(response);
-		},
-		progressUpdated: function(i, file, progress) {
-
-		},
-		afterAll: function() {
-			$('.form_images_maps').css('outline', 'none');
-		}
-	});
-
-
-
-
-	// $('.footer_block').click(function(event) {
-
-	// 	var old = $('.form_old').is(':checked') ? true : false
-
-	// 	console.log(old)
-	// });
-
-
-
-
-
-
-
 	$('.submit').click(function(event) {
 		var images_second_upload = [];
-		var images_maps_upload = [];
+		// var old = $('.form_old').is(':checked') ? true : false;
 
 		var title = $('.form_title').html();
 		var description = $('.form_description').html();
-		var old = $('.form_old').is(':checked') ? true : false;
+
 		var category = $('.form_category').val();
 
-		var images_main = $('.form_image_main').attr('style').match(/\(([^)]+)\)/)[0].slice(1,-1).replace('http://' + window.location.host, '');
+		var adress = $('.form_adress').val();
+		var interval_start = $('.interval_start').val();
+		var interval_end = $('.interval_end').val();
+
+		var era = $('.era').val();
+		var ages_submit = [];
+		var ages = $('.age').filter(':checked').each(function() {
+			var age = $(this).val();
+			ages_submit.push(age);
+		});
+
+		var images_main = $('.form_image_main').attr('path');
 		var images_second = $('.image_second_preview');
-		var images_maps = $('.image_maps_preview');
 
 
 		images_second.each(function(index, el) {
 			images_second_upload.push({
-				path: $(this).attr('style').match(/\(([^)]+)\)/)[0].slice(1,-1).replace('http://' + window.location.host, ''),
+				path: $(this).attr('path'),
 				description: $(this).children('.image_second_description').text()
 			});
 		});
 
-
-		images_maps.each(function(index, el) {
-			images_maps_upload.push({
-				path: $(this).attr('style').match(/\(([^)]+)\)/)[0].slice(1,-1).replace('http://' + window.location.host, ''),
-				description: $(this).children('.image_maps_description').text()
-			});
-		});
-
-
 		var images = {
 			main: images_main,
-			second: images_second_upload,
-			maps: images_maps_upload
+			second: images_second_upload
 		};
-
 
 		var ru = {
 			title: title,
 			description: description
 		};
 
+		var history = {
+			era: era,
+			ages: ages_submit
+		}
+
+		var meta = {
+			interval: {
+				start: interval_start,
+				end: interval_end
+			},
+			adress: {
+				ru: adress
+			}
+		}
+
 		$.post('', {
 			ru: ru,
-			old: old,
+			meta: meta,
+			history: history,
 			images: images,
-			category: category
-		}).done(function(project) {
-
-
+			// category: category
+		}).done(function(object) {
 			window.location.reload();
-
-
 		});
 	});
 });

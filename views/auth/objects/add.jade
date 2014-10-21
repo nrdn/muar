@@ -4,38 +4,51 @@ block title
 	title ДОБАВИТЬ ОБЪЕКТ
 
 block content_style
-	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
+	link(rel='stylesheet', type='text/css', href='/build/libs/css/popclip.css')
+	link(rel='stylesheet', type='text/css', href='/build/css/edit.css')
 
 block content_scripts
-	script(type='text/javascript', src='/build/js/add.js')
+	script(type='text/javascript', src='/build/libs/js/jquery-ui-1.10.4.custom.min.js')
+	script(type='text/javascript', src='/build/libs/js/jquery.filedrop.js')
+	script(type='text/javascript', src='/build/libs/js/jquery.popline.min.js')
+	script(type='text/javascript', src='/build/js/edit.js')
+
 
 block content
-	.form_block
+	.edit_project_block
+		input#image_main_fallback(type='file')
+		input#images_second_fallback(type='file')
 		a.back_link(href='/auth/objects') < Назад
-		.title ДОБАВИТЬ ОБЪЕКТ
-		form(action="/auth/objects/add", method="post")
-			.form_title Название:
-			input.ru(type="text", name="ru[title]",)
-			input.en(type="text", name="en[title]", disabled)
-			.form_title Адрес:
-			input.ru(type="text", name="ru[adress]",)
-			input.en(type="text", name="en[adress]", disabled)
-			.form_title Описание:
-			textarea.ru(name="ru[description]", rows="8",)
-			textarea.en(name="en[description]", rows="8", disabled)
-			.form_title Интервал начало:
-			input.ru(type="text", name="interval[start]",)
-			.form_title Интервал конец:
-			input.ru(type="text", name="interval[end]",)
-			.form_title Стиль:
-			select.glob(name='era')
+		.title ДОБАВИТЬ ОбЪЕКТ
+		.form_image_main
+			.form_desc_title Главное изображение
+		.form_text
+			.form_title(contenteditable=true) Заголовок
+			.form_description(contenteditable=true) Описание
+		.form_options
+			//- input.form_old(type='checkbox', name='old', value='true')
+			//- |архив
+			.separator_title Категория:
+			select.form_category(name='category')
+				option(value='') нет
+				option(value='altai') Куку
+				option(value='belg') Кря кря
+			.separator_title Адрес:
+			input.form_adress(type="text", name="ru[adress]",)
+			.separator_title Интервал:
+			input.interval_start(type="text", placeholder='Начало')
+			br
+			input.interval_end(type="text", placeholder='Конец')
+			.separator_title Стиль:
+			select.era
 				each era in eras
 					option(value=era._id)= era.title.ru
+			.separator_title Эпоха:
 			each era in eras
-				span.sub
+				.ages
 					each age in era.ages
-						input(type='checkbox', name='ages', value=age._id, disabled=true)
+						input.age(type='checkbox', value=age._id, disabled=true)
 						!= age.title.ru
-			br
-			br
-			input(type='submit', value='отправить')
+			.submit Добавить
+		.form_images_second
+			.form_desc_title Изображения

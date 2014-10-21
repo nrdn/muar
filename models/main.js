@@ -55,7 +55,7 @@ var objectSchema = new Schema({
 	images: {
 		main: String,
 		second: [{
-			title: String,
+			description: String,
 			path: String
 		}]
 	},
