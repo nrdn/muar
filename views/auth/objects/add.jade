@@ -4,30 +4,28 @@ block title
 	title ДОБАВИТЬ ОБЪЕКТ
 
 block content_style
-	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
+	link(rel='stylesheet', type='text/css', href='/build/css/edit.css')
 
 block content_scripts
 	script(type='text/javascript', src='/build/js/add.js')
 
-block content
-	.form_block
-		a.back_link(href='/auth/objects') < Назад
-		.title ДОБАВИТЬ ОБЪЕКТ
-		form(action="/auth/objects/add", method="post")
-			.form_title Название:
-			input.ru(type="text", name="ru[title]",)
-			input.en(type="text", name="en[title]", disabled)
-			.form_title Адрес:
-			input.ru(type="text", name="ru[adress]",)
-			input.en(type="text", name="en[adress]", disabled)
-			.form_title Описание:
-			textarea.ru(name="ru[description]", rows="8",)
-			textarea.en(name="en[description]", rows="8", disabled)
-			.form_title Интервал начало:
-			input.ru(type="text", name="interval[start]",)
-			.form_title Интервал конец:
-			input.ru(type="text", name="interval[end]",)
-			.form_title Стиль:
+
+
+block content_right
+	.form_options
+		input.form_old(type='checkbox', name='old', value='true')
+		|архив
+		.separator_title Категория:
+		select.form_category(name='category')
+			option(value='') нет
+			option(value='altai') Алтайский край
+			option(value='belg') Белгородская область
+		.separator_title Интервал:
+			br
+			input(type="text", name="interval[start]", placeholder='Начало')
+			br
+			input(type="text", name="interval[end]", placeholder='Клнец')
+		.separator_title Стиль:
 			select.glob(name='era')
 				each era in eras
 					option(value=era._id)= era.title.ru
@@ -36,6 +34,50 @@ block content
 					each age in era.ages
 						input(type='checkbox', name='ages', value=age._id, disabled=true)
 						!= age.title.ru
-			br
-			br
-			input(type='submit', value='отправить')
+
+
+block content
+	.edit_project_block
+		input#image_main_fallback(type='file')
+		input#images_second_fallback(type='file')
+		a.back_link(href='/auth/objects') < Назад
+		.title ДОБАВИТЬ ОбЪЕКТ
+		.form_image_main
+			.form_desc_title Главная
+		.form_title(contenteditable=true) Заголовок
+		.form_description(contenteditable=true) Описание
+		.form_images_second
+			.form_desc_title Изображения
+		.submit Добавить
+
+
+//- block content
+	//- .form_block
+	//- 	a.back_link(href='/auth/objects') < Назад
+	//- 	.title ДОБАВИТЬ ОБЪЕКТ
+	//- 	form(action="/auth/objects/add", method="post")
+	//- 		.form_title Название:
+	//- 		input.ru(type="text", name="ru[title]",)
+	//- 		input.en(type="text", name="en[title]", disabled)
+	//- 		.form_title Адрес:
+	//- 		input.ru(type="text", name="ru[adress]",)
+	//- 		input.en(type="text", name="en[adress]", disabled)
+	//- 		.form_title Описание:
+	//- 		textarea.ru(name="ru[description]", rows="8",)
+	//- 		textarea.en(name="en[description]", rows="8", disabled)
+	//- 		.form_title Интервал начало:
+	//- 		input.ru(type="text", name="interval[start]",)
+	//- 		.form_title Интервал конец:
+	//- 		input.ru(type="text", name="interval[end]",)
+	//- 		.form_title Стиль:
+	//- 		select.glob(name='era')
+	//- 			each era in eras
+	//- 				option(value=era._id)= era.title.ru
+	//- 		each era in eras
+	//- 			span.sub
+	//- 				each age in era.ages
+	//- 					input(type='checkbox', name='ages', value=age._id, disabled=true)
+	//- 					!= age.title.ru
+	//- 		br
+	//- 		br
+	//- 		input(type='submit', value='отправить')
