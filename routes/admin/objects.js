@@ -34,7 +34,6 @@ exports.add_form = function(req, res) {
   var post = req.body;
   var files = req.files;
   var object = new Object();
-  console.log(post)
 
   object.title.ru = post.ru.title;
   object.description.ru = post.ru.description;

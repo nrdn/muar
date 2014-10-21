@@ -96,8 +96,10 @@ $(document).ready(function() {
 		var interval_end = $('.interval_end').val();
 
 		var era = $('.era').val();
-		var ages = $('.age').filter(':checked').map(function() {
-			return $(this).val();
+		var ages_submit = [];
+		var ages = $('.age').filter(':checked').each(function() {
+			var age = $(this).val();
+			ages_submit.push(age);
 		});
 
 		var images_main = $('.form_image_main').attr('path');
@@ -123,7 +125,7 @@ $(document).ready(function() {
 
 		var history = {
 			era: era,
-			// ages: ages
+			ages: ages_submit
 		}
 
 		var meta = {
@@ -141,7 +143,7 @@ $(document).ready(function() {
 			meta: meta,
 			history: history,
 			images: images,
-			category: category
+			// category: category
 		}).done(function(object) {
 			window.location.reload();
 		});
