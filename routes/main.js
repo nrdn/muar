@@ -25,7 +25,6 @@ exports.columns = function(req, res) {
 			$push: {
 				_id: '$_id',
 				title: '$title',
-				image: '$images.main'
 				interval: '$meta.interval',
 				image: '$images.main'
 			}
@@ -70,7 +69,6 @@ exports.columns_alt = function(req, res) {
 			$push: {
 				_id: '$_id',
 				title: '$title',
-				image: '$images.main'
 				interval: '$meta.interval',
 				image: '$images.main'
 			}
@@ -115,7 +113,6 @@ exports.columns_alt_two = function(req, res) {
 			$push: {
 				_id: '$_id',
 				title: '$title',
-				image: '$images.main'
 				interval: '$meta.interval',
 				image: '$images.main'
 			}
