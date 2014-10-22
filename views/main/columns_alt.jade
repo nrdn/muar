@@ -25,6 +25,6 @@ block content
 						h3.data_style_in_name=age.age.title.ru
 						each object in age.objects
 							a.object_block(href='/objects/' + object._id)
-								.object_block_image=object.image
+								.object_block_image(style='background-image:url(' + object.image + ')')
 								.object_block_title=object.title.ru
 								.object_block_date=object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear()
