@@ -29,8 +29,7 @@ block content
 							.age_title= age.age.title.ru
 							.age_objects
 								each object in age.objects
-									.object
-									//- a.object(href='/objects/' + object._id)
+									a.object(href='/objects/' + object._id)
 										.object_image(style='background-image:url(' + object.image + ')')
 										.object_title=object.title.ru
 										.object_date=object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear()
