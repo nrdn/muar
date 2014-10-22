@@ -1,5 +1,9 @@
+//-body
+//-  background url('/images/design/05a.jpg') 150% 0 no-repeat
 body
-  /*background url('/images/design/05a.jpg') 150% 0 no-repeat*/
+  transition-timing-function: linear;
+  transition-duration: .25s;
+  transition-property: margin;
 
 .header_block
   position fixed
@@ -18,13 +22,25 @@ body
   margin 0 auto
   height 40px
   border-bottom 1px solid #999
-  line-height 40px
 
 .period
   display inline-block
+  line-height 40px
+  vertical-align bottom
+  &.active
+    .period_title
+      font-size:40px;
 
 .period_title
   margin-right 10px
+  cursor pointer
+  line-height 40px
+  transition-timing-function: linear;
+  transition-duration: .25s;
+  transition-property: font;
+  &:hover
+    font-size 30px
+    line-height 40px
 
 .data_style_name, .data_style_in_name
   text-align center
