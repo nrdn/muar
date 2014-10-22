@@ -109,15 +109,9 @@ function toMatrix(arr, row) {
 // === Main Route
 app.route('/').get(main.index);
 
-// === Columns Route
-app.route('/columns').get(main.columns);
+// === Styles Route
+app.route('/styles').get(main.styles);
 
-
-// === Columns alt Route
-app.route('/columns/alt').get(main.columns_alt);
-
-// === Columns alt two Route
-app.route('/columns/alt_two').get(main.columns_alt_two);
 
 // === Object Route
 app.route('/objects/:id').get(objects.object);
