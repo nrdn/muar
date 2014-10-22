@@ -1,0 +1,35 @@
+extends ../layout
+
+block title
+	title МУАР
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/styles.css' + version)
+
+block content_scripts
+	script(type='text/javascript', src='/build/js/styles.js' + version)
+
+block content_title
+	.navigate_block
+		.navigate_styles_block
+			each era in eras
+				.navigate_style_block
+					.navigate_style_title= era.era.title.ru
+					.navigate_style_ages
+						each age in era.ages
+							.navigate_age= age.age.title.ru
+
+block content
+	.outer
+		.inner
+			each era in eras
+				.style
+					each age in era.ages
+						.age
+							.age_title= age.age.title.ru
+							.age_objects
+								each object in age.objects
+									a.object(href='/objects/' + object._id)
+										.object_image(style='background-image:url(' + object.image + ')')
+										.object_title=object.title.ru
+										.object_date=object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear()
