@@ -1,10 +1,10 @@
 .project_title
 	font-size 22pt
 	line-height 24pt
-	color #172E5D
+	color #333
 	border-bottom 1px solid #b5b4c1
-	margin-top 20px
 	padding-bottom 5px
+	margin-bottom 20px
 	font-weight normal
 
 .project_category
@@ -16,34 +16,30 @@
 .project_image_main
 	margin 1.5em 0px
 	width 1280px
-	height 500px
+	height 800px
 	overflow hidden;
-	position absolute
+	background-position 50%
+	background-repeat no-repeat
+	background-size cover
 
 .project_content_block
-	position absolute
-	background-color white
-	margin-top 500px
 
 .project_description_block
 	margin-top 20px
+	margin-bottom 20px
 	overflow hidden
-	font-size 16px
-	line-height 19px
+	font-size: 18px;
+	line-height: 21px;
 
 .project_description {
 	width: 620px;
-	height: 400px;
 	float: left;
 	margin-right: 40px;
-	background-color: #b5b4c1;
 }
 
 .project_columns_block {
 	width: 620px;
-	height: 400px;
 	float: left;
-	background-color: #65c19d;
 }
 
 
@@ -58,9 +54,10 @@
 }
 
 .images_second_column {
-	width: 400px;
 	float: left;
 	margin-right: 40px;
+	column-count: 3;
+	column-gap: 40px;
 }
 
 .images_second_column:last-child {
@@ -78,8 +75,8 @@
 
 .image_second_description {
 	width: 400px;
-	font-size: 10pt;
-	line-height: 12pt;
+	font-size: 18px;
+	line-height: 21px;
 }
 
 
