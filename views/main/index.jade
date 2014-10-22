@@ -23,12 +23,13 @@ block content
 				img.parallax-layer(src='/images/design/parallax_drops/5.png', alt='', style='width:1446px; height:850px;')
 				img.parallax-layer(src='/images/design/parallax_drops/6.png', alt='', style='width:1500px; height:850px;')
 
+		.periods
 			h1.intro_title Виртуальный музей
-		each era in eras
-			.period
-				.period_title=era.title.ru
-				.period_line
-					.period_line_inner
-				.period_dates
-					.date0=era.interval.start.getUTCFullYear()
-					.date2=era.interval.end.getUTCFullYear()
+			each era in eras
+				.period
+					.period_title=era.title.ru
+					.period_line
+						.period_line_inner
+					.period_dates
+						.date0=era.interval.start.getUTCFullYear()
+						.date2=era.interval.end.getUTCFullYear()

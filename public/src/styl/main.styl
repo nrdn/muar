@@ -1,10 +1,25 @@
+body
+  background #000
+
+.header_block
+  position fixed
+  z-index 1000
+  top 0
+
+.header_block_inner
+  background transparent
+
 #port
-  background #999
-  margin 1.5em 0px
+  background #ededed
+  //margin 1.5em 0px
   overflow hidden
   position relative
   height 750px
   width 1280px
+  position absolute
+  top 0
+  left 0
+  opacity 0.8
 
 .parallax-layer
   position absolute
@@ -12,26 +27,36 @@
 .intro_title
   font-size 22pt
   line-height 24pt
-  color #172e5d
-  border-bottom 1px solid #b5b4c1
+  color #fff
+  border-bottom 1px solid #fff
   margin-top 20px
   padding-bottom 5px
   font-weight normal
+  text-align center
+  margin-bottom 25px
+
+.periods
+  position: absolute;
+  top: 50%;
+  width: 1280px;
+  margin-top -75px
+  background rgba(0,0,0,0.37)
 
 .period
   float left
   width 14.28%
   cursor pointer
-  padding-top 140px
 
 .period_title
+  //font-family ma_unitwmedium
   text-align center
-  font-size 18px
+  font-size 22px
   height 26px
   white-space nowrap
   line-height 32px
   overflow hidden
   position relative
+  color #fff
   &:after
     content ''
     display block
@@ -40,20 +65,7 @@
     top 0
     width 20px
     height 26px
-    background linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 55%,rgba(255,255,255,1) 100%)
-
-.period_line
-  height 11px
-  border-top 1px solid transparent
-  border-bottom 1px solid transparent
-  position relative
-
-.period_line_inner
-  position absolute
-  top 50%
-  margin-top -1px
-  border-top 1px solid transparent
-  width 100%
+    //background linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 55%,rgba(255,255,255,1) 100%)
 
 .period_line
   height 11px
@@ -119,6 +131,7 @@
 .period_dates div
   position absolute
   top 0
+  color #fff
 
 .period_dates .date0
   left 5px
