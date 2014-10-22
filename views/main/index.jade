@@ -8,19 +8,22 @@ block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/main.css' + version)
 
 block content_scripts
-	script(type='text/javascript', src='/build/js/main.js' + version)
+	script(type='text/javascript', src='/build/libs/js/jquery.parallax.js' + version)
+	script(type='text/javascript', src='/build/js/index.js' + version)
 
 
 block content_title
-	.content_title МУАР
 
 block content
 	.main_block
-		//-a(href='/columns') Временная шкала
-		//-br
-		//-each era in eras
-			b= era.title.ru
-			br
+		.intro
+			#port
+				img.parallax-layer(src='/images/design/parallax_drops/3.png', alt='', style='width:1286px; height:850px;')
+				img.parallax-layer(src='/images/design/parallax_drops/4.png', alt='', style='width:1331px; height:850px;')
+				img.parallax-layer(src='/images/design/parallax_drops/5.png', alt='', style='width:1446px; height:850px;')
+				img.parallax-layer(src='/images/design/parallax_drops/6.png', alt='', style='width:1500px; height:850px;')
+
+			h1.intro_title Виртуальный музей
 		each era in eras
 			.period
 				.period_title=era.title.ru
