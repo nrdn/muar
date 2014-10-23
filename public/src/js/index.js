@@ -4,13 +4,14 @@ $(document).ready(function() {
 		'width':$(document).width()+'px',
 		'height':$(document).height()+'px'
 		});
-	$('.parallax-layer')
+	$('.parallax-layer, .freeze')
 			.css({
 				'transform-origin':'50%',
 				'transform':'scale(' + scale + ')'
 			})
 			.parallax({
-				mouseport: $("#port")
+				mouseport: $('#port, .periods'),
+				freezeClass: 'freeze'
 			});
 	$('.period').each(function(index){
 		$(this).on('click', function() {
