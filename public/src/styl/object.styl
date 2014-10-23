@@ -57,23 +57,27 @@
 .object_images_types
 	position absolute
 	bottom 135px
-	left 50%
+	left 0
 	z-index 20
 	color #fff
+	width 100%
+	text-align center
 
-.object_images_pictures, .object_images_museum
-	position absolute
-	top:0
-	z-index 20
+.object_images_types div
+	display inline-block
 	white-space nowrap
 	&:hover
 		text-decoration underline
+		cursor pointer
+	&:after
+		content '|'
+		display inline-block
+		padding 0 7px
 
-.object_images_pictures
-	right 10px
-
-.object_images_museum
-	left 10px
+.object_images_3d 
+	color #f00
+	//border 1px solid #f00
+	//border-radius 50%
 
 .project_images_second_block
 	position absolute
