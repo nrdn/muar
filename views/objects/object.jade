@@ -16,11 +16,14 @@ block content_title
 
 
 block content
-	.project_image_main(style='background-image:url(' + object.images.main + ')')
-		.project_image_main_inner
-			h1.project_title= object.title.ru
-		.project_description_block
-			.project_description= object.description.ru
+	.object_container
+		.project_image_main(style='background-image:url(' + object.images.main + ')')
+			.project_image_main_inner
+				h1.project_title= object.title.ru
+		each image in object.images.second
+			.project_image_second(style='background-image:url(' + image.path + ')')
+	.project_description_block
+		.project_description= object.description.ru
 	.object_images_types
 		.object_images_pictures Изображения
 		.object_images_museum Единицы хранения
@@ -29,7 +32,7 @@ block content
 		.images_second_column
 			each image in object.images.second
 				.image_second_block(style='background-image:url(' + image.path + ')')
-					.image_second_description=image.description
+					//.image_second_description=image.description
 
 
 

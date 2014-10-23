@@ -1,4 +1,7 @@
 $(document).ready(function() {
-	$('.project_image_main_inner').width($('.project_image_main').width());
-	$('.project_image_main_inner').height($('.project_image_main').height())
+	$('.image_second_block').click(function(event) {
+		console.log($(this).index());
+		$('.project_image_main').css({'margin-top':'-100%'});
+		$('.project_image_second').hide().eq($(this).index()).show();
+	})
 })

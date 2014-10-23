@@ -1,23 +1,40 @@
-.header_block {
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-}
-.header_block_inner {
-  background: transparent;
-}
-.project_image_main
+.header_block
+  position fixed
+  z-index 1000
+  top 0
+
+.header_block_inner
+  background transparent
+
+.object_container
 	position absolute
 	top 0
 	bottom 128px
 	left 0
 	right 0
 	overflow hidden;
+	display block
+	border-bottom 2px solid #f00
+
+.project_image_main, .project_image_second
+	height 100%
+	width 100%
 	background-position 50%
 	background-repeat no-repeat
 	background-size cover
-	display block
-	border-bottom 2px solid #f00
+	overflow hidden
+	transition-timing-function ease-out
+	transition-duration 2.5s
+	transition-property margin
+	display table
+	position relative
+	z-index 1
+
+.project_image_second
+	display none
+	position absolute
+	top 0
+	z-index -10
 
 .project_image_main_inner
 	vertical-align middle
@@ -43,16 +60,20 @@
 	margin-top 5px
 
 .project_description_block
-	margin-top 20px
-	margin-bottom 20px
-	overflow hidden
-	font-size: 18px;
-	line-height: 21px;
+	width 1280px
+	margin 0 auto
+	position relative
 
 .project_description
 	width: 620px
 	float: left
-	margin-right: 40px
+	position absolute
+	top 100px
+	right 0
+	background rgba(0,0,0,0.4)
+	color #fff
+	font-size 16px
+	line-height 17px
 
 .object_images_types
 	position absolute
@@ -73,9 +94,11 @@
 		content '|'
 		display inline-block
 		padding 0 7px
+
 .object_images_types .object_images_museum
 	&:after
 		content ''
+
 .object_images_types .object_images_3d
 	color #f00
 	border-radius 50%
@@ -84,8 +107,6 @@
 	line-height 17px
 	&:after
 		display none
-	//border 1px solid #f00
-	//border-radius 50%
 
 .project_images_second_block
 	position absolute
