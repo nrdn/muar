@@ -23,7 +23,7 @@ $(document).ready(function() {
 		}, 300);
 
 		$('.style_block').eq(style_index).on('scroll', function() {
-			var scroll_percentage = 100 * $(this).scrollTop() / ($(document).height() - $(this).height());
+			var scroll_percentage = 100 * $(this).scrollTop() / ($(this).children('.style_block_inner').height() - $(this).height());
 
 			$('.navigate_style_block').eq(style_index).children('.navigate_style_progress').css('width', scroll_percentage + '%');
 
