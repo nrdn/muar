@@ -1,28 +1,44 @@
+.header_block {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+}
+.header_block_inner {
+  background: transparent;
+}
+.project_image_main
+	position absolute
+	top 0
+	bottom 128px
+	left 0
+	right 0
+	overflow hidden;
+	background-position 50%
+	background-repeat no-repeat
+	background-size cover
+	display block
+	border-bottom 2px solid #f00
+
+.project_image_main_inner
+	vertical-align middle
+	display table-cell
+	height inherit
+	width 100%
+
 .project_title
-	font-size 22pt
-	line-height 24pt
-	color #333
-	border-bottom 1px solid #b5b4c1
-	padding-bottom 5px
-	margin-bottom 20px
-	font-weight normal
+	display inline-block
+	text-align center
+	width 100%
+	color: #fff
+	font-size 3rem
+	line-height initial
+	text-shadow 0 0 1px #000
 
 .project_category
 	font-size 10pt
 	line-height 12pt
 	color #F06E30
 	margin-top 5px
-
-.project_image_main
-	margin 1.5em 0px
-	width 1280px
-	height 800px
-	overflow hidden;
-	background-position 50%
-	background-repeat no-repeat
-	background-size cover
-
-.project_content_block
 
 .project_description_block
 	margin-top 20px
@@ -31,86 +47,53 @@
 	font-size: 18px;
 	line-height: 21px;
 
-.project_description {
-	width: 620px;
-	float: left;
-	margin-right: 40px;
-}
+.project_description
+	width: 620px
+	float: left
+	margin-right: 40px
 
-.project_columns_block {
-	width: 620px;
-	float: left;
-}
+.object_images_types
+	position absolute
+	bottom 135px
+	left 50%
+	z-index 20
+	color #fff
 
+.object_images_pictures, .object_images_museum
+	position absolute
+	top:0
+	z-index 20
+	white-space nowrap
+	&:hover
+		text-decoration underline
 
-/*
-	Images Second
- */
+.object_images_pictures
+	right 10px
 
+.object_images_museum
+	left 10px
 
-.project_images_second_block {
-	width: 1280px;
-	overflow: hidden;
-}
+.project_images_second_block
+	position absolute
+	bottom 4px
+	left 0
+	right 0
+	height 120px
+	overflow hidden
 
-.images_second_column {
-	float: left;
-	margin-right: 40px;
-	column-count: 3;
-	column-gap: 40px;
-}
+.images_second_column
+	white-space nowrap
+	font-size 0
+	line-height 0
 
-.images_second_column:last-child {
-	margin-right: 0px;
-}
+.image_second_block
+	width 200px
+	height 120px
+	margin-right 4px
+	display inline-block
+	background-size cover
 
-.image_second_block {
-	width: 400px;
-	margin-bottom: 20px;
-}
-
-.image_second {
-	width: 400px;
-}
-
-.image_second_description {
-	width: 400px;
-	font-size: 18px;
-	line-height: 21px;
-}
-
-
-/*
-	Image Maps
- */
-
-
-.project_images_maps_block {
-	width: 1280px;
-	overflow: hidden;
-}
-
-.images_maps_column {
-	width: 240;
-	margin-right: 20px;
-	float: left;
-}
-
-.images_maps_column:last-child {
-	margin-right: 0px;
-}
-
-.image_maps_block {
-	width: 240px;
-	margin-bottom: 20px;
-}
-
-.image_maps {
-	width: 240px;
-}
-
-.image_maps_description {
-	width: 240px;
-	font-size: 10pt;
-	line-height: 12pt;
-}
+.image_second_description
+	width 200px
+	font-size 18px
+	line-height 21px
