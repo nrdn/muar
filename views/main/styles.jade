@@ -20,16 +20,16 @@ block content_title
 							.navigate_age= age.age.title.ru
 
 block content
-	.outer
-		.inner
+	.styles_block
+		.styles_inner
 			each era in eras
-				.style
+				.style_block
 					each age in era.ages
-						.age
+						.age_block
 							.age_title= age.age.title.ru
 							.age_objects
 								each object in age.objects
-									a.object(href='/objects/' + object._id)
+									a.object_block(href='/objects/' + object._id)
 										.object_image(style='background-image:url(' + object.image + ')')
 										.object_title=object.title.ru
 										.object_date=object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear()
