@@ -8,6 +8,7 @@ $(document).ready(function() {
 		$(this).find('.age_block').each(function() {
 			var $this = $(this);
 			var age_offset_top = $this.offset().top;
+			var outer_offset_top = $('.styles_block').offset().top;
 
 			if (age_offset_top <= outer_offset_top)
 				$('.navigate_style_block').eq(event.data.style_index).find('.navigate_age').css('color', 'black').eq($this.index()).css('color', 'red')
@@ -16,6 +17,7 @@ $(document).ready(function() {
 
 	function stylesSlide (event) {
 		var style_index = window.location.hash.replace('#','');
+		$('.navigate_style_ages').hide().eq(style_index).show();
 
 		$('.styles_block').animate({
 			'scrollLeft': +style_index * 1280
@@ -41,7 +43,6 @@ $(document).ready(function() {
 
 	$('.navigate_style_title').click(function(event) {
 		var style_index = $(this).index('.navigate_style_title');
-		var outer_offset_top = $('.styles_block').offset().top;
 
 		$('.navigate_style_ages').hide().eq(style_index).show();
 
