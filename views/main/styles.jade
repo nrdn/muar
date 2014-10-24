@@ -26,12 +26,13 @@ block content
 			each era in eras
 				.style_block
 					.style_block_inner
-						each age in era.ages
-							.age_block
-								.age_title= age.age.title.ru
-								.age_objects
-									each object in age.objects
-										a.object_block(href='/objects/' + object._id)
-											.object_image(style='background-image:url(' + object.image + ')')
-											.object_title=object.title.ru
-											.object_date=object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear()
+						.style_inner_height
+							each age in era.ages
+								.age_block
+									.age_title= age.age.title.ru
+									.age_objects
+										each object in age.objects
+											a.object_block(href='/objects/' + object._id)
+												.object_image(style='background-image:url(' + object.image + ')')
+												.object_title=object.title.ru
+												.object_date=object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear()

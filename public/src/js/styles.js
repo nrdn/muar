@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	function ageScroll (event) {
-		var scroll_percentage = 100 * $(this).scrollTop() / ($(this).children('.style_block_inner').height() - $(this).height());
+		var scroll_percentage = 100 * $(this).scrollTop() / ($(this).children('.style_inner_height').height() - $(this).height());
 
 		$('.navigate_style_block').eq(event.data.style_index).children('.navigate_style_progress').css('width', scroll_percentage + '%');
 
