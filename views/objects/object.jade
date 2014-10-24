@@ -17,11 +17,12 @@ block content_title
 
 block content
 	.object_container
-		.project_image_main(style='background-image:url(' + object.images.main + ')')
-			.project_image_main_inner
+		.project_image_main.project_image_second(style='background-image:url(' + object.images.main + ')')
+			.project_image_main_inner.image_animate
 				h1.project_title= object.title.ru
-		each image in object.images.second
+		each image, i in object.images.second
 			.project_image_second(style='background-image:url(' + image.path + ')')
+
 	.project_description_block
 		.project_description= object.description.ru
 	.object_images_types
@@ -30,6 +31,7 @@ block content
 		.object_images_3d 3d
 	.project_images_second_block
 		.images_second_column
+			.image_second_block.image_main_prev(style='background-image:url(' + object.images.main + ')')
 			each image in object.images.second
 				.image_second_block(style='background-image:url(' + image.path + ')')
 					//.image_second_description=image.description
