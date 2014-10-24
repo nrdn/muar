@@ -1,16 +1,16 @@
 $(document).ready(function() {
 	var scale = $(document).width()/1280;
 	$('#port').css({
-		'width':$(document).width()+'px',
-		'height':$(document).height()+'px'
+		//'width':$(document).width()+'px',
+		//'height':$(document).height()+'px'
 		});
-	$('.parallax-layer, .freeze')
+	$('.parallax-layer')
 			.css({
 				'transform-origin':'50%',
 				'transform':'scale(' + scale + ')'
 			})
 			.parallax({
-				mouseport: $('#port, .periods'),
+				mouseport: $('#port, .periods, .intro_view'),
 				freezeClass: 'freeze'
 			});
 	$('.period').each(function(index){
