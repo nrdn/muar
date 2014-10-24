@@ -22,7 +22,7 @@ $(document).ready(function() {
 		$('.styles_block').animate({
 			'scrollLeft': +style_index * 1280
 		}, 300);
-		$('.style_block').off().eq(style_index).on('scroll', {style_index: +style_index}, ageScroll);
+		$('.style_block_inner').off().eq(style_index).on('scroll', {style_index: +style_index}, ageScroll);
 	}
 	stylesSlide()
 
@@ -31,7 +31,7 @@ $(document).ready(function() {
 	$('.navigate_age').click(function(event) {
 		var age_index = $(this).index();
 		var style_index = $(this).closest('.navigate_style_block').index();
-		var $style = $('.style_block').eq(style_index);
+		var $style = $('.style_block_inner').eq(style_index);
 		var age_offset_top = $style.find('.age_block').eq(age_index).offset().top;
 		var style_scroll_top = $style.scrollTop();
 		var style_offset_top = $style.offset().top;
