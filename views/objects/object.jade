@@ -27,7 +27,13 @@ block content
 
 		.project_description_block
 			.project_description
-				.project_description_inner_block= object.description.ru
+				.project_description_inner_block
+					.project_description_inner_block_col
+						.project_description_inner_block_header Описание
+						.project_description_inner_block_description=object.description.ru
+					.project_description_inner_block_col
+						.project_description_inner_block_header Информация
+						.project_description_inner_block_description=object.description.ru
 
 
 	.object_images_types
