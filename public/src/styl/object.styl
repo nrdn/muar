@@ -13,9 +13,8 @@
 	bottom 128px
 	left 0
 	right 0
-	overflow hidden;
+	//overflow hidden;
 	display block
-	border-bottom 2px solid #f00
 
 .project_image_second
 	height 100%
@@ -23,7 +22,7 @@
 	background-position 50%
 	background-repeat no-repeat
 	background-size cover
-	overflow hidden
+	//overflow hidden
 	z-index 1
 	background-attachment fixed
 	display block
@@ -34,10 +33,8 @@
 
 .project_image_main
 	display table
-	position relative
 	z-index 0
 	margin-top 0
-
 
 .image_animate
 	transition-timing-function ease-out
@@ -68,23 +65,31 @@
 	margin-top 5px
 
 .project_description_block
-	width 1280px
-	top 0
-	left 50%
-	margin-left -640px
+	width 100%
+	top 100%
+	height 100%
+	background #fff
+	left 0
 	position absolute
 
 .project_description
-	width: 620px
-	float: left
-	position absolute
-	top 100px
+	width 1280px
+	margin 0 auto
+	height 100%
+	top 120px
 	right 0
-	background rgba(0,0,0,0.4)
+	//background rgba(0,0,0,0.4)
 	color #fff
 	font-size 16px
 	line-height 17px
 	z-index 10
+	margin-bottom 130px
+
+.project_description_inner_block
+	padding 120px 0
+	font-size 20px
+	line-height 23px
+	color #333
 
 .object_images_types
 	position absolute
@@ -120,12 +125,16 @@
 		display none
 
 .project_images_second_block
-	position absolute
-	bottom 4px
+	//position absolute
+	position fixed
+	bottom 0px
 	left 0
 	right 0
 	height 120px
-	overflow auto
+	overflow hidden
+	background #fff
+	padding 4px 0
+	border-top 2px solid #f00
 
 .images_second_column
 	white-space nowrap
