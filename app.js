@@ -236,8 +236,11 @@ app.route('/preview')
 // ------------------------
 
 
-app.route('/test')
+app.route('/test/json')
 	 .get(test.json)
+
+app.route('/test/page')
+	 .get(test.page)
 
 
 app.route('/tiles_upload')
