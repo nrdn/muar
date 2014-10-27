@@ -26,7 +26,7 @@ $(document).ready(function() {
 		$('.style_block_inner').off().eq(style_index).on('scroll', {style_index: +style_index}, ageScroll);
 
 		$('.styles_block').animate({
-			'scrollLeft': +style_index * 1280
+			'scrollLeft': +style_index * $('.styles_block').width()
 		}, 300);
 	}
 	stylesSlide()
