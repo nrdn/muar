@@ -21,13 +21,16 @@ var paths = {
 	}
 }
 
+
 gulp.task('clean', function(cb) {
 	del(['public/build/js', 'public/build/css'], cb);
 });
 
+
 gulp.task('nodemon', function() {
 	nodemon({ script: 'app.js', ext: 'js', ignore: paths.nodemon.ignore })
 });
+
 
 gulp.task('stylus', ['clean'], function () {
 	gulp.src(paths.stylus.src)
@@ -41,6 +44,7 @@ gulp.task('stylus', ['clean'], function () {
 			.pipe(gulp.dest(paths.stylus.dest));
 });
 
+
 gulp.task('watch_stylus', function () {
 	var watcher = gulp.watch(paths.stylus.src, ['stylus']);
 
@@ -48,6 +52,7 @@ gulp.task('watch_stylus', function () {
 		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 	});
 });
+
 
 gulp.task('js', ['clean'], function () {
 	gulp.src(paths.client_js.src)
@@ -57,6 +62,7 @@ gulp.task('js', ['clean'], function () {
 			.pipe(gulp.dest(paths.client_js.dest));
 });
 
+
 gulp.task('watch_js', function () {
 	var watcher = gulp.watch(paths.client_js.src, ['js']);
 
@@ -64,6 +70,7 @@ gulp.task('watch_js', function () {
 		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 	});
 });
+
 
 gulp.task('default', ['stylus', 'js']);
 gulp.task('dev', ['watch_stylus', 'watch_js', 'nodemon']);
