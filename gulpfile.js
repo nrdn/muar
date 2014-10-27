@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+	  del = require('del'),
 		nodemon = require('gulp-nodemon'),
 		autoprefixer = require('gulp-autoprefixer'),
 		uglify = require('gulp-uglify'),
@@ -20,12 +21,15 @@ var paths = {
 	}
 }
 
+gulp.task('clean', function(cb) {
+	del(['public/build/js', 'public/build/css'], cb);
+});
 
 gulp.task('nodemon', function() {
 	nodemon({ script: 'app.js', ext: 'js', ignore: paths.nodemon.ignore })
 });
 
-gulp.task('stylus', function () {
+gulp.task('stylus', ['clean'], function () {
 	gulp.src(paths.stylus.src)
 			.pipe(stylus({
 				compress: false
@@ -45,7 +49,7 @@ gulp.task('watch_stylus', function () {
 	});
 });
 
-gulp.task('js', function () {
+gulp.task('js', ['clean'], function () {
 	gulp.src(paths.client_js.src)
 			.pipe(jshint())
 			.pipe(jshint.reporter('jshint-stylish'))
