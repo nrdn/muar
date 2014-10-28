@@ -27,7 +27,12 @@ gulp.task('nodemon', function() {
 });
 
 
-gulp.task('stylus', ['clean-css'], function () {
+gulp.task('clean', function(cb) {
+	return del(['public/build/*', '!public/build/libs'], cb);
+});
+
+
+gulp.task('stylus', function () {
 	gulp.src(paths.stylus.src)
 			.pipe(stylus({
 				compress: false
@@ -40,21 +45,7 @@ gulp.task('stylus', ['clean-css'], function () {
 });
 
 
-gulp.task('clean-css', function(cb) {
-	del(paths.stylus.dest, cb);
-});
-
-
-gulp.task('watch-stylus', function () {
-	var watcher = gulp.watch(paths.stylus.src, ['stylus']);
-
-	watcher.on('change', function(event) {
-		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-	});
-});
-
-
-gulp.task('js', ['clean-js'], function () {
+gulp.task('js', function () {
 	gulp.src(paths.client_js.src)
 			.pipe(jshint())
 			.pipe(jshint.reporter('jshint-stylish'))
@@ -63,19 +54,18 @@ gulp.task('js', ['clean-js'], function () {
 });
 
 
-gulp.task('clean-js', function(cb) {
-	del(paths.client_js.dest, cb);
-});
+gulp.task('watch', function() {
+  var watcher_scripts = gulp.watch(paths.client_js.src, ['js']);
+  var watcher_stylus = gulp.watch(paths.stylus.src, ['stylus']);
 
-
-gulp.task('watch-js', function () {
-	var watcher = gulp.watch(paths.client_js.src, ['js']);
-
-	watcher.on('change', function(event) {
+	var logger = function(event) {
 		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-	});
+	}
+
+  watcher_scripts.on('change', logger);
+  watcher_stylus.on('change', logger);
 });
 
 
-gulp.task('default', ['stylus', 'js']);
-gulp.task('dev', ['watch-stylus', 'watch-js', 'nodemon']);
+gulp.task('default', ['clean', 'stylus', 'js']);
+gulp.task('dev', ['watch', 'nodemon']);
