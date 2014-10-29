@@ -1,12 +1,12 @@
-var runSequence = require('run-sequence'),
-	  del = require('del');
-
 var gulp = require('gulp'),
 		nodemon = require('gulp-nodemon'),
 		autoprefixer = require('gulp-autoprefixer'),
 		uglify = require('gulp-uglify'),
 		stylus = require('gulp-stylus'),
 		jshint = require('gulp-jshint');
+
+var runSequence = require('run-sequence'),
+		del = require('del');
 
 
 var paths = {
@@ -61,15 +61,15 @@ gulp.task('watch', function() {
 		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 	}
 
-  gulp.watch(paths.scripts.src, ['scripts']).on('change', logger);
-  gulp.watch(paths.stylus.src, ['stylus']).on('change', logger);
+	gulp.watch(paths.scripts.src, ['scripts']).on('change', logger);
+	gulp.watch(paths.stylus.src, ['stylus']).on('change', logger);
 });
 
 
 gulp.task('default', function(callback) {
-  runSequence('clean', 'scripts', 'stylus', callback);
+	runSequence('clean', 'scripts', 'stylus', callback);
 });
 
 gulp.task('dev', function(callback) {
-  runSequence('clean', 'scripts', 'stylus', ['watch', 'nodemon'],  callback);
+	runSequence('clean', 'scripts', 'stylus', ['watch', 'nodemon'],  callback);
 });
