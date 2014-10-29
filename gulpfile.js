@@ -35,24 +35,24 @@ gulp.task('clean', function() {
 
 
 gulp.task('stylus', function() {
-	return 	gulp.src(paths.stylus.src)
-							.pipe(stylus({
-								compress: false
-							}))
-							.pipe(autoprefixer({
-								browsers: ['last 2 versions'],
-								cascade: true
-							}))
-							.pipe(gulp.dest(paths.stylus.dest));
+	return gulp.src(paths.stylus.src)
+						 .pipe(stylus({
+						 	compress: false
+						 }))
+						 .pipe(autoprefixer({
+						 	browsers: ['last 2 versions'],
+						 	cascade: true
+						 }))
+						 .pipe(gulp.dest(paths.stylus.dest));
 });
 
 
 gulp.task('scripts', function() {
-	return 	gulp.src(paths.scripts.src)
-							.pipe(jshint())
-							.pipe(jshint.reporter('jshint-stylish'))
-							.pipe(uglify())
-							.pipe(gulp.dest(paths.scripts.dest));
+	return gulp.src(paths.scripts.src)
+						 .pipe(jshint())
+						 .pipe(jshint.reporter('jshint-stylish'))
+						 .pipe(uglify())
+						 .pipe(gulp.dest(paths.scripts.dest));
 });
 
 
