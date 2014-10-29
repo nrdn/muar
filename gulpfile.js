@@ -14,7 +14,7 @@ var paths = {
 		src: ['public/src/styl/*.styl'],
 		dest: 'public/build/css'
 	},
-	client_js: {
+	scripts: {
 		src: ['public/src/js/*.js'],
 		dest: 'public/build/js'
 	},
@@ -48,24 +48,21 @@ gulp.task('stylus', function() {
 
 
 gulp.task('scripts', function() {
-	return 	gulp.src(paths.client_js.src)
+	return 	gulp.src(paths.scripts.src)
 							.pipe(jshint())
 							.pipe(jshint.reporter('jshint-stylish'))
 							.pipe(uglify())
-							.pipe(gulp.dest(paths.client_js.dest));
+							.pipe(gulp.dest(paths.scripts.dest));
 });
 
 
 gulp.task('watch', function() {
-  var watcher_scripts = gulp.watch(paths.client_js.src, ['scripts']);
-  var watcher_stylus = gulp.watch(paths.stylus.src, ['stylus']);
-
 	var logger = function(event) {
 		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 	}
 
-  watcher_scripts.on('change', logger);
-  watcher_stylus.on('change', logger);
+  gulp.watch(paths.scripts.src, ['scripts']).on('change', logger);
+  gulp.watch(paths.stylus.src, ['stylus']).on('change', logger);
 });
 
 
