@@ -1,5 +1,7 @@
+var runSequence = require('run-sequence'),
+	  del = require('del');
+
 var gulp = require('gulp'),
-	  del = require('del'),
 		nodemon = require('gulp-nodemon'),
 		autoprefixer = require('gulp-autoprefixer'),
 		uglify = require('gulp-uglify'),
@@ -23,39 +25,39 @@ var paths = {
 
 
 gulp.task('nodemon', function() {
-	nodemon({ script: 'app.js', ext: 'js', ignore: paths.nodemon.ignore })
+	return nodemon({ script: 'app.js', ext: 'js', ignore: paths.nodemon.ignore });
 });
 
 
-gulp.task('clean', function(cb) {
-	return del(['public/build/*', '!public/build/libs'], cb);
+gulp.task('clean', function() {
+	return del(['public/build/*', '!public/build/libs']);
 });
 
 
-gulp.task('stylus', function () {
-	gulp.src(paths.stylus.src)
-			.pipe(stylus({
-				compress: false
-			}))
-			.pipe(autoprefixer({
-				browsers: ['last 2 versions'],
-				cascade: true
-			}))
-			.pipe(gulp.dest(paths.stylus.dest));
+gulp.task('stylus', function() {
+	return 	gulp.src(paths.stylus.src)
+							.pipe(stylus({
+								compress: false
+							}))
+							.pipe(autoprefixer({
+								browsers: ['last 2 versions'],
+								cascade: true
+							}))
+							.pipe(gulp.dest(paths.stylus.dest));
 });
 
 
-gulp.task('js', function () {
-	gulp.src(paths.client_js.src)
-			.pipe(jshint())
-			.pipe(jshint.reporter('jshint-stylish'))
-			.pipe(uglify())
-			.pipe(gulp.dest(paths.client_js.dest));
+gulp.task('scripts', function() {
+	return 	gulp.src(paths.client_js.src)
+							.pipe(jshint())
+							.pipe(jshint.reporter('jshint-stylish'))
+							.pipe(uglify())
+							.pipe(gulp.dest(paths.client_js.dest));
 });
 
 
 gulp.task('watch', function() {
-  var watcher_scripts = gulp.watch(paths.client_js.src, ['js']);
+  var watcher_scripts = gulp.watch(paths.client_js.src, ['scripts']);
   var watcher_stylus = gulp.watch(paths.stylus.src, ['stylus']);
 
 	var logger = function(event) {
@@ -67,5 +69,10 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('default', ['clean', 'stylus', 'js']);
-gulp.task('dev', ['watch', 'nodemon']);
+gulp.task('default', function(callback) {
+  runSequence('clean', 'scripts', 'stylus', callback);
+});
+
+gulp.task('dev', function(callback) {
+  runSequence('clean', 'scripts', 'stylus', ['watch', 'nodemon'],  callback);
+});
