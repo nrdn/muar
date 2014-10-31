@@ -59,6 +59,7 @@ var files = require('./routes/files.js');
 
 var a_eras = require('./routes/admin/eras.js');
 var a_objects = require('./routes/admin/objects.js');
+var a_architects = require('./routes/admin/architects.js');
 var options = require('./routes/admin/options.js');
 var test = require('./routes/admin/test.js');
 
@@ -173,6 +174,16 @@ app.route('/auth/objects/add')
 app.route('/auth/objects/edit/:id')
 	 .get(checkAuth, a_objects.edit)
 	 .post(checkAuth, a_objects.edit_form);
+
+
+// === Admin architects Route
+app.route('/auth/architects').get(checkAuth, a_architects.list);
+
+
+// === Admin @add architects Route
+app.route('/auth/architects/add')
+	 .get(checkAuth, a_architects.add)
+	 .post(checkAuth, a_architects.add_form);
 
 
 // ------------------------

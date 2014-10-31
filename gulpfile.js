@@ -71,5 +71,5 @@ gulp.task('default', function(callback) {
 });
 
 gulp.task('dev', function(callback) {
-	runSequence('clean', 'scripts', 'stylus', ['watch', 'nodemon'],  callback);
+	runSequence(['watch', 'nodemon'],  callback);
 });

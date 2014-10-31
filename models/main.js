@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+		mongooseLocale = require('mongoose-locale'),
 			Schema = mongoose.Schema;
 
 var userSchema = new Schema({
@@ -87,14 +88,8 @@ var subjectSchema = new Schema({
 });
 
 var architectSchema = new Schema({
-	name: {
-		ru: String,
-		en: String
-	},
-	description: {
-		ru: String,
-		en: String
-	},
+	name: {type: String, trim: true, locale: true},
+	description: {type: String, trim: true, locale: true},
 	meta: {
 		interval: {
 			start: Date,
@@ -117,6 +112,14 @@ var categorySchema = new Schema({
 	images: [String],
 	date: {type: Date, default: Date.now}
 });
+
+
+// ------------------------
+// *** Plugins Block ***
+// ------------------------
+
+
+architectSchema.plugin(mongooseLocale);
 
 
 // ------------------------
