@@ -6,6 +6,13 @@ var appDir = path.dirname(require.main.filename);
 
 var Era = require('../../models/main.js').Era;
 var Object = require('../../models/main.js').Object;
+var Architect = require('../../models/main.js').Architect;
+
+exports.search = function(req, res) {
+	Architect.find({ $text: { $search: 'архитектор' } }, { score : { $meta: 'textScore' } }).exec(function(err, result) {
+		res.send(result)
+	});
+}
 
 exports.json = function(req, res) {
 	Object.aggregate()

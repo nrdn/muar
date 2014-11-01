@@ -264,6 +264,9 @@ app.route('/test/json')
 app.route('/test/page')
 	 .get(test.page)
 
+app.route('/test/search')
+	 .get(test.search)
+
 
 app.route('/tiles_upload')
 	 .get(checkAuth, test.tiles_upload)

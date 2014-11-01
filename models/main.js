@@ -128,7 +128,7 @@ architectSchema.plugin(mongooseLocale);
 
 
 // eraSchema.index({'title.ru': 'text', 'title.en': 'text'}, {default_language: 'ru'});
-
+architectSchema.index({'name.value': 'text', 'description.value': 'text'}, {language_override:'lg', default_language: 'ru'})
 
 // ------------------------
 // *** Exports Block ***
