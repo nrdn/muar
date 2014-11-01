@@ -15,8 +15,8 @@ block content
 		.title ДОБАВИТЬ АРХИТЕКТОРА
 		form(action="/auth/architects/add", method="post")
 			.form_title Имя:
-			input.ru(type="text", name="ru[title]",)
-			input.en(type="text", name="en[title]", disabled)
+			input.ru(type="text", name="ru[name]",)
+			input.en(type="text", name="en[name]", disabled)
 			.form_title Описание:
 			textarea.ru(name="ru[description]", rows="8",)
 			textarea.en(name="en[description]", rows="8", disabled)

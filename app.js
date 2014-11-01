@@ -70,7 +70,12 @@ var test = require('./routes/admin/test.js');
 
 
 function checkAuth (req, res, next) {
-	req.session.user_id ? next() : res.redirect('/login');
+	if (req.session.user_id) {
+		res.locals.admin = true;
+		next();
+	}
+	else
+		res.redirect('/login');
 }
 
 
@@ -184,6 +189,12 @@ app.route('/auth/architects').get(checkAuth, a_architects.list);
 app.route('/auth/architects/add')
 	 .get(checkAuth, a_architects.add)
 	 .post(checkAuth, a_architects.add_form);
+
+
+// === Admin @edit architects Route
+app.route('/auth/architects/edit/:id')
+	 .get(checkAuth, a_architects.edit)
+	 .post(checkAuth, a_architects.edit_form);
 
 
 // ------------------------

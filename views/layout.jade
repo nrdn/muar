@@ -16,6 +16,12 @@ html
 						.navigation_block_button
 						.navigation_block_button
 		.content_title_block
+			- if (admin)
+				a(href='/auth') ЗВЕЗДОЧЕТ:
+				a(href='/auth/eras') Стили
+				a(href='/auth/objects') Объекты
+				a(href='/auth/architects') Архитекторы
+				a(href='/tiles_upload') Заглузчик тайлов (beta)
 			block content_title
 		.content_block
 			block content

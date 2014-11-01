@@ -1,0 +1,29 @@
+extends ../../layout
+
+block title
+	title РЕДАКТИРОВАТЬ АРХИТЕКТОРА
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
+
+block content_scripts
+	script(type='text/javascript', src='/build/js/add.js')
+
+block content
+	.form_block
+		a.back_link(href='/auth/architects') < Назад
+		.title РЕДАКТИРОВАТЬ АРХИТЕКТОРА
+		form(action="", method="post")
+			.form_title Название:
+			input.ru(type="text", name="ru[name]", value=get_field(architect.name, 'ru').value)
+			input.en(type="text", name="en[name]", disabled)
+			.form_title Описание:
+			textarea.ru(name="ru[description]", rows="8",)= get_field(architect.description, 'ru').value
+			textarea.en(name="en[description]", rows="8", disabled)
+			.form_title Интервал начало:
+			input.ru(type="text", name="interval[start]", value=architect.meta.interval.start.getUTCFullYear())
+			.form_title Интервал конец:
+			input.ru(type="text", name="interval[end]", value=architect.meta.interval.end.getUTCFullYear())
+			br
+			br
+			input(type='submit', value='сохранить')
