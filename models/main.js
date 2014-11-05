@@ -10,42 +10,28 @@ var userSchema = new Schema({
 	date: {type: Date, default: Date.now},
 });
 
-var eraSchema = new Schema({
-	title: {
-		ru: String,
-		en: String
+var ageSchema = new Schema({
+	title: { type: String, trim: true, locale: true },
+	description: { type: String, trim: true, locale: true },
+	meta: {
+		interval: {
+			start: Date,
+			end: Date
+		}
 	},
-	description: {
-		ru: String,
-		en: String
-	},
-	interval: {
-		start: Date,
-		end: Date
-	},
-	sub: {type: Boolean, default: false},
-	ages: [{ type: Schema.Types.ObjectId, ref: 'Era' }],
+	sub: [{ type: Schema.Types.ObjectId, ref: 'Age' }],
 	date: {type: Date, default: Date.now}
 });
 
 var objectSchema = new Schema({
-	title: {
-		ru: String,
-		en: String
-	},
-	description: {
-		ru: String,
-		en: String
-	},
-	history: {
-		era: { type: Schema.Types.ObjectId, ref: 'Era' },
-		ages: [{ type: Schema.Types.ObjectId, ref: 'Era' }],
+	title: { type: String, trim: true, locale: true },
+	description: { type: String, trim: true, locale: true },
+	ages: {
+		main: { type: Schema.Types.ObjectId, ref: 'Age' },
+		sub: [{ type: Schema.Types.ObjectId, ref: 'Age' }],
 	},
 	meta: {
-		adress: {
-			ru: String,
-			en: String
-		},
+		adress: { type: String, trim: true, locale: true },
 		interval: {
 			start: Date,
 			end: Date
@@ -53,6 +39,7 @@ var objectSchema = new Schema({
 	},
 	architects: [{ type: Schema.Types.ObjectId, ref: 'Architect' }],
 	categorys: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
+	subjects: [{ type: Schema.Types.ObjectId, ref: 'Subject' }],
 	images: {
 		main: String,
 		second: [{
@@ -60,19 +47,12 @@ var objectSchema = new Schema({
 			path: String
 		}]
 	},
-	subjects: [{ type: Schema.Types.ObjectId, ref: 'Subject' }],
 	date: {type: Date, default: Date.now}
 });
 
 var subjectSchema = new Schema({
-	title: {
-		ru: String,
-		en: String
-	},
-	description: {
-		ru: String,
-		en: String
-	},
+	title: { type: String, trim: true, locale: true },
+	description: { type: String, trim: true, locale: true },
 	meta: {
 		inventory: String,
 		interval: {
@@ -81,15 +61,15 @@ var subjectSchema = new Schema({
 		}
 	},
 	images: [{
-		title: String,
+		description: String,
 		path: String
 	}],
 	date: {type: Date, default: Date.now}
 });
 
 var architectSchema = new Schema({
-	name: {type: String, trim: true, locale: true},
-	description: {type: String, trim: true, locale: true},
+	name: { type: String, trim: true, locale: true },
+	description: { type: String, trim: true, locale: true },
 	meta: {
 		interval: {
 			start: Date,
@@ -101,14 +81,8 @@ var architectSchema = new Schema({
 });
 
 var categorySchema = new Schema({
-	title: {
-		ru: String,
-		en: String
-	},
-	description: {
-		ru: String,
-		en: String
-	},
+	title: { type: String, trim: true, locale: true },
+	description: { type: String, trim: true, locale: true },
 	images: [String],
 	date: {type: Date, default: Date.now}
 });
@@ -120,6 +94,10 @@ var categorySchema = new Schema({
 
 
 architectSchema.plugin(mongooseLocale);
+ageSchema.plugin(mongooseLocale);
+objectSchema.plugin(mongooseLocale);
+subjectSchema.plugin(mongooseLocale);
+categorySchema.plugin(mongooseLocale);
 
 
 // ------------------------
@@ -127,8 +105,10 @@ architectSchema.plugin(mongooseLocale);
 // ------------------------
 
 
-// eraSchema.index({'title.ru': 'text', 'title.en': 'text'}, {default_language: 'ru'});
-architectSchema.index({'name.value': 'text', 'description.value': 'text'}, {language_override:'lg', default_language: 'ru'})
+architectSchema.index({'name.value': 'text', 'description.value': 'text'}, {language_override:'lg', default_language: 'ru'});
+objectSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override:'lg', default_language: 'ru'});
+subjectSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override:'lg', default_language: 'ru'});
+
 
 // ------------------------
 // *** Exports Block ***
@@ -136,7 +116,7 @@ architectSchema.index({'name.value': 'text', 'description.value': 'text'}, {lang
 
 
 module.exports.User = mongoose.model('User', userSchema);
-module.exports.Era = mongoose.model('Era', eraSchema);
+module.exports.Age = mongoose.model('Age', ageSchema);
 module.exports.Object = mongoose.model('Object', objectSchema);
 module.exports.Subject = mongoose.model('Subject', subjectSchema);
 module.exports.Architect = mongoose.model('Architect', architectSchema);

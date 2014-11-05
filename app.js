@@ -58,7 +58,7 @@ var auth = require('./routes/auth.js');
 var content = require('./routes/content.js');
 var files = require('./routes/files.js');
 
-var a_eras = require('./routes/admin/eras.js');
+var a_ages = require('./routes/admin/ages.js');
 var a_objects = require('./routes/admin/objects.js');
 var a_architects = require('./routes/admin/architects.js');
 var options = require('./routes/admin/options.js');
@@ -77,34 +77,6 @@ function checkAuth (req, res, next) {
 	}
 	else
 		res.redirect('/login');
-}
-
-
-// ------------------------
-// *** Handlers Block ***
-// ------------------------
-
-
-var deleteFolderRecursive = function(path) {
-	if ( fs.existsSync(path) ) {
-		fs.readdirSync(path).forEach(function(file, index){
-			var curPath = path + '/' + file;
-			fs.statSync(curPath).isDirectory()
-				? fs.statSync(curPath).isDirectory()
-				: fs.unlinkSync(curPath);
-		});
-		fs.rmdirSync(path);
-	}
-}
-
-
-function toMatrix(arr, row) {
-	var a = [];
-	for (var i = 0; i < row;) {
-		a[i] ? a[i].push(arr.shift()) : (a[i] = []);
-		i = ++i % row;
-		if (!arr.length) return a;
-	}
 }
 
 
@@ -141,37 +113,20 @@ app.route('/lang/:locale').get(main.locale);
 // ------------------------
 
 
-// === Admin eras Route
-app.route('/auth/eras').get(checkAuth, a_eras.list);
-
-
-// === Admin @add eras Route
-app.route('/auth/eras/add')
-	 .get(checkAuth, a_eras.add)
-	 .post(checkAuth, a_eras.add_form);
-
-
-// === Admin @edit eras Route
-app.route('/auth/eras/edit/:id')
-	 .get(checkAuth, a_eras.edit)
-	 .post(checkAuth, a_eras.edit_form);
-
-
 // === Admin ages Route
-app.route('/auth/eras/:id/ages')
-	 .get(checkAuth, a_eras.list_ages);
+app.route('/auth/ages').get(checkAuth, a_ages.list);
 
 
 // === Admin @add ages Route
-app.route('/auth/eras/:id/ages/add')
-	 .get(checkAuth, a_eras.add_ages)
-	 .post(checkAuth, a_eras.add_ages_form);
+app.route('/auth/ages/add')
+	 .get(checkAuth, a_ages.add)
+	 .post(checkAuth, a_ages.add_form);
 
 
-// === Admin @edit ages Route
-app.route('/auth/eras/:era_id/ages/edit/:age_id')
-	 .get(checkAuth, a_eras.edit_ages)
-	 .post(checkAuth, a_eras.edit_ages_form);
+// === Admin @edit eras Route
+app.route('/auth/ages/:id/edit')
+	 .get(checkAuth, a_ages.edit)
+	 .post(checkAuth, a_ages.edit_form);
 
 
 // === Admin objects Route

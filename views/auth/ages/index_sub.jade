@@ -1,7 +1,7 @@
 extends ../../layout
 
 block title
-	title СПИСОК ПЕРИОДОВ
+	title СПИСОК ПОДПЕРИОДОВ
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
@@ -11,16 +11,14 @@ block content_scripts
 
 block content
 	a.back_link(href='/auth/eras') < Назад
-	.title СПИСОК ПЕРИОДОВ
+	.title СПИСОК ПОДПЕРИОДОВ
 	br
-	a.add(href='/auth/ages/add') добавить период
+	a.add(href='/auth/ages/' + age._id + '/add/sub') добавить подпериод
 	br
 	br
 	.main_menu_block
-		each age in ages
+		each age in age.sub
 			.age
 				a.rm_age(href='#', id=age._id)= 'удалить '
 				!=' | '
-				a(href='/auth/ages/' + age._id + '/edit')= age.i18n.title.get('ru')
-				!=' --> '
-				a(href='/auth/ages/' + age._id + '/edit/sub') подпериоды
+				a(href='/auth/ages/' + age._id + '/edit/sub/' + age._id)= age.i18n.title.get('ru')

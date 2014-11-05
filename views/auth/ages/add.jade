@@ -10,11 +10,8 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/add.js')
 
 block content
-	- var year = new Date()
-	- year = year.getFullYear()
-	- var months = ['ЯНВАРЬ', 'ФЕВРАЛЬ', 'МАРТ', 'АПРЕЛЬ', 'МАЙ', 'ИЮНЬ', 'ИЮЛЬ', 'АВГУСТ', 'СЕНТЯБРЬ', 'ОКТЯБРЬ', 'НОЯБРЬ', 'ДЕКАБРЬ']
 	.form_block
-		a.back_link(href='/auth/eras') < Назад
+		a.back_link(href='/auth/ages') < Назад
 		.title ДОБАВИТЬ ПЕРИОД
 		form(action="", method="post")
 			.form_title Название:
@@ -27,8 +24,6 @@ block content
 			input.ru(type="text", name="interval[start]",)
 			.form_title Интервал конец:
 			input.ru(type="text", name="interval[end]",)
-			//- .form_title Фото:
-			//- input(type="file", name="photo")
 			br
 			br
 			input(type='submit', value='отправить')
