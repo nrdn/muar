@@ -45,6 +45,7 @@ exports.add_form = function(req, res) {
   	lg: 'ru',
   	value: post.ru.description
   }];
+
   architect.meta.interval.start = set_date(post.interval.start);
   architect.meta.interval.end = set_date(post.interval.end);
 
@@ -73,14 +74,9 @@ exports.edit_form = function(req, res) {
 
   Architect.findById(id).exec(function(err, architect) {
 
-    architect.name =[{
-      lg: 'ru',
-      value: post.ru.name
-    }];
-    architect.description = [{
-      lg: 'ru',
-      value: post.ru.description
-    }];
+    architect.i18n.name.set(post.ru.name, 'ru');
+    architect.i18n.description.set(post.ru.description, 'ru');
+
     architect.meta.interval.start = set_date(post.interval.start);
     architect.meta.interval.end = set_date(post.interval.end);
 
