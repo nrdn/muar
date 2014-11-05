@@ -41,12 +41,13 @@ exports.add_form = function(req, res) {
     lg: 'ru',
     value: post.ru.title
   }];
-  age.description.ru = [{
+  age.description = [{
     lg: 'ru',
     value: post.ru.description
   }];
-  age.interval.start = set_date(post.interval.start);
-  age.interval.end = set_date(post.interval.end);
+
+  age.meta.interval.start = set_date(post.interval.start);
+  age.meta.interval.end = set_date(post.interval.end);
 
   age.save(function(err, age) {
     res.redirect('/auth/ages');
@@ -75,8 +76,8 @@ exports.edit_form = function(req, res) {
 
     age.i18n.title.set(post.ru.title, 'ru');
     age.i18n.description.set(post.ru.description, 'ru');
-    age.interval.start = set_date(post.interval.start);
-    age.interval.end = set_date(post.interval.end);
+    age.meta.interval.start = set_date(post.interval.start);
+    age.meta.interval.end = set_date(post.interval.end);
 
     age.save(function(err, age) {
       res.redirect('/auth/ages');

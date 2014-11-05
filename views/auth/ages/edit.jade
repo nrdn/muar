@@ -16,15 +16,15 @@ block content
 		.title РЕДАКТИРОВАТЬ ПЕРИОД
 		form(action="", method="post")
 			.form_title Название:
-			input.ru(type="text", name="ru[title]", value=age.title.ru)
+			input.ru(type="text", name="ru[title]", value=age.i18n.title.get('ru'))
 			input.en(type="text", name="en[title]", disabled)
 			.form_title Описание:
-			textarea.ru(name="ru[description]", rows="8",)= age.description.ru
+			textarea.ru(name="ru[description]", rows="8",)= age.i18n.description.get('ru')
 			textarea.en(name="en[description]", rows="8", disabled)
 			.form_title Интервал начало:
-			input.ru(type="text", name="interval[start]", value=age.interval.start.getUTCFullYear())
+			input.ru(type="text", name="interval[start]", value=age.meta.interval.start.getUTCFullYear())
 			.form_title Интервал конец:
-			input.ru(type="text", name="interval[end]", value=age.interval.end.getUTCFullYear())
+			input.ru(type="text", name="interval[end]", value=age.meta.interval.end.getUTCFullYear())
 			br
 			br
 			input(type='submit', value='сохранить')
