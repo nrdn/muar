@@ -21,4 +21,4 @@ block content
 			.architect
 				a.rm_architect(href='#', id=architect._id)= 'удалить '
 				!=' | '
-				a(href='/auth/architects/edit/' + architect._id)= get_field(architect.name, 'ru').value
+				a(href='/auth/architects/edit/' + architect._id)= architect.i18n.name.get('ru')

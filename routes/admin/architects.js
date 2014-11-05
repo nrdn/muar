@@ -6,12 +6,6 @@ var Architect = require('../../models/main.js').Architect;
 // ------------------------
 
 
-var get_field = function (arr, lang) {
-	return arr.filter(function(node) {
-		return node.lg == lang
-	})[0];
-}
-
 var set_date = function(year) {
   return new Date(Date.UTC(year, 0, 1));
 }
@@ -24,7 +18,7 @@ var set_date = function(year) {
 
 exports.list = function(req, res) {
   Architect.find().exec(function(err, architects) {
-    res.render('auth/architects/', {architects: architects, get_field: get_field});
+    res.render('auth/architects/', {architects: architects});
   });
 }
 
@@ -69,7 +63,7 @@ exports.edit = function(req, res) {
   var id = req.params.id;
 
   Architect.findById(id).exec(function(err, architect) {
-    res.render('auth/architects/edit.jade', {architect: architect, get_field: get_field});
+    res.render('auth/architects/edit.jade', {architect: architect});
   });
 }
 

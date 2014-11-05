@@ -13,6 +13,6 @@ block content_scripts
 block content
 	h2 Архитектор
 	br
-	b= get_field(architect.name, 'ru').value
+	b= architect.i18n.name.get('ru')
 	br
-	b= get_field(architect.description, 'ru').value
+	b= architect.i18n.description.get('ru')

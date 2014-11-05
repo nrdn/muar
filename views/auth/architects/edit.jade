@@ -15,10 +15,10 @@ block content
 		.title РЕДАКТИРОВАТЬ АРХИТЕКТОРА
 		form(action="", method="post")
 			.form_title Название:
-			input.ru(type="text", name="ru[name]", value=get_field(architect.name, 'ru').value)
+			input.ru(type="text", name="ru[name]", value=architect.i18n.name.get('ru'))
 			input.en(type="text", name="en[name]", disabled)
 			.form_title Описание:
-			textarea.ru(name="ru[description]", rows="8",)= get_field(architect.description, 'ru').value
+			textarea.ru(name="ru[description]", rows="8",)= architect.i18n.description.get('ru')
 			textarea.en(name="en[description]", rows="8", disabled)
 			.form_title Интервал начало:
 			input.ru(type="text", name="interval[start]", value=architect.meta.interval.start.getUTCFullYear())

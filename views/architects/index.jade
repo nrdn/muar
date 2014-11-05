@@ -14,8 +14,8 @@ block content
 	h2 Архитекторы
 	br
 	each architect in architects
-		a(href='/architects/' + architect._id)= get_field(architect.name, 'ru').value
+		a(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
 		br
-		b= get_field(architect.description, 'ru').value
+		b= architect.i18n.description.get('ru')
 		br
 		br
