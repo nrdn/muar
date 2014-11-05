@@ -3,6 +3,8 @@ $(document).ready(function() {
 	function ageScroll (event) {
 		var scroll_percentage = 100 * $(this).scrollTop() / ($(this).children('.style_inner_height').height() - $(this).height());
 
+		$(this).data({scroll_position: $(this).scrollTop()});
+
 		$('.navigate_style_block').eq(event.data.style_index).children('.navigate_style_progress').css('width', scroll_percentage + '%');
 
 		$(this).find('.age_block').each(function() {
@@ -24,10 +26,14 @@ $(document).ready(function() {
 		$('.navigate_style_title').removeClass('current').eq(style_index).addClass('current');
 		$('.navigate_style_ages').hide().eq(style_index).show();
 		$('.style_block_inner').off().eq(style_index).on('scroll', {style_index: +style_index}, ageScroll);
+		$style_inner = $('.style_block_inner').eq(style_index);
 
+		$style_inner.scrollTop(0).animate({
+			'scrollTop': $style_inner.data('scroll_position')
+		}, 400);
 		$('.styles_block').animate({
 			'scrollLeft': +style_index * $('.styles_block').width()
-		}, 300);
+		}, 400);
 	}
 	stylesSlide()
 
