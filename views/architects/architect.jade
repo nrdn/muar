@@ -1,0 +1,18 @@
+extends ../layout
+
+block title
+	title АРХИТЕКТОР
+
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/architects.css' + version)
+
+block content_scripts
+	script(type='text/javascript', src='/build/js/architects.js' + version)
+
+block content
+	h2 Архитектор
+	br
+	b= get_field(architect.name, 'ru').value
+	br
+	b= get_field(architect.description, 'ru').value

@@ -53,6 +53,7 @@ app.use(function(req, res, next) {
 
 var main = require('./routes/main.js');
 var objects = require('./routes/objects.js');
+var architects = require('./routes/architects.js');
 var auth = require('./routes/auth.js');
 var content = require('./routes/content.js');
 var files = require('./routes/files.js');
@@ -121,6 +122,14 @@ app.route('/styles').get(main.styles);
 
 // === Object Route
 app.route('/objects/:id').get(objects.object);
+
+
+// === Architects Route
+app.route('/architects').get(architects.index);
+
+
+// === Architect Route
+app.route('/architects/:id').get(architects.architect);
 
 
 // === Locale Route
