@@ -17,8 +17,15 @@ var set_date = function(year) {
 
 
 exports.list = function(req, res) {
-  Age.find().exec(function(err, ages) {
+  Age.find().where('parent').exists(false).exec(function(err, ages) {
     res.render('auth/ages', {ages: ages});
+  });
+}
+
+exports.list_sub = function(req, res) {
+  var id = req.params.id;
+  Age.findById(id).populate('sub').exec(function(err, age) {
+    res.render('auth/ages/index_sub.jade', {age: age});
   });
 }
 
@@ -37,6 +44,10 @@ exports.add_form = function(req, res) {
   var files = req.files;
   var age = new Age();
 
+  if (req.params.age_id) {
+    age.parent = req.params.age_id;
+  }
+
   age.title = [{
     lg: 'ru',
     value: post.ru.title
@@ -50,7 +61,17 @@ exports.add_form = function(req, res) {
   age.meta.interval.end = set_date(post.interval.end);
 
   age.save(function(err, age) {
-    res.redirect('/auth/ages');
+    if (req.params.age_id) {
+      Age.findById(req.params.age_id).exec(function(err, parent_age) {
+        parent_age.sub.push(age._id);
+        parent_age.save(function(err, parent_age) {
+          res.redirect('/auth/ages/' + parent_age._id + '/sub');
+        })
+      });
+    }
+    else {
+      res.redirect('/auth/ages');
+    }
   });
 }
 

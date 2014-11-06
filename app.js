@@ -123,8 +123,25 @@ app.route('/auth/ages/add')
 	 .post(checkAuth, a_ages.add_form);
 
 
-// === Admin @edit eras Route
+// === Admin @edit ages Route
 app.route('/auth/ages/:id/edit')
+	 .get(checkAuth, a_ages.edit)
+	 .post(checkAuth, a_ages.edit_form);
+
+
+// === Admin sub ages Route
+app.route('/auth/ages/:id/sub')
+	 .get(checkAuth, a_ages.list_sub)
+
+
+// === Admin @add sub ages Route
+app.route('/auth/ages/:age_id/sub/add')
+	 .get(checkAuth, a_ages.add)
+	 .post(checkAuth, a_ages.add_form);
+
+
+// === Admin @edit sub ages Route
+app.route('/auth/ages/:parent_age_id/sub/edit/:id')
 	 .get(checkAuth, a_ages.edit)
 	 .post(checkAuth, a_ages.edit_form);
 

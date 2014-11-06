@@ -19,6 +19,7 @@ var ageSchema = new Schema({
 			end: Date
 		}
 	},
+	parent: { type: Schema.Types.ObjectId, ref: 'Age' },
 	sub: [{ type: Schema.Types.ObjectId, ref: 'Age' }],
 	date: {type: Date, default: Date.now}
 });
