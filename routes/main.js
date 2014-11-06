@@ -49,15 +49,13 @@ exports.styles = function(req, res) {
 	})
 	.exec(function(err, ages) {
 		Age.populate(ages, {path: 'main sub.age', select: '-_id -date -__v -description -parent -sub'}, function(err, ages) {
-			res.render('main/styles.jade', {ages: ages});
-			// res.json(ages)
-			// async.forEach(ages, function(age, callback) {
-			// 	age.sub.sort(function(a, b) { return a.sub.interval.start > b.sub.interval.start});
-			// 	callback();
-			// }, function() {
-			// 	ages.sort(function(a, b) { return a.main.interval.start > b.main.interval.start});
-			// 	res.render('main/styles.jade', {ages: ages});
-			// });
+			async.forEach(ages, function(age, callback) {
+				age.sub.sort(function(a, b) { return a.age.meta.interval.start > b.age.meta.interval.start});
+				callback();
+			}, function() {
+				ages.sort(function(a, b) { return a.main.meta.interval.start > b.main.meta.interval.start});
+				res.render('main/styles.jade', {ages: ages});
+			});
 		});
 	});
 }

@@ -37,5 +37,5 @@ block content
 											a.object_block(href='/objects/' + object._id, style='background-image:url(' + object.image + ')')
 												.object_description
 													.object_description_inner
-														.object_title=object.i18n.title.get('ru')
+														.object_title=object.title[0].value
 														.object_date=object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear()
