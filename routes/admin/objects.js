@@ -4,7 +4,17 @@ var async = require('async');
 var appDir = path.dirname(require.main.filename);
 
 var Object = require('../../models/main.js').Object;
-var Era = require('../../models/main.js').Era;
+var Age = require('../../models/main.js').Age;
+
+
+// ------------------------
+// *** Handlers Block ***
+// ------------------------
+
+
+var set_date = function(year) {
+  return new Date(Date.UTC(year, 0, 1));
+}
 
 
 // ------------------------
@@ -25,8 +35,8 @@ exports.list = function(req, res) {
 
 
 exports.add = function(req, res) {
-  Era.find().where('sub').equals(false).populate('ages').exec(function(err, eras) {
-    res.render('auth/objects/add.jade', {eras: eras});
+  Age.find().where('parent').exists(false).populate('sub').exec(function(err, ages) {
+    res.render('auth/objects/add.jade', {ages: ages});
   });
 }
 
@@ -35,15 +45,24 @@ exports.add_form = function(req, res) {
   var files = req.files;
   var object = new Object();
 
-  object.title.ru = post.ru.title;
-  object.description.ru = post.ru.description;
+  object.title =[{
+    lg: 'ru',
+    value: post.ru.title
+  }];
+  object.description = [{
+    lg: 'ru',
+    value: post.ru.description
+  }];
 
-  object.history.era = post.history.era;
-  object.history.ages = post.history.ages;
+  object.ages.main = post.history.era;
+  object.ages.sub = post.history.ages;
 
-  object.meta.interval.start = new Date(Date.UTC(post.meta.interval.start, 1, 1));
-  object.meta.interval.end = new Date(Date.UTC(post.meta.interval.end, 1, 1));
-  object.meta.adress.ru = post.meta.adress.ru;
+  object.meta.interval.start = set_date(post.meta.interval.start);
+  object.meta.interval.end = set_date(post.meta.interval.end);
+  object.meta.adress = [{
+    lg: 'ru',
+    value: post.meta.adress.ru
+  }];
 
   var public_path = appDir + '/public';
 

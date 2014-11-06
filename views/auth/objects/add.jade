@@ -41,14 +41,14 @@ block content
 			input.interval_end(type="text", placeholder='Конец')
 			.separator_title Стиль:
 			select.era
-				each era in eras
-					option(value=era._id)= era.title.ru
+				each age in ages
+					option(value=age._id)= age.i18n.title.get('ru')
 			.separator_title Эпоха:
-			each era in eras
+			each age in ages
 				.ages
-					each age in era.ages
-						input.age(type='checkbox', value=age._id, disabled=true)
-						!= age.title.ru
+					each age_sub in age.sub
+						input.age(type='checkbox', value=age_sub._id, disabled=true)
+						!= age_sub.i18n.title.get('ru')
 			.submit Добавить
 		.form_images_second
 			.form_desc_title Изображения
