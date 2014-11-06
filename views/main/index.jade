@@ -29,11 +29,11 @@ block content
 							a(href='styles') Виртуальный музей
 
 		.periods
-			each era in eras
+			each age in ages
 				.period
-					.period_title=era.title.ru
+					.period_title=age.i18n.title.get('ru')
 					.period_line
 						.period_line_inner
 					.period_dates
-						.date0=era.interval.start.getUTCFullYear()
-						.date2=era.interval.end.getUTCFullYear()
+						.date0=age.meta.interval.start.getUTCFullYear()
+						.date2=age.meta.interval.end.getUTCFullYear()

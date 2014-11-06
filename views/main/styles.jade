@@ -12,30 +12,30 @@ block content_scripts
 block content_title
 	.navigate_block
 		.navigate_styles_block
-			each era in eras
+			each age in ages
 				.navigate_style_block
-					.navigate_style_title= era.era.title.ru
+					.navigate_style_title= age.main.i18n.title.get('ru')
 					.navigate_style_progress
 					.navigate_style_ages
-						each age in era.ages
-							.navigate_age= age.age.title.ru
+						each age_sub in age.sub
+							.navigate_age= age_sub.age.i18n.title.get('ru')
 
 block content
 	.styles_block
 		.styles_inner
-			each era in eras
+			each age in ages
 				.style_block
 					.style_block_inner
 						.style_inner_height
-							each age in era.ages
+							each age_sub in age.sub
 								.age_block
 									.age_header
 										.age_line
-										.age_title= age.age.title.ru
+										.age_title= age_sub.age.i18n.title.get('ru')
 									.age_objects
-										each object in age.objects
+										each object in age_sub.objects
 											a.object_block(href='/objects/' + object._id, style='background-image:url(' + object.image + ')')
 												.object_description
 													.object_description_inner
-														.object_title=object.title.ru
+														.object_title=object.i18n.title.get('ru')
 														.object_date=object.interval.start.getUTCFullYear() + ' - ' + object.interval.end.getUTCFullYear()

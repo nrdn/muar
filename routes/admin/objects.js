@@ -115,9 +115,9 @@ exports.add_form = function(req, res) {
 exports.edit = function(req, res) {
   var id = req.params.id;
 
-  Era.find().where('sub').equals(false).populate('ages').exec(function(err, eras) {
+  Age.find().where('parent').exists(false).populate('sub').exec(function(err, ages) {
     Object.findById(id).exec(function(err, object) {
-      res.render('auth/objects/edit.jade', {object: object, eras: eras});
+      res.render('auth/objects/edit.jade', {object: object, ages: ages});
     });
   });
 }

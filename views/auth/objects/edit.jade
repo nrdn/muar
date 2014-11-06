@@ -15,13 +15,13 @@ block content
 		.title РЕДАКТИРОВАТЬ ОБЪЕКТ
 		form(action="", method="post")
 			.form_title Название:
-			input.ru(type="text", name="ru[title]", value=object.title.ru)
+			input.ru(type="text", name="ru[title]", value=object.i18n.title.get('ru'))
 			input.en(type="text", name="en[title]", disabled)
 			.form_title Адрес:
-			input.ru(type="text", name="ru[adress]", value=object.meta.adress.ru)
+			input.ru(type="text", name="ru[adress]", value=object.meta.i18n.adress.get('ru'))
 			input.en(type="text", name="en[adress]", disabled)
 			.form_title Описание:
-			textarea.ru(name="ru[description]", rows="8",)=object.description.ru
+			textarea.ru(name="ru[description]", rows="8",)=object.i18n.description.get('ru')
 			textarea.en(name="en[description]", rows="8", disabled)
 			.form_title Интервал начало:
 			input.ru(type="text", name="interval[start]", value=object.meta.interval.start.getUTCFullYear())
@@ -29,13 +29,13 @@ block content
 			input.ru(type="text", name="interval[end]", value=object.meta.interval.end.getUTCFullYear())
 			.form_title Стиль:
 			select.glob(name='era')
-				each era in eras
-					option(value=era._id, selected=era._id.toString() == object.history.era.toString())= era.title.ru
-			each era in eras
+				each age in ages
+					option(value=age._id, selected=age._id.toString() == object.ages.main.toString())= age.i18n.title.get('ru')
+			each age in ages
 				span.sub
-					each age in era.ages
-						input(type='checkbox', name='ages', value=age._id, disabled=true)
-						!= age.title.ru
+					each age_sub in age.sub
+						input(type='checkbox', name='ages', value=age_sub._id, disabled=true)
+						!= age_sub.i18n.title.get('ru')
 			//- .form_title Фото:
 			//- input(type="file", name="photo")
 			br
