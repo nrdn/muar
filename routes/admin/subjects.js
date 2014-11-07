@@ -42,7 +42,6 @@ exports.add = function(req, res) {
 exports.add_form = function(req, res) {
   var post = req.body;
   var files = req.files;
-  var files = req.files;
   var subject = new Subject();
 
   subject.title =[{
@@ -82,30 +81,40 @@ exports.add_form = function(req, res) {
 			gm()
 				.in(files.image.path)
 				.in('-resize', item.size)
-				.write(appDir + '/public/tiles/' + item.level + '/original.jpg', function(err) {
+				.write(appDir + '/public/tiles/' + item.level + '/original.mpc', function(err) {
 					gm()
-						.in(appDir + '/public/tiles/' + item.level + '/original.jpg')
-						.in('-crop', '100x100')
+						.in(appDir + '/public/tiles/' + item.level + '/original.mpc')
+						.in('-crop', '256x256')
 						.in('-set', 'filename:tile')
-						.in('%[fx:page.y/100]_%[fx:page.x/100]')
+						.in('%[fx:page.y/256]_%[fx:page.x/256]')
 						.write(appDir + '/public/tiles/' + item.level + '/image_tile_%[filename:tile].jpg', function(err) {
-							fs.unlink(appDir + '/public/tiles/' + item.level + '/original.jpg', function() {
-								callback();
+							fs.unlink(appDir + '/public/tiles/' + item.level + '/original.mpc', function() {
+								fs.unlink(appDir + '/public/tiles/' + item.level + '/original.cache', function() {
+									callback();
+								});
 							});
 						});
 				});
 			});
 		}, function() {
-			res.redirect('back');
+		  subject.save(function(err, subject) {
+		  	Object.findById(req.params.object_id).exec(function(err, object) {
+		  		object.subjects.push(subject._id);
+		  		object.save(function(err, object) {
+		  			res.redirect('/auth');
+		  		});
+		  	});
+		  });
 		});
 
 
-  subject.save(function(err, subject) {
-  	Object.findById(req.params.object_id).exec(function(err, object) {
-  		object.subjects.push(subject._id);
-  		object.save(function(err, object) {
-  			res.redirect('/auth');
-  		});
-  	});
-  });
+
+  // subject.save(function(err, subject) {
+  // 	Object.findById(req.params.object_id).exec(function(err, object) {
+  // 		object.subjects.push(subject._id);
+  // 		object.save(function(err, object) {
+  // 			res.redirect('/auth');
+  // 		});
+  // 	});
+  // });
 }

@@ -5,7 +5,7 @@ $(document).ready(function() {
 	minZoom: 1,
 	maxZoom: 4,
 	attribution: '',
-	tileSize: '100',
+	tileSize: '256',
 	tms: false,
 	continuousWorld: true
 	}).addTo(map);
