@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var async = require('async');
+var gm = require('gm').subClass({ imageMagick: true });
 var appDir = path.dirname(require.main.filename);
 
 var Object = require('../../models/main.js').Object;

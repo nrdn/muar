@@ -13,7 +13,7 @@ block content
 	.form_block
 		a.back_link(href='/auth/architects') < Назад
 		.title РЕДАКТИРОВАТЬ АРХИТЕКТОРА
-		form(action="", method="post")
+		form(action="", method="post", enctype="multipart/form-data")
 			.form_title Название:
 			input.ru(type="text", name="ru[name]", value=architect.i18n.name.get('ru'))
 			input.en(type="text", name="en[name]", disabled)
@@ -24,6 +24,8 @@ block content
 			input.ru(type="text", name="interval[start]", value=architect.meta.interval.start.getUTCFullYear())
 			.form_title Интервал конец:
 			input.ru(type="text", name="interval[end]", value=architect.meta.interval.end.getUTCFullYear())
+			.form_title Фото:
+			input(type="file", name="photo")
 			br
 			br
 			input(type='submit', value='сохранить')
