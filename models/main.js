@@ -61,10 +61,11 @@ var subjectSchema = new Schema({
 			end: Date
 		}
 	},
-	images: [{
-		description: String,
-		path: String
-	}],
+	image: {
+		original: String,
+		thumb: String,
+		tiles: String
+	},
 	date: {type: Date, default: Date.now}
 });
 

@@ -1,0 +1,25 @@
+extends ../../layout
+
+block title
+	title ЕДИНИЦЫ ХРАНЕНИЯ
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
+
+block content_scripts
+	script(type='text/javascript', src='/build/js/lists.js')
+
+block content
+	a.back_link(href='/auth') < Назад
+	.title ЕДИНИЦЫ ХРАНЕНИЯ
+	br
+	a.add(href='/auth/objects/' + object._id + '/subjects/add') добавить единицу хранения
+	br
+	br
+	.main_menu_block
+		if (object.subjects.length > 0)
+			each subject in object.subjects
+				.subject
+					a.rm_subject(href='#', id=subject._id)= 'удалить '
+					!=' | '
+					a(href='/auth/objects/' + object._id + '/subjects/edit/' + subject._id)= subject.i18n.title.get('ru')

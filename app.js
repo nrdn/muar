@@ -60,6 +60,7 @@ var files = require('./routes/files.js');
 
 var a_ages = require('./routes/admin/ages.js');
 var a_objects = require('./routes/admin/objects.js');
+var a_subjects = require('./routes/admin/subjects.js');
 var a_architects = require('./routes/admin/architects.js');
 var options = require('./routes/admin/options.js');
 var test = require('./routes/admin/test.js');
@@ -178,6 +179,24 @@ app.route('/auth/architects/edit/:id')
 	 .post(checkAuth, a_architects.edit_form);
 
 
+// === Admin subjects Route
+app.route('/auth/objects/:object_id/subjects').get(checkAuth, a_subjects.list);
+
+
+// === Admin @add objects Route
+app.route('/auth/objects/:object_id/subjects/add')
+	 .get(checkAuth, a_subjects.add)
+	 .post(checkAuth, a_subjects.add_form);
+
+
+// === Admin @edit objects Route
+app.route('/auth/objects/:object_id/subjects/edit/:subject_id')
+	 // .get(checkAuth, a_subjects.edit)
+	 // .post(checkAuth, a_subjects.edit_form);
+
+
+
+
 // ------------------------
 // *** Auth Routers Block ***
 // ------------------------
@@ -239,22 +258,12 @@ app.route('/preview')
 // ------------------------
 
 
-app.route('/test/json')
-	 .get(test.json)
-
-app.route('/test/page')
-	 .get(test.page)
-
 app.route('/test/search')
-	 .get(test.search)
+	 .get(test.search_page)
+	 .post(test.search)
 
-
-app.route('/tiles_upload')
-	 .get(checkAuth, test.tiles_upload)
-	 .post(test.tiles_upload_form)
-
-app.route('/tiles_test')
-	 .get(test.tiles_test)
+app.route('/test/tiles')
+	 .get(test.tiles)
 
 
 // ------------------------

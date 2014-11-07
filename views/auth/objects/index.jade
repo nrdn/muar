@@ -22,3 +22,5 @@ block content
 				a.rm_object(href='#', id=object._id)= 'удалить '
 				!=' | '
 				a(href='/auth/objects/edit/' + object._id)= object.i18n.title.get('ru')
+				!=' --> '
+				a(href='/auth/objects/' + object._id + '/subjects') единицы хранения
