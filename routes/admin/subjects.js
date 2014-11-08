@@ -1,6 +1,8 @@
 var gm = require('gm').subClass({ imageMagick: true });
 var path = require('path');
 var async = require('async');
+var del = require('del');
+var mkdirp = require('mkdirp');
 var fs = require('fs');
 var appDir = path.dirname(require.main.filename);
 
@@ -56,6 +58,9 @@ exports.add_form = function(req, res) {
   subject.meta.interval.start = set_date(post.interval.start);
   subject.meta.interval.end = set_date(post.interval.end);
 
+  subject.image.original = '/images/subjects' + subject._id + '/original.jpg';
+  subject.image.thumb = '/images/subjects' + subject._id + '/thumb.jpg';
+  subject.image.tiles = '/images/subjects' + subject._id + '/tiles';
 
 	// gm(files.image.path).size({bufferStream: true}, function(err, size) {
 	//   this.resize(size.width / 2, size.height / 2);
@@ -74,24 +79,25 @@ exports.add_form = function(req, res) {
 	// 	res.redirect('back');
 	// });
 
-	var arr = [{ size: '100%', level: '4' }, { size: '50%', level: '3' }, { size: '25%', level: '2' }, { size: '12.5%', level: '1' }];
+	var zoom = [{ size: '100%', level: '4' }, { size: '50%', level: '3' }, { size: '25%', level: '2' }, { size: '12.5%', level: '1' }];
 
-	async.forEach(arr, function(item, callback) {
-		fs.mkdir(appDir + '/public/tiles/' + item.level, function() {
+	mkdirp.sync(appDir + '/public/images/subjects/' + subject._id + '/tiles');
+
+	async.forEach(zoom, function(item, callback) {
+		var level_folder = appDir + '/public/images/subjects/' + subject._id + '/tiles/' + item.level;
+		fs.mkdir(level_folder, function() {
 			gm()
 				.in(files.image.path)
 				.in('-resize', item.size)
-				.write(appDir + '/public/tiles/' + item.level + '/original.mpc', function(err) {
+				.write(level_folder + '/original.mpc', function(err) {
 					gm()
-						.in(appDir + '/public/tiles/' + item.level + '/original.mpc')
+						.in(level_folder + '/original.mpc')
 						.in('-crop', '256x256')
 						.in('-set', 'filename:tile')
 						.in('%[fx:page.y/256]_%[fx:page.x/256]')
-						.write(appDir + '/public/tiles/' + item.level + '/image_tile_%[filename:tile].jpg', function(err) {
-							fs.unlink(appDir + '/public/tiles/' + item.level + '/original.mpc', function() {
-								fs.unlink(appDir + '/public/tiles/' + item.level + '/original.cache', function() {
-									callback();
-								});
+						.write(level_folder + '/image_tile_%[filename:tile].jpg', function(err) {
+							del([level_folder + '/original.mpc', level_folder + '/original.cache'], function() {
+								callback();
 							});
 						});
 				});
