@@ -80,13 +80,15 @@ exports.add_form = function(req, res) {
 	// });
 
 	var zoom = [{ size: '100%', level: '4' }, { size: '50%', level: '3' }, { size: '25%', level: '2' }, { size: '12.5%', level: '1' }];
+	var subject_folder = appDir + '/public/images/subjects/' + subject._id;
 
-	mkdirp.sync(appDir + '/public/images/subjects/' + subject._id + '/tiles');
+	mkdirp.sync(subject_folder + '/tiles');
+	fs.renameSync(files.image.path, subject_folder + '/original.jpg');
 
 	async.forEach(zoom, function(item, callback) {
-		var level_folder = appDir + '/public/images/subjects/' + subject._id + '/tiles/' + item.level;
+		var level_folder = subject_folder + '/tiles/' + item.level;
 		fs.mkdir(level_folder, function() {
-			gm()
+			gm(subject_folder + '/original.jpg')
 				.in(files.image.path)
 				.in('-resize', item.size)
 				.write(level_folder + '/original.mpc', function(err) {
