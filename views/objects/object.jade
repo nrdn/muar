@@ -12,38 +12,20 @@ block content_scripts
 
 
 block content_title
-
+	.object_navigate_block
+		.object_navigate.description Описание
+		.object_navigate.images Изображения
+		.object_navigate.subjects Единицы хранения
+		.object_navigate.model 3d
 
 
 block content
-	.object_container
-
-		.project_image_main.project_image_second(style='background-image:url(' + object.images.main + ')')
-
-			.project_image_main_inner.image_animate
-				h1.project_title= object.title.ru
+	.object_description_block
+		.description_inner
+			.description_column= object.i18n.description.get('ru')
+			.description_column
+	.object_images_block
 		each image, i in object.images.second
-			.project_image_second(style='background-image:url(' + image.path + ')')
-
-		.project_description_block
-			.project_description
-				.project_description_inner_block
-					h1.project_title2= object.title.ru
-					.project_description_inner_block_col
-						.project_description_inner_block_header Описание
-						.project_description_inner_block_description=object.description.ru
-					.project_description_inner_block_col
-						.project_description_inner_block_header Информация
-						.project_description_inner_block_description=object.description.ru
-
-
-	.object_images_types
-		.object_images_pictures Изображения
-		.object_images_museum Единицы хранения
-		.object_images_3d 3d
-	.project_images_second_block
-		.images_second_column
-			.image_second_block.image_main_prev(style='background-image:url(' + object.images.main + ')')
-			each image in object.images.second
-				.image_second_block(style='background-image:url(' + image.path + ')')
-					//.image_second_description=image.description
+			.object_image(style='background-image:url(' + image.path + ')')
+	.object_subjects_block
+	.object_3d_block

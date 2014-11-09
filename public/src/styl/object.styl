@@ -1,175 +1,42 @@
-.header_block
-  position fixed
-  z-index 1000
-  top 0
-
-.header_block_inner
-  background transparent
-
-
-.object_container
-	position absolute
-	top 0
-	bottom 128px
-	left 0
-	right 0
-	//overflow hidden;
-	display block
-
-.project_image_second
-	height 100%
+.content_block
 	width 100%
-	background-position 50%
-	background-repeat no-repeat
-	background-size cover
-	//overflow hidden
-	z-index 1
-	background-attachment fixed
-	display block
-	position absolute
-	top 0
-	z-index -1
-	margin-top -100%
 
-.project_image_main
-	display table
-	z-index 0
-	margin-top 0
-
-.image_animate
-	transition-timing-function ease-out
-	transition-duration 0.8s
-	transition-property margin
-
-.project_image_main_inner
-	vertical-align middle
-	display table-cell
-	height inherit
-	width 100%
-	text-align center
-
-.project_title, .project_title2
-	font-size 3rem
-	line-height initial
-	font-family ma_unitwmedium
-	font-weight normal
-
-.project_title
-	display inline-block
-	text-align center
-	//width 100%
+.object_navigate_block
 	width 1280px
-	color: #fff
-	text-shadow 0 0 1px #000
-	border-bottom: 1px solid;
+	margin 10px auto
+	position relative
+	overflow hidden
 
-.project_category
-	font-size 10pt
-	line-height 12pt
-	color #F06E30
-	margin-top 5px
-
-.project_description_block
-	width 100%
-	top 100%
-	height 100%
-	background #fff
-	left 0
-	position absolute
-	padding-bottom 130px
-
-.project_description
-	width 1280px
-	margin 0 auto
-	height 100%
-	top 120px
-	right 0
-	//background rgba(0,0,0,0.4)
-	font-size 16px
-	line-height 17px
-	z-index 10
-
-.project_description_inner_block
-	padding 100px 0 120px 0
-	font-size 20px
-	line-height 23px
-
-.project_description_inner_block_col
-	width 48%
+.object_navigate
 	float left
+	margin-right 15px
+	font-size 24px
+	// &.model
+	// 	width 35px
+	// 	height 35px
+	// 	color red
+	// 	border-radius 48px
+	// 	border 2px solod red
+	// 	font-size 20px
+	&:hover
+		color red
+		cursor pointer
 
-.project_description_inner_block_col
-	margin-right 2%
-
-.project_description_inner_block_col:last-child
-	margin-right 0
-
-.project_description_inner_block_header
-	font-size 29px
-	line-height 24pt
-	margin-bottom 10px
-	border-bottom 1px solid #333
-
-.object_images_types
-	position fixed
-	bottom 135px
-	left 0
-	z-index 20
-	color #fff
+.object_description_block
 	width 100%
-	text-align center
+	min-height 120px
+	z-index 999
+	background-color white
+	position absolute
+	display none
 
-.object_images_types div
-	display inline-block
-	white-space nowrap
-	&:hover
-		text-decoration underline
-		cursor pointer
-	&:after
-		content '|'
-		display inline-block
-		padding 0 7px
+.description_inner
+	width 1280px
+	position relative
+	margin 0 auto
 
-.object_images_types .object_images_museum
-	&:after
-		content ''
 
-.object_images_types .object_images_3d
-	color #f00
-	border-radius 50%
-	border 1px solid #f00
-	padding 8px
-	line-height 17px
-	&:after
-		display none
-
-.project_images_second_block
-	//position absolute
-	position fixed
-	bottom 0px
-	left 0
-	right 0
-	height 120px
-	overflow auto
-	background #fff
-	padding 4px 0
-	border-top 2px solid #f00
-
-.images_second_column
-	white-space nowrap
-	font-size 0
-	line-height 0
-
-.image_second_block
-	width 200px
-	height 120px
-	margin-right 4px
-	display inline-block
-	background-size cover
-	&:hover
-		cursor pointer
-
-.image_second_description
-	width 200px
-	font-size 18px
-	line-height 21px
+.object_images_block, .object_image
+	width 100%
+	height 100%
+	position absolute
