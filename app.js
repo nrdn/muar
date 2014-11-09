@@ -1,7 +1,3 @@
-var fs = require('fs');
-var gm = require('gm').subClass({ imageMagick: true });
-var async = require('async');
-
 var mongoose = require('mongoose');
 		mongoose.connect('localhost', 'main');
 
