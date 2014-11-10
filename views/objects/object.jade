@@ -19,16 +19,18 @@ block content_title
 		.object_navigate.images Изображения
 		.object_navigate.subjects Единицы хранения
 		.object_navigate.model 3d
-
+	.object_images_navigate
+		each image in object.images.second
+			.object_image_navigate(style='background-image:url(' + image.path + ')')
+	.object_subjects_navigate
+		each subject in object.subjects
+			//- .object_subject_navigate(path=subject._id, style='background-image:url(' + subject.image.thumb + ')')
 
 block content
 	.object_description_block
 		.description_inner
 			.description_column= object.i18n.description.get('ru')
 			.description_column
-	.object_images_navigate
-		each image, i in object.images.second
-			.object_image_navigate(style='background-image:url(' + image.path + ')')
 	.object_images_block
 		each image, i in object.images.second
 			.object_image(style='background-image:url(' + image.path + ')')
