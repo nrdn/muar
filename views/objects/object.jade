@@ -24,6 +24,9 @@ block content
 		.description_inner
 			.description_column= object.i18n.description.get('ru')
 			.description_column
+	.object_images_navigate
+		each image, i in object.images.second
+			.object_image_navigate(style='background-image:url(' + image.path + ')')
 	.object_images_block
 		each image, i in object.images.second
 			.object_image(style='background-image:url(' + image.path + ')')
