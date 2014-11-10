@@ -50,25 +50,8 @@
 	height 100%
 	background-repeat no-repeat
 	background-position center
+	background-repeat no-repeat
 	position absolute
-
-.object_images_navigate
-	position absolute
-	width 100%
-	overflow hidden
-	background-color white
-	z-index 9999
-	display none
-
-.object_image_navigate
-	width 220px
-	height 120px
-	margin 5px 0 5px 5px
-	float left
-	background-size cover
-	background-position center
-	&:hover
-		cursor pointer
 
 .object_subjects_block
 	position absolute
@@ -76,3 +59,23 @@
 	top 90px
 	bottom 0
 	display none
+
+.object_slide_navigate
+	position absolute
+	width 100%
+	background-color white
+	z-index 9999
+	display none
+	overflow auto
+	padding-bottom 5px
+
+.object_slide_item
+	width 16%
+	height 160px
+	margin 5px 0 0px 5px
+	float left
+	background-size cover
+	background-position center
+	background-repeat no-repeat
+	&:hover
+		cursor pointer

@@ -19,12 +19,12 @@ block content_title
 		.object_navigate.images Изображения
 		.object_navigate.subjects Единицы хранения
 		.object_navigate.model 3d
-	.object_images_navigate
+	.object_slide_navigate.images_slide
 		each image in object.images.second
-			.object_image_navigate(style='background-image:url(' + image.path + ')')
-	.object_subjects_navigate
+			.object_slide_item.images(style='background-image:url(' + image.path + ')')
+	.object_slide_navigate.subjects_slide
 		each subject in object.subjects
-			//- .object_subject_navigate(path=subject._id, style='background-image:url(' + subject.image.thumb + ')')
+			//- .object_slide_item(path=subject._id, style='background-image:url(' + subject.image.thumb + ')')
 
 block content
 	.object_description_block
