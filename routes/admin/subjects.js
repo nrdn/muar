@@ -98,9 +98,18 @@ exports.add_form = function(req, res) {
 						.in('-set', 'filename:tile')
 						.in('%[fx:page.y/256]_%[fx:page.x/256]')
 						.write(level_folder + '/image_tile_%[filename:tile].jpg', function(err) {
-							del([level_folder + '/original.mpc', level_folder + '/original.cache'], function() {
-								callback();
-							});
+							if (item.level == '1') {
+								gm(level_folder + '/original.mpc').write(subject_folder + '/thumb.jpg', function() {
+									del([level_folder + '/original.mpc', level_folder + '/original.cache'], function() {
+										callback();
+									});
+								});
+							}
+							else {
+								del([level_folder + '/original.mpc', level_folder + '/original.cache'], function() {
+									callback();
+								});
+							}
 						});
 				});
 			});
