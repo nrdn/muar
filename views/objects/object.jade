@@ -5,9 +5,11 @@ block title
 
 
 block content_style
+	link(rel='stylesheet', type='text/css', href='/build/libs/css/leaflet.css' + version)
 	link(rel='stylesheet', type='text/css', href='/build/css/object.css' + version)
 
 block content_scripts
+	script(type='text/javascript', src='/build/libs/js/leaflet.js' + version)
 	script(type='text/javascript', src='/build/js/object.js' + version)
 
 
@@ -30,5 +32,5 @@ block content
 	.object_images_block
 		each image, i in object.images.second
 			.object_image(style='background-image:url(' + image.path + ')')
-	.object_subjects_block
+	.object_subjects_block#subjects_view
 	.object_3d_block
