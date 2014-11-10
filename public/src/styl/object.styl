@@ -3,7 +3,7 @@
 
 .object_navigate_block
 	width 1280px
-	margin 10px auto
+	margin 5px auto
 	position relative
 	overflow hidden
 
@@ -11,13 +11,20 @@
 	float left
 	margin-right 15px
 	font-size 24px
-	// &.model
-	// 	width 35px
-	// 	height 35px
-	// 	color red
-	// 	border-radius 48px
-	// 	border 2px solod red
-	// 	font-size 20px
+	padding-top 5px
+	&.model
+		width 30px
+		height 25px
+		margin-right 0px
+		color red
+		text-align center
+		border-radius 60px
+		border 1px solid red
+		font-size 16px
+		position relative
+		&:hover
+			color white
+			background-color red
 	&:hover
 		color red
 		cursor pointer
@@ -39,4 +46,6 @@
 .object_images_block, .object_image
 	width 100%
 	height 100%
+	background-repeat no-repeat
+	background-position center
 	position absolute
