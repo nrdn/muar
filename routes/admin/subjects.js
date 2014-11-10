@@ -58,9 +58,9 @@ exports.add_form = function(req, res) {
   subject.meta.interval.start = set_date(post.interval.start);
   subject.meta.interval.end = set_date(post.interval.end);
 
-  subject.image.original = '/images/subjects' + subject._id + '/original.jpg';
-  subject.image.thumb = '/images/subjects' + subject._id + '/thumb.jpg';
-  subject.image.tiles = '/images/subjects' + subject._id + '/tiles';
+  subject.image.original = '/images/subjects/' + subject._id + '/original.jpg';
+  subject.image.thumb = '/images/subjects/' + subject._id + '/thumb.jpg';
+  subject.image.tiles = '/images/subjects/' + subject._id + '/tiles';
 
 	// gm(files.image.path).size({bufferStream: true}, function(err, size) {
 	//   this.resize(size.width / 2, size.height / 2);

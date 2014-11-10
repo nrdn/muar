@@ -24,7 +24,7 @@ block content_title
 			.object_slide_item.images(style='background-image:url(' + image.path + ')')
 	.object_slide_navigate.subjects_slide
 		each subject in object.subjects
-			//- .object_slide_item(path=subject._id, style='background-image:url(' + subject.image.thumb + ')')
+			.object_slide_item.subjects(path=subject._id, style='background-image:url(' + subject.image.thumb + ')')
 
 block content
 	.object_description_block

@@ -7,12 +7,20 @@ $(document).ready(function() {
 		$('.images_slide').show();
 	});
 
+
 	$('.subjects').on('click', function(event) {
+		$('.subjects_slide').show();
+	});
+
+
+	$('.object_slide_item.subjects').on('click', function(event) {
 		$('.object_images_block').hide();
 		$('.object_subjects_block').show();
+
+		var path = $(this).attr('path');
 		var map = L.map('subjects_view').setView([0, 0], 1);
 
-		L.tileLayer('/tiles/{z}/image_tile_{y}_{x}.jpg',{
+		L.tileLayer('/images/subjects/' + path + '/tiles/{z}/image_tile_{y}_{x}.jpg', {
 			minZoom: 1,
 			maxZoom: 4,
 			attribution: '',
@@ -31,7 +39,7 @@ $(document).ready(function() {
 	});
 
 	$(document).mouseup(function (event) {
-		var container = $('.object_description_block, .images_slide');
+		var container = $('.object_description_block, .images_slide, .subjects_slide');
 
 		if (!container.is(event.target)
 			&& container.has(event.target).length === 0)
