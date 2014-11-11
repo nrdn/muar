@@ -53,6 +53,11 @@
 	background-repeat no-repeat
 	position absolute
 
+.object_image
+	display none
+	&:nth-child(1)
+		display block
+
 .object_subjects_block
 	position absolute
 	width 100%
@@ -67,18 +72,24 @@
 	z-index 9999
 	display none
 	overflow auto
-	padding-bottom 5px
+
+.slide_navigate_inner
+	width 1280px
+	overflow hidden
+	position relative
+	padding-top 10px
+	margin 0px auto
 
 .object_slide_item
-	width 16.4%
+	width 240px
 	height 160px
-	margin-right 0.3%
-	margin-bottom 0.3%
+	margin-right 20px
+	margin-bottom 10px
 	float left
 	background-size cover
 	background-position center
 	background-repeat no-repeat
-	&:nth-child(6n)
+	&:nth-child(5n)
 		margin-right 0
 	&:hover
 		cursor pointer
