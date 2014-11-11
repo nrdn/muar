@@ -8,11 +8,23 @@ $(document).ready(function() {
 			}
 		},
 		getResult: function (result) {
-			console.log(result);
+			$.post('/search', {search: result}).done(function(data) {
+				$('.objects_context, .architects_context, .subjects_context').hide().children('.context_results').empty();
+
+				data.objects.forEach(function(object) {
+					var search_result = $('<a/>', {'class': 'search_result', 'href': '/objects/' + object._id, 'text': object.title[0].value});
+					$('.objects_context').show().children('.context_results').empty().append(search_result);
+				});
+
+				data.architects.forEach(function(architect) {
+					var search_result = $('<a/>', {'class': 'search_result', 'href': '/architects/' + architect._id, 'text': architect.name[0].value});
+					$('.architects_context').show().children('.context_results').empty().append(search_result)
+				});
+			});
 		}
 	}
 
-	$('.search')
+	$('.search_field')
 	.on('keyup change', function(event) {
 		search.val = $(this).val();
 	})
@@ -23,5 +35,12 @@ $(document).ready(function() {
 	})
 	.on('focusout', function(event) {
 		clearInterval(search.interval);
+	});
+
+
+	$('.menu_item.search').click(function(event) {
+		$('.content_title_block').hide();
+		$('.content_search_block').show();
+		$('.search_field').focus()
 	});
 });

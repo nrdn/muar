@@ -59,7 +59,6 @@ var a_objects = require('./routes/admin/objects.js');
 var a_subjects = require('./routes/admin/subjects.js');
 var a_architects = require('./routes/admin/architects.js');
 var options = require('./routes/admin/options.js');
-var test = require('./routes/admin/test.js');
 
 
 // ------------------------
@@ -103,6 +102,9 @@ app.route('/architects/:id').get(architects.architect);
 
 // === Locale Route
 app.route('/lang/:locale').get(main.locale);
+
+// === Search Route
+app.route('/search').post(main.search);
 
 
 // ------------------------
@@ -247,19 +249,6 @@ app.route('/robots.txt').get(files.robots);
 
 app.route('/preview')
 	 .post(options.preview)
-
-
-// ------------------------
-// *** Test Routers Block ***
-// ------------------------
-
-
-app.route('/test/search')
-	 .get(test.search_page)
-	 .post(test.search)
-
-app.route('/test/tiles')
-	 .get(test.tiles)
 
 
 // ------------------------

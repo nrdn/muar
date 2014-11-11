@@ -1,5 +1,6 @@
 var Age = require('../models/main.js').Age;
 var Object = require('../models/main.js').Object;
+var Architect = require('../models/main.js').Architect;
 var async = require('async');
 
 exports.locale = function(req, res) {
@@ -10,6 +11,16 @@ exports.locale = function(req, res) {
 exports.index = function(req, res) {
 	Age.find().where('parent').exists(false).sort('interval.start').exec(function(err, ages) {
 		res.render('main', {ages: ages});
+	});
+}
+
+exports.search = function(req, res) {
+	var search = req.body.search;
+
+	Architect.find({ $text: { $search: search } }, { score : { $meta: 'textScore' } }).exec(function(err, architects) {
+		Object.find({ $text: { $search: search } }, { score : { $meta: 'textScore' } }).exec(function(err, objects) {
+			res.send({architects: architects, objects: objects});
+		});
 	});
 }
 

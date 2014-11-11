@@ -24,6 +24,19 @@ html
 				a(href='/test/tiles') Тайлы (beta)
 				a(href='/test/search') Поиск (beta)
 			block content_title
+		.content_search_block
+			.search_inner
+				input.search_field(type='text', placeholder='Найти...')
+				.search_result
+					.objects_context
+						.context_title Объекты
+						.context_results
+					.architects_context
+						.context_title Архитекторы
+						.context_results
+					.subjects_context
+						.context_title Единицы хранения
+						.context_results
 		.content_block
 			block content
 		.footer_block
