@@ -41,6 +41,17 @@ $(document).ready(function() {
 	$('.menu_item.search').click(function(event) {
 		$('.content_title_block').hide();
 		$('.content_search_block').show();
-		$('.search_field').focus()
+		$('.search_field').focus();
+	});
+
+	$(document).mouseup(function (event) {
+		var container = $('.content_search_block');
+
+		if (!container.is(event.target)
+			&& container.has(event.target).length === 0)
+		{
+				container.hide();
+				$('.content_title_block').show();
+		}
 	});
 });
