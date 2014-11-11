@@ -30,7 +30,7 @@ $(document).ready(function() {
 
 	$('.object_slide_item.images').on('click', function(event) {
 		var index = $(this).index();
-		// $('.images_slide').hide();
+		$('.images_slide').hide();
 		$('.object_images_block').show();
 		$('.object_subjects_block').hide();
 		$('.object_image').hide().eq(index).show();
