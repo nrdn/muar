@@ -34,3 +34,12 @@
                  url('/fonts/maunitlightitalicweb-webfont.woff') format('woff'),
                  url('/fonts/maunitlightitalicweb-webfont.ttf') format('truetype');
 }
+@font-face {
+    font-family: 'menu_icons';
+    font-weight: normal;
+    font-style: normal;
+    src: url('/fonts/icons/menu.eot');
+    src: url('/fonts/icons/menu.eot#iefix') format('embedded-opentype'),
+                 url('/fonts/icons/menu.woff') format('woff'),
+                 url('/fonts/icons/menu.ttf') format('truetype');
+}
