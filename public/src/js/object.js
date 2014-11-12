@@ -12,9 +12,7 @@ $(document).ready(function() {
 
 	$('.object_navigate.subjects').on('click', function(event) {
 		$('.subjects_slide').show();
-		// var subjects = $('.object_slide_item.subjects').map(function() {
-		// 	return $(this).attr('path');
-		// });
+
 		subjectsGroup = L.layerGroup();
 
 		$('.object_slide_item.subjects').each(function() {
@@ -29,6 +27,7 @@ $(document).ready(function() {
 				continuousWorld: true
 			});
 
+			layer._leaflet_id = path;
 			subjectsGroup.addLayer(layer);
 		});
 	});
@@ -38,11 +37,10 @@ $(document).ready(function() {
 		$('.object_subjects_block').show();
 
 		var path = $(this).attr('path');
-		var layers = subjectsGroup.getLayer(22);
-		console.log(layers)
-		// map.eachLayer(function(layer) {
-		// 	console.log(layer)
-		// });
+		var currentLayer = subjectsGroup.getLayer(path);
+
+		map.addLayer(currentLayer);
+
 	});
 
 	$('.object_slide_item.images').on('click', function(event) {
