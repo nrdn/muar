@@ -1,6 +1,6 @@
 $(document).ready(function() {
-	var map = L.map('subjects_view').setView([0, 0], 1);
 	var subjectsGroup;
+	var map;
 
 	$('.description').on('click', function(event) {
 		$('.object_description_block').show();
@@ -39,7 +39,13 @@ $(document).ready(function() {
 		var path = $(this).attr('path');
 		var currentLayer = subjectsGroup.getLayer(path);
 
-		map.addLayer(currentLayer);
+		if (map == undefined) {
+			map = L.map('subjects_view').setView([0, 0], 1);
+			map.addLayer(currentLayer);
+		}
+		else {
+			map.addLayer(currentLayer);
+		}
 
 	});
 
