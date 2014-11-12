@@ -3,11 +3,11 @@ $(document).ready(function() {
 	var map;
 	var oldLayer;
 
-	$('.description').on('click', function(event) {
+	$('.object_navigate.description').on('click', function(event) {
 		$('.object_description_block').show();
 	});
 
-	$('.images').on('click', function(event) {
+	$('.object_navigate.images').on('click', function(event) {
 		$('.images_slide').show();
 	});
 
@@ -46,7 +46,7 @@ $(document).ready(function() {
 			oldLayer = currentLayer;
 		}
 		else {
-			map.removeLayer(oldLayer).addLayer(currentLayer);
+			map.setView([0, 0], 3).removeLayer(oldLayer).addLayer(currentLayer);
 			oldLayer = currentLayer;
 		}
 
