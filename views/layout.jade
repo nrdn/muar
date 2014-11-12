@@ -21,12 +21,11 @@ html
 				//- a(href='/auth/subjects') Единицы хранения
 				a(href='/auth/architects') Архитекторы
 				a(href='/auth/categorys') Категории
-				a(href='/test/tiles') Тайлы (beta)
-				a(href='/test/search') Поиск (beta)
 			block content_title
 		.content_search_block
 			.search_inner
-				input.search_field(type='text', placeholder='Найти...')
+				.search_title Найти:
+				input.search_field(type='text', placeholder='...')
 				.search_result
 					.objects_context
 						.context_title Объекты
