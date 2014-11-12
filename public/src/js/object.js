@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	var map = L.map('subjects_view').setView([0, 0], 1);
+	var subjectsGroup;
 
 	$('.description').on('click', function(event) {
 		$('.object_description_block').show();
@@ -11,17 +12,24 @@ $(document).ready(function() {
 
 	$('.object_navigate.subjects').on('click', function(event) {
 		$('.subjects_slide').show();
+		// var subjects = $('.object_slide_item.subjects').map(function() {
+		// 	return $(this).attr('path');
+		// });
+		subjectsGroup = L.layerGroup();
+
 		$('.object_slide_item.subjects').each(function() {
 			var path = $(this).attr('path');
 
-			L.tileLayer('/images/subjects/' + path + '/tiles/{z}/image_tile_{y}_{x}.jpg', {
+			var layer = L.tileLayer('/images/subjects/' + path + '/tiles/{z}/image_tile_{y}_{x}.jpg', {
 				minZoom: 1,
 				maxZoom: 4,
 				attribution: '',
 				tileSize: '256',
 				tms: false,
 				continuousWorld: true
-			}).addTo(map);
+			});
+
+			subjectsGroup.addLayer(layer);
 		});
 	});
 
@@ -30,7 +38,7 @@ $(document).ready(function() {
 		$('.object_subjects_block').show();
 
 		var path = $(this).attr('path');
-		var layers = L.getLayers();
+		var layers = subjectsGroup.getLayer(22);
 		console.log(layers)
 		// map.eachLayer(function(layer) {
 		// 	console.log(layer)
