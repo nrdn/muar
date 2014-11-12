@@ -35,7 +35,7 @@ $(document).ready(function() {
 			'scrollLeft': +style_index * $('.styles_block').width()
 		}, 400);
 	}
-	stylesSlide()
+	stylesSlide();
 
 	$(window).on('hashchange', stylesSlide);
 

@@ -126,7 +126,7 @@ $(document).ready(function() {
 		var history = {
 			era: era,
 			ages: ages_submit
-		}
+		};
 
 		var meta = {
 			interval: {
@@ -136,7 +136,7 @@ $(document).ready(function() {
 			adress: {
 				ru: adress
 			}
-		}
+		};
 
 		$.post('', {
 			ru: ru,

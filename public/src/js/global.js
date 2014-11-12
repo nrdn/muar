@@ -18,11 +18,11 @@ $(document).ready(function() {
 
 				data.architects.forEach(function(architect) {
 					var search_result = $('<a/>', {'class': 'search_result', 'href': '/architects/' + architect._id, 'text': architect.name[0].value});
-					$('.architects_context').show().children('.context_results').empty().append(search_result)
+					$('.architects_context').show().children('.context_results').empty().append(search_result);
 				});
 			});
 		}
-	}
+	};
 
 	$('.search_field')
 	.on('keyup change', function(event) {
