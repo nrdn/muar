@@ -35,7 +35,7 @@ $(document).ready(function() {
 	})
 	.on('focusin', function(event) {
 		search.interval = setInterval(function() {
-		  search.checkResult.call(search);
+			search.checkResult.call(search);
 		}, 1000);
 	})
 	.on('focusout', function(event) {
@@ -43,10 +43,23 @@ $(document).ready(function() {
 	});
 
 
-	$('.menu_item.search').click(function(event) {
+	function toggleSearch() {
 		$('.content_title_block').hide();
 		$('.content_search_block').show();
 		$('.search_field').focus();
+	}
+
+	function hideSearch() {
+		$('.content_title_block').show();
+		$('.content_search_block').hide();
+	}
+
+	$('.menu_item.search').on('click', toggleSearch);
+	$(document).keydown(function(event) {
+		toggleSearch()
+		event.which == 27
+			? hideSearch()
+			: false
 	});
 
 	$(document).mouseup(function (event) {
