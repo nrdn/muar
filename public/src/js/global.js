@@ -9,21 +9,21 @@ $(document).ready(function() {
 		},
 		getResult: function (result) {
 			$.post('/search', {search: result}).done(function(data) {
-				$('.objects_context, .architects_context, .subjects_context').hide().children('.context_results').empty();
+				$('.objects_context, .architects_context, .subjects_context').hide().children('.context_results_block').empty();
 
 				data.objects.forEach(function(object) {
-					var search_result = $('<a/>', {'class': 'search_result', 'href': '/objects/' + object._id, 'text': object.title[0].value});
-					$('.objects_context').show().children('.context_results').empty().append(search_result);
+					var context_result = $('<a/>', {'class': 'context_result', 'href': '/objects/' + object._id, 'text': object.title[0].value});
+					$('.objects_context').show().children('.context_results_block').empty().append(context_result);
 				});
 
 				data.architects.forEach(function(architect) {
-					var search_result = $('<a/>', {'class': 'search_result', 'href': '/architects/' + architect._id, 'text': architect.name[0].value});
-					$('.architects_context').show().children('.context_results').empty().append(search_result);
+					var context_result = $('<a/>', {'class': 'context_result', 'href': '/architects/' + architect._id, 'text': architect.name[0].value});
+					$('.architects_context').show().children('.context_results_block').empty().append(context_result);
 				});
 
 				data.subjects.forEach(function(subject) {
-					var search_result = $('<a/>', {'class': 'search_result', 'href': '/subjects/' + subject._id, 'text': subject.title[0].value});
-					$('.subjects_context').show().children('.context_results').empty().append(search_result);
+					var context_result = $('<a/>', {'class': 'context_result', 'href': '/subjects/' + subject._id, 'text': subject.title[0].value});
+					$('.subjects_context').show().children('.context_results_block').empty().append(context_result);
 				});
 			});
 		}
@@ -60,6 +60,10 @@ $(document).ready(function() {
 		event.which == 27
 			? hideSearch()
 			: false
+	});
+
+	$('.search_title').click(function(event) {
+		$('.search_field').val('').focus();
 	});
 
 	$(document).mouseup(function (event) {
