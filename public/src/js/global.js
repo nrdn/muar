@@ -63,6 +63,7 @@ $(document).ready(function() {
 	});
 
 	$('.search_title').click(function(event) {
+		$('.objects_context, .architects_context, .subjects_context').hide().children('.context_results_block').empty();
 		$('.search_field').val('').focus();
 	});
 
