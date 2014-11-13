@@ -89,11 +89,11 @@ a
 
 .search_inner
   width 1280px
-  min-height 35px
   padding-top 3px
   padding-bottom 5px
   position relative
   margin 0 auto
+  overflow hidden
 
 .search_title
   font-size 24px
@@ -112,16 +112,24 @@ a
 .architects_context
 .subjects_context
   display none
+  overflow hidden
+  float left
+  margin-right 10px
+
+.context_results
+  float left
+
+a.search_result
+  text-decoration none
+  margin-right 10px
+  &:hover
+    color red
 
 .context_title
-  font-size 44px
-  margin-top 20px
-  margin-bottom 20px
+  font-size 18px
+  float left
+  margin-right 10px
 
 .content_title_block
   width 100%
-
-.content_title
-  font-size 20px
-  text-align center
-  line-height 29px
+  overflow hidden

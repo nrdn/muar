@@ -20,6 +20,11 @@ $(document).ready(function() {
 					var search_result = $('<a/>', {'class': 'search_result', 'href': '/architects/' + architect._id, 'text': architect.name[0].value});
 					$('.architects_context').show().children('.context_results').empty().append(search_result);
 				});
+
+				data.subjects.forEach(function(subject) {
+					var search_result = $('<a/>', {'class': 'search_result', 'href': '/subjects/' + subject._id, 'text': subject.title[0].value});
+					$('.subjects_context').show().children('.context_results').empty().append(search_result);
+				});
 			});
 		}
 	};

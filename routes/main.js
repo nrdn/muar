@@ -1,5 +1,6 @@
 var Age = require('../models/main.js').Age;
 var Object = require('../models/main.js').Object;
+var Subject = require('../models/main.js').Subject;
 var Architect = require('../models/main.js').Architect;
 var async = require('async');
 
@@ -19,7 +20,9 @@ exports.search = function(req, res) {
 
 	Architect.find({ $text: { $search: search } }, { score : { $meta: 'textScore' } }).exec(function(err, architects) {
 		Object.find({ $text: { $search: search } }, { score : { $meta: 'textScore' } }).exec(function(err, objects) {
-			res.send({architects: architects, objects: objects});
+			Subject.find({ $text: { $search: search } }, { score : { $meta: 'textScore' } }).exec(function(err, subjects) {
+				res.send({architects: architects, objects: objects, subjects: subjects});
+			});
 		});
 	});
 }
