@@ -41,12 +41,11 @@ $(document).ready(function() {
 		var currentLayer = subjectsGroup.getLayer(path);
 
 		if (map == undefined) {
-			map = L.map('subjects_view').setView([0, 0], 3);
-			map.addLayer(currentLayer);
+			map = L.map('subjects_view').setView([0, 0], 3).addLayer(currentLayer);
 			oldLayer = currentLayer;
 		}
 		else {
-			map.setView([0, 0], 3).removeLayer(oldLayer).addLayer(currentLayer);
+			map.removeLayer(oldLayer).setView([0, 0], 3).addLayer(currentLayer);
 			oldLayer = currentLayer;
 		}
 
