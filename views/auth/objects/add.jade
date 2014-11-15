@@ -4,51 +4,56 @@ block title
 	title ДОБАВИТЬ ОБЪЕКТ
 
 block content_style
-	link(rel='stylesheet', type='text/css', href='/build/libs/css/popclip.css')
-	link(rel='stylesheet', type='text/css', href='/build/css/edit.css')
+	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
 
 block content_scripts
+	script(type='text/javascript', src='/build/js/add.js')
 	script(type='text/javascript', src='/build/libs/js/jquery-ui-1.10.4.custom.min.js')
 	script(type='text/javascript', src='/build/libs/js/jquery.filedrop.js')
-	script(type='text/javascript', src='/build/libs/js/jquery.popline.min.js')
-	script(type='text/javascript', src='/build/js/edit.js')
-
+	script(type='text/javascript', src='/build/js/upload.js')
 
 block content
-	.edit_project_block
-		input#image_main_fallback(type='file')
-		input#images_second_fallback(type='file')
+	.form_block
 		a.back_link(href='/auth/objects') < Назад
-		.title ДОБАВИТЬ ОбЪЕКТ
-		.form_image_main
-			.form_desc_title Главное изображение
-		.form_text
-			.form_title(contenteditable=true) Заголовок
-			.form_description(contenteditable=true) Описание
-		.form_options
-			//- input.form_old(type='checkbox', name='old', value='true')
-			//- |архив
-			.separator_title Категория:
-			select.form_category(name='category')
-				option(value='') нет
-				option(value='altai') Куку
-				option(value='belg') Кря кря
-			.separator_title Адрес:
-			input.form_adress(type="text", name="ru[adress]",)
-			.separator_title Интервал:
-			input.interval_start(type="text", placeholder='Начало')
-			br
-			input.interval_end(type="text", placeholder='Конец')
-			.separator_title Стиль:
-			select.era
+		.title ДОБАВИТЬ ОБЪЕКТ
+		form(action="", method="post")
+			.form_title Название:
+			input.ru(type="text", name="ru[title]", value)
+			input.en(type="text", name="en[title]", disabled)
+			.form_title Адрес:
+			input.ru(type="text", name="ru[adress]", value)
+			input.en(type="text", name="en[adress]", disabled)
+			.form_title Описание:
+			textarea.ru(name="ru[description]", rows="8",)
+			textarea.en(name="en[description]", rows="8", disabled)
+			.form_title Стили:
+			select.glob(name='era')
 				each age in ages
 					option(value=age._id)= age.i18n.title.get('ru')
-			.separator_title Эпоха:
 			each age in ages
-				.ages
+				span.sub
 					each age_sub in age.sub
-						input.age(type='checkbox', value=age_sub._id, disabled=true)
+						input(type='checkbox', name='ages', value=age_sub._id, disabled=true)
 						!= age_sub.i18n.title.get('ru')
-			.submit Добавить
-		.form_images_second
-			.form_desc_title Изображения
+			.form_title Архитекторы:
+			select(name='architects')
+				each architect in architects
+					option(value=architect._id)= architect.i18n.name.get('ru')
+			.form_title Категории:
+			select(name='architects')
+				each category in categorys
+					option(value=category._id)= category.i18n.title.get('ru')
+			.form_title Интервал начало:
+			input.ru(type="text", name="interval[start]", value)
+			.form_title Интервал конец:
+			input.ru(type="text", name="interval[end]", value)
+			.form_title Изображения:
+			.form_image_main
+				.form_desc_title Главное изображение
+			.form_images_second
+				.form_desc_title Изображения
+			//- .form_title Фото:
+			//- input(type="file", name="photo")
+			br
+			br
+			input(type='submit', value='отправить')

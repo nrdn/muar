@@ -6,6 +6,8 @@ var appDir = path.dirname(require.main.filename);
 
 var Object = require('../../models/main.js').Object;
 var Age = require('../../models/main.js').Age;
+var Architect = require('../../models/main.js').Architect;
+var Category = require('../../models/main.js').Category;
 
 
 // ------------------------
@@ -37,7 +39,11 @@ exports.list = function(req, res) {
 
 exports.add = function(req, res) {
   Age.find().where('parent').exists(false).populate('sub').exec(function(err, ages) {
-    res.render('auth/objects/add.jade', {ages: ages});
+    Architect.find().exec(function(err, architects) {
+      Category.find().exec(function(err, categorys) {
+       res.render('auth/objects/add.jade', {ages: ages, architects: architects, categorys: categorys});
+      });
+    });
   });
 }
 
