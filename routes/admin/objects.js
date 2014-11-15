@@ -61,8 +61,8 @@ exports.add_form = function(req, res) {
     value: post.ru.description
   }];
 
-  object.ages.main = post.history.era;
-  object.ages.sub = post.history.ages;
+  object.ages.main = post.history.main;
+  object.ages.sub = post.history.sub;
 
   object.meta.interval.start = set_date(post.meta.interval.start);
   object.meta.interval.end = set_date(post.meta.interval.end);

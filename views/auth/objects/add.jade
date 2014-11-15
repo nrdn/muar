@@ -27,13 +27,13 @@ block content
 			textarea.ru(name="ru[description]", rows="8",)
 			textarea.en(name="en[description]", rows="8", disabled)
 			.form_title Стили:
-			select.glob(name='era')
+			select.glob(name='history[main]')
 				each age in ages
 					option(value=age._id)= age.i18n.title.get('ru')
 			each age in ages
 				span.sub
 					each age_sub in age.sub
-						input(type='checkbox', name='ages', value=age_sub._id, disabled=true)
+						input(type='checkbox', name='history[sub]', value=age_sub._id, disabled=true)
 						!= age_sub.i18n.title.get('ru')
 			.form_title Архитекторы:
 			select(name='architects[]')
@@ -48,10 +48,8 @@ block content
 			.form_title Интервал конец:
 			input.ru(type="text", name="interval[end]", value)
 			.form_title Изображения:
-			.form_image_main
-				.form_desc_title Главное изображение
-			.form_images_second
-				.form_desc_title Изображения
+			.form_images_upload
+				.form_desc_title Нажми или перетащи
 			//- .form_title Фото:
 			//- input(type="file", name="photo")
 			br

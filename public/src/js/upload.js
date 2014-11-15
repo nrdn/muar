@@ -1,39 +1,7 @@
 $(document).ready(function() {
-	$('.form_images_second').sortable({placeholder: 'column_placeholder', cancel: '.image_second_description'});
+	$('.form_images_upload').sortable({placeholder: 'column_placeholder', cancel: '.image_upload_description'});
 
-	$('.form_image_main').filedrop({
-		url: '/preview',
-		paramname: 'image',
-		fallback_id: 'image_main_fallback',
-		allowedfiletypes: ['image/jpeg','image/png','image/gif'],
-		allowedfileextensions: ['.jpg','.jpeg','.png','.gif'],
-		maxfiles: 1,
-		maxfilesize: 8,
-		dragOver: function() {
-			$(this).css('outline', '2px solid red');
-		},
-		dragLeave: function() {
-			$(this).css('outline', 'none');
-		},
-		uploadStarted: function(i, file, len) {
-
-		},
-		uploadFinished: function(i, file, response, time) {
-			$('.form_image_main').css('background-image','url(' + response + ')');
-			$('.form_image_main').attr('path', response);
-			console.log(response);
-		},
-		progressUpdated: function(i, file, progress) {
-
-		},
-		afterAll: function() {
-			$('.form_image_main').css('outline', 'none');
-		}
-	});
-
-
-
-	$('.form_images_second').filedrop({
+	$('.form_images_upload').filedrop({
 		url: '/preview',
 		paramname: 'image',
 		// fallback_id: 'images_second_fallback',
@@ -45,22 +13,23 @@ $(document).ready(function() {
 			$(this).css('outline', '2px solid red');
 		},
 		dragLeave: function() {
-			$(this).css('outline', 'none');
+			$(this).css('outline', '1px solid red');
 		},
 		uploadStarted: function(i, file, len) {
 
 		},
 		uploadFinished: function(i, file, response, time) {
-			var image = $('<div />', {'class': 'image_second_preview', 'path': response, 'style': 'background-image:url(' + response + ')'});
-			var description = $('<div />', {'class': 'image_second_description', 'contenteditable': true, 'text':'Описание'});
-			$('.form_images_second').append(image.append(description));
-			console.log(response);
+			var image_upload_block = $('<div />', {'class': 'image_upload_block'});
+			var image = $('<div />', {'class': 'image_upload_preview', 'style': 'background-image:url(' + response + ')'});
+			var description = $('<textarea />', {'class': 'image_upload_description', 'name': 'images[description]', 'text':'Описание'});
+			var form = $('<input />', {'class': 'image_upload_form', 'type': 'hidden', 'name': 'images[path]', 'value': response});
+			$('.form_images_upload').append(image_upload_block.append(image, description, form));
 		},
 		progressUpdated: function(i, file, progress) {
 
 		},
 		afterAll: function() {
-			$('.form_images_second').css('outline', 'none');
+			$('.form_images_upload').css('outline', '1px solid red');
 		}
 	});
 
