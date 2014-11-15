@@ -39,6 +39,6 @@ block content
 				.meta_adress= object.meta.i18n.adress.get('ru')
 	.object_images_block
 		each image, i in object.images.second
-			.object_image(style='background-image:url(' + image.path + ')')
+			img.object_image(src=image.path, draggable=false)
 	.object_subjects_block#subjects_view
 	.object_3d_block
