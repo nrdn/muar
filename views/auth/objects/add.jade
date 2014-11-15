@@ -36,7 +36,7 @@ block content
 						input(type='checkbox', name='ages', value=age_sub._id, disabled=true)
 						!= age_sub.i18n.title.get('ru')
 			.form_title Архитекторы:
-			select(name='architects')
+			select(name='architects[]')
 				each architect in architects
 					option(value=architect._id)= architect.i18n.name.get('ru')
 			.form_title Категории:
