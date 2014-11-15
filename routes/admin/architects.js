@@ -60,16 +60,16 @@ exports.add_form = function(req, res) {
     fs.mkdir(appDir + '/public/images/architects/' + architect._id, function() {
       var newPath = appDir + '/public/images/architects/' + architect._id + '/photo.jpg';
       gm(files.photo.path).resize(600, false).quality(80).write(newPath, function() {
-        architect.photo = '/images/architect/' + architect._id + '/photo.jpg';
+        architect.photo = '/images/architects/' + architect._id + '/photo.jpg';
         fs.unlink(files.photo.path);
-        architect.save(function(err, era) {
+        architect.save(function(err, architect) {
           res.redirect('/auth/architects');
         });
       });
     });
   }
   else {
-    architect.save(function(err, era) {
+    architect.save(function(err, architect) {
       res.redirect('/auth/architects');
     });
   }
@@ -106,16 +106,16 @@ exports.edit_form = function(req, res) {
       fs.mkdir(appDir + '/public/images/architects/' + architect._id, function() {
         var newPath = appDir + '/public/images/architects/' + architect._id + '/photo.jpg';
         gm(files.photo.path).resize(600, false).quality(80).write(newPath, function() {
-          architect.photo = '/images/architect/' + architect._id + '/photo.jpg';
+          architect.photo = '/images/architects/' + architect._id + '/photo.jpg';
           fs.unlink(files.photo.path);
-          architect.save(function(err, era) {
+          architect.save(function(err, architect) {
             res.redirect('/auth/architects');
           });
         });
       });
     }
     else {
-      architect.save(function(err, era) {
+      architect.save(function(err, architect) {
         res.redirect('/auth/architects');
       });
     }

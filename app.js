@@ -58,6 +58,8 @@ var a_ages = require('./routes/admin/ages.js');
 var a_objects = require('./routes/admin/objects.js');
 var a_subjects = require('./routes/admin/subjects.js');
 var a_architects = require('./routes/admin/architects.js');
+var a_categorys = require('./routes/admin/categorys.js');
+
 var options = require('./routes/admin/options.js');
 
 
@@ -177,17 +179,33 @@ app.route('/auth/architects/edit/:id')
 	 .post(checkAuth, a_architects.edit_form);
 
 
+// === Admin categorys Route
+app.route('/auth/categorys').get(checkAuth, a_categorys.list);
+
+
+// === Admin @add categorys Route
+app.route('/auth/categorys/add')
+	 .get(checkAuth, a_categorys.add)
+	 .post(checkAuth, a_categorys.add_form);
+
+
+// === Admin @edit categorys Route
+app.route('/auth/categorys/edit/:id')
+	 .get(checkAuth, a_categorys.edit)
+	 .post(checkAuth, a_categorys.edit_form);
+
+
 // === Admin subjects Route
 app.route('/auth/objects/:object_id/subjects').get(checkAuth, a_subjects.list);
 
 
-// === Admin @add objects Route
+// === Admin @add subjects Route
 app.route('/auth/objects/:object_id/subjects/add')
 	 .get(checkAuth, a_subjects.add)
 	 .post(checkAuth, a_subjects.add_form);
 
 
-// === Admin @edit objects Route
+// === Admin @edit subjects Route
 app.route('/auth/objects/:object_id/subjects/edit/:subject_id')
 	 // .get(checkAuth, a_subjects.edit)
 	 // .post(checkAuth, a_subjects.edit_form);

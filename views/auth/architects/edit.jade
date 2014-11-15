@@ -14,7 +14,7 @@ block content
 		a.back_link(href='/auth/architects') < Назад
 		.title РЕДАКТИРОВАТЬ АРХИТЕКТОРА
 		form(action="", method="post", enctype="multipart/form-data")
-			.form_title Название:
+			.form_title Имя:
 			input.ru(type="text", name="ru[name]", value=architect.i18n.name.get('ru'))
 			input.en(type="text", name="en[name]", disabled)
 			.form_title Описание:

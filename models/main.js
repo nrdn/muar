@@ -83,7 +83,7 @@ var architectSchema = new Schema({
 var categorySchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
-	images: String,
+	photo: String,
 	date: {type: Date, default: Date.now}
 });
 
