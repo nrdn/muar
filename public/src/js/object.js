@@ -3,6 +3,8 @@ $(document).ready(function() {
 	var map;
 	var oldLayer;
 
+	$('.object_images_block').mapNavigate()
+
 	$('.object_navigate.description').on('click', function(event) {
 		$('.object_description_block').show();
 	});
