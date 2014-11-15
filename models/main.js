@@ -41,13 +41,11 @@ var objectSchema = new Schema({
 	architects: [{ type: Schema.Types.ObjectId, ref: 'Architect' }],
 	categorys: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
 	subjects: [{ type: Schema.Types.ObjectId, ref: 'Subject' }],
-	images: {
-		main: String,
-		second: [{
-			description: String,
-			path: String
-		}]
-	},
+	images: [{
+		description: String,
+		original: String,
+		thumb: String
+	}],
 	date: {type: Date, default: Date.now}
 });
 

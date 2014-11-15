@@ -33,14 +33,14 @@ block content
 			each age in ages
 				span.sub
 					each age_sub in age.sub
-						input(type='checkbox', name='history[sub]', value=age_sub._id, disabled=true)
+						input(type='checkbox', name='history[sub][]', value=age_sub._id, disabled=true)
 						!= age_sub.i18n.title.get('ru')
 			.form_title Архитекторы:
 			select(name='architects[]')
 				each architect in architects
 					option(value=architect._id)= architect.i18n.name.get('ru')
 			.form_title Категории:
-			select(name='architects')
+			select(name='categorys[]')
 				each category in categorys
 					option(value=category._id)= category.i18n.title.get('ru')
 			.form_title Интервал начало:
