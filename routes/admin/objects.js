@@ -2,6 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var async = require('async');
 var gm = require('gm').subClass({ imageMagick: true });
+var mkdirp = require('mkdirp');
 var appDir = path.dirname(require.main.filename);
 
 var Object = require('../../models/main.js').Object;
@@ -51,6 +52,7 @@ exports.add_form = function(req, res) {
   var post = req.body;
   var files = req.files;
   var object = new Object();
+  var images = [];
 
   object.title =[{
     lg: 'ru',
@@ -64,52 +66,50 @@ exports.add_form = function(req, res) {
   object.ages.main = post.history.main;
   object.ages.sub = post.history.sub;
 
-  object.meta.interval.start = set_date(post.meta.interval.start);
-  object.meta.interval.end = set_date(post.meta.interval.end);
+  object.meta.interval.start = set_date(post.interval.start);
+  object.meta.interval.end = set_date(post.interval.end);
   object.meta.adress = [{
     lg: 'ru',
-    value: post.meta.adress.ru
+    value: post.ru.adress
   }];
 
   var public_path = appDir + '/public';
 
-  var path = {
-    main: '/images/objects/' + object._id + '/main/',
-    second: '/images/objects/' + object._id + '/second/',
+  var images_path = {
+    original: '/images/objects/' + object._id + '/original/',
+    thumb: '/images/objects/' + object._id + '/thumb/',
   }
 
-  fs.mkdir(public_path + '/images/objects/' + object._id);
+  mkdirp.sync(public_path + images_path.original);
+  mkdirp.sync(public_path + images_path.thumb);
 
-  var single = function(type, callback) {
-    fs.mkdir(public_path + path[type], function() {
-      fs.rename(public_path + post.images[type], public_path + path[type] + post.images[type].split('/')[3]);
-      object.images[type] = path[type] + post.images[type].split('/')[3];
-      callback(null, type);
+  post.images.path.forEach(function(item, i) {
+    images.push({
+      path: post.images.path[i],
+      description: post.images.description[i]
     });
-  }
+  });
 
-  var multi = function(type, callback) {
-    fs.mkdir(public_path + path[type], function() {
-      async.forEach(post.images[type], function(image, loop_callback) {
-        fs.rename(public_path + image.path, public_path + path[type] + image.path.split('/')[3]);
-        object.images[type].push({
-          path: path[type] + image.path.split('/')[3],
+  async.forEach(images, function(image, callback) {
+    var name = new Date();
+    name = name.getTime();
+    var original_path = public_path + images_path.original + name + '.jpg';
+    var thumb_path = public_path + images_path.thumb + name + '.jpg';
+
+    gm(public_path + image.path).resize(300, false).write(thumb_path, function() {
+      gm(public_path + image.path).write(original_path, function() {
+        object.images.push({
+          original: original_path,
+          thumb: thumb_path,
           description: image.description
         });
-        loop_callback();
-      }, function() {
-        callback(null, type);
+        callback();
       });
     });
-  }
-
-  async.parallel([
-    async.apply(single, 'main'),
-    async.apply(multi, 'second')
-  ], function(err, results) {
-    object.save(function(err, object) {
-      res.send(object);
-    });
+  }, function() {
+    object.save(function() {
+      res.redirect('back');
+    })
   });
 }
 

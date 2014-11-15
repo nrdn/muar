@@ -55,12 +55,12 @@ $(document).ready(function() {
 	}
 
 	$('.menu_item.search').on('click', toggleSearch);
-	$(document).keydown(function(event) {
-		toggleSearch()
-		event.which == 27
-			? hideSearch()
-			: false
-	});
+	// $(document).keydown(function(event) {
+	// 	toggleSearch()
+	// 	event.which == 27
+	// 		? hideSearch()
+	// 		: false
+	// });
 
 	$('.search_title').click(function(event) {
 		$('.objects_context, .architects_context, .subjects_context').hide().children('.context_results_block').empty();
