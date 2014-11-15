@@ -66,6 +66,9 @@ exports.add_form = function(req, res) {
   object.ages.main = post.history.main;
   object.ages.sub = post.history.sub;
 
+  object.architects = post.architects;
+  object.categorys = post.categorys;
+
   object.meta.interval.start = set_date(post.interval.start);
   object.meta.interval.end = set_date(post.interval.end);
   object.meta.adress = [{
@@ -93,11 +96,11 @@ exports.add_form = function(req, res) {
   async.forEach(images, function(image, callback) {
     var name = new Date();
     name = name.getTime();
-    var original_path = public_path + images_path.original + name + '.jpg';
-    var thumb_path = public_path + images_path.thumb + name + '.jpg';
+    var original_path = images_path.original + name + '.jpg';
+    var thumb_path = images_path.thumb + name + '.jpg';
 
-    gm(public_path + image.path).resize(300, false).write(thumb_path, function() {
-      gm(public_path + image.path).write(original_path, function() {
+    gm(public_path + image.path).resize(300, false).write(public_path + thumb_path, function() {
+      gm(public_path + image.path).write(public_path + original_path, function() {
         object.images.push({
           original: original_path,
           thumb: thumb_path,

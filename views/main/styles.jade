@@ -34,7 +34,7 @@ block content
 										.age_title= age_sub.age.i18n.title.get('ru')
 									.age_objects
 										each object in age_sub.objects
-											a.object_block(href='/objects/' + object._id, style='background-image:url(' + object.image + ')')
+											a.object_block(href='/objects/' + object._id, style='background-image:url(' + object.images[0].thumb + ')')
 												.object_description
 													.object_description_inner
 														.object_title=object.title[0].value

@@ -41,7 +41,7 @@ exports.styles = function(req, res) {
 				_id: '$_id',
 				title: '$title',
 				interval: '$meta.interval',
-				image: '$images.main'
+				images: '$images'
 			}
 		}
 	})
