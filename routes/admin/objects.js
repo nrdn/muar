@@ -149,7 +149,7 @@ exports.edit_form = function(req, res) {
     object.meta.i18n.adress.set(post.ru.adress, 'ru');
 
     object.save(function(err, object) {
-      res.redirect('/auth/eras');
+      res.redirect('/auth');
     });
   });
 }

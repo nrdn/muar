@@ -28,13 +28,13 @@ block content
 			.form_title Интервал конец:
 			input.ru(type="text", name="interval[end]", value=object.meta.interval.end.getUTCFullYear())
 			.form_title Стиль:
-			select.glob(name='era')
+			select.glob(name='history[main]')
 				each age in ages
 					option(value=age._id, selected=age._id.toString() == object.ages.main.toString())= age.i18n.title.get('ru')
 			each age in ages
 				span.sub
 					each age_sub in age.sub
-						input(type='checkbox', name='ages', value=age_sub._id, disabled=true)
+						input(type='checkbox', name='history[sub][]', value=age_sub._id, disabled=true)
 						!= age_sub.i18n.title.get('ru')
 			//- .form_title Фото:
 			//- input(type="file", name="photo")
