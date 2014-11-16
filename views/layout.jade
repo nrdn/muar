@@ -15,7 +15,7 @@ html
 					.menu_item.navigate 
 		.content_title_block
 			- if (admin)
-				a(href='/auth') ЗВЕЗДОЧЕТ:
+				a(href='/auth') ЗВЕЗДОЧЕТ
 				a(href='/auth/ages') Стили
 				a(href='/auth/objects') Объекты
 				//- a(href='/auth/subjects') Единицы хранения
@@ -23,10 +23,12 @@ html
 				a(href='/auth/categorys') Категории
 			block content_title
 		.content_navigate_block
-			a.content_nav_item(href='/styles') Стили
-			a.content_nav_item(href='/architects') Архитекторы
-			a.content_nav_item(href='/subjects') Единицы хранения
-			a.content_nav_item(href='/categorys') Энциклопедия
+			- if (session.user_id)
+				a(href='/auth') ЗВЕЗДОЧЕТ
+			a(href='/styles') Стили
+			a(href='/architects') Архитекторы
+			a(href='/subjects') Единицы хранения
+			a(href='/categorys') Энциклопедия
 		.content_search_block
 			.search_inner
 				.search_title Найти:
