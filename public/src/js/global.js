@@ -67,8 +67,14 @@ $(document).ready(function() {
 		$('.search_field').val('').focus();
 	});
 
+	$('.menu_item.navigate').click(function(event) {
+		$('.content_title_block').hide();
+		$('.content_navigate_block').show();
+	});
+
+
 	$(document).mouseup(function (event) {
-		var container = $('.content_search_block');
+		var container = $('.content_search_block, .content_navigate_block');
 
 		if (!container.is(event.target)
 			&& container.has(event.target).length === 0)

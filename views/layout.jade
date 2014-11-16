@@ -12,7 +12,7 @@ html
 				.menu_block
 					.menu_item.search 
 					.menu_item.lang 
-					.menu_item.drop 
+					.menu_item.navigate 
 		.content_title_block
 			- if (admin)
 				a(href='/auth') ЗВЕЗДОЧЕТ:
@@ -22,6 +22,11 @@ html
 				a(href='/auth/architects') Архитекторы
 				a(href='/auth/categorys') Категории
 			block content_title
+		.content_navigate_block
+			a.content_nav_item(href='/styles') Стили
+			a.content_nav_item(href='/architects') Архитекторы
+			a.content_nav_item(href='/subjects') Единицы хранения
+			a.content_nav_item(href='/categorys') Энциклопедия
 		.content_search_block
 			.search_inner
 				.search_title Найти:
