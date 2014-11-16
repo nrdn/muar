@@ -10,7 +10,12 @@ $(document).ready(function($) {
 
 		$(this).on({
 			mousemove: function(event) {
-				$(opts.context).scrollLeft(event.pageX * opts.offsetX).scrollTop(event.pageY * opts.offsetY);
+				var $context = $(opts.context);
+
+				if (offsetX)
+					$context.scrollLeft(event.pageX * opts.offsetX);
+				else if (offsetY)
+					$context.scrollTop(event.pageY * opts.offsetY);
 			}
 		});
 
