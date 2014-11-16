@@ -58,62 +58,16 @@ exports.add_form = function(req, res) {
   subject.meta.interval.start = set_date(post.interval.start);
   subject.meta.interval.end = set_date(post.interval.end);
 
-  subject.image.original = '/images/subjects/' + subject._id + '/original.jpg';
-  subject.image.thumb = '/images/subjects/' + subject._id + '/thumb.jpg';
-  subject.image.tiles = '/images/subjects/' + subject._id + '/tiles';
+  var public_folder = appDir + '/public';
+	var subject_folder = '/images/subjects/' + subject._id;
 
-	// gm(files.image.path).size({bufferStream: true}, function(err, size) {
-	//   this.resize(size.width / 2, size.height / 2);
-	//   this.in('-crop', '100x100');
-	//   this.in('-set', 'filename:tile');
-	//   this.in('%[fx:page.y/100]_%[fx:page.x/100]');
-	//   this.in('+repage');
-	//   this.in('+adjoin');
-	//   this.write(appDir + '/public/tiles/image_tile%[filename:tile].jpg', function (err) {
-	//     res.redirect('back');
-	//   });
-	// });
+	mkdirp.sync(public_folder + subject_folder);
 
+	gm(files.image.path).write(public_folder + subject_folder + '/original.jpg', function() {
+		gm(files.image.path).resize(350, false).write(public_folder + subject_folder + '/thumb.jpg', function() {
+		  subject.image.original = subject_folder + '/original.jpg';
+		  subject.image.thumb = subject_folder + '/thumb.jpg';
 
-	// gm().in('-crop', '100x100').in(files.image.path).write(appDir + '/public/tiles/%d.jpg', function(err) {
-	// 	res.redirect('back');
-	// });
-
-	var zoom = [{ size: '100%', level: '4' }, { size: '50%', level: '3' }, { size: '25%', level: '2' }, { size: '12.5%', level: '1' }];
-	var subject_folder = appDir + '/public/images/subjects/' + subject._id;
-
-	mkdirp.sync(subject_folder + '/tiles');
-	fs.renameSync(files.image.path, subject_folder + '/original.jpg');
-
-	async.forEach(zoom, function(item, callback) {
-		var level_folder = subject_folder + '/tiles/' + item.level;
-		fs.mkdir(level_folder, function() {
-			gm(subject_folder + '/original.jpg')
-				.in(files.image.path)
-				.in('-resize', item.size)
-				.write(level_folder + '/original.mpc', function(err) {
-					gm()
-						.in(level_folder + '/original.mpc')
-						.in('-crop', '256x256')
-						.in('-set', 'filename:tile')
-						.in('%[fx:page.y/256]_%[fx:page.x/256]')
-						.write(level_folder + '/image_tile_%[filename:tile].jpg', function(err) {
-							if (item.level == '1') {
-								gm(level_folder + '/original.mpc').write(subject_folder + '/thumb.jpg', function() {
-									del([level_folder + '/original.mpc', level_folder + '/original.cache'], function() {
-										callback();
-									});
-								});
-							}
-							else {
-								del([level_folder + '/original.mpc', level_folder + '/original.cache'], function() {
-									callback();
-								});
-							}
-						});
-				});
-			});
-		}, function() {
 		  subject.save(function(err, subject) {
 		  	Object.findById(req.params.object_id).exec(function(err, object) {
 		  		object.subjects.push(subject._id);
@@ -123,15 +77,44 @@ exports.add_form = function(req, res) {
 		  	});
 		  });
 		});
+	});
+}
 
+exports.tiles_gen = function(req, res) {
+	var subject_id = req.body.subject_id;
 
+	Subject.findById(subject_id).exec(function(err, subject) {
+		var zoom = [{ size: '100%', level: '4' }, { size: '50%', level: '3' }, { size: '25%', level: '2' }, { size: '12.5%', level: '1' }];
+	  var public_folder = appDir + '/public';
+		var subject_folder = '/images/subjects/' + subject._id;
 
-  // subject.save(function(err, subject) {
-  // 	Object.findById(req.params.object_id).exec(function(err, object) {
-  // 		object.subjects.push(subject._id);
-  // 		object.save(function(err, object) {
-  // 			res.redirect('/auth');
-  // 		});
-  // 	});
-  // });
+		del(public_folder + subject_folder + '/tiles', function() {
+			async.forEach(zoom, function(item, callback) {
+				var level_folder = public_folder + subject_folder + '/tiles/' + item.level;
+
+				mkdirp(level_folder, function() {
+					gm()
+						.in(public_folder + subject_folder + '/original.jpg')
+						.in('-resize', item.size)
+						.write(level_folder + '/original.mpc', function(err) {
+							gm()
+								.in(level_folder + '/original.mpc')
+								.in('-crop', '256x256')
+								.in('-set', 'filename:tile')
+								.in('%[fx:page.y/256]_%[fx:page.x/256]')
+								.write(level_folder + '/image_tile_%[filename:tile].jpg', function(err) {
+									del([level_folder + '/original.mpc', level_folder + '/original.cache'], function() {
+										callback();
+									});
+								});
+						});
+					});
+				}, function() {
+					subject.image.tiles = subject_folder + '/tiles';
+				  subject.save(function(err, subject) {
+				  	res.send('ok')
+				  });
+				});
+		});
+	});
 }

@@ -23,3 +23,5 @@ block content
 					a.rm_subject(href='#', id=subject._id)= 'удалить '
 					!=' | '
 					a(href='/auth/objects/' + object._id + '/subjects/edit/' + subject._id)= subject.i18n.title.get('ru')
+					!=' | '
+					a.tiles_gen(href='#', id=subject._id, class=subject.image.tiles ? 'ok' : '')= 'тайлы'

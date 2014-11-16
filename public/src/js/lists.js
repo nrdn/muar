@@ -18,4 +18,14 @@ $(document).ready(function() {
 	$('.rm_photo').on('click', {path: '/rm_photo', description: 'Удалить фотографию?'}, remove);
 	$('.rm_project').on('click', {path: '/rm_project', description: 'Удалить спецпроект?'}, remove);
 
+	$('.tiles_gen').on('click', function() {
+		var $this = $(this);
+		var id  = $this.attr('id');
+
+		$this.removeClass('ok');
+		$.post('/tiles_gen', {subject_id: id}).done(function(result) {
+			$this.addClass('ok');
+		});
+	});
+
 });
