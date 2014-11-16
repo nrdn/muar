@@ -138,15 +138,15 @@ exports.edit_form = function(req, res) {
 
   Object.findById(id).exec(function(err, object) {
 
-    object.title.ru = post.ru.title;
-    object.description.ru = post.ru.description;
+    object.i18n.title.set(post.ru.title, 'ru');
+    object.i18n.description.set(post.ru.description, 'ru');
 
-    object.history.era = post.era;
-    object.history.ages = post.ages;
+    object.ages.main = post.history.main;
+    object.ages.sub = post.history.sub;
 
-    object.meta.interval.start = new Date(Date.UTC(post.interval.start, 1, 1));
-    object.meta.interval.end = new Date(Date.UTC(post.interval.end, 1, 1));
-    object.meta.adress.ru = post.ru.adress;
+    object.meta.interval.start = set_date(post.interval.start);
+    object.meta.interval.end = set_date(post.interval.end);
+    object.meta.i18n.adress.set(post.ru.adress, 'ru');
 
     object.save(function(err, object) {
       res.redirect('/auth/eras');

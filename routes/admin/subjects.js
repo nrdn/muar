@@ -15,77 +15,133 @@ var Subject = require('../../models/main.js').Subject;
 
 
 var set_date = function(year) {
-  return new Date(Date.UTC(year, 0, 1));
+	return new Date(Date.UTC(year, 0, 1));
 }
 
 
 // ------------------------
-// *** Admin Objects Block ***
+// *** Admin Subjects Block ***
 // ------------------------
 
 
 exports.list = function(req, res) {
 	var id = req.params.object_id;
-  Object.findById(id).populate('subjects').exec(function(err, object) {
-    res.render('auth/subjects', {object: object});
-  });
+	Object.findById(id).populate('subjects').exec(function(err, object) {
+		res.render('auth/subjects', {object: object});
+	});
 }
 
 
 // ------------------------
-// *** Add Architects Block ***
+// *** Add Subjects Block ***
 // ------------------------
 
 
 exports.add = function(req, res) {
-  res.render('auth/subjects/add.jade');
+	res.render('auth/subjects/add.jade');
 }
 
 exports.add_form = function(req, res) {
-  var post = req.body;
-  var files = req.files;
-  var subject = new Subject();
+	var post = req.body;
+	var files = req.files;
+	var subject = new Subject();
 
-  subject.title =[{
-  	lg: 'ru',
-  	value: post.ru.title
-  }];
-  subject.description = [{
-  	lg: 'ru',
-  	value: post.ru.description
-  }];
+	subject.title =[{
+		lg: 'ru',
+		value: post.ru.title
+	}];
+	subject.description = [{
+		lg: 'ru',
+		value: post.ru.description
+	}];
 
-  subject.meta.interval.start = set_date(post.interval.start);
-  subject.meta.interval.end = set_date(post.interval.end);
+	subject.meta.interval.start = set_date(post.interval.start);
+	subject.meta.interval.end = set_date(post.interval.end);
 
-  var public_folder = appDir + '/public';
+	var public_folder = appDir + '/public';
 	var subject_folder = '/images/subjects/' + subject._id;
 
 	mkdirp.sync(public_folder + subject_folder);
 
 	gm(files.image.path).write(public_folder + subject_folder + '/original.jpg', function() {
 		gm(files.image.path).resize(350, false).write(public_folder + subject_folder + '/thumb.jpg', function() {
-		  subject.image.original = subject_folder + '/original.jpg';
-		  subject.image.thumb = subject_folder + '/thumb.jpg';
+			subject.image.original = subject_folder + '/original.jpg';
+			subject.image.thumb = subject_folder + '/thumb.jpg';
 
-		  subject.save(function(err, subject) {
-		  	Object.findById(req.params.object_id).exec(function(err, object) {
-		  		object.subjects.push(subject._id);
-		  		object.save(function(err, object) {
-		  			res.redirect('/auth');
-		  		});
-		  	});
-		  });
+			subject.save(function(err, subject) {
+				Object.findById(req.params.object_id).exec(function(err, object) {
+					object.subjects.push(subject._id);
+					object.save(function(err, object) {
+						res.redirect('/auth');
+					});
+				});
+			});
 		});
 	});
 }
+
+
+// ------------------------
+// *** Edit Subjects Block ***
+// ------------------------
+
+
+exports.edit = function(req, res) {
+	var id = req.params.subject_id;
+
+	Subject.findById(id).exec(function(err, subject) {
+		res.render('auth/subjects/edit.jade', {subject: subject});
+	});
+}
+
+exports.edit_form = function(req, res) {
+	var post = req.body;
+	var files = req.files;
+	var id = req.params.subject_id;
+
+	Subject.findById(id).exec(function(err, subject) {
+
+    subject.i18n.title.set(post.ru.title, 'ru');
+    subject.i18n.description.set(post.ru.description, 'ru');
+
+		subject.meta.interval.start = set_date(post.interval.start);
+		subject.meta.interval.end = set_date(post.interval.end);
+
+		var public_folder = appDir + '/public';
+		var subject_folder = '/images/subjects/' + subject._id;
+
+		mkdirp.sync(public_folder + subject_folder);
+
+		gm(files.image.path).write(public_folder + subject_folder + '/original.jpg', function() {
+			gm(files.image.path).resize(350, false).write(public_folder + subject_folder + '/thumb.jpg', function() {
+				subject.image.original = subject_folder + '/original.jpg';
+				subject.image.thumb = subject_folder + '/thumb.jpg';
+
+				subject.save(function(err, subject) {
+					Object.findById(req.params.object_id).exec(function(err, object) {
+						object.subjects.push(subject._id);
+						object.save(function(err, object) {
+							res.redirect('/auth');
+						});
+					});
+				});
+			});
+		});
+	});
+}
+
+
+// ------------------------
+// *** Generate tiles Block ***
+// ------------------------
+
 
 exports.tiles_gen = function(req, res) {
 	var subject_id = req.body.subject_id;
 
 	Subject.findById(subject_id).exec(function(err, subject) {
 		var zoom = [{ size: '100%', level: '4' }, { size: '50%', level: '3' }, { size: '25%', level: '2' }, { size: '12.5%', level: '1' }];
-	  var public_folder = appDir + '/public';
+		var public_folder = appDir + '/public';
 		var subject_folder = '/images/subjects/' + subject._id;
 
 		del(public_folder + subject_folder + '/tiles', function() {
@@ -111,9 +167,9 @@ exports.tiles_gen = function(req, res) {
 					});
 				}, function() {
 					subject.image.tiles = subject_folder + '/tiles';
-				  subject.save(function(err, subject) {
-				  	res.send('ok')
-				  });
+					subject.save(function(err, subject) {
+						res.send('ok')
+					});
 				});
 		});
 	});

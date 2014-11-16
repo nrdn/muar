@@ -207,8 +207,8 @@ app.route('/auth/objects/:object_id/subjects/add')
 
 // === Admin @edit subjects Route
 app.route('/auth/objects/:object_id/subjects/edit/:subject_id')
-	 // .get(checkAuth, a_subjects.edit)
-	 // .post(checkAuth, a_subjects.edit_form);
+	 .get(checkAuth, a_subjects.edit)
+	 .post(checkAuth, a_subjects.edit_form);
 
 // === Admin @add tiles Route
 app.route('/tiles_gen')
