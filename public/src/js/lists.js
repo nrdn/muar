@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	function remove (event) {
+	function remove(event) {
 		var id  = $(this).attr('id');
 
 		if (confirm(event.data.description)) {
@@ -7,6 +7,16 @@ $(document).ready(function() {
 				location.reload();
 			});
 		}
+	}
+
+	function tiles_gen(event) {
+		var $this = $(this);
+		var id  = $this.attr('id');
+
+		$this.off().removeClass('ok');
+		$.post('/tiles_gen', {subject_id: id}).done(function(result) {
+			$this.addClass('ok').on('click', tiles_gen);
+		});
 	}
 
 	$('.rm_event').on('click', {path: '/rm_event', description: 'Удалить событие?'}, remove);
@@ -18,14 +28,5 @@ $(document).ready(function() {
 	$('.rm_photo').on('click', {path: '/rm_photo', description: 'Удалить фотографию?'}, remove);
 	$('.rm_project').on('click', {path: '/rm_project', description: 'Удалить спецпроект?'}, remove);
 
-	$('.tiles_gen').on('click', function() {
-		var $this = $(this);
-		var id  = $this.attr('id');
-
-		$this.removeClass('ok');
-		$.post('/tiles_gen', {subject_id: id}).done(function(result) {
-			$this.addClass('ok');
-		});
-	});
-
+	$('.tiles_gen').on('click', tiles_gen);
 });
