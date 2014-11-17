@@ -20,6 +20,8 @@ block content
 			.form_title Описание:
 			textarea.ru(name="ru[description]", rows="8",)= subject.i18n.description.get('ru')
 			textarea.en(name="en[description]", rows="8", disabled)
+			.form_title Инвентарный номер:
+			input(type="text", name="inventory", value=subject.meta.inventory)
 			.form_title Интервал начало:
 			input.ru(type="text", name="interval[start]", value=subject.meta.interval.start.getUTCFullYear())
 			.form_title Интервал конец:

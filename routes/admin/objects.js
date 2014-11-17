@@ -104,7 +104,10 @@ exports.add_form = function(req, res) {
         object.images.push({
           original: original_path,
           thumb: thumb_path,
-          description: image.description
+          description: [{
+            lg: 'ru',
+            value: image.description
+          }]
         });
         callback();
       });

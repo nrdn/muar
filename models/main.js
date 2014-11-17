@@ -42,7 +42,7 @@ var objectSchema = new Schema({
 	categorys: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
 	subjects: [{ type: Schema.Types.ObjectId, ref: 'Subject' }],
 	images: [{
-		description: String, // !!!!!!!!!!
+		description: { type: String, trim: true, locale: true },
 		original: String,
 		thumb: String
 	}],

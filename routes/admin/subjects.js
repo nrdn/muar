@@ -55,6 +55,7 @@ exports.add_form = function(req, res) {
 		value: post.ru.description
 	}];
 
+	subject.meta.inventory = post.inventory;
 	subject.meta.interval.start = set_date(post.interval.start);
 	subject.meta.interval.end = set_date(post.interval.end);
 
@@ -104,6 +105,7 @@ exports.edit_form = function(req, res) {
     subject.i18n.title.set(post.ru.title, 'ru');
     subject.i18n.description.set(post.ru.description, 'ru');
 
+    subject.meta.inventory = post.inventory;
 		subject.meta.interval.start = set_date(post.interval.start);
 		subject.meta.interval.end = set_date(post.interval.end);
 
