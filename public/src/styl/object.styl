@@ -52,23 +52,46 @@
 	padding-top 5px
 	padding-bottom 5px
 	position relative
+	overflow hidden
 	margin 0 auto
 
+.description_column
+	width 620px
+	float left
+	margin-right 20px
+	&:last-child
+		margin-right 0px
+
+.column_item
+	overflow hidden
+	margin-bottom 3px
+	&:last-child
+		margin-bottom 0px
+	a
+		text-decoration none
+		&:hover
+			color red
+
+.column_title
+	float left
+	font-weight bold
+	margin-right 10px
 
 .object_images_block
 	width 100%
 	top 110px
 	bottom 0
 	overflow hidden
-	background-repeat no-repeat
-	background-position center
-	background-repeat no-repeat
 	position absolute
+	background-color #d5d5d5
 
 .object_image
 	display none
 	width 100%
-	cursor move
+	height 100%
+	background-size contain
+	background-repeat no-repeat
+	background-position center
 	&:nth-child(1)
 		display block
 

@@ -1,0 +1,21 @@
+extends ../layout
+
+block title
+	title КАТЕГОРИИ
+
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/categorys.css' + version)
+
+block content_scripts
+	script(type='text/javascript', src='/build/js/categorys.js' + version)
+
+block content
+	h2 Категории
+	br
+	each category in categorys
+		a(href='/categorys/' + category._id)= category.i18n.title.get('ru')
+		br
+		b= category.i18n.description.get('ru')
+		br
+		br

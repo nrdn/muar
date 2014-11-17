@@ -35,10 +35,22 @@ block content
 		.description_inner
 			.description_column= object.i18n.description.get('ru')
 			.description_column
-				.meta_interval= object.meta.interval.start.getUTCFullYear() + ' - ' + object.meta.interval.end.getUTCFullYear()
-				.meta_adress= object.meta.i18n.adress.get('ru')
+				.column_item.interval
+					.column_title Дата:
+					.column_content= object.meta.interval.start.getUTCFullYear() + ' - ' + object.meta.interval.end.getUTCFullYear()
+				.column_item.adress
+					.column_title Место:
+					.column_content= object.meta.i18n.adress.get('ru')
+				.column_item.architects
+					.column_title Архитекторы:
+					each architect in object.architects
+						a.architect_item(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
+				.column_item.categorys
+					.column_title Категории:
+					each category in object.categorys
+						a.category_item(href='/categorys/' + category._id)= category.i18n.title.get('ru')
 	.object_images_block
 		each image, i in object.images
-			img.object_image(src=image.original)
+			.object_image(style='background-image:url(' + image.original + ')')
 	.object_subjects_block#subjects_view
 	.object_3d_block
