@@ -43,15 +43,16 @@ $(document).ready(function() {
 
 
 	function snakeForward () {
-		var snake = $('.snake');
-		snake.first().clone().removeAttr('id')
-			.find('input').val('').end()
+		var snake = $(this).closest('.snake').children('select');
+		snake.first().clone()
+			.find('option').prop('selected', false).end()
 			.insertAfter(snake.last());
 	}
 
 	function snakeBack () {
-		if ($('.snake').size() == 1) return null;
-		$(this).parent('.snake').remove();
+		var snake = $(this).closest('.snake').children('select');
+		if (snake.size() == 1) return null;
+		snake.last().remove();
 	}
 
 

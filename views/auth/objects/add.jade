@@ -36,13 +36,19 @@ block content
 						input(type='checkbox', name='history[sub][]', value=age_sub._id, disabled=true)
 						!= age_sub.i18n.title.get('ru')
 			.form_title Архитекторы:
-			select(name='architects[]')
-				each architect in architects
-					option(value=architect._id)= architect.i18n.name.get('ru')
+			.snake
+				button(type='button').back -
+				select(name='architects[]')
+					each architect in architects
+						option(value=architect._id)= architect.i18n.name.get('ru')
+				button(type='button').forward +
 			.form_title Категории:
-			select(name='categorys[]')
-				each category in categorys
-					option(value=category._id)= category.i18n.title.get('ru')
+			.snake
+				button(type='button').back -
+				select(name='categorys[]')
+					each category in categorys
+						option(value=category._id)= category.i18n.title.get('ru')
+				button(type='button').forward +
 			.form_title Интервал начало:
 			input.ru(type="text", name="interval[start]", value)
 			.form_title Интервал конец:
