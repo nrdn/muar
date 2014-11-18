@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var scale = $(document).width()/1280;
+	// var scale = $(document).width()/1280;
 	$('.parallax-layer')
 			// .css({
 			// 	'transform':'scale(' + scale + ')'
