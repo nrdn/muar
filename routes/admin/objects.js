@@ -166,6 +166,9 @@ exports.edit_form = function(req, res) {
     object.ages.main = post.history.main;
     object.ages.sub = post.history.sub;
 
+    object.architects = post.architects;
+    object.categorys = post.categorys;
+
     object.meta.interval.start = set_date(post.interval.start);
     object.meta.interval.end = set_date(post.interval.end);
     object.meta.i18n.adress.set(post.ru.adress, 'ru');
