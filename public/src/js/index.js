@@ -1,21 +1,17 @@
 $(document).ready(function() {
 	var scale = $(document).width()/1280;
-	$('#port').css({
-		//'width':$(document).width()+'px',
-		//'height':$(document).height()+'px'
-		});
 	$('.parallax-layer')
-			.css({
-				'transform-origin':'50%',
-				'transform':'scale(' + scale + ')'
-			})
+			// .css({
+			// 	'transform':'scale(' + scale + ')'
+			// })
 			.parallax({
-				mouseport: $('#port, .periods, .intro_view'),
+				mouseport: $('.parallax_block'),
 				freezeClass: 'freeze'
 			});
+
 	$('.period').each(function(index){
 		$(this).on('click', function() {
-			window.location.href="/styles/#"+index
+			window.location.href="/styles/#" + index
 		})
 	})
 })

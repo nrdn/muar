@@ -14,26 +14,22 @@ block content_scripts
 block content_title
 
 block content
-	.main_block
-		.intro
-			#port
-				img.parallax-layer(src='/images/design/parallax_drops/3.png', alt='', style='width:1486px; height:850px;')
-				img.parallax-layer(src='/images/design/parallax_drops/3.png', alt='', style='width:1286px; height:850px;')
-				img.parallax-layer(src='/images/design/parallax_drops/4.png', alt='', style='width:1331px; height:850px;')
-				img.parallax-layer(src='/images/design/parallax_drops/5.png', alt='', style='width:1446px; height:850px;')
-				img.parallax-layer(src='/images/design/parallax_drops/6.png', alt='', style='width:1500px; height:850px;')
-			.intro_view
-				.intro_view_inner
-					.intro_text
-						.intro_title
-							a(href='styles') Виртуальный музей
+	.parallax_block
+		img.parallax-layer(src='/images/design/parallax_drops/3.png', alt='', style='width:1486px; height:850px;')
+		img.parallax-layer(src='/images/design/parallax_drops/3.png', alt='', style='width:1286px; height:850px;')
+		img.parallax-layer(src='/images/design/parallax_drops/4.png', alt='', style='width:1331px; height:850px;')
+		img.parallax-layer(src='/images/design/parallax_drops/5.png', alt='', style='width:1446px; height:850px;')
+		img.parallax-layer(src='/images/design/parallax_drops/6.png', alt='', style='width:1500px; height:850px;')
+	.intro_block
+		a.intro_title(href='/styles') Виртуальный музей
+		.intro_description Виртуальный музей архитектуры – это специальный проект Государственного музея архитектуры им. А.В. Щусева, цельюкоторогостановится знакомство самой широкой аудитории с уникальной коллекцией музея, насчитывающей более миллиона экспонатов.Сайтвиртуального музея строится на историческом принципе: вся история отечественной архитектуры делится на семь разделовпериодов.Каждый раздел открывают тексты, подготовленные научными сотрудниками Музея, и иллюстрируют материалы из различныхфондов:отдела фототеки, графики и трехмерных объектов. При этом каждое изображение подробно аннотировано, а структура сайтапозволяетсортировать архитектурные объекты по нескольким основным принципам: автору, стилю, времени и месту постройки. Такимобразом,каждый пользователь и посетитель сайта сможет составить свою собственную подборку изображений, сформированную по одномуили понескольким параметрам.
 
-		.periods
-			each age in ages
-				.period
-					.period_title=age.i18n.title.get('ru')
-					.period_line
-						.period_line_inner
-					.period_dates
-						.date0=age.meta.interval.start.getUTCFullYear()
-						.date2=age.meta.interval.end.getUTCFullYear()
+		//- .periods
+		//- 	each age in ages
+		//- 		.period
+		//- 			.period_title=age.i18n.title.get('ru')
+		//- 			.period_line
+		//- 				.period_line_inner
+		//- 			.period_dates
+		//- 				.date0=age.meta.interval.start.getUTCFullYear()
+		//- 				.date2=age.meta.interval.end.getUTCFullYear()

@@ -1,168 +1,24 @@
-body
-  background #000
-  height 100%
+// .content_navigate_block
+//   display block
+
+.parallax_block
+  width 1280px
+  height 500px
+  position relative
+  margin 10px auto
   overflow hidden
-
-.header_block
-  position fixed
-  z-index 1000
-  top 0
-
-.header_block_inner
-  background transparent
-
-#port, .intro_view
-  //margin 1.5em 0px
-  overflow hidden
-  width 100%
-  position absolute
-  top 0
-  left 0
-  bottom 128px
-
-#port
-  background #ededed
-  opacity 0.8
 
 .parallax-layer
+  transform-origin 50%
   position absolute
-
-.intro_view_inner
-  display table
-  height 100%
-  width 100%
-
-.intro_text
-  width 100%
-  height 100%
-  display table-cell
-  vertical-align middle
-  text-align center
 
 .intro_title
-  font-size 3rem
-  line-height initial
-  font-family ma_unitwmedium
-  font-weight normal
-  display inline-block
-  width 1280px
-  color: #fff
-  text-shadow 0 0 1px #000
-  border-bottom 1px solid #fff
-  a
-    color: #fff
-    text-decoration none
-    &:hover
-      color #f00
-
-.periods
-  position absolute
-  //top: 50%;
-  //width: 1280px;
-  //margin-top -75px
-  //background rgba(0,0,0,0.37)
-  bottom 0
-  background #fff
-  left 0
-  width 100%
-
-.period
-  float left
-  width 14.28%
-  cursor pointer
-
-.period_title
-  //font-family ma_unitwmedium
-  text-align center
-  font-size 22px
-  height 26px
-  white-space nowrap
-  line-height 22px
-  overflow hidden
-  position relative
-  //color #fff
-  &:after
-    content ''
-    display block
-    position absolute
-    right 0
-    top 0
-    width 20px
-    height 26px
-    //background linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 55%,rgba(255,255,255,1) 100%)
-
-.period_line
-  height 11px
-  border-top 1px solid transparent
-  border-bottom 1px solid transparent
-  position relative
-
-.period_line_inner
-  position absolute
-  top 50%
-  margin-top -1px
-  border-top 2px solid transparent
-  width 100%
-
-
-.period
+  margin-top 10px
+  display block
+  text-decoration none
+  font 32px/34px 'ma_unitwmedium'
   &:hover
-    cursor pointer
-  &:nth-of-type(1)
-    &:hover .period_line
-    .period_line_inner
-    .period_line.active
-      border-color #f00
+    color red
 
-  &:nth-of-type(2)
-    &:hover .period_line
-    .period_line_inner
-    .period_line.active
-      border-color #0f0
-
-  &:nth-of-type(3)
-    &:hover .period_line
-    .period_line_inner
-    .period_line.active
-      border-color #00f
-
-  &:nth-of-type(4)
-    &:hover .period_line
-    .period_line_inner
-    .period_line.active
-      border-color #ff109a
-
-  &:nth-of-type(5)
-    &:hover .period_line
-    .period_line_inner
-    .period_line.active
-      border-color #006889
-
-  &:nth-of-type(6)
-    &:hover .period_line
-    .period_line_inner
-    .period_line.active
-      border-color #000
-
-  &:nth-of-type(7)
-    &:hover .period_line
-    .period_line_inner
-    .period_line.active
-      border-color #f00
-
-.period_dates
-  font-size 13px
-  margin-top 2px
-  position relative
-  height 17px
-
-.period_dates div
-  position absolute
-  top 0
-  //color #fff
-
-.period_dates .date0
-  left 5px
-
-.period_dates .date2
-  right 5px
+.intro_description
+  margin-top 10px
