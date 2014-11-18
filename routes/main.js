@@ -62,7 +62,7 @@ exports.styles = function(req, res) {
 		'sub': '$sub'
 	})
 	.exec(function(err, ages) {
-		Age.populate(ages, {path: 'main sub.age', select: '-_id -date -__v -description -parent -sub'}, function(err, ages) {
+		Age.populate(ages, {path: 'main sub.age', select: '-_id -date -__v -parent -sub'}, function(err, ages) {
 			async.forEach(ages, function(age, callback) {
 				age.sub.sort(function(a, b) { return a.age.meta.interval.start > b.age.meta.interval.start});
 				callback();
