@@ -5,14 +5,13 @@ block title
 
 
 block content_style
-	link(rel='stylesheet', type='text/css', href='/build/css/category.css' + version)
+	link(rel='stylesheet', type='text/css', href='/build/css/categorys.css' + version)
 
 block content_scripts
 	script(type='text/javascript', src='/build/js/category.js' + version)
 
+block content_title
+	.object_title= category.i18n.title.get('ru')
 block content
-	h2 Категория
-	br
-	b= category.i18n.title.get('ru')
-	br
-	b= category.i18n.description.get('ru')
+	.category_block= category.i18n.description.get('ru')
+	.category_attached_objects

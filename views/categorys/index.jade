@@ -1,21 +1,17 @@
 extends ../layout
 
 block title
-	title КАТЕГОРИИ
+	title КАТЕГОРИЯ
 
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/categorys.css' + version)
 
 block content_scripts
-	script(type='text/javascript', src='/build/js/categorys.js' + version)
+	script(type='text/javascript', src='/build/js/category.js' + version)
 
+block content_title
+	.object_title= category.i18n.title.get('ru')
 block content
-	h2 Категории
-	br
-	each category in categorys
-		a(href='/categorys/' + category._id)= category.i18n.title.get('ru')
-		br
-		b= category.i18n.description.get('ru')
-		br
-		br
+	.category_block= category.i18n.description.get('ru')
+	.category_attached_objects
