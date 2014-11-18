@@ -87,6 +87,14 @@ var categorySchema = new Schema({
 	date: {type: Date, default: Date.now}
 });
 
+var projectSchema = new Schema({
+	title: { type: String, trim: true, locale: true },
+	description: { type: String, trim: true, locale: true },
+	photo: String,
+	objects: [{ type: Schema.Types.ObjectId, ref: 'Object' }],
+	date: {type: Date, default: Date.now}
+});
+
 
 // ------------------------
 // *** Plugins Block ***
