@@ -54,5 +54,6 @@ block content
 	.object_images_block
 		each image, i in object.images
 			.object_image(style='background-image:url(' + image.original + ')')
+				.image_description= image.description[0].value
 	.object_subjects_block#subjects_view
 	.object_3d_block
