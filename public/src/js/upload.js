@@ -8,7 +8,7 @@ $(document).ready(function() {
 	$('.form_images_upload').filedrop({
 		url: '/preview',
 		paramname: 'image',
-		fallback_id: 'images_upload_fallback',
+		// fallback_id: 'images_upload_fallback',
 		allowedfiletypes: ['image/jpeg','image/png','image/gif'],
 		allowedfileextensions: ['.jpg','.jpeg','.png','.gif'],
 		maxfiles: 5,

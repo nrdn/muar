@@ -8,6 +8,9 @@ block content_style
 
 block content_scripts
 	script(type='text/javascript', src='/build/js/add.js')
+	script(type='text/javascript', src='/build/libs/js/jquery-ui-1.10.4.custom.min.js')
+	script(type='text/javascript', src='/build/libs/js/jquery.filedrop.js')
+	script(type='text/javascript', src='/build/js/upload.js')
 
 block content
 	.form_block
@@ -23,11 +26,7 @@ block content
 			.form_title Описание:
 			textarea.ru(name="ru[description]", rows="8",)=object.i18n.description.get('ru')
 			textarea.en(name="en[description]", rows="8", disabled)
-			.form_title Интервал начало:
-			input.ru(type="text", name="interval[start]", value=object.meta.interval.start.getUTCFullYear())
-			.form_title Интервал конец:
-			input.ru(type="text", name="interval[end]", value=object.meta.interval.end.getUTCFullYear())
-			.form_title Стиль:
+			.form_title Стили:
 			select.glob(name='history[main]')
 				each age in ages
 					option(value=age._id, selected=age._id.toString() == object.ages.main.toString())= age.i18n.title.get('ru')
@@ -36,8 +35,34 @@ block content
 					each age_sub in age.sub
 						input(type='checkbox', name='history[sub][]', value=age_sub._id, disabled=true)
 						!= age_sub.i18n.title.get('ru')
-			//- .form_title Фото:
-			//- input(type="file", name="photo")
+			.form_title Архитекторы:
+			.snake
+				button(type='button').back -
+				select(name='architects[]')
+					each architect in architects
+						option(value=architect._id)= architect.i18n.name.get('ru')
+				button(type='button').forward +
+			.form_title Категории:
+			.snake
+				button(type='button').back -
+				select(name='categorys[]')
+					each category in categorys
+						option(value=category._id)= category.i18n.title.get('ru')
+				button(type='button').forward +
+			.form_title Интервал начало:
+			input.ru(type="text", name="interval[start]", value=object.meta.interval.start.getUTCFullYear())
+			.form_title Интервал конец:
+			input.ru(type="text", name="interval[end]", value=object.meta.interval.end.getUTCFullYear())
+			.form_title Изображения:
+			.form_images_upload
+				.form_desc_title Нажми или перетащи
+				each image, i in object.images
+					.image_upload_block
+						.image_upload_preview(style='background-image:url(' + image.thumb + ')')
+							.image_upload_delete Удалить
+						textarea.image_upload_description(name='images[description]')= image.description.filter(function(locale) { return locale.lg == 'ru' })[0].value
+						input.image_upload_form(type='hidden', name='images[path]', value=images_preview[i])
+			//- input#images_upload_fallback(type="file", name="photo")
 			br
 			br
 			input(type='submit', value='отправить')
