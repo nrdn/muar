@@ -29,6 +29,8 @@ block content_title
 		.slide_navigate_inner
 			each subject in object.subjects
 				.object_slide_item.subjects(path=subject._id, style='background-image:url(' + subject.image.thumb + ')')
+					.object_slide_title
+						.slide_title_inner= subject.i18n.title.get('ru').substr(0, 60) + '...'
 
 block content
 	.object_description_block
