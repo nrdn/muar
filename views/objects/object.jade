@@ -35,7 +35,7 @@ block content_title
 block content
 	.object_description_block
 		.description_inner
-			.description_column= object.i18n.description.get('ru')
+			.description_column: != object.i18n.description.get('ru')
 			.description_column
 				.column_item.interval
 					.column_title Дата:
