@@ -10,12 +10,10 @@ block content_style
 block content_scripts
 	script(type='text/javascript', src='/build/js/architects.js' + version)
 
+block content_title
+	.object_title Архитекторы
 block content
-	h2 Архитекторы
-	br
 	each architect in architects
-		a(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
-		br
-		b= architect.i18n.description.get('ru')
-		br
-		br
+		.category_block
+			a.category_block_title(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
+			.category_block_text= architect.i18n.description.get('ru')
