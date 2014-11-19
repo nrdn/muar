@@ -3,6 +3,7 @@ $(document).ready(function() {
 	var map;
 	var oldLayer;
 
+
 	$('.object_navigate.description').on('click', function(event) {
 		$('.object_description_block').show();
 	});
@@ -49,6 +50,15 @@ $(document).ready(function() {
 			oldLayer = currentLayer;
 		}
 
+	});
+
+	$('.object_image').on('click', function(event) {
+		var index = $(this).index();
+		var length = $('.object_image').length - 1;
+
+		index != length
+			?	$(this).hide().next().show()
+			: $('.object_image').hide().eq(0).show();
 	});
 
 	$('.object_slide_item.images').on('click', function(event) {
