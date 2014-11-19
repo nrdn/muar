@@ -13,17 +13,17 @@ $(document).ready(function() {
 
 				data.objects.forEach(function(object) {
 					var context_result = $('<a/>', {'class': 'context_result', 'href': '/objects/' + object._id, 'text': object.title[0].value});
-					$('.objects_context').show().children('.context_results_block').empty().append(context_result);
+					$('.objects_context').show().children('.context_results_block').append(context_result);
 				});
 
 				data.architects.forEach(function(architect) {
 					var context_result = $('<a/>', {'class': 'context_result', 'href': '/architects/' + architect._id, 'text': architect.name[0].value});
-					$('.architects_context').show().children('.context_results_block').empty().append(context_result);
+					$('.architects_context').show().children('.context_results_block').append(context_result);
 				});
 
 				data.subjects.forEach(function(subject) {
 					var context_result = $('<a/>', {'class': 'context_result', 'href': '/subjects/' + subject._id, 'text': subject.title[0].value});
-					$('.subjects_context').show().children('.context_results_block').empty().append(context_result);
+					$('.subjects_context').show().children('.context_results_block').append(context_result);
 				});
 			});
 		}
