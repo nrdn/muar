@@ -10,9 +10,8 @@ block content_style
 block content_scripts
 	script(type='text/javascript', src='/build/js/architects.js' + version)
 
+block content_title
+	.object_title= architect.i18n.name.get('ru')
 block content
-	h2 Архитектор
-	br
-	b= architect.i18n.name.get('ru')
-	br
-	b= architect.i18n.description.get('ru')
+	.category_block= architect.i18n.description.get('ru')
+	.category_attached_objects
