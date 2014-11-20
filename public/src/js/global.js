@@ -67,7 +67,7 @@ $(document).ready(function() {
 		$('.search_field').val('').focus();
 	});
 
-	$('.menu_item.navigate').click(function(event) {
+	$('.menu_item.navigate, .main_navigate').click(function(event) {
 		$('.content_title_block').hide();
 		$('.content_navigate_block').show();
 	});
