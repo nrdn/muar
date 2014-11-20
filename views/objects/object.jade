@@ -17,7 +17,7 @@ block content_scripts
 block content_title
 	.object_title= object.i18n.title.get('ru')
 	.object_navigate_block
-		.object_navigate.description Описание
+		.object_navigate.description.current Описание
 		.object_navigate.images Изображения
 		.object_navigate.subjects Единицы хранения
 		.object_navigate.model 3d
@@ -37,6 +37,9 @@ block content
 		.description_inner
 			.description_column: != object.i18n.description.get('ru')
 			.description_column
+				.column_item.style
+					.column_title Стиль:
+					.column_content= object.ages.main.i18n.title.get('ru')
 				.column_item.interval
 					.column_title Дата:
 					.column_content= object.meta.interval.start.getUTCFullYear() + ' - ' + object.meta.interval.end.getUTCFullYear()
@@ -57,11 +60,9 @@ block content
 				.images_navigate_block
 					.images_navigate_block_inner
 						.images_navigate_block_prev
-							.images_arrow
-								| &lt;
+							.images_arrow &lt;
 						.images_navigate_block_next
-							.images_arrow
-								|	&gt;
+							.images_arrow &gt;
 				.image_description
 					.image_description_inner: != image.description[0].value
 	.object_subjects_block#subjects_view
