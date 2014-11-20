@@ -27,13 +27,16 @@ block content
 				.style_block
 					.style_block_inner
 						.style_inner_height
-							.style_title= age.main.i18n.title.get('ru')
+							.style_header
+								.style_line
+								.style_title= age.main.i18n.title.get('ru')
 							.style_description: != age.main.i18n.description.get('ru')
 							each age_sub in age.sub
 								.age_block
 									.age_header
 										.age_line
 										.age_title= age_sub.age.i18n.title.get('ru')
+									.age_description: != age_sub.age.i18n.description.get('ru')
 									.age_objects
 										each object in age_sub.objects
 											a.object_block(href='/objects/' + object._id, style='background-image:url(' + object.images[0].thumb + ')')

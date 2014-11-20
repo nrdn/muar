@@ -13,9 +13,9 @@ $(document).ready(function() {
 			var outer_offset_top = $('.styles_block').offset().top;
 
 			age_offset_top <= outer_offset_top
-				? $('.navigate_style_block')
-					.eq(event.data.style_index).find('.navigate_age').removeClass('current')
-					.eq($this.index()).addClass('current')
+				? $('.navigate_style_ages')
+					.eq(event.data.style_index).children('.navigate_age').removeClass('current')
+					.eq($this.index() - $this.length - 1).addClass('current')
 				: false;
 		});
 	}
