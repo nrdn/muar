@@ -3,6 +3,9 @@ $(document).ready(function() {
 	var map;
 	var oldLayer;
 
+	$('.object_title').on('click', function(event) {
+		window.history.go(-1);
+	});
 
 	$('.object_navigate.description').on('click', function(event) {
 		$('.object_description_block').show();

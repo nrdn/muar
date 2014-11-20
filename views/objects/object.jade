@@ -15,7 +15,10 @@ block content_scripts
 
 
 block content_title
-	.object_title= object.i18n.title.get('ru')
+	.object_title
+		a
+			span.lt &lt;
+			span=object.i18n.title.get('ru')
 	.object_navigate_block
 		.object_navigate.description Описание
 		.object_navigate.images Изображения
