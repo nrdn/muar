@@ -52,14 +52,40 @@ $(document).ready(function() {
 
 	});
 
-	$('.object_image').on('click', function(event) {
-		var index = $(this).index();
+
+
+
+	$('.object_images_block .next').on('click', function(event) {
+			index++;
+			$('.object_image').hide().eq(index).show();
+	});
+
+	$('.object_images_block .prev').on('click', function(event) {
+			index--;
+			$('.object_image').hide().eq(index).show();
+	});
+
+	$('.object_image .images_navigate_block_next').on('click', function(event) {
+		var index = $(this).parents('.object_image').index();
 		var length = $('.object_image').length - 1;
 
 		index != length
-			?	$(this).hide().next().show()
+			?	$(this).parents('.object_image').hide().next().show()
 			: $('.object_image').hide().eq(0).show();
 	});
+
+
+
+	$('.object_image .images_navigate_block_prev').on('click', function(event) {
+		var index = $(this).parents('.object_image').index();
+		console.log(index);
+
+		index != 0
+			?	$(this).parents('.object_image').hide().prev().show()
+			: $('.object_image').hide().last().show();
+	});
+
+
 
 	$('.object_slide_item.images').on('click', function(event) {
 		var index = $(this).index();
