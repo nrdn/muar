@@ -11,10 +11,12 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/subjects.js' + version)
 
 block content_title
-	.object_title ЕДИНИЦЫ ХРАНЕНИЯ
+	.subject_title_block Единицы хранения
+
 block content
+	.subjects_block
 	each subject in subjects
-		.category_block
-			img.subject_block_image(src=subject.image.thumb)
-			a.subject_block_title(href='/subjects/' + subject._id)= subject.i18n.title.get('ru')
-			.subject_block_text= subject.i18n.description.get('ru')
+		.subject_item
+			.subject_image(style='background-image: url(' + subject.image.thumb + ')')
+			a.subject_title(href='/subjects/' + subject._id)= subject.i18n.title.get('ru')
+			.subject_description_text= subject.i18n.description.get('ru')
