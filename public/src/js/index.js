@@ -12,7 +12,7 @@ $(document).ready(function() {
 			$('.intro_title').removeAttr('style');
 		},
 		click: function() {
-			document.location.href = '/styles'
+			document.location.href = '/styles#0'
 		}
 	});
 });
