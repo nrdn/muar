@@ -15,3 +15,7 @@ block content_title
 block content
 	.category_block= architect.i18n.description.get('ru')
 	.category_attached_objects
+	each object in objects
+		b= object.i18n.title.get('ru')
+		br
+		br

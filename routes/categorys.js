@@ -1,4 +1,5 @@
 var Category = require('../models/main.js').Category;
+var Object = require('../models/main.js').Object;
 
 
 exports.index = function(req, res) {
@@ -10,6 +11,8 @@ exports.index = function(req, res) {
 exports.category = function(req, res) {
 	var id = req.params.id;
 	Category.findById(id).exec(function(err, category) {
-		res.render('categorys/category.jade', {category: category});
+		Object.find().where('categorys').equals(category._id).exec(function(err, objects) {
+			res.render('categorys/category.jade', {category: category, objects: objects});
+		});
 	});
 }

@@ -1,0 +1,19 @@
+extends ../layout
+
+block title
+	title ЕДИНИЦЫ ХРАНЕНИЯ
+
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/subjects.css' + version)
+
+block content_scripts
+	script(type='text/javascript', src='/build/js/subjects.js' + version)
+
+block content_title
+	.object_title ЕДИНИЦЫ ХРАНЕНИЯ
+block content
+	each subject in subjects
+		.category_block
+			a.subject_block_title(href='/subjects/' + subject._id)= subject.i18n.title.get('ru')
+			.subject_block_text= subject.i18n.description.get('ru')

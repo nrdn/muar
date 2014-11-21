@@ -51,6 +51,7 @@ var main = require('./routes/main.js');
 var objects = require('./routes/objects.js');
 var architects = require('./routes/architects.js');
 var categorys = require('./routes/categorys.js');
+var subjects = require('./routes/subjects.js');
 var auth = require('./routes/auth.js');
 var content = require('./routes/content.js');
 var files = require('./routes/files.js');
@@ -109,6 +110,14 @@ app.route('/categorys').get(categorys.index);
 
 // === Category Route
 app.route('/categorys/:id').get(categorys.category);
+
+
+// === Subjects Route
+app.route('/subjects').get(subjects.index);
+
+
+// === Subject Route
+app.route('/subjects/:id').get(subjects.subject);
 
 
 // === Locale Route
