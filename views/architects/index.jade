@@ -11,9 +11,16 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/architects.js' + version)
 
 block content_title
-	.object_title Архитекторы
+	.architects_title Архитекторы
+
 block content
-	each architect in architects
-		.category_block
-			a.category_block_title(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
-			.category_block_text= architect.i18n.description.get('ru')
+	.alphabet_block
+		each item in alphabet
+			.letter_block
+				.letter= item.letter
+				.letter_architects
+					each architect in item.objects
+						.architect_block
+							a.architect_name(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
+							.architect_description= architect.i18n.description.get('ru')
+						hr
