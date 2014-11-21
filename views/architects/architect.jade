@@ -11,11 +11,11 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/architects.js' + version)
 
 block content_title
-	.object_title= architect.i18n.name.get('ru')
+	.architect_title= architect.i18n.name.get('ru')
 block content
-	.category_block= architect.i18n.description.get('ru')
-	.category_attached_objects
+	.architect_block= architect.i18n.description.get('ru')
+	.architect_attached_objects
 	each object in objects
-		b= object.i18n.title.get('ru')
-		br
-		br
+		a.architect_object(href='/objects/'+object._id)
+			img(src=object.images[0].thumb)
+			.architect_name= object.i18n.title.get('ru')

@@ -15,5 +15,6 @@ block content_title
 block content
 	each subject in subjects
 		.category_block
+			img.subject_block_image(src=subject.image.thumb)
 			a.subject_block_title(href='/subjects/' + subject._id)= subject.i18n.title.get('ru')
 			.subject_block_text= subject.i18n.description.get('ru')
