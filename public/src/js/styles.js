@@ -41,10 +41,10 @@ $(document).ready(function() {
 					});
 
 					$this.find('.age_objects').append(obj);
-					console.log('cool')
-					objects.length == 0
+
+					objects.length === 0
 						? $this.data({skip: 'out'})
-						: $this.data({skip: skip + 5})
+						: $this.data({skip: skip + 5});
 				});
 			}
 		});

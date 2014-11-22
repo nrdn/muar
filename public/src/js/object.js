@@ -49,7 +49,7 @@ $(document).ready(function() {
 		var path = $(this).attr('path');
 		var currentLayer = subjectsGroup.getLayer(path);
 
-		if (map == undefined) {
+		if (map === undefined) {
 			map = L.map('subjects_view').setView([0, 0], 3).addLayer(currentLayer);
 			oldLayer = currentLayer;
 		}
@@ -74,7 +74,7 @@ $(document).ready(function() {
 	$('.images_navigate_block_prev').on('click', function(event) {
 		var index = $(this).parents('.object_image').index();
 
-		index != 0
+		index !== 0
 			?	$(this).parents('.object_image').hide().prev().show()
 			: $('.object_image').hide().last().show();
 	});
