@@ -7,6 +7,7 @@ var express = require('express'),
 		accepts = require('accepts'),
 		cookieParser = require('cookie-parser'),
 		session = require('express-session'),
+		sessionMongoose = require('mongoose-session')(mongoose),
 		methodOverride = require('method-override'),
 			app = express();
 
@@ -31,7 +32,8 @@ app.use(session({
 	cookie: {
 		path: '/',
 		maxAge: 1000 * 60 * 60 // 1 hour
-	}
+	},
+	store: sessionMongoose
 }));
 
 
