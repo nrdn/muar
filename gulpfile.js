@@ -57,7 +57,7 @@ gulp.task('stylus', function() {
 gulp.task('scripts', function() {
 	return gulp.src(paths.scripts.src)
 						 .pipe(jshint())
-						 .pipe(jshint.reporter('jshint-stylish'))
+						 .pipe(gulpif(!shouldMinify, jshint.reporter('jshint-stylish')))
 						 .pipe(gulpif(shouldMinify, uglify()))
 						 .pipe(gulp.dest(paths.scripts.dest));
 });
