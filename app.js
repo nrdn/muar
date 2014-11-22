@@ -91,6 +91,9 @@ app.route('/').get(main.index);
 // === Styles Route
 app.route('/styles').get(main.styles);
 
+// === get Objects Route
+app.route('/styles/get_objects').post(main.get_objects);
+
 
 // === Object Route
 app.route('/objects/:id').get(objects.object);

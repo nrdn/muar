@@ -1,4 +1,55 @@
 $(document).ready(function() {
+	$('.age_block').data({skip: 0});
+
+
+	function ageLoader (event) {
+		$(this).find('.age_block').each(function() {
+			var $this = $(this);
+			var outer_offset_top = $('.styles_block').offset().top;
+			var outer_offset_bottom = $('.styles_block').height();
+			var age_offset_top = $this.offset().top;
+			var age_offset_bottom = age_offset_top + $this.height();
+
+
+			if (age_offset_bottom <= outer_offset_bottom + 110) {
+				var ages_id = $this.attr('id');
+				var skip = $this.data('skip');
+
+				if (skip == 'out') return true;
+
+				$.ajax({
+					url: '/styles/get_objects',
+					type: 'POST',
+					dataType: 'json',
+					data: {ages_id: ages_id, skip: skip},
+					async:false
+				}).done(function(objects) {
+
+					var obj = objects.map(function(object) {
+						var start = new Date(object.meta.interval.start);
+						var end = new Date(object.meta.interval.end);
+						start = start.getUTCFullYear();
+						end = end.getUTCFullYear();
+
+						var object_block = $('<a/>', {'href': '/objects/' + object._id, 'class': 'object_block', 'style': 'background-image:url(' + object.images[0].thumb + ')'});
+						var object_description = $('<div/>', {'class': 'object_description'});
+						var object_description_inner = $('<div/>', {'class': 'object_description_inner'});
+						var object_title = $('<div/>', {'class': 'object_title', 'text': object.title[0].value});
+						var object_date= $('<div/>', {'class': 'object_date', 'text': start + ' - ' + end});
+
+						return object_block.append(object_description.append(object_description_inner.append(object_title, object_date)));
+					});
+
+					$this.find('.age_objects').append(obj);
+					console.log('cool')
+					objects.length == 0
+						? $this.data({skip: 'out'})
+						: $this.data({skip: skip + 5})
+				});
+			}
+		});
+	}
+
 
 	function ageScroll (event) {
 		var scroll_percentage = 100 * $(this).scrollTop() / ($(this).children('.style_inner_height').height() - $(this).height());
@@ -9,8 +60,9 @@ $(document).ready(function() {
 
 		$(this).find('.age_block').each(function() {
 			var $this = $(this);
-			var age_offset_top = $this.offset().top;
 			var outer_offset_top = $('.styles_block').offset().top;
+			var age_offset_top = $this.offset().top;
+
 
 			age_offset_top <= outer_offset_top
 				? $('.navigate_style_ages')
@@ -25,7 +77,7 @@ $(document).ready(function() {
 
 		$('.navigate_style_title').removeClass('current').eq(style_index).addClass('current');
 		$('.navigate_style_ages').hide().eq(style_index).show();
-		$('.style_block_inner').off().eq(style_index).on('scroll', {style_index: +style_index}, ageScroll);
+		$('.style_block_inner').off().eq(style_index).on('scroll', {style_index: +style_index}, ageScroll).on('scroll', ageLoader);
 		$style_inner = $('.style_block_inner').eq(style_index);
 
 		$style_inner.scrollTop(0).animate({

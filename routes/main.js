@@ -28,48 +28,17 @@ exports.search = function(req, res) {
 }
 
 exports.styles = function(req, res) {
-	Object.aggregate()
-	.sort('meta.interval.start meta.interval.end')
-	.unwind('ages.sub')
-	.group({
-		'_id': {
-			main: '$ages.main',
-			sub: '$ages.sub'
-		},
-		'objects': {
-			$push: {
-				_id: '$_id',
-				title: '$title',
-				interval: '$meta.interval',
-				images: '$images'
-			}
-		}
-	})
-	.group({
-		'_id': {
-			main: '$_id.main'
-		},
-		'sub': {
-			$push: {
-				age: '$_id.sub',
-				objects: '$objects'
-			}
-		}
-	})
-	.project({
-		'_id': 0,
-		'main': '$_id.main',
-		'sub': '$sub'
-	})
-	.exec(function(err, ages) {
-		Age.populate(ages, {path: 'main sub.age', select: '-_id -date -__v -parent -sub'}, function(err, ages) {
-			async.forEach(ages, function(age, callback) {
-				age.sub.sort(function(a, b) { return a.age.meta.interval.start > b.age.meta.interval.start});
-				callback();
-			}, function() {
-				ages.sort(function(a, b) { return a.main.meta.interval.start > b.main.meta.interval.start});
-				res.render('main/styles.jade', {ages: ages});
-			});
+	Age.find().where('parent').exists(false).sort('meta.interval.start meta.interval.end').select('-date -__v -_id').exec(function(err, ages) {
+		Age.populate(ages, {path: 'sub', select: '-date -__v -parent -sub', options: {sort: 'meta.interval.start meta.interval.end'}}, function(err, ages) {
+			res.render('main/styles.jade', {ages: ages});
 		});
+	});
+}
+
+exports.get_objects = function(req, res) {
+	var post = req.body;
+	Object.find().where('ages.sub').equals(post.ages_id).skip(post.skip).limit(5).exec(function(err, objects) {
+
+		res.send(objects);
 	});
 }
