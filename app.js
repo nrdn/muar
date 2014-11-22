@@ -72,7 +72,7 @@ var globals = require('./routes/globals.js');
 
 
 function checkAuth (req, res, next) {
-	if (req.session.user_id) {
+	if (req.session.user_id || process.env.NODE_ENV == 'development') {
 		res.locals.admin = true;
 		next();
 	}

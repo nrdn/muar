@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+		gulpif = require('gulp-if'),
 		nodemon = require('gulp-nodemon'),
 		autoprefixer = require('gulp-autoprefixer'),
 		uglify = require('gulp-uglify'),
@@ -8,6 +9,7 @@ var gulp = require('gulp'),
 var runSequence = require('run-sequence'),
 		del = require('del');
 
+var shouldMinify = false;
 
 var paths = {
 	stylus: {
@@ -25,7 +27,12 @@ var paths = {
 
 
 gulp.task('nodemon', function() {
-	return nodemon({ script: 'app.js', ext: 'js', ignore: paths.nodemon.ignore });
+	return nodemon({
+		script: 'app.js',
+		env: { 'NODE_ENV': shouldMinify ? 'production' : 'development' },
+		ext: 'js',
+		ignore: paths.nodemon.ignore
+	});
 });
 
 
@@ -37,11 +44,11 @@ gulp.task('clean', function() {
 gulp.task('stylus', function() {
 	return gulp.src(paths.stylus.src)
 						 .pipe(stylus({
-						 	compress: false
+						 	compress: shouldMinify
 						 }))
 						 .pipe(autoprefixer({
 						 	browsers: ['last 2 versions'],
-						 	cascade: true
+						 	cascade: !shouldMinify
 						 }))
 						 .pipe(gulp.dest(paths.stylus.dest));
 });
@@ -51,7 +58,7 @@ gulp.task('scripts', function() {
 	return gulp.src(paths.scripts.src)
 						 .pipe(jshint())
 						 .pipe(jshint.reporter('jshint-stylish'))
-						 .pipe(uglify())
+						 .pipe(gulpif(shouldMinify, uglify()))
 						 .pipe(gulp.dest(paths.scripts.dest));
 });
 
@@ -66,10 +73,26 @@ gulp.task('watch', function() {
 });
 
 
+gulp.task('production', function () {
+  shouldMinify = true;
+});
+
+
+// Run Tasks
+
+
 gulp.task('default', function(callback) {
 	runSequence('clean', 'scripts', 'stylus', callback);
 });
 
+gulp.task('build', function(callback) {
+	runSequence('production', 'clean', 'scripts', 'stylus', callback);
+});
+
 gulp.task('dev', function(callback) {
 	runSequence(['watch', 'nodemon'],  callback);
+});
+
+gulp.task('run', function(callback) {
+	runSequence(['production', 'watch', 'nodemon'],  callback);
 });
