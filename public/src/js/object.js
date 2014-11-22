@@ -85,7 +85,7 @@ $(document).ready(function() {
 		$('.object_image').hide().eq(index).show();
 	});
 
-	$(document).mouseup(function (event) {
+	$(document).on('mouseup touchstart', function (event) {
 		var container = $('.object_description_block, .images_slide, .subjects_slide');
 
 		if (!container.is(event.target)

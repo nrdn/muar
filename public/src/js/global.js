@@ -73,7 +73,7 @@ $(document).ready(function() {
 	});
 
 
-	$(document).mouseup(function (event) {
+	$(document).on('mouseup touchstart', function (event) {
 		var container = $('.content_search_block, .content_navigate_block');
 
 		if (!container.is(event.target)
