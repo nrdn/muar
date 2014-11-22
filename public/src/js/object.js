@@ -43,6 +43,8 @@ $(document).ready(function() {
 	$('.object_slide_item.subjects').on('click', function(event) {
 		$('.object_images_block').hide();
 		$('.object_subjects_block').show();
+		$('.subjects_slide').hide();
+		$('.object_navigate').removeClass('current');
 
 		var path = $(this).attr('path');
 		var currentLayer = subjectsGroup.getLayer(path);
@@ -82,6 +84,8 @@ $(document).ready(function() {
 		var index = $(this).index();
 		$('.object_images_block').show();
 		$('.object_subjects_block').hide();
+		$('.images_slide').hide();
+		$('.object_navigate').removeClass('current');
 		$('.object_image').hide().eq(index).show();
 	});
 
