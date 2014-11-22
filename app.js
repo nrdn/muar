@@ -48,6 +48,7 @@ app.use(function(req, res, next) {
 
 
 var main = require('./routes/main.js');
+var styles = require('./routes/styles.js');
 var objects = require('./routes/objects.js');
 var architects = require('./routes/architects.js');
 var categorys = require('./routes/categorys.js');
@@ -63,7 +64,7 @@ var a_architects = require('./routes/admin/architects.js');
 var a_categorys = require('./routes/admin/categorys.js');
 
 var options = require('./routes/admin/options.js');
-
+var globals = require('./routes/globals.js');
 
 // ------------------------
 // *** Midleware Block ***
@@ -88,11 +89,13 @@ function checkAuth (req, res, next) {
 // === Main Route
 app.route('/').get(main.index);
 
+
 // === Styles Route
-app.route('/styles').get(main.styles);
+app.route('/styles').get(styles.index);
+
 
 // === get Objects Route
-app.route('/styles/get_objects').post(main.get_objects);
+app.route('/styles/get_objects').post(styles.get_objects);
 
 
 // === Object Route
@@ -121,13 +124,6 @@ app.route('/subjects').get(subjects.index);
 
 // === Subject Route
 app.route('/subjects/:id').get(subjects.subject);
-
-
-// === Locale Route
-app.route('/lang/:locale').get(main.locale);
-
-// === Search Route
-app.route('/search').post(main.search);
 
 
 // ------------------------
@@ -294,6 +290,19 @@ app.route('/robots.txt').get(files.robots);
 
 app.route('/preview')
 	 .post(options.preview)
+
+
+// ------------------------
+// *** Globals Routers Block ***
+// ------------------------
+
+
+// === Locale Route
+app.route('/lang/:locale').get(globals.locale);
+
+
+// === Search Route
+app.route('/search').post(globals.search);
 
 
 // ------------------------
