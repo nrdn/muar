@@ -18,9 +18,8 @@ html
 				a(href='/auth') ЗВЕЗДОЧЕТ
 				a(href='/auth/ages') Стили
 				a(href='/auth/objects') Объекты
-				//- a(href='/auth/subjects') Единицы хранения
 				a(href='/auth/architects') Архитекторы
-				a(href='/auth/categorys') Категории
+				a(href='/auth/categorys') Термины
 			block content_title
 		.content_navigate_block
 			- if (session.user_id)
@@ -29,7 +28,7 @@ html
 			a(href='/special') Спецпроекты
 			a(href='/architects') Архитекторы
 			a(href='/subjects') Единицы хранения
-			a(href='/categorys') Словарь архитектурных терминов
+			a(href='/categorys') Термины
 		.content_search_block
 			.search_inner
 				.search_title Найти:

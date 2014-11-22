@@ -51,7 +51,7 @@ block content
 					each architect in object.architects
 						a.architect_item(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
 				.column_item.categorys
-					.column_title Категории:
+					.column_title Термины:
 					each category in object.categorys
 						a.category_item(href='/categorys/' + category._id)= category.i18n.title.get('ru')
 	.object_images_block
