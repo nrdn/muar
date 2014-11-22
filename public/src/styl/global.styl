@@ -124,20 +124,27 @@ a
   overflow hidden
 
 .context_results_block
-  float left
+  display inline
 
 .context_result
   text-decoration none
-  margin-right 10px
+  margin-right 5px
   &:last-child
     margin-right 0px
+    &:after
+      content ''
   &:hover
     color red
+  &:after
+    margin-left 5px
+    content '・'
+    color black
 
 .context_title
   font-size 18px
   float left
   margin-right 10px
+  font-family ma_unitwmedium
 
 .content_title_block
   width 100%
