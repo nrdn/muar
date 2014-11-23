@@ -53,17 +53,38 @@ a
   line-height 29px
 
 .header_logo
-  width 180px
-  height 35px
-  display block
-  background url('/images/design/logo.png') 0 0 no-repeat
-  background-size 120px
-  padding-left 140px
-  font-size 11px
-  padding-top 5px
-  line-height 14px
   text-decoration none
-  color #333
+  overflow hidden
+  width 115px
+  height 35px
+  margin-right 15px
+  cursor pointer
+  background-size contain
+  background-position center
+  background-repeat no-repeat
+  float left
+.logo_description
+  width 150px
+  margin-top 5px
+  float left
+  font-size 11px
+  line-height 14px
+
+.menu_navigate_block
+  background-color white
+  width 1280px
+  padding-top 10px
+  z-index 999
+  position relative
+  overflow hidden
+  display none
+  a
+    margin-right 10px
+    font-size 24px
+    text-decoration none
+    &:hover
+      color red
+
 
 .menu_block
   position absolute
@@ -149,16 +170,3 @@ a
 .content_title_block
   width 100%
   overflow hidden
-
-.content_navigate_block
-  width 1280px
-  position relative
-  margin 10px auto 0
-  overflow hidden
-  display none
-  a
-    margin-right 10px
-    font-size 24px
-    text-decoration none
-    &:hover
-      color red

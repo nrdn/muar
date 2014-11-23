@@ -8,11 +8,20 @@ html
 		//- include counters
 		.header_block
 			.header_block_inner
-				a.header_logo(href="/") Государственный музей архитектуры имени А. В. Щусева
+				.header_logo(style='background-image: url(/images/design/logo.png)')
+				.logo_description Государственный музей архитектуры имени А. В. Щусева
+				.menu_navigate_block
+					- if (session.user_id)
+						a(href='/auth') ЗВЕЗДОЧЕТ
+					a(href='/') Главная
+					a(href='/styles') Стили
+					a(href='/special') Спецпроекты
+					a(href='/architects') Архитекторы
+					a(href='/subjects') Единицы хранения
+					a(href='/categorys') Термины
 				.menu_block
 					.menu_item.search 
 					.menu_item.lang 
-					.menu_item.navigate 
 		.content_title_block
 			- if (admin)
 				a(href='/auth') ЗВЕЗДОЧЕТ
@@ -21,14 +30,6 @@ html
 				a(href='/auth/architects') Архитекторы
 				a(href='/auth/categorys') Термины
 			block content_title
-		.content_navigate_block
-			- if (session.user_id)
-				a(href='/auth') ЗВЕЗДОЧЕТ
-			a(href='/styles') Стили
-			a(href='/special') Спецпроекты
-			a(href='/architects') Архитекторы
-			a(href='/subjects') Единицы хранения
-			a(href='/categorys') Термины
 		.content_search_block
 			.search_inner
 				.search_title Найти:

@@ -67,14 +67,14 @@ $(document).ready(function() {
 		$('.search_field').val('').focus();
 	});
 
-	$('.menu_item.navigate').click(function(event) {
-		$('.content_title_block').hide();
-		$('.content_navigate_block').show();
+
+	$('.header_logo').on('click', function() {
+		$('.menu_navigate_block').show();
 	});
 
 
 	$(document).on('mouseup touchstart', function (event) {
-		var container = $('.content_search_block, .content_navigate_block');
+		var container = $('.content_search_block, .menu_navigate_block');
 
 		if (!container.is(event.target)
 			&& container.has(event.target).length === 0)
