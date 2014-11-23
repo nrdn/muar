@@ -56,7 +56,7 @@ $(document).ready(function() {
 
 		$(this).data({scroll_position: $(this).scrollTop()});
 
-		$('.navigate_style_block').eq(event.data.style_index).children('.navigate_style_progress').css('width', scroll_percentage + '%');
+		$('.navigate_style_block').eq(event.data.style_index).children('.navigate_style_progress').addClass('on_scroll').css('width', scroll_percentage + '%');
 
 		$(this).find('.age_block').each(function() {
 			var $this = $(this);
@@ -77,7 +77,12 @@ $(document).ready(function() {
 
 		$('.navigate_style_title').removeClass('current').eq(style_index).addClass('current');
 		$('.navigate_style_ages').hide().eq(style_index).show();
-		$('.style_block_inner').off().eq(style_index).on('scroll', {style_index: +style_index}, ageScroll).on('scroll', ageLoader);
+		$('.style_block_inner')
+			.off('scroll', ageScroll)
+			.off('scroll', ageLoader)
+			.eq(style_index)
+				.on('scroll', {style_index: +style_index}, ageScroll)
+				.on('scroll', ageLoader);
 		$style_inner = $('.style_block_inner').eq(style_index);
 
 		$style_inner.scrollTop(0).animate({
@@ -109,6 +114,22 @@ $(document).ready(function() {
 
 		window.location.hash = style_index;
 		$('.navigate_style_ages').hide().eq(style_index).show();
+	});
+
+	$.fn.scrollStopped = function(callback) {
+		$(this).on('scroll', function() {
+			var self = this, $this = $(self);
+
+			$this.data('scrollTimeout')
+				? clearTimeout($this.data('scrollTimeout'))
+				: false;
+
+			$this.data('scrollTimeout', setTimeout(callback, 250, self));
+		});
+	};
+
+	$('.style_block_inner').scrollStopped(function(){
+			$('.navigate_style_progress').removeClass('on_scroll');
 	});
 
 });
