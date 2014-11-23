@@ -14,8 +14,9 @@ block content_title
 	.architect_title= architect.i18n.name.get('ru')
 block content
 	.architect_block= architect.i18n.description.get('ru')
+	.architect_attached_title
+		| Проекты архитектора
 	.architect_attached_objects
-	each object in objects
-		a.architect_object(href='/objects/'+object._id)
-			img(src=object.images[0].thumb)
-			.architect_name= object.i18n.title.get('ru')
+		each object in objects
+			a.architect_object(href='/objects/'+object._id, style='background-image:url('+object.images[0].thumb+')')
+				.architect_object_name= object.i18n.title.get('ru')
