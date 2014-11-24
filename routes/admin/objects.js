@@ -97,7 +97,7 @@ exports.add_form = function(req, res) {
     });
   });
 
-  async.forEach(images, function(image, callback) {
+  async.forEachSeries(images, function(image, callback) {
     var name = new Date();
     name = name.getTime();
     var original_path = images_path.original + name + '.jpg';
@@ -168,8 +168,8 @@ exports.edit_form = function(req, res) {
     object.ages.main = post.history.main;
     object.ages.sub = post.history.sub;
 
-    object.architects = post.architects;
-    object.categorys = post.categorys;
+    object.architects = post.architects != '' ? post.architects : []
+    object.categorys = post.categorys != '' ? post.categorys : []
 
     object.meta.interval.start = set_date(post.interval.start);
     object.meta.interval.end = set_date(post.interval.end);
@@ -196,7 +196,7 @@ exports.edit_form = function(req, res) {
       });
     });
 
-    async.forEach(images, function(image, callback) {
+    async.forEachSeries(images, function(image, callback) {
       var name = new Date();
       name = name.getTime();
       var original_path = images_path.original + name + '.jpg';
