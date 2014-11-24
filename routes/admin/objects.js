@@ -70,8 +70,8 @@ exports.add_form = function(req, res) {
   object.ages.main = post.history.main;
   object.ages.sub = post.history.sub;
 
-  object.architects = post.architects;
-  object.categorys = post.categorys;
+  object.architects = post.architects != '' ? post.architects : []
+  object.categorys = post.categorys != '' ? post.categorys : []
 
   object.meta.interval.start = set_date(post.interval.start);
   object.meta.interval.end = set_date(post.interval.end);

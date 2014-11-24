@@ -19,8 +19,10 @@ block content_title
 	.object_navigate_block
 		.object_navigate.description.current Описание
 		.object_navigate.images Изображения
-		.object_navigate.subjects Единицы хранения
-		.object_navigate.model 3d
+		if (object.subjects.length > 0)
+			.object_navigate.subjects Единицы хранения
+		if (object.model > 0)
+			.object_navigate.model 3d
 	.object_slide_navigate.images_slide
 		.slide_navigate_inner
 			each image in object.images
@@ -44,16 +46,18 @@ block content
 					.column_title Дата:
 					.column_content= object.meta.interval.start.getUTCFullYear() + ' - ' + object.meta.interval.end.getUTCFullYear()
 				.column_item.adress
-					.column_title Место:
+					.column_title Адрес:
 					.column_content= object.meta.i18n.adress.get('ru')
-				.column_item.architects
-					.column_title Архитекторы:
-					each architect in object.architects
-						a.architect_item(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
-				.column_item.categorys
-					.column_title Термины:
-					each category in object.categorys
-						a.category_item(href='/categorys/' + category._id)= category.i18n.title.get('ru')
+				if (object.architects.length > 0)
+					.column_item.architects
+						.column_title Архитекторы:
+						each architect in object.architects
+							a.architect_item(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
+				if (object.categorys.length > 0)
+					.column_item.categorys
+						.column_title Термины:
+						each category in object.categorys
+							a.category_item(href='/categorys/' + category._id)= category.i18n.title.get('ru')
 	.object_images_block
 		each image, i in object.images
 			.object_image(style='background-image:url(' + image.original + ')')

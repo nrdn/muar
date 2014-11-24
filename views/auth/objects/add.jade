@@ -38,14 +38,16 @@ block content
 			.form_title Архитекторы:
 			.snake
 				button(type='button').back -
-				select(name='architects[]')
+				select(name='architects')
+					option(value='') нет
 					each architect in architects
 						option(value=architect._id)= architect.i18n.name.get('ru')
 				button(type='button').forward +
 			.form_title Категории:
 			.snake
 				button(type='button').back -
-				select(name='categorys[]')
+				select(name='categorys')
+					option(value='') нет
 					each category in categorys
 						option(value=category._id)= category.i18n.title.get('ru')
 				button(type='button').forward +
