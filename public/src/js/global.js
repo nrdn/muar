@@ -71,9 +71,13 @@ $(document).ready(function() {
 	$('.header_logo').on('click', function() {
 		$(this).data('clicked', !$(this).data('clicked'));
 
-		$(this).data('clicked')
-			? $('.menu_navigate_block').show()
-			: $('.menu_navigate_block').hide();
+		if ($(this).data('clicked')) {
+			$('.menu_navigate_block').show()
+			$('.navigate_style_progress').css('opacity', 0);
+		}
+		else {
+			$('.menu_navigate_block').hide();
+		}
 	});
 
 
@@ -85,6 +89,8 @@ $(document).ready(function() {
 		{
 				container.hide();
 				$('.content_title_block').show();
+				$('.navigate_style_progress').css('opacity', 1);
+				$('.header_logo').data('clicked', false);
 		}
 	});
 });
