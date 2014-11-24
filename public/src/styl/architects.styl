@@ -1,16 +1,22 @@
-.architect_title
-	width 1280px
-	position relative
-	margin 10px auto 0
-	font-size 21px
-	line-height 22px
+body
+	//background url("/images/design/trace_v_sp.jpg") 50% 0 no-repeat;
+	background-size 1024px
 
 .content_block
 	margin-top 10px
 	overflow hidden
 
-.architect_block
-	margin-bottom 10px
+/*.architect_block
+	margin-bottom 4px
+*/
+.architect_block a
+	text-decoration none
+	margin-bottom 4px
+	display block
+	font-size 17px
+	line-height 16px
+	&:hover
+		color #f00
 
 .architect_block_text
 	display inline
@@ -27,17 +33,6 @@
 .architect_attached_objects
 	width 1300px
 
-.architect_object
-	float left
-	width 240px
-	height 200px
-	display block
-	position relative
-	margin-right 20px
-	background-size cover
-	background-position 50%
-	background-repeat no-repeat
-
 .architect_object:hover
 	color #f00
 
@@ -46,3 +41,20 @@
 	width 100%
 	background #fff
 	position absolute
+
+.alphabet_block
+	display block
+	column-count 5
+	column-gap 20px
+
+.letter_block
+	display block
+	margin-bottom: 7px;
+
+.letter_block:nth-child(1)
+	display none
+
+.letter
+	border-bottom 1px solid #000
+	font-family ma_unitwmedium
+	margin-bottom 3px

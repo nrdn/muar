@@ -16,13 +16,14 @@ block content_scripts
 
 block content_title
 	.object_title= object.i18n.title.get('ru')
-	.object_navigate_block
+block content
+	.object_navigate_block.width_block
 		.object_navigate.description.current Описание
 		.object_navigate.images Изображения
 		.object_navigate.subjects Единицы хранения
 		.object_navigate.model 3d
 	.object_slide_navigate.images_slide
-		.slide_navigate_inner
+		.slide_navigate_inner.width_block
 			each image in object.images
 				.object_slide_item.images(style='background-image:url(' + image.thumb + ')')
 	.object_slide_navigate.subjects_slide
@@ -32,9 +33,8 @@ block content_title
 					.object_slide_title
 						.slide_title_inner= subject.i18n.title.get('ru').substr(0, 60) + '...'
 
-block content
 	.object_description_block
-		.description_inner
+		.description_inner.width_block
 			.description_column: != object.i18n.description.get('ru')
 			.description_column
 				.column_item.style
@@ -58,12 +58,12 @@ block content
 		each image, i in object.images
 			.object_image(style='background-image:url(' + image.original + ')')
 				.images_navigate_block
-					.images_navigate_block_inner
+					.images_navigate_block_inner.width_block
 						.images_navigate_block_prev
 							.images_arrow &lt;
 						.images_navigate_block_next
 							.images_arrow &gt;
 				.image_description
-					.image_description_inner: != image.description[0].value
+					.image_description_inner.width_block: != image.description[0].value
 	.object_subjects_block#subjects_view
 	.object_3d_block

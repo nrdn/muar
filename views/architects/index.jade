@@ -22,4 +22,3 @@ block content
 					each architect in item.objects
 						.architect_block
 							a.architect_name(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
-							.architect_description= architect.i18n.description.get('ru')

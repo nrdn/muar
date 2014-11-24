@@ -5,8 +5,6 @@ div, span, a, ul, li, h1, h2, h3
 html, body
   margin 0
   padding 0
-  // width 100%
-  // height 100%
   color #333
   font 18px/21px 'ma_unitwlight'
 
@@ -14,14 +12,16 @@ html, body
   outline none
 
 html, body, .content_block
-  // height 100%
 
 a
   color #333
 
-.content_block
+.width_block
   width 1280px
   margin 0 auto
+
+.content_block
+  margin 10px auto 0
 
 .header_block, .footer_block
   width 100%
@@ -31,21 +31,9 @@ a
   width 100%
 
 .header_block_inner
-.footer_block_inner
-  width 1280px
-  margin 0 auto
-
-.header_block_inner
-  height 35px
   position relative
-  margin-top 10px
+  margin-top 0px
   background #fff
-
-.styles_header_title_control
-  width 1280px
-  margin 0 auto
-  height 30px
-  border-bottom 2px solid #000
 
 .styles_header_title
   font-size 23px
@@ -53,27 +41,39 @@ a
   line-height 29px
 
 .header_logo
-  width 180px
-  height 35px
+  width: 160px;
+  height: 51px;
   display block
   background url('/images/design/logo.png') 0 0 no-repeat
-  background-size 120px
-  padding-left 140px
-  font-size 11px
-  padding-top 5px
-  line-height 14px
+  background-size 100%
   text-decoration none
-  color #333
+  margin 4px auto 4px
+
+.header_top_block
+  overflow hidden
+  margin-top 5px
+
+.menu_main_block
+  font-size 18px
+  overflow hidden
+  display block
+  float left
+  line-height 16px
+
+.menu_main_block a
+  margin-right 10px
+  &:hover
+    color #f00
 
 .menu_block
-  position absolute
-  right 0
-  top 9px
+  overflow hidden
+  display block
+  float right
 
 .menu_item
   float left
   margin-left 5px
-  font 26px/28px 'menu_icons'
+  font 22px/19px 'menu_icons'
   cursor pointer
   &.lang
     margin-right 5px
@@ -89,11 +89,9 @@ a
   display none
 
 .search_inner
-  width 1280px
   padding-top 2px
   padding-bottom 5px
   position relative
-  margin 0 auto
   overflow hidden
 
 .search_title
@@ -147,18 +145,9 @@ a
   font-family ma_unitwmedium
 
 .content_title_block
-  width 100%
   overflow hidden
-
-.content_navigate_block
-  width 1280px
-  position relative
-  margin 10px auto 0
-  overflow hidden
-  display none
-  a
-    margin-right 10px
-    font-size 24px
-    text-decoration none
-    &:hover
-      color red
+  text-align center
+  font-size 22px
+  line-height 21px
+  border-bottom 1px solid #000
+  padding 3px 0

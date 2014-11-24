@@ -7,13 +7,20 @@ html
 		- var date = new Date()
 		//- include counters
 		.header_block
-			.header_block_inner
-				a.header_logo(href="/") Государственный музей архитектуры имени А. В. Щусева
-				.menu_block
-					.menu_item.search 
-					.menu_item.lang 
-					.menu_item.navigate 
-		.content_title_block
+			.header_block_inner.width_block
+				.header_top_block
+					.menu_main_block
+						a(href='/styles') Стили
+						a(href='/special') Спецпроекты
+						a(href='/architects') Архитекторы
+						a(href='/subjects') Единицы хранения
+						a(href='/categorys') Термины
+					.menu_block
+							.menu_item.search 
+							.menu_item.lang 
+				a.header_logo(href="/") 
+					//Государственный музей архитектуры имени А. В. Щусева
+		.content_title_block.width_block
 			- if (admin)
 				a(href='/auth') ЗВЕЗДОЧЕТ
 				a(href='/auth/ages') Стили
@@ -21,16 +28,8 @@ html
 				a(href='/auth/architects') Архитекторы
 				a(href='/auth/categorys') Термины
 			block content_title
-		.content_navigate_block
-			- if (session.user_id)
-				a(href='/auth') ЗВЕЗДОЧЕТ
-			a(href='/styles') Стили
-			a(href='/special') Спецпроекты
-			a(href='/architects') Архитекторы
-			a(href='/subjects') Единицы хранения
-			a(href='/categorys') Термины
 		.content_search_block
-			.search_inner
+			.search_inner.width_block
 				.search_title Найти:
 				input.search_field(type='text', placeholder='...')
 				.search_result
@@ -43,7 +42,7 @@ html
 					.subjects_context
 						.context_title Единицы хранения:
 						.context_results_block
-		.content_block
+		.content_block.width_block
 			block content
 		.footer_block
-			.footer_block_inner
+			.footer_block_inner.width_block
