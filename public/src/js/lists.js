@@ -29,4 +29,14 @@ $(document).ready(function() {
 	$('.rm_project').on('click', {path: '/rm_project', description: 'Удалить спецпроект?'}, remove);
 
 	$('.tiles_gen').on('click', tiles_gen);
+
+	$('.ages_all').click(function(event) {
+		$('.object').show();
+	});
+
+	$('.age_navigate_title, .sub_item').click(function(event) {
+		var sort = $(this).attr('id');
+
+		$('.object').show().not('.' + sort).hide();
+	});
 });

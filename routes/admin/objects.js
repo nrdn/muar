@@ -30,7 +30,9 @@ var set_date = function(year) {
 
 exports.list = function(req, res) {
   Object.find().exec(function(err, objects) {
-    res.render('auth/objects/', {objects: objects});
+    Age.find().where('parent').exists(false).populate('sub').exec(function(err, ages) {
+      res.render('auth/objects/', {objects: objects, ages: ages});
+    });
   });
 }
 

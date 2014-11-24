@@ -16,9 +16,19 @@ block content
 	a.add(href='/auth/objects/add') добавить объект
 	br
 	br
+	.ages_all Все
+	.ages_navigate_block
+		each age in ages
+			.age_navigate_block
+				.age_navigate_title(id=age._id)= age.i18n.title.get('ru')
+				.ages_sub_list
+					.sub_navigate_block
+						each sub in age.sub
+							.sub_item(id=sub._id)= sub.i18n.title.get('ru')
+
 	.main_menu_block
 		each object in objects
-			.object
+			.object(class=object.ages.main, class=object.ages.sub)
 				a.rm_object(href='#', id=object._id)= 'удалить '
 				!=' | '
 				a(href='/auth/objects/edit/' + object._id)= object.i18n.title.get('ru')
