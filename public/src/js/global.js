@@ -69,7 +69,11 @@ $(document).ready(function() {
 
 
 	$('.header_logo').on('click', function() {
-		$('.menu_navigate_block').show();
+		$(this).data('clicked', !$(this).data('clicked'));
+
+		$(this).data('clicked')
+			? $('.menu_navigate_block').show()
+			: $('.menu_navigate_block').hide();
 	});
 
 

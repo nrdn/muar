@@ -5,13 +5,12 @@ $(document).ready(function() {
 	function ageLoader (event) {
 		$(this).find('.age_block').each(function() {
 			var $this = $(this);
-			var outer_offset_top = $('.styles_block').offset().top;
 			var outer_offset_bottom = $('.styles_block').height();
 			var age_offset_top = $this.offset().top;
 			var age_offset_bottom = age_offset_top + $this.height();
 
 
-			if (age_offset_bottom <= outer_offset_bottom + 110) {
+			if (age_offset_bottom <= outer_offset_bottom + 115) {
 				var ages_id = $this.attr('id');
 				var skip = $this.data('skip');
 
@@ -60,11 +59,11 @@ $(document).ready(function() {
 
 		$(this).find('.age_block').each(function() {
 			var $this = $(this);
-			var outer_offset_top = $('.styles_block').offset().top;
+			var outer_offset_bottom = $('.styles_block').height();
 			var age_offset_top = $this.offset().top;
 
 
-			age_offset_top <= outer_offset_top
+			age_offset_top <= outer_offset_bottom
 				? $('.navigate_style_ages')
 					.eq(event.data.style_index).children('.navigate_age').removeClass('current')
 					.eq($this.index() - $this.length - 1).addClass('current')
