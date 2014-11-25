@@ -64,6 +64,7 @@ var a_objects = require('./routes/admin/objects.js');
 var a_subjects = require('./routes/admin/subjects.js');
 var a_architects = require('./routes/admin/architects.js');
 var a_categorys = require('./routes/admin/categorys.js');
+var a_projects = require('./routes/admin/projects.js');
 
 var options = require('./routes/admin/options.js');
 var globals = require('./routes/globals.js');
@@ -229,9 +230,27 @@ app.route('/auth/objects/:object_id/subjects/edit/:subject_id')
 	 .get(checkAuth, a_subjects.edit)
 	 .post(checkAuth, a_subjects.edit_form);
 
+
 // === Admin @add tiles Route
 app.route('/tiles_gen')
 	 .post(a_subjects.tiles_gen)
+
+
+// === Admin projects Route
+app.route('/auth/projects').get(checkAuth, a_projects.list);
+
+
+// === Admin @add projects Route
+app.route('/auth/projects/add')
+	 .get(checkAuth, a_projects.add)
+	 .post(checkAuth, a_projects.add_form);
+
+
+// === Admin @edit projects Route
+app.route('/auth/projects/edit/:id')
+	 .get(checkAuth, a_projects.edit)
+	 .post(checkAuth, a_projects.edit_form);
+
 
 
 // ------------------------

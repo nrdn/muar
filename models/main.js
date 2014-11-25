@@ -106,6 +106,7 @@ ageSchema.plugin(mongooseLocale);
 objectSchema.plugin(mongooseLocale);
 subjectSchema.plugin(mongooseLocale);
 categorySchema.plugin(mongooseLocale);
+projectSchema.plugin(mongooseLocale);
 
 
 // ------------------------
@@ -129,3 +130,4 @@ module.exports.Object = mongoose.model('Object', objectSchema);
 module.exports.Subject = mongoose.model('Subject', subjectSchema);
 module.exports.Architect = mongoose.model('Architect', architectSchema);
 module.exports.Category = mongoose.model('Category', categorySchema);
+module.exports.Project = mongoose.model('Project', projectSchema);
