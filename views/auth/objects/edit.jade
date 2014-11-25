@@ -38,16 +38,32 @@ block content
 			.form_title Архитекторы:
 			.snake
 				button(type='button').back -
-				select(name='architects[]')
-					each architect in architects
-						option(value=architect._id)= architect.i18n.name.get('ru')
+				if object.architects.length > 0
+					each self_architec in object.architects
+						select(name='architects')
+							option(value='') нет
+							each architect in architects
+								option(value=architect._id, selected=self_architec == architect._id.toString())= architect.i18n.name.get('ru')
+				else
+					select(name='architects')
+						option(value='') нет
+						each architect in architects
+							option(value=architect._id)= architect.i18n.name.get('ru')
 				button(type='button').forward +
 			.form_title Категории:
 			.snake
 				button(type='button').back -
-				select(name='categorys[]')
-					each category in categorys
-						option(value=category._id)= category.i18n.title.get('ru')
+				if object.categorys.length > 0
+					each self_category in object.categorys
+						select(name='categorys')
+							option(value='') нет
+							each category in categorys
+								option(value=category._id, selected=self_category == category._id.toString())= category.i18n.title.get('ru')
+				else
+					select(name='categorys')
+						option(value='') нет
+						each category in categorys
+							option(value=category._id)= category.i18n.title.get('ru')
 				button(type='button').forward +
 			.form_title Интервал начало:
 			input.ru(type="text", name="interval[start]", value=object.meta.interval.start.getUTCFullYear())
@@ -60,8 +76,8 @@ block content
 					.image_upload_block
 						.image_upload_preview(style='background-image:url(' + image.thumb + ')')
 							.image_upload_delete Удалить
-						textarea.image_upload_description(name='images[description]')= image.description.filter(function(locale) { return locale.lg == 'ru' })[0].value
-						input.image_upload_form(type='hidden', name='images[path]', value=images_preview[i])
+						textarea.image_upload_description(name='images[description][]')= image.description.filter(function(locale) { return locale.lg == 'ru' })[0].value
+						input.image_upload_form(type='hidden', name='images[path][]', value=images_preview[i])
 			//- input#images_upload_fallback(type="file", name="photo")
 			br
 			br

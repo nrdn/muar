@@ -26,8 +26,8 @@ $(document).ready(function() {
 			var image_upload_block = $('<div />', {'class': 'image_upload_block'});
 			var image = $('<div />', {'class': 'image_upload_preview', 'style': 'background-image:url(' + response + ')'});
 			var image_delete = $('<div />', {'class': 'image_upload_delete', 'text': 'Удалить'});
-			var description = $('<textarea />', {'class': 'image_upload_description', 'name': 'images[description]', 'text':'Описание'});
-			var form = $('<input />', {'class': 'image_upload_form', 'type': 'hidden', 'name': 'images[path]', 'value': response});
+			var description = $('<textarea />', {'class': 'image_upload_description', 'name': 'images[description][]', 'text':'Описание'});
+			var form = $('<input />', {'class': 'image_upload_form', 'type': 'hidden', 'name': 'images[path][]', 'value': response});
 			$('.form_images_upload').append(image_upload_block.append(image.append(image_delete), description, form));
 		},
 		progressUpdated: function(i, file, progress) {
