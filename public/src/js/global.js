@@ -72,7 +72,7 @@ $(document).ready(function() {
 		$(this).data('clicked', !$(this).data('clicked'));
 
 		if ($(this).data('clicked')) {
-			$('.menu_navigate_block').show()
+			$('.menu_navigate_block').show();
 			$('.navigate_style_progress').css('opacity', 0);
 		}
 		else {
