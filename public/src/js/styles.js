@@ -73,7 +73,7 @@ $(document).ready(function() {
 
 	function stylesSlide (event) {
 		var style_id = window.location.hash.replace('#','.');
-		var style_index = window.location.hash == '' ? 0 : $(style_id).index();
+		var style_index = window.location.hash === '' ? 0 : $(style_id).index();
 
 		$('.navigate_style_title').removeClass('current').eq(style_index).addClass('current');
 		$('.navigate_style_ages').hide().eq(style_index).show();
@@ -82,7 +82,7 @@ $(document).ready(function() {
 			.off('scroll', ageLoader)
 			.eq(style_index)
 				.on('scroll', {style_index: style_index}, ageScroll)
-				.on('scroll', ageLoader);
+				.on('scroll', ageLoader).trigger('scroll');
 		$style_inner = $('.style_block_inner').eq(style_index);
 
 		$style_inner.scrollTop(0).animate({
