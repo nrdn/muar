@@ -54,6 +54,7 @@ var styles = require('./routes/styles.js');
 var objects = require('./routes/objects.js');
 var architects = require('./routes/architects.js');
 var categorys = require('./routes/categorys.js');
+var projects = require('./routes/projects.js');
 var subjects = require('./routes/subjects.js');
 var auth = require('./routes/auth.js');
 var content = require('./routes/content.js');
@@ -127,6 +128,14 @@ app.route('/subjects').get(subjects.index);
 
 // === Subject Route
 app.route('/subjects/:id').get(subjects.subject);
+
+
+// === Projects Route
+app.route('/projects').get(projects.index);
+
+
+// === Projects Route
+app.route('/projects/:id').get(projects.project);
 
 
 // ------------------------
