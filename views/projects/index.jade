@@ -5,7 +5,7 @@ block title
 
 
 block content_style
-	link(rel='stylesheet', type='text/css', href='/build/css/architects.css' + version)
+	link(rel='stylesheet', type='text/css', href='/build/css/special.css' + version)
 
 block content_scripts
 	script(type='text/javascript', src='/build/js/architects.js' + version)
@@ -16,7 +16,8 @@ block content_title
 block content
 	.projects_block
 		each project in projects
-			.project_block
-				a.project_title(href='/projects/' + project._id)= project.i18n.title.get('ru')
-				.project_description= project.i18n.description.get('ru')
-				img.project_image= project.photo
+			a.project_block(href='/special')
+				.project_image(style="background-image:url("+project.photo+")")
+				.project_description_block
+					.project_title= project.i18n.title.get('ru')
+					.project_description= project.i18n.description.get('ru')
