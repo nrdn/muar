@@ -73,16 +73,16 @@
 .slides_arrows_block>div:hover
   opacity 0.9
 
-.slides_arrows_block>div.slides_prew
+.slides_prew
   left 10px
   width 70%
 
-.slides_arrows_block>div.slides_next
+.slides_next
   right 10px
   text-align right
 
-.slides_arrows_block>div .images_arrow
-  top 50%
+.images_arrow
+  top 45%
   position absolute
   width 100%
 
@@ -99,10 +99,11 @@
   font-size 26px
   line-height 26px
   text-align center
-  margin 10px auto
-  text-decoration underline
+  text-decoration none
+  margin 20px auto
   &:hover
-    background #000
+    background-color white
+    color black
 
 .content_block_inner
   display none
@@ -116,11 +117,12 @@
   z-index 10000
 
 .intro_block
-  width 470px
+  width 640px
   position absolute
-  right 70px
-  top 20px
-  background rgba(0,0,0,0.4)
+  left 50%
+  margin-left -320px
+  top 60px
+  background rgba(0,0,0,0.6)
   color #fff
 
 .intro_title
@@ -128,7 +130,7 @@
 
 .intro_inner
   width auto
-  padding 35px 30px
+  padding 20px
   background transparent
 
 .parralax_slides_outer_block
