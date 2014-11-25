@@ -72,7 +72,8 @@ $(document).ready(function() {
 	}
 
 	function stylesSlide (event) {
-		var style_index = window.location.hash.replace('#','');
+		var style_id = window.location.hash.replace('#','.');
+		var style_index = window.location.hash == '' ? 0 : $(style_id).index();
 
 		$('.navigate_style_title').removeClass('current').eq(style_index).addClass('current');
 		$('.navigate_style_ages').hide().eq(style_index).show();
@@ -80,7 +81,7 @@ $(document).ready(function() {
 			.off('scroll', ageScroll)
 			.off('scroll', ageLoader)
 			.eq(style_index)
-				.on('scroll', {style_index: +style_index}, ageScroll)
+				.on('scroll', {style_index: style_index}, ageScroll)
 				.on('scroll', ageLoader);
 		$style_inner = $('.style_block_inner').eq(style_index);
 
@@ -88,7 +89,7 @@ $(document).ready(function() {
 			'scrollTop': $style_inner.data('scroll_position')
 		}, 400);
 		$('.styles_block').animate({
-			'scrollLeft': +style_index * $('.styles_block').width()
+			'scrollLeft': style_index * $('.styles_block').width()
 		}, 400);
 	}
 	stylesSlide();
@@ -110,8 +111,9 @@ $(document).ready(function() {
 
 	$('.navigate_style_title').on('click', function(event) {
 		var style_index = $(this).index('.navigate_style_title');
+		var style_id = $(this).parent('.navigate_style_block').attr('class').split(' ')[1];
 
-		window.location.hash = style_index;
+		window.location.hash = style_id;
 		$('.navigate_style_ages').hide().eq(style_index).show();
 	});
 

@@ -40,7 +40,7 @@ block content
 			.description_column
 				.column_item.style
 					.column_title Стиль:
-					a.column_content(href='/styles/#2')= object.ages.main.i18n.title.get('ru')
+					a.column_content(href='/styles/#' + object.ages.main._id)= object.ages.main.i18n.title.get('ru')
 				.column_item.interval
 					.column_title Дата:
 					.column_content= object.meta.interval.start.getUTCFullYear() + ' - ' + object.meta.interval.end.getUTCFullYear()

@@ -13,8 +13,8 @@ block content_scripts
 
 block content_title
 	.styles_block
-		each age, i in ages
-			a.style_item(href='/styles/#' + i)=age.i18n.title.get('ru')
+		each age in ages
+			a.style_item(href='/styles/#' + age._id)=age.i18n.title.get('ru')
 
 block content
 	#main2

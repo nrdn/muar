@@ -13,7 +13,7 @@ block content_title
 	.navigate_block
 		.navigate_styles_block
 			each age in ages
-				.navigate_style_block
+				.navigate_style_block(class=age._id)
 					.navigate_style_title= age.i18n.title.get('ru')
 					.navigate_style_progress
 					.navigate_style_ages
