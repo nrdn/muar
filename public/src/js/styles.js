@@ -20,8 +20,8 @@ $(document).ready(function() {
 					url: '/styles/get_objects',
 					type: 'POST',
 					dataType: 'json',
-					data: {ages_id: ages_id, skip: skip},
-					async:false
+					data: {ages_id: ages_id, skip: skip, limit: event.data.limit},
+					async: false
 				}).done(function(objects) {
 
 					var obj = objects.map(function(object) {
@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 					objects.length === 0
 						? $this.data({skip: 'out'})
-						: $this.data({skip: skip + 5});
+						: $this.data({skip: skip + event.data.limit});
 				});
 			}
 		});
@@ -82,7 +82,7 @@ $(document).ready(function() {
 			.off('scroll', ageLoader)
 			.eq(style_index)
 				.on('scroll', {style_index: style_index}, ageScroll)
-				.on('scroll', ageLoader).trigger('scroll');
+				.on('scroll', {limit: 5}, ageLoader).trigger('scroll', {limit: 15});  // !!!!!!!!!!!
 		$style_inner = $('.style_block_inner').eq(style_index);
 
 		$style_inner.scrollTop(0).animate({
@@ -92,9 +92,8 @@ $(document).ready(function() {
 			'scrollLeft': style_index * $('.styles_block').width()
 		}, 400);
 	}
-	stylesSlide();
 
-	$(window).on('hashchange', stylesSlide);
+	$(window).on('hashchange', stylesSlide).trigger('hashchange');
 
 	$('.navigate_age').on('click', function(event) {
 		var age_index = $(this).index();
