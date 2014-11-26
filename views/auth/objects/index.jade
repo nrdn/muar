@@ -16,8 +16,8 @@ block content
 	a.add(href='/auth/objects/add') добавить объект
 	br
 	br
-	.ages_all Все
 	.ages_navigate_block
+		.ages_all Все
 		each age in ages
 			.age_navigate_block
 				.age_navigate_title(id=age._id)= age.i18n.title.get('ru')
