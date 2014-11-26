@@ -18,6 +18,6 @@ block content
 		| Проекты архитектора
 	.architect_attached_objects
 		each object in objects
-			- var image = object.images.length > 0 object.images[0].thumb : ''
-			a.architect_object(href='/objects/'+object._id, style='background-image:url(' + image + ')')
+			- var image = object.images.length > 0 ? object.images[0].thumb : ''
+			a.architect_object(href='/objects/' + object._id, style='background-image:url(' + image + ')')
 				.architect_object_name= object.i18n.title.get('ru')
