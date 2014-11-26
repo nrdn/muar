@@ -34,3 +34,8 @@ block content
 				a(href='/auth/objects/edit/' + object._id)= object.i18n.title.get('ru')
 				!=' --> '
 				a(href='/auth/objects/' + object._id + '/subjects') единицы хранения
+				span.object_options
+					if object.ages.sub.length == 0
+						span.option.not_ages 🚎
+					if object.images.length > 6
+						span.option.not_images 🗽
