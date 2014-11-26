@@ -25,6 +25,15 @@ block content
 					.sub_navigate_block
 						each sub in age.sub
 							.sub_item(id=sub._id)= sub.i18n.title.get('ru')
+		.ages_navigate_options
+			.options_title Опции:
+			.navigate_option
+				img.option.not_images(src='/images/design/bus/obj_logo_2.gif')
+				span.option_title= ' - Нет картинок'
+			.navigate_option
+				img.option.not_ages(src='/images/design/bus/obj_logo_1.gif')
+				span.option_title= ' - Нет Связи со стилем'
+
 
 	.main_menu_block
 		each object in objects
@@ -36,6 +45,6 @@ block content
 				a(href='/auth/objects/' + object._id + '/subjects') единицы хранения
 				span.object_options
 					if object.ages.sub.length == 0
-						span.option.not_ages 🚎
+						img(src='/images/design/bus/obj_logo_1.gif').option.not_ages
 					if object.images.length > 6
-						span.option.not_images 🗽
+						img(src='/images/design/bus/obj_logo_2.gif').option.not_images
