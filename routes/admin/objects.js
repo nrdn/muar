@@ -80,6 +80,16 @@ exports.add_form = function(req, res) {
     value: post.ru.adress
   }];
 
+  if (!post.images) {
+    return (function () {
+      object.images = [];
+      object.save(function() {
+        res.redirect('back');
+      });
+    })();
+  }
+
+
   var public_path = appDir + '/public';
 
   var images_path = {
@@ -119,7 +129,7 @@ exports.add_form = function(req, res) {
   }, function() {
     object.save(function() {
       res.redirect('back');
-    })
+    });
   });
 }
 
@@ -184,6 +194,16 @@ exports.edit_form = function(req, res) {
     }
 
     del.sync([public_path + images_path.original, public_path + images_path.thumb]);
+
+    if (!post.images) {
+      return (function () {
+        object.images = [];
+        object.save(function() {
+          res.redirect('back');
+        });
+      })();
+    }
+
     mkdirp.sync(public_path + images_path.original);
     mkdirp.sync(public_path + images_path.thumb);
 

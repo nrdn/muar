@@ -30,7 +30,9 @@ $(document).ready(function() {
 						start = start.getUTCFullYear();
 						end = end.getUTCFullYear();
 
-						var object_block = $('<a/>', {'href': '/objects/' + object._id, 'class': 'object_block', 'style': 'background-image:url(' + object.images[0].thumb + ')'});
+						var image_thumb = object.images.length > 0 ? object.images[0].thumb : '';
+
+						var object_block = $('<a/>', {'href': '/objects/' + object._id, 'class': 'object_block', 'style': 'background-image:url(' + image_thumb + ')'});
 						var object_description = $('<div/>', {'class': 'object_description'});
 						var object_description_inner = $('<div/>', {'class': 'object_description_inner'});
 						var object_title = $('<div/>', {'class': 'object_title', 'text': object.title[0].value});
