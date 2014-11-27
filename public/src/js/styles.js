@@ -1,6 +1,18 @@
 $(document).ready(function() {
 	$('.age_block').data({skip: 0});
 
+	$.fn.scrollStopped = function(callback) {
+		$(this).on('scroll', function() {
+			var self = this, $this = $(self);
+
+			$this.data('scrollTimeout')
+				? clearTimeout($this.data('scrollTimeout'))
+				: false;
+
+			$this.data('scrollTimeout', setTimeout(callback, 250, self));
+		});
+	};
+
 
 	function ageLoader (event, limit) {
 		$(this).find('.age_block').each(function() {
@@ -69,41 +81,50 @@ $(document).ready(function() {
 		$style_inner = $('.style_block_inner').eq(style_index);
 
 
-		$.ajax({
-			url: '/styles/get_objects',
-			type: 'POST',
-			dataType: 'json',
-			data: {style_id: style_id.replace('.', '')},
-			async: false
-		}).done(function(objects) {
-
-			objects.forEach(function(object) {
-				var start = new Date(object.meta.interval.start);
-				var end = new Date(object.meta.interval.end);
-				start = start.getUTCFullYear();
-				end = end.getUTCFullYear();
-
-				var image_thumb = object.images.length > 0 ? object.images[0].thumb : '';
-
-				var object_block = $('<a/>', {'href': '/objects/' + object._id, 'class': 'object_block', 'image_path':  image_thumb });
-				var object_description = $('<div/>', {'class': 'object_description'});
-				var object_description_inner = $('<div/>', {'class': 'object_description_inner'});
-				var object_title = $('<div/>', {'class': 'object_title', 'text': object.title[0].value});
-				var object_date= $('<div/>', {'class': 'object_date', 'text': start + ' - ' + end});
-
-				var obj = object_block.append(object_description.append(object_description_inner.append(object_title, object_date)));
-				var object_ages = object.ages.sub.map(function(age) {
-					return '#' + age;
-				}).join(', ');
-
-				$(object_ages).children('.age_objects').append(obj);
-			});
+		$style_inner.scrollStopped(function() {
+				$('.navigate_style_progress').removeClass('on_scroll');
+				history.pushState({scroll_position: $style_inner.scrollTop()});
 		});
 
 
+		if (!$(style_id).data('loaded')) {
+			$.ajax({
+				url: '/styles/get_objects',
+				type: 'POST',
+				dataType: 'json',
+				data: {style_id: style_id.replace('.', '')},
+				async: false
+			}).done(function(objects) {
+
+				$(style_id).data({'loaded': true});
+
+				objects.forEach(function(object) {
+					var start = new Date(object.meta.interval.start);
+					var end = new Date(object.meta.interval.end);
+					start = start.getUTCFullYear();
+					end = end.getUTCFullYear();
+
+					var image_thumb = object.images.length > 0 ? object.images[0].thumb : '';
+
+					var object_block = $('<a/>', {'href': '/objects/' + object._id, 'class': 'object_block', 'image_path':  image_thumb });
+					var object_description = $('<div/>', {'class': 'object_description'});
+					var object_description_inner = $('<div/>', {'class': 'object_description_inner'});
+					var object_title = $('<div/>', {'class': 'object_title', 'text': object.title[0].value});
+					var object_date= $('<div/>', {'class': 'object_date', 'text': start + ' - ' + end});
+
+					var obj = object_block.append(object_description.append(object_description_inner.append(object_title, object_date)));
+					var object_ages = object.ages.sub.map(function(age) {
+						return '#' + age;
+					}).join(', ');
+
+					$(object_ages).children('.age_objects').append(obj);
+				});
+			});
+		}
+
 
 		$style_inner.scrollTop(0).animate({
-			'scrollTop': $style_inner.data('scroll_position')
+			'scrollTop': history.state ? history.state.scroll_position : $style_inner.data('scroll_position')
 		}, 400);
 		$('.styles_block').animate({
 			'scrollLeft': style_index * $('.styles_block').width()
@@ -131,22 +152,6 @@ $(document).ready(function() {
 
 		window.location.hash = style_id;
 		$('.navigate_style_ages').hide().eq(style_index).show();
-	});
-
-	$.fn.scrollStopped = function(callback) {
-		$(this).on('scroll', function() {
-			var self = this, $this = $(self);
-
-			$this.data('scrollTimeout')
-				? clearTimeout($this.data('scrollTimeout'))
-				: false;
-
-			$this.data('scrollTimeout', setTimeout(callback, 250, self));
-		});
-	};
-
-	$('.style_block_inner').scrollStopped(function(){
-			$('.navigate_style_progress').removeClass('on_scroll');
 	});
 
 });
