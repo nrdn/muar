@@ -5,21 +5,27 @@ $(document).ready(function() {
 	function ageLoader (event, limit) {
 		$(this).find('.age_block').each(function() {
 			var $this = $(this);
+			var outer_offset_top = $('.styles_block').offset().top;
 			var outer_offset_bottom = $('.styles_block').height();
 			var age_offset_top = $this.offset().top;
 			var age_offset_bottom = age_offset_top + $this.height();
 
 
-			if (age_offset_top <= outer_offset_bottom + 115) {
-				var ages_id = $this.attr('id');
+			if (age_offset_top <= outer_offset_top + 115) {
 				var skip = $this.data('skip');
+				var lim = limit || event.data.limit;
 
-				var objects = $this.children('.age_objects').children('.object_block').slice(5, 10);
+				var objects = $this.children('.age_objects').children('.object_block').slice(skip, skip + lim);
 
 				objects.each(function(index, el) {
-					var image = $(this).attr('image_path');
+					if (skip == 'out') return true;
 
+					var image = $(this).attr('image_path');
 					$(this).css('background-image', 'url(' + image + ')');
+
+					objects.length === 0
+						? $this.data({skip: 'out'})
+						: $this.data({skip: skip + lim});
 				});
 
 			}
