@@ -17,6 +17,7 @@ block content
 	br
 	br
 	.ages_navigate_block
+		.menu_navigate_block_title Стили:
 		.ages_all Все
 		each age in ages
 			.age_navigate_block
@@ -25,8 +26,16 @@ block content
 					.sub_navigate_block
 						each sub in age.sub
 							.sub_item(id=sub._id)= sub.i18n.title.get('ru')
+		.ages_legend_block
+			.menu_navigate_block_title Легенда:
+			.legend_item
+				span(style='color: red;').legend [1..n]
+				span.legend_title= ' - Картинки'
+			.legend_item
+				span(style='color: blue;').legend [1..n]
+				span.legend_title= ' - Единицы хранения'
 		.ages_navigate_options
-			.options_title Опции:
+			.menu_navigate_block_title Опции:
 			.navigate_option
 				img.option.not_images(src='/images/design/bus/obj_logo_2.gif')
 				span.option_title= ' - Нет картинок'
@@ -44,10 +53,12 @@ block content
 				a.rm_object(href='#', id=object._id)= 'удалить '
 				!=' | '
 				a(href='/auth/objects/edit/' + object._id)= object.i18n.title.get('ru')
+				if object.images.length > 0
+					span(style='color: red; padding-left: 5px;')= '[' + object.images.length + ']'
 				!=' --> '
 				a(href='/auth/objects/' + object._id + '/subjects') единицы хранения
 				if object.subjects.length > 0
-					span(style='color: blue; padding-left: 5px;')= '(' + object.subjects.length + ')'
+					span(style='color: blue; padding-left: 5px;')= '[' + object.subjects.length + ']'
 				span.object_options
 					if object.ages.sub.length == 0
 						img(src='/images/design/bus/obj_logo_1.gif').option.not_ages
