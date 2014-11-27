@@ -10,43 +10,18 @@ $(document).ready(function() {
 			var age_offset_bottom = age_offset_top + $this.height();
 
 
-			if (age_offset_bottom <= outer_offset_bottom + 115) {
+			if (age_offset_top <= outer_offset_bottom + 115) {
 				var ages_id = $this.attr('id');
 				var skip = $this.data('skip');
 
-				if (skip == 'out') return true;
+				var objects = $this.children('.age_objects').children('.object_block').slice(5, 10);
 
-				$.ajax({
-					url: '/styles/get_objects',
-					type: 'POST',
-					dataType: 'json',
-					data: {ages_id: ages_id, skip: skip, limit: limit || event.data.limit},
-					async: false
-				}).done(function(objects) {
+				objects.each(function(index, el) {
+					var image = $(this).attr('image_path');
 
-					var obj = objects.map(function(object) {
-						var start = new Date(object.meta.interval.start);
-						var end = new Date(object.meta.interval.end);
-						start = start.getUTCFullYear();
-						end = end.getUTCFullYear();
-
-						var image_thumb = object.images.length > 0 ? object.images[0].thumb : '';
-
-						var object_block = $('<a/>', {'href': '/objects/' + object._id, 'class': 'object_block', 'style': 'background-image:url(' + image_thumb + ')'});
-						var object_description = $('<div/>', {'class': 'object_description'});
-						var object_description_inner = $('<div/>', {'class': 'object_description_inner'});
-						var object_title = $('<div/>', {'class': 'object_title', 'text': object.title[0].value});
-						var object_date= $('<div/>', {'class': 'object_date', 'text': start + ' - ' + end});
-
-						return object_block.append(object_description.append(object_description_inner.append(object_title, object_date)));
-					});
-
-					$this.find('.age_objects').append(obj);
-
-					objects.length === 0
-						? $this.data({skip: 'out'})
-						: $this.data({skip: skip + (limit || event.data.limit)});
+					$(this).css('background-image', 'url(' + image + ')');
 				});
+
 			}
 		});
 	}
@@ -84,7 +59,7 @@ $(document).ready(function() {
 			.off('scroll', ageLoader)
 			.eq(style_index)
 				.on('scroll', {style_index: style_index}, ageScroll)
-				// .on('scroll', {limit: 5}, ageLoader).trigger('scroll', [15]);
+				.on('scroll', {limit: 5}, ageLoader).trigger('scroll', [15]);
 		$style_inner = $('.style_block_inner').eq(style_index);
 
 
