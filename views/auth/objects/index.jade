@@ -46,6 +46,8 @@ block content
 				a(href='/auth/objects/edit/' + object._id)= object.i18n.title.get('ru')
 				!=' --> '
 				a(href='/auth/objects/' + object._id + '/subjects') единицы хранения
+				if object.subjects.length > 0
+					span(style='color: blue; padding-left: 5px;')= '(' + object.subjects.length + ')'
 				span.object_options
 					if object.ages.sub.length == 0
 						img(src='/images/design/bus/obj_logo_1.gif').option.not_ages
