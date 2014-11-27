@@ -11,7 +11,7 @@ exports.index = function(req, res) {
 
 exports.get_objects = function(req, res) {
 	var post = req.body;
-	Object.find().where('ages.sub').equals(post.ages_id).skip(post.skip).limit(post.limit).sort('meta.interval.start meta.interval.end').exec(function(err, objects) {
+	Object.find().where('ages.main').equals(post.style_id).sort('meta.interval.start meta.interval.end').exec(function(err, objects) {
 
 		res.send(objects);
 	});
