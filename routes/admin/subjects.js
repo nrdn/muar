@@ -62,6 +62,19 @@ exports.add_form = function(req, res) {
 	var public_folder = appDir + '/public';
 	var subject_folder = '/images/subjects/' + subject._id;
 
+  if (!files.image) {
+    return (function () {
+			subject.save(function(err, subject) {
+				Object.findById(req.params.object_id).exec(function(err, object) {
+					object.subjects.push(subject._id);
+					object.save(function(err, object) {
+						res.redirect('/auth/objects/' + req.params.object_id + '/subjects');
+					});
+				});
+			});
+    })();
+  }
+
 	mkdirp.sync(public_folder + subject_folder);
 
 	gm(files.image.path).write(public_folder + subject_folder + '/original.jpg', function() {
@@ -73,7 +86,7 @@ exports.add_form = function(req, res) {
 				Object.findById(req.params.object_id).exec(function(err, object) {
 					object.subjects.push(subject._id);
 					object.save(function(err, object) {
-						res.redirect('/auth');
+						res.redirect('/auth/objects/' + req.params.object_id + '/subjects');
 					});
 				});
 			});
@@ -112,7 +125,15 @@ exports.edit_form = function(req, res) {
 		var public_folder = appDir + '/public';
 		var subject_folder = '/images/subjects/' + subject._id;
 
-		mkdirp.sync(public_folder + subject_folder);
+    if (!files.image) {
+      return (function () {
+				subject.save(function(err, subject) {
+					res.redirect('/auth/objects/' + req.params.object_id + '/subjects');
+				});
+      })();
+    }
+
+    mkdirp.sync(public_folder + subject_folder);
 
 		gm(files.image.path).write(public_folder + subject_folder + '/original.jpg', function() {
 			gm(files.image.path).resize(350, false).write(public_folder + subject_folder + '/thumb.jpg', function() {
@@ -120,12 +141,7 @@ exports.edit_form = function(req, res) {
 				subject.image.thumb = subject_folder + '/thumb.jpg';
 
 				subject.save(function(err, subject) {
-					Object.findById(req.params.object_id).exec(function(err, object) {
-						object.subjects.push(subject._id);
-						object.save(function(err, object) {
-							res.redirect('/auth');
-						});
-					});
+					res.redirect('/auth/objects/' + req.params.object_id + '/subjects');
 				});
 			});
 		});
