@@ -59,6 +59,7 @@ var subjects = require('./routes/subjects.js');
 var auth = require('./routes/auth.js');
 var content = require('./routes/content.js');
 var files = require('./routes/files.js');
+var api = require('./routes/api.js');
 
 var a_ages = require('./routes/admin/ages.js');
 var a_objects = require('./routes/admin/objects.js');
@@ -80,8 +81,9 @@ function checkAuth (req, res, next) {
 		res.locals.admin = true;
 		next();
 	}
-	else
+	else {
 		res.redirect('/login');
+	}
 }
 
 
@@ -333,6 +335,15 @@ app.route('/lang/:locale').get(globals.locale);
 
 // === Search Route
 app.route('/search').post(globals.search);
+
+
+// ------------------------
+// *** Globals Routers Block ***
+// ------------------------
+
+
+// === API v1 Route
+app.route('/api/v1').get(api.v1);
 
 
 // ------------------------
