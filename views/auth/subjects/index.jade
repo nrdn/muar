@@ -21,6 +21,7 @@ block content
 			each subject,i in object.subjects
 				.subject
 					.subject_size= sizes[i].width + 'x' + sizes[i].height
+					.subjetc_number= subject.meta.inventory
 					img.subject_preview(src='/images/subjects/' + subject._id + '/thumb.jpg')
 					a.rm_subject(href='#', id=subject._id)= 'удалить '
 					!=' | '
