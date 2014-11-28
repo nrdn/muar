@@ -14,7 +14,7 @@ block content_title
 		.navigate_styles_block
 			each age in ages
 				.navigate_style_block(class=age._id)
-					.navigate_style_title= age.i18n.title.get('ru')
+					.navigate_style_title(class=age.sub.length == 0 ? 'not_sub' : '')= age.i18n.title.get('ru')
 					.navigate_style_progress
 					.navigate_style_ages
 						each age_sub in age.sub
