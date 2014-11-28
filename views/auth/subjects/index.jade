@@ -18,8 +18,10 @@ block content
 	br
 	.main_menu_block
 		if (object.subjects.length > 0)
-			each subject in object.subjects
+			each subject,i in object.subjects
 				.subject
+					.subject_size= sizes[i].width + 'x' + sizes[i].height
+					img.subject_preview(src='/images/subjects/' + subject._id + '/thumb.jpg')
 					a.rm_subject(href='#', id=subject._id)= 'удалить '
 					!=' | '
 					a(href='/auth/objects/' + object._id + '/subjects/edit/' + subject._id)= subject.i18n.title.get('ru')

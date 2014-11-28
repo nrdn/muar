@@ -26,8 +26,19 @@ var set_date = function(year) {
 
 exports.list = function(req, res) {
 	var id = req.params.object_id;
+	var sizes = [];
+
 	Object.findById(id).populate('subjects').exec(function(err, object) {
-		res.render('auth/subjects', {object: object});
+		async.forEachSeries(object.subjects, function(subject, callback) {
+			gm(appDir + '/public' + subject.image.original).size({bufferStream: true}, function(err, size) {
+				size
+					? sizes.push({width: size.width, height: size.height})
+					: sizes.push({width: null, height: null});
+				callback();
+			});
+		}, function() {
+			res.render('auth/subjects', {object: object, sizes: sizes});
+		});
 	});
 }
 
