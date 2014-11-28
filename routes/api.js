@@ -42,23 +42,23 @@ exports.v1 = function(req, res) {
       Object.find(query, exclude).populate(populated).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, objects) {
         res.json({status: 'ok', location: params.location, result: objects});
       });
-      break;
+    break;
     case 'subjects':
       var query = params.id ? {'_id': params.id} : {};
       var exclude = params.fields ? params.fields.replace(/\,/g,' ') : '-__v -_id';
       Subject.find(query, exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, subjects) {
         res.json({status: 'ok', location: params.location, result: subjects});
       });
-      break;
+    break;
     case 'architects':
       var query = params.id ? {'_id': params.id} : {};
       var exclude = params.fields ? params.fields.replace(/\,/g,' ') : '-__v -_id';
       Architect.find(query, exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, architects) {
         res.json({status: 'ok', location: params.location, result: architects});
       });
-      break;
+    break;
     default:
-      res.json({status: 'error', description: 'Wrong location'})
+      res.json({status: 'error', code: 23, description: 'Wrong location'})
   }
 
 
