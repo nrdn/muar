@@ -14,6 +14,9 @@ block content_scripts
 
 block content_title
 	.subject_title= subject.i18n.title.get('ru')
+
 block content
-	.subject_description= subject.i18n.description.get('ru')
 	.subject_map(id='subject_view', path=subject._id)
+
+block footer
+	.subject_description: != subject.i18n.description.get('ru')

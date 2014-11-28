@@ -16,7 +16,7 @@ block content_title
 block content
 	.subjects_block
 	each subject in subjects
-		.subject_item
+		a.subject_item(href='/subjects/' + subject._id)
 			.subject_image(style='background-image: url(' + subject.image.thumb + ')')
-			a.subject_title(href='/subjects/' + subject._id)= subject.i18n.title.get('ru')
-			.subject_description_text= subject.i18n.description.get('ru')
+			.subject_title= subject.i18n.title.get('ru')
+			.subject_description= subject.i18n.description.get('ru')
