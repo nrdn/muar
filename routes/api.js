@@ -1,3 +1,4 @@
+var User = require('../models/main.js').User;
 var Object = require('../models/main.js').Object;
 var Subject = require('../models/main.js').Subject;
 var Architect = require('../models/main.js').Architect;
@@ -11,18 +12,9 @@ var Architect = require('../models/main.js').Architect;
 exports.check = function(req, res, next) {
   var params = req.query;
 
-
-  User.findOne({'secret': params.secret}).exec(function(err, user) {
-    if (!user) {
-      res.json({status: 'error', code: 24, description: 'Key not found'});
-    }
-    else if (user && user.secret) {
-      next();
-    }
-    else {
-      res.json({status: 'error', code: 25, description: 'Not key param'});
-    }
-  });
+  if (params.location == 'auth') next();
+  else if (params.secret == req.session.secret) next();
+  else res.json({status: 'error', code: 26, description: 'bad secret'});
 }
 
 
@@ -35,6 +27,33 @@ exports.v1 = function(req, res) {
   var params = req.query;
 
   switch(params.location) {
+    case 'auth':
+      User.findById(params.id).exec(function(err, user) {
+        if (!user) res.json({status: 'error', code: 101, description: 'param ID not found'});
+
+        else if (user && user.api == true) {
+          switch (params.session) {
+            case 'init':
+              var key = new Date();
+              req.session.secret = key.getTime();
+              res.json({status: 'ok', location: params.location, session: req.session});
+            break;
+            case 'status':
+              res.json({status: 'ok', location: params.location, session: req.session.secret ? req.session : null});
+            break;
+            case 'destroy':
+              req.session.destroy();
+              req.session = null;
+              res.json({status: 'ok', location: params.location, session: null});
+            break;
+            default:
+              res.json({status: 'error', code: 102,  description: 'param SESSION not found'});
+          }
+        }
+
+        else res.json({status: 'error', code: 103, description: 'Permission denied'});
+      });
+    break;
     case 'objects':
       var query = params.id ? {'_id': params.id} : {};
       var exclude = params.fields ? params.fields.replace(/\,/g,' ') : '-__v -_id';
