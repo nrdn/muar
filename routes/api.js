@@ -13,8 +13,8 @@ exports.check = function(req, res, next) {
   var params = req.query;
 
   if (params.location == 'auth') next();
-  else if (params.secret == req.session.secret) next();
-  else res.json({status: 'error', code: 26, description: 'bad secret'});
+  else if (params.token == Math.floor(req.session.secret / req.session.salt)) next();
+  else res.json({status: 'error', code: 26, description: 'bad token'});
 }
 
 
@@ -35,6 +35,10 @@ exports.v1 = function(req, res) {
           switch (params.session) {
             case 'init':
               var key = new Date();
+              var min = 1, max = 300;
+              var salt = min - 0.5 + Math.random()*(max-min+1);
+
+              req.session.salt = Math.round(salt);
               req.session.secret = key.getTime();
               res.json({status: 'ok', location: params.location, session: req.session});
             break;
