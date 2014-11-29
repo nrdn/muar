@@ -4,23 +4,23 @@ var Architect = require('../models/main.js').Architect;
 
 
 // ------------------------
-// *** Handlers Block ***
+// *** API check auth Block ***
 // ------------------------
 
 
-function checkPartner (req, res, next) {
-  var properties = req.params.path.split('&');
-  var params = splitParams(properties);
+exports.check = function(req, res, next) {
+  var params = req.query;
 
-  Partner.find({'secret': params.secret}).exec(function(err, partner) {
-    if (!partner) {
-      res.send({ error: { status: 'Key Not Found'} });
+
+  User.findOne({'secret': params.secret}).exec(function(err, user) {
+    if (!user) {
+      res.json({status: 'error', code: 24, description: 'Key not found'});
     }
-    else if (partner.length != 0 && partner[0].services.api == true) {
+    else if (user && user.secret) {
       next();
     }
     else {
-      res.send({ error: { status: 'Not Key Param'} });
+      res.json({status: 'error', code: 25, description: 'Not key param'});
     }
   });
 }

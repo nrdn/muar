@@ -343,7 +343,7 @@ app.route('/search').post(globals.search);
 
 
 // === API v1 Route
-app.route('/api/v1').get(api.v1);
+app.route('/api/v1').get(api.check, api.v1);
 
 
 // ------------------------
