@@ -1,11 +1,13 @@
 var mongoose = require('mongoose'),
 		mongooseLocale = require('mongoose-locale'),
+		mongooseBcrypt = require('mongoose-bcrypt'),
 			Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-	login: String,
-	password: String,
-	email: String,
+	login: {type: String, required: true},
+	password: {type: String, required: true},
+	secret: String,
+	email: {type: String, required: true},
 	status: {type: String, default: 'User'},
 	date: {type: Date, default: Date.now},
 });
@@ -100,6 +102,8 @@ var projectSchema = new Schema({
 // *** Plugins Block ***
 // ------------------------
 
+
+userSchema.plugin(mongooseBcrypt, { fields: ['password', 'secret'] });
 
 architectSchema.plugin(mongooseLocale);
 ageSchema.plugin(mongooseLocale);
