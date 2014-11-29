@@ -14,7 +14,7 @@ exports.check = function(req, res, next) {
 
   if (params.location == 'auth') next();
   else if (params.token == Math.floor(req.session.secret / req.session.salt)) next();
-  else res.json({status: 'error', code: 26, description: 'bad token'});
+  else res.json({status: 'error', code: 26, description: 'Bad token'});
 }
 
 
@@ -29,7 +29,7 @@ exports.v1 = function(req, res) {
   switch(params.location) {
     case 'auth':
       User.findById(params.id).exec(function(err, user) {
-        if (!user) res.json({status: 'error', code: 101, description: 'param ID not found'});
+        if (!user) res.json({status: 'error', code: 101, description: 'Param ID not found'});
 
         else if (user && user.api == true) {
           switch (params.session) {
@@ -51,7 +51,7 @@ exports.v1 = function(req, res) {
               res.json({status: 'ok', location: params.location, session: null});
             break;
             default:
-              res.json({status: 'error', code: 102,  description: 'param SESSION not found'});
+              res.json({status: 'error', code: 102,  description: 'Param SESSION not found'});
           }
         }
 
