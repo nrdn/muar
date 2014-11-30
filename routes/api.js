@@ -60,23 +60,26 @@ exports.v1 = function(req, res) {
     break;
     case 'objects':
       var query = params.id ? {'_id': params.id} : {};
-      var exclude = params.fields ? params.fields.replace(/\,/g,' ') : '-__v -_id';
-      var populated = params.populate == 'true' ? 'subjects architects' : '';
-      Object.find(query, exclude).populate(populated).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, objects) {
+      var exclude = params.select ? params.select.replace(/\,/g,' ') : '-__v -_id';
+      var populated = params.populate ? params.populate.replace(/\,/g,' ') : '';
+      Object.find(query).select(exclude).populate(populated).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, objects) {
+        if (!objects) return res.json({status: 'error', code: 24, description: 'Incorrect id'});
         res.json({status: 'ok', location: params.location, result: objects});
       });
     break;
     case 'subjects':
       var query = params.id ? {'_id': params.id} : {};
-      var exclude = params.fields ? params.fields.replace(/\,/g,' ') : '-__v -_id';
-      Subject.find(query, exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, subjects) {
+      var exclude = params.select ? params.select.replace(/\,/g,' ') : '-__v -_id';
+      Subject.find(query).select(exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, subjects) {
+        if (!subjects) return res.json({status: 'error', code: 24, description: 'Incorrect id'});
         res.json({status: 'ok', location: params.location, result: subjects});
       });
     break;
     case 'architects':
       var query = params.id ? {'_id': params.id} : {};
-      var exclude = params.fields ? params.fields.replace(/\,/g,' ') : '-__v -_id';
-      Architect.find(query, exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, architects) {
+      var exclude = params.select ? params.select.replace(/\,/g,' ') : '-__v -_id';
+      Architect.find(query).select(exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, architects) {
+        if (!architects) return res.json({status: 'error', code: 24, description: 'Incorrect id'});
         res.json({status: 'ok', location: params.location, result: architects});
       });
     break;

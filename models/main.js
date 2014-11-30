@@ -103,7 +103,7 @@ var projectSchema = new Schema({
 // ------------------------
 
 
-userSchema.plugin(mongooseBcrypt, { fields: ['password', 'secret'] });
+userSchema.plugin(mongooseBcrypt, { fields: ['password'] });
 
 architectSchema.plugin(mongooseLocale);
 ageSchema.plugin(mongooseLocale);
