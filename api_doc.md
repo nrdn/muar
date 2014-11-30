@@ -113,7 +113,7 @@ http://127.0.0.1:3000/api/v1/?location=objects&token=7016198255
 http://127.0.0.1:3000/api/v1/?location=objects&sort=meta.interval.start,meta.interval.end&skip=10&limit=21&token=7016198255
 
 ######  Получить объект по его идентификатору с выполнением подстановки полей архитекторов:
-http://127.0.0.1:3000/api/v1/?location=objects&id=546b527ebe5f5200007cb8d6&populate=architects
+http://127.0.0.1:3000/api/v1/?location=objects&id=546b527ebe5f5200007cb8d6&populate=architects&token=7016198255
 
 
 ## Параметры API
