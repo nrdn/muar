@@ -35,20 +35,42 @@ block content_scripts
 						.slide_title_inner= subject.i18n.title.get('ru').substr(0, 60) + '...'
 
 block content
-	.object_images_block
+	.object_main_block
+		.object_navigate_block
+			.navigate_menu
+				.object_title= object.i18n.title.get('ru')
+				.object_interval= object.meta.interval.start.getUTCFullYear() + ' - ' + object.meta.interval.end.getUTCFullYear()
+				.object_navigate.description.current Описание
+				if (object.images.length > 0)
+					.object_navigate.images Изображения
+				if (object.subjects.length > 0)
+					.object_navigate.subjects Единицы хранения
+				if (object.model > 0)
+					.object_navigate.model 3d
+			//- .object_slide_navigate.images_slide
+			//- 	.slide_navigate_inner
+			//- 		each image in object.images
+			//- 			.object_slide_item.images(style='background-image:url(' + image.thumb + ')')
+			//- .object_slide_navigate.subjects_slide
+			//- 	.slide_navigate_inner
+			//- 		each subject in object.subjects
+			//- 			.object_slide_item.subjects(path=subject._id, style='background-image:url(' + subject.image.thumb + ')')
+			//- 				.object_slide_title
+			//- 					.slide_title_inner= subject.i18n.title.get('ru').substr(0, 60) + '...'
 		.object_subjects_block#subjects_view
 		.object_3d_block
-		.images_inner
-			each image, i in object.images
-				img.object_image(src=image.original)
-				//- .images_navigate_block
-				//- 	.images_navigate_block_inner
-				//- 		.images_navigate_block_prev
-				//- 			.images_arrow &lt;
-				//- 		.images_navigate_block_next
-				//- 			.images_arrow &gt;
-				//- .image_description
-				//- 	.image_description_inner: != image.description[0].value
+		.object_images_block
+			.images_inner
+				each image, i in object.images
+					img.object_image(src=image.original)
+					//- .images_navigate_block
+					//- 	.images_navigate_block_inner
+					//- 		.images_navigate_block_prev
+					//- 			.images_arrow &lt;
+					//- 		.images_navigate_block_next
+					//- 			.images_arrow &gt;
+					//- .image_description
+					//- 	.image_description_inner: != image.description[0].value
 	.object_description_block
 		.description_inner: != object.i18n.description.get('ru')
 	.object_join_objects_block
