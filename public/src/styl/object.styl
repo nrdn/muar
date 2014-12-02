@@ -1,6 +1,10 @@
-// .header_block
-// 	position absolute
-// 	z-index 999
+.header_block
+	position fixed
+	background-color white
+	z-index 999
+
+.footer_block
+	display none
 
 
 .content_block
@@ -8,6 +12,7 @@
 	top 60px
 	bottom 0
 	position absolute
+	overflow-y auto
 
 .object_images_block
 	height 100%
@@ -16,22 +21,41 @@
 	background-color white
 	white-space nowrap
 
-.object_description_block
-	width 100%
-	height 100%
-	font-size 32px
-
-.description_inner
-	width 1280px
-	margin 20px auto
-	position relative
-	line-height 36px
-
 .images_inner
 .object_image
 	height 100%
+	width auto
 
 .object_image
 	display inline-block
 	margin-right 10px
 	height 100%
+
+.object_description_block
+	width 100%
+	font-size 32px
+
+.description_inner
+	width 1280px
+	margin 60px auto
+	position relative
+	line-height 36px
+
+.object_join_objects_block
+	width 100%
+	height 100%
+	position relative
+
+.join_objects_inner
+	width 1280px
+	margin 0 auto
+
+.join_object_block
+	width 240px
+	height 220px
+	margin-right 20px
+	margin-bottom 10px
+	float left
+	background-color #d5d5d5
+	&:nth-child(5n)
+		margin-right 0px
