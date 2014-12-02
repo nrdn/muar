@@ -38,15 +38,20 @@ block content
 	.object_main_block
 		.object_navigate_block
 			.navigate_menu
-				.object_title= object.i18n.title.get('ru')
-				.object_interval= object.meta.interval.start.getUTCFullYear() + ' - ' + object.meta.interval.end.getUTCFullYear()
-				.object_navigate.description.current Описание
-				if (object.images.length > 0)
-					.object_navigate.images Изображения
-				if (object.subjects.length > 0)
-					.object_navigate.subjects Единицы хранения
-				if (object.model > 0)
-					.object_navigate.model 3d
+				.navigate_title_block
+					.object_title= object.i18n.title.get('ru')
+					.object_interval= object.meta.interval.start.getUTCFullYear() + ' - ' + object.meta.interval.end.getUTCFullYear()
+				.navigate_modes_block
+					if (object.images.length > 0)
+						.object_navigate.images Изображения
+					if (object.subjects.length > 0)
+						.object_navigate.subjects Единицы хранения
+					if (object.model != 0)
+						.object_navigate.model 3d
+				.navigate_meta_block
+					.meta_item Стиль:
+					.meta_item Год:
+					.meta_item Адрес:
 			//- .object_slide_navigate.images_slide
 			//- 	.slide_navigate_inner
 			//- 		each image in object.images
