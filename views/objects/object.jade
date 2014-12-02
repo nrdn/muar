@@ -59,15 +59,16 @@ block content
 						each category in object.categorys
 							a.category_item(href='/categorys/' + category._id)= category.i18n.title.get('ru')
 	.object_images_block
-		each image, i in object.images
-			.object_image(style='background-image:url(' + image.original + ')')
-				.images_navigate_block
-					.images_navigate_block_inner
-						.images_navigate_block_prev
-							.images_arrow &lt;
-						.images_navigate_block_next
-							.images_arrow &gt;
-				.image_description
-					.image_description_inner: != image.description[0].value
+		.images_inner
+			each image, i in object.images
+				img.object_image(src=image.original)
+				//- .images_navigate_block
+				//- 	.images_navigate_block_inner
+				//- 		.images_navigate_block_prev
+				//- 			.images_arrow &lt;
+				//- 		.images_navigate_block_next
+				//- 			.images_arrow &gt;
+				//- .image_description
+				//- 	.image_description_inner: != image.description[0].value
 	.object_subjects_block#subjects_view
 	.object_3d_block

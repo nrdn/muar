@@ -3,6 +3,10 @@ $(document).ready(function() {
 	var map;
 	var oldLayer;
 
+	$("img").mousedown(function(){
+	    return false;
+	});
+
 
 	$('.object_navigate.description').on('click', function(event) {
 		$('.object_navigate').removeClass('current');
