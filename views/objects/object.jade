@@ -13,7 +13,7 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/object.js' + version)
 
 
-block content_title
+//- block content_title
 	.object_title= object.i18n.title.get('ru')
 	.object_navigate_block
 		.object_navigate.description.current Описание
@@ -35,30 +35,9 @@ block content_title
 						.slide_title_inner= subject.i18n.title.get('ru').substr(0, 60) + '...'
 
 block content
-	.object_description_block
-		.description_inner
-			.description_column: != object.i18n.description.get('ru')
-			.description_column
-				.column_item.style
-					.column_title Стиль:
-					a.column_content(href='/styles/#' + object.ages.main._id)= object.ages.main.i18n.title.get('ru')
-				.column_item.interval
-					.column_title Дата:
-					.column_content= object.meta.interval.start.getUTCFullYear() + ' - ' + object.meta.interval.end.getUTCFullYear()
-				.column_item.adress
-					.column_title Адрес:
-					.column_content= object.meta.i18n.adress.get('ru')
-				if (object.architects.length > 0)
-					.column_item.architects
-						.column_title Архитекторы:
-						each architect in object.architects
-							a.architect_item(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
-				if (object.categorys.length > 0)
-					.column_item.categorys
-						.column_title Термины:
-						each category in object.categorys
-							a.category_item(href='/categorys/' + category._id)= category.i18n.title.get('ru')
 	.object_images_block
+		.object_subjects_block#subjects_view
+		.object_3d_block
 		.images_inner
 			each image, i in object.images
 				img.object_image(src=image.original)
@@ -70,5 +49,6 @@ block content
 				//- 			.images_arrow &gt;
 				//- .image_description
 				//- 	.image_description_inner: != image.description[0].value
-	.object_subjects_block#subjects_view
-	.object_3d_block
+	.object_description_block
+		.description_inner: != object.i18n.description.get('ru')
+	.object_join_objects_block

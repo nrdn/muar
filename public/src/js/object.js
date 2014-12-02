@@ -93,14 +93,14 @@ $(document).ready(function() {
 		$('.object_image').hide().eq(index).show();
 	});
 
-	$(document).on('mouseup touchstart', function (event) {
-		var container = $('.object_description_block, .images_slide, .subjects_slide');
+	// $(document).on('mouseup touchstart', function (event) {
+	// 	var container = $('.object_description_block, .images_slide, .subjects_slide');
 
-		if (!container.is(event.target)
-			&& container.has(event.target).length === 0)
-		{
-				container.hide();
-				$('.object_navigate').removeClass('current');
-		}
-	});
+	// 	if (!container.is(event.target)
+	// 		&& container.has(event.target).length === 0)
+	// 	{
+	// 			container.hide();
+	// 			$('.object_navigate').removeClass('current');
+	// 	}
+	// });
 });
