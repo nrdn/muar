@@ -49,12 +49,22 @@ block content
 					if (object.model != 0)
 						.object_navigate.model 3d
 				.navigate_meta_block
-					.meta_item
-						.meta_title Стиль:
-						.meta_items
-					.meta_item Адрес:
-					.meta_item Архитекторы:
-					.meta_item Термины:
+					.column_item.style
+						.column_title Стиль:
+						a.column_content(href='/styles/#' + object.ages.main._id)= object.ages.main.i18n.title.get('ru')
+					.column_item.adress
+						.column_title Адрес:
+						.column_content= object.meta.i18n.adress.get('ru')
+					if (object.architects.length > 0)
+						.column_item.architects
+							.column_title Архитекторы:
+							each architect in object.architects
+								a.architect_item(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
+					if (object.categorys.length > 0)
+						.column_item.categorys
+							.column_title Термины:
+							each category in object.categorys
+								a.category_item(href='/categorys/' + category._id)= category.i18n.title.get('ru')
 				.navigate_description_block
 					each image in object.images
 						.description_item= image.description[0].value
