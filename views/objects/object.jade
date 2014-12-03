@@ -49,9 +49,15 @@ block content
 					if (object.model != 0)
 						.object_navigate.model 3d
 				.navigate_meta_block
-					.meta_item Стиль:
-					.meta_item Год:
+					.meta_item
+						.meta_title Стиль:
+						.meta_items
 					.meta_item Адрес:
+					.meta_item Архитекторы:
+					.meta_item Термины:
+				.navigate_description_block
+					each image in object.images
+						.description_item= image.description[0].value
 			//- .object_slide_navigate.images_slide
 			//- 	.slide_navigate_inner
 			//- 		each image in object.images
