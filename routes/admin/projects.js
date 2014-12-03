@@ -48,6 +48,10 @@ exports.add_form = function(req, res) {
 
   project.objects = post.objects != '' ? post.objects : []
 
+  var model_name = new Date();
+  model_name = model_name.getTime();
+  project.model = '/files/models/' + model_name + '.unity3d';
+
 
   if (files.photo) {
     fs.mkdir(appDir + '/public/images/projects/' + project._id, function() {
