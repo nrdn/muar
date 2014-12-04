@@ -23,6 +23,10 @@ var ageSchema = new Schema({
 	},
 	parent: { type: Schema.Types.ObjectId, ref: 'Age' },
 	sub: [{ type: Schema.Types.ObjectId, ref: 'Age' }],
+	image: {
+		main: String,
+		thumb: String
+	},
 	date: {type: Date, default: Date.now}
 });
 
@@ -93,6 +97,7 @@ var projectSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
 	photo: String,
+	model: String,
 	objects: [{ type: Schema.Types.ObjectId, ref: 'Object' }],
 	date: {type: Date, default: Date.now}
 });

@@ -13,7 +13,7 @@ block content
 	.form_block
 		a.back_link(href='/auth/ages') < Назад
 		.title ДОБАВИТЬ ПЕРИОД
-		form(action="", method="post")
+		form(action="", method="post", enctype="multipart/form-data")
 			.form_title Название:
 			input.ru(type="text", name="ru[title]",)
 			input.en(type="text", name="en[title]", disabled)
@@ -24,6 +24,8 @@ block content
 			input.ru(type="text", name="interval[start]",)
 			.form_title Интервал конец:
 			input.ru(type="text", name="interval[end]",)
+			.form_title Изображение:
+			input(type='file', name='photo')
 			br
 			br
 			input(type='submit', value='отправить')

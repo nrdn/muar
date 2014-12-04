@@ -9,6 +9,7 @@ block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/object.css' + version)
 
 block content_scripts
+	script(type='text/javascript', src='/build/libs/js/UnityObject2.js' + version)
 	script(type='text/javascript', src='/build/libs/js/leaflet.js' + version)
 	script(type='text/javascript', src='/build/js/object.js' + version)
 
@@ -21,8 +22,12 @@ block content_title
 			.object_navigate.images Изображения
 		if (object.subjects.length > 0)
 			.object_navigate.subjects Единицы хранения
-		if (object.model > 0)
-			.object_navigate.model 3d
+		if (projects.length > 0)
+			.object_navigate.models 3d
+	.object_slide_navigate.models_slide
+		.slide_navigate_inner
+			each project in projects
+				.object_slide_item.models(path=project.model, style='background-image:url(' + project.photo + ')')
 	.object_slide_navigate.images_slide
 		.slide_navigate_inner
 			each image in object.images
@@ -70,4 +75,9 @@ block content
 				.image_description
 					.image_description_inner: != image.description[0].value
 	.object_subjects_block#subjects_view
-	.object_3d_block
+	.object_3d_block#unityPlayer
+		.missing
+			a(href='http://unity3d.com/webplayer/', title='Unity Web Player. Install now!')
+				img(alt='Unity Web Player. Install now!', src='http://webplayer.unity3d.com/installation/getunity.png', width='193', height='63')
+		.broken
+			span Broken!

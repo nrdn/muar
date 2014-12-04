@@ -298,10 +298,6 @@ app.route('/registr')
 app.route('/contacts').get(content.contacts);
 
 
-// === Projects Route
-app.route('/special').get(content.special);
-
-
 // ------------------------
 // *** Old Routers Block ***
 // ------------------------

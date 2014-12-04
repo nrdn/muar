@@ -3,6 +3,61 @@ $(document).ready(function() {
 	var map;
 	var oldLayer;
 
+	function UnityLoader (path) {
+		var config = {
+			width: '100%',
+			height: '100%',
+			params: {
+				enableDebugging: '0',
+				disableContextMenu: true
+			}
+		};
+
+		var u = new UnityObject2(config);
+
+		var $missingScreen = $('#unityPlayer').find('.missing');
+		var $brokenScreen = $('#unityPlayer').find('.broken');
+
+		$missingScreen.hide();
+		$brokenScreen.hide();
+
+		u.observeProgress(function (progress) {
+			switch(progress.pluginStatus) {
+				case 'broken':
+					$brokenScreen.find('a').click(function (e) {
+						e.stopPropagation();
+						e.preventDefault();
+						u.installPlugin();
+						return false;
+					});
+					$brokenScreen.show();
+				break;
+				case 'missing':
+					$missingScreen.find('a').click(function (e) {
+						e.stopPropagation();
+						e.preventDefault();
+						u.installPlugin();
+						return false;
+					});
+					$missingScreen.show();
+				break;
+				case 'installed':
+					$missingScreen.remove();
+				break;
+				case 'first':
+				break;
+			}
+		});
+
+		u.initPlugin($('#unityPlayer')[0], path);
+	}
+
+	$('.object_navigate.models').on('click', function(event) {
+		$('.object_navigate').removeClass('current');
+		$(this).addClass('current');
+		$('.models_slide').show();
+	});
+
 
 	$('.object_navigate.description').on('click', function(event) {
 		$('.object_navigate').removeClass('current');
@@ -41,7 +96,7 @@ $(document).ready(function() {
 	});
 
 	$('.object_slide_item.subjects').on('click', function(event) {
-		$('.object_images_block').hide();
+		$('.object_images_block, .object_3d_block').hide();
 		$('.object_subjects_block').show();
 		$('.subjects_slide').hide();
 		$('.object_navigate').removeClass('current');
@@ -57,6 +112,17 @@ $(document).ready(function() {
 			map.removeLayer(oldLayer).setView([0, 0], 3).addLayer(currentLayer);
 			oldLayer = currentLayer;
 		}
+
+	});
+
+	$('.object_slide_item.models').on('click', function(event) {
+		$('.object_images_block, .object_subjects_block').hide();
+		$('.object_3d_block').show();
+		$('.subjects_slide').hide();
+		$('.object_navigate').removeClass('current');
+
+		var path = $(this).attr('path');
+		UnityLoader(path);
 
 	});
 
@@ -83,14 +149,14 @@ $(document).ready(function() {
 	$('.object_slide_item.images').on('click', function(event) {
 		var index = $(this).index();
 		$('.object_images_block').show();
-		$('.object_subjects_block').hide();
+		$('.object_subjects_block, .object_3d_block').hide();
 		$('.images_slide').hide();
 		$('.object_navigate').removeClass('current');
 		$('.object_image').hide().eq(index).show();
 	});
 
 	$(document).on('mouseup touchstart', function (event) {
-		var container = $('.object_description_block, .images_slide, .subjects_slide');
+		var container = $('.object_description_block, .images_slide, .subjects_slide, .models_slide');
 
 		if (!container.is(event.target)
 			&& container.has(event.target).length === 0)

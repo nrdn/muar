@@ -20,7 +20,7 @@
 	margin-right 10px
 	font-size 18px
 	padding-top 5px
-	&.model
+	&.models
 		width 25px
 		height 22px
 		margin-top 3px
@@ -33,6 +33,9 @@
 		font-size 14px
 		position relative
 		&:hover
+			color white
+			background-color red
+		&.current
 			color white
 			background-color red
 	&:hover
@@ -87,12 +90,16 @@
 	margin-right 10px
 
 .object_images_block
+.object_3d_block
 	width 100%
 	top 115px
 	bottom 0
 	overflow hidden
 	position absolute
 	background-color #d5d5d5
+
+.object_3d_block
+	display none
 
 .object_image
 	display none
