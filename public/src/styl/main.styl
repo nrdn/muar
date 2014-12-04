@@ -222,9 +222,8 @@ body > .content_block
   position absolute
   top 72px
   bottom 80px
-  left 40px
-  right 40px
-  //width 100%
+  left 0px
+  right 0px
   height 540px
 
 a.styles_line_nav
@@ -235,16 +234,16 @@ a.styles_line_nav
   width 48px
   height 100px
   text-align center
-  background #999
+  //background #999
   color #fff
-  top 220px
+  top 180px
   cursor pointer
   &.prev
     left 0px
   &.next
     right 0px
   &:hover
-    background #EE3124
+    color #EE3124
 
 .styles_inner_line
   white-space nowrap
@@ -261,7 +260,10 @@ a.styles_line_nav
 
 .style_image
   height 170px
-  background #ccc
+  background-position 50%
+  background-repeat no-repeat
+  background-size cover
+  background-color #ccc
 
 .style_title
   background #2d2d2d
