@@ -153,7 +153,8 @@ body > .content_block
 
 //-- 2ой Блок --//
 
-
+.screen_block.periods_block.screen_block_height
+  height 620px
 
 .content_block > .screen_block_height
   height auto
@@ -172,16 +173,38 @@ body > .content_block
   padding 10px
   border-bottom 1px solid #333
 
-.description_text
-  background #fff
+.description_block
   margin 20px 0
   padding 14px 10px 20px
+
+.description_text
   width 60%
   font-size 18px
   line-height 22px
+  float left
   p
     margin 0 0 10px
     padding 0
+
+.description_text2
+  width 40%
+  float left
+  position relative
+  min-height 300px
+
+.logo_block
+  position absolute
+  bottom 0px
+  right 0
+
+.description_text2 img
+  width 300px
+  margin-top 20px
+  margin-bottom 10px
+  display block
+
+.description_text2 img.krf
+
 
 .description_block .goto_down a
   color #333
@@ -191,17 +214,36 @@ body > .content_block
 .styles_line
   background #fff
   margin 20px 0
-  padding 14px 10px 20px
+  padding 14px 0px 20px
   font-size 18px
   line-height 22px
-  overflow-x auto
-  overflow-y hidden
+  overflow hidden
   position absolute
   top 72px
   bottom 80px
-  left 0
-  width 100%
+  left 40px
+  right 40px
+  //width 100%
   height 540px
+
+a.styles_line_nav
+  display block
+  position absolute
+  font 46px/100px 'menu_icons'
+  z-index 10000
+  width 48px
+  height 100px
+  text-align center
+  background #999
+  color #fff
+  top 220px
+  cursor pointer
+  &.prev
+    left 0px
+  &.next
+    right 0px
+  &:hover
+    background #EE3124
 
 .styles_inner_line
   white-space nowrap
@@ -264,8 +306,8 @@ body > .content_block
 //--------//
 
 .footer_block
-  background rgba(255,255,255,0.6)
+  display none
 
-.footer_sponsors_block
-  border-top none
+//.footer_sponsors_block
+  //border-top none
 
