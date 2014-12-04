@@ -3,38 +3,60 @@ extends ../layout
 block title
 	title МУАР
 
-
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/main.css' + version)
 
 block content_scripts
-	script(type='text/javascript', src='/build/libs/js/jquery.parallax.js' + version)
+	//script(type='text/javascript', src='/build/libs/js/jquery.parallax.js' + version)
 	script(type='text/javascript', src='/build/js/index.js' + version)
 
 block content_title
-	.styles_block
-		each age in ages
-			a.style_item(href='/styles/#' + age._id)=age.i18n.title.get('ru')
+
 
 block content
-	#main2
-		.parralax_slides_outer_block
-			.slides_arrows_block
-				.slides_prew
-					.images_arrow
-						| &lt;
-				.slides_next
-					.images_arrow
-						| &gt;
-			.parallax_block
-				img.parallax-layer(src='/images/design/parallax_drops/3.png', alt='', style='width:1486px; height:850px;')
-				img.parallax-layer(src='/images/design/parallax_drops/3.png', alt='', style='width:1286px; height:850px;')
-				img.parallax-layer(src='/images/design/parallax_drops/4.png', alt='', style='width:1331px; height:850px;')
-				img.parallax-layer(src='/images/design/parallax_drops/5.png', alt='', style='width:1446px; height:850px;')
-				img.parallax-layer(src='/images/design/parallax_drops/6.png', alt='', style='width:1500px; height:850px;')
-		.content_block_inner.content_block_inner_top
-			.intro_block
-				.intro_inner
-					.intro_title Виртуальный музей
-					.intro_description Виртуальный музей архитектуры – это специальный проект Государственного музея архитектуры им. А.В. Щусева, цельюкоторогостановится знакомство самой широкой аудитории с уникальной коллекцией музея, насчитывающей более миллиона экспонатов.Сайтвиртуального музея строится на историческом принципе: вся история отечественной архитектуры делится на семь разделовпериодов.Каждый раздел открывают тексты, подготовленные научными сотрудниками Музея, и иллюстрируют материалы из различныхфондов:отдела фототеки, графики и трехмерных объектов. При этом каждое изображение подробно аннотировано, а структура сайтапозволяетсортировать архитектурные объекты по нескольким основным принципам: автору, стилю, времени и месту постройки. Такимобразом,каждый пользователь и посетитель сайта сможет составить свою собственную подборку изображений, сформированную по одномуили понескольким параметрам.
-					a.enter(href='/styles') Войти
+	.screen_block.intro_block
+		.intro_block_background
+		.styles_block
+			.styles_inner_block
+				each age in ages
+					a.style_item(href='/styles/#' + age._id)
+						.style_name=age.i18n.title.get('ru')
+		.goto_down
+			a(href="#description")
+			#description
+
+
+	.screen_block.description_block.screen_block_height
+		.description_inner
+			.description_title Виртуальный музей
+			.description_text
+				p Виртуальный музей архитектуры – это специальный проект Государственного музея архитектуры им. А.В.Щусева, целью которогостановится знакомство самой широкой аудитории с уникальной коллекцией музея, насчитывающей более миллиона экспонатов.
+				p Сайт виртуального музеястроится на историческом принципе: вся история отечественной архитектуры делится на семь разделов-периодов. 
+				p Каждый раздел открывают тексты, подготовленные научными сотрудниками Музея, и иллюстрируют материалы из различных фондов: отдела фототеки, графики и трехмерных объектов. При этом каждое изображение подробно аннотировано, а структура сайта позволяет сортировать архитектурные объекты по нескольким основным принципам: автору, стилю, времени и месту постройки.
+				p Таким образом,каждый пользователь и посетитель сайта сможет составить свою собственную подборку изображений, сформированную по одному или понескольким параметрам.
+		.goto_down
+			a(href="#periods")
+			#periods
+
+	.screen_block.periods_block
+		.description_inner
+			.description_title Представленные периоды
+			.styles_line
+				.styles_inner_line
+					each age in ages
+						.style_block
+							.style_image
+							.style_title
+								.style_title_inner= age.i18n.title.get('ru')
+							.style_description
+								.style_description_inner: != age.i18n.description.get('ru')
+		.goto_down
+			a(href="#special")
+			#special
+
+	.screen_block.special_block
+		.special_block_background
+		.special_block_inner
+			.special_block_title.title_block
+				.description_title Спецпроекты
+

@@ -1,149 +1,229 @@
-.content_block
+body
+  height 100%
+
+body > .content_block
+  height 100%
+
+.content_block > .screen_block
+  height 100%
+
+.header_block
+  position absolute
+  top 0
+  z-index 100000
   width 100%
 
-.content_block_inner
+.screen_block
+  width 100%
+  position relative
+  overflow hidden
+
+.title_block
   width 1280px
   margin 0 auto
 
+.content_block
+  width 100%
+  position absolute
+  top 0
+  height 100%
+
+
+//-- 1ый Блок --//
+.intro_block_background
+  background url('/images/design/12.jpg') 50% no-repeat
+  background-size cover
+  opacity 0.6
+  height 100%
+  background-attachment fixed
+
+.intro_block
+  background #000
+
 .styles_block
+  width 100%
+  position absolute
+  top 50%
+  margin-top -25px
+
+.styles_inner_block
   width 1280px
-  margin 10px auto 0
-  position relative
+  margin 0 auto
+  display table
 
 .style_item
   text-decoration none
   font-size 24px
   margin-right 15px
+  color #fff
+  display table-cell
   &:hover
     color red
 
-.parralax_slides_outer_block
-  width 100%
-  background #ccc
-  margin-top 40px
-
-.parallax_block
-  width 1280px
-  height 600px
-  overflow hidden
+.style_name
+  margin 0 6px
+  border-bottom 1px solid
+  text-align center
   position relative
+  padding-bottom 3px
+
+.style_name:after
+  content '•'
+  display block
+  position absolute
+  left 100%
+  bottom -13px
+  margin-left 2px
+  font-size 26px
+
+.goto_down
+  position absolute
+  bottom 26px
+  width 100%
+  height 40px
+  opacity 0.6
+  &:hover
+    opacity 1
+  & div
+    bottom -26px
+    position absolute
+
+.goto_down a
+  width 180px
+  height 40px
+  background #fff url('/images/design/down.png') 50% 7px no-repeat
+  margin 0 auto
+  display block
+  background-size 42px
+  &:hover
+    background-position 50% -98px
+    padding-top 10px
+
+
+//-- 2ой Блок --//
+
+.content_block > .screen_block_height
+  height auto
+  padding-bottom 60px
+
+.description_inner
+  background transparent
+  width 1280px
   margin 0 auto
 
-.parallax-layer
-  transform-origin 50%
-  position absolute
-
-.intro_block
-  height auto
-
-.intro_inner
-  width 1280px
-  position relative
-  background-color white
-
-.intro_title
+.description_title
   display block
   text-decoration none
   font 30px/32px 'ma_unitwmedium'
-
-.intro_description
-  padding-top 12px
-  padding-bottom 10px
-  font-size 16px
-
-.slides_arrows_block
-  width 1280px
-  margin-left -640px
-  position absolute
-  height 100%
-  left 50%
-  z-index 99999
-
-.slides_arrows_block>div
-  position absolute
-  font-size 120px
-  color #fff
-  text-shadow 0 0 1px #000
-  user-select none
-  opacity 0
-  width 30%
-  height 100%
-  cursor pointer
-
-.slides_arrows_block>div:hover
-  opacity 0.9
-
-.slides_arrows_block>div.slides_prew
-  left 10px
-  width 70%
-
-.slides_arrows_block>div.slides_next
-  right 10px
-  text-align right
-
-.slides_arrows_block>div .images_arrow
-  top 50%
-  position absolute
-  width 100%
-
-// // ----  ---- // //
-
-
-.enter
-  background #f00
+  color #000
+  margin 20px 0 0
   padding 10px
-  color #fff
-  display block
-  width 230px
-  height 25px
-  font-size 26px
-  line-height 26px
-  text-align center
-  margin 10px auto
-  text-decoration underline
-  &:hover
-    background #000
+  border-bottom 1px solid #000
 
-.content_block_inner
-  display none
+.description_text
+  background #fff
+  color #000
+  margin 20px 0
+  padding 14px 10px 20px
+  width 60%
+  font-size 18px
+  line-height 22px
+  p
+    margin 0 0 10px
+    padding 0
 
-.content_block_inner.content_block_inner_top
-  display block
+.description_block .goto_down a
+  background-color #eee
+
+
+//-- 3ой Блок --//
+.styles_line
+  background #fff
+  color #000
+  margin 20px 0
+  padding 14px 10px 20px
+  font-size 18px
+  line-height 22px
+  overflow-x auto
+  overflow-y hidden
   position absolute
-  top 115px
-  left 0px
-  right 0px
-  z-index 10000
-
-.intro_block
-  width 470px
-  position absolute
-  right 70px
-  top 20px
-  background rgba(0,0,0,0.4)
-  color #fff
-
-.intro_title
-  color #fff
-
-.intro_inner
-  width auto
-  padding 35px 30px
-  background transparent
-
-.parralax_slides_outer_block
-  position absolute
-  top 85px
-  bottom 0
+  top 72px
+  bottom 80px
   left 0
-  right 0
-  margin-top 0
-  z-index 0
-
-.parallax_block
   width 100%
-  height 100%
+  height 540px
+
+.styles_inner_line
+  white-space nowrap
+
+.style_block
+  width 240px
+  height 500px
+  overflow hidden
+  display inline-block
+  margin-right 10px
+  background-size 100%
   position relative
 
-.footer_block
+.style_image
+  height 170px
+  background #ccc
+
+.style_title
+  background #2d2d2d
+
+.style_title_inner
+  color #fff
+  font 20px/22px 'ma_unitwmedium'
+  padding 10px
+  height 90px
+
+.style_description
+  padding 10px 0
+  background #fff
+
+.style_description_inner
+  white-space normal
+  font-size 15px
+  line-height 16px
+
+//-- 4ой Блок --//
+.special_block_background
+  background url('/images/design/13.jpg') 50% no-repeat
+  background-size cover
+  opacity 0.6
+  height 100%
+
+.special_block
+  background #000
+
+.special_block_inner
+  position absolute
+  z-index 100
+  top 0
+  width 100%
+
+
+.periods_block .goto_down a
+  background-color #eee
+
+//--------//
+
+/*.footer_block
   background transparent
+  bottom 100%
+  position absolute
+  height 50px
+  line-height 50px
+  font-size inherit
+  font-family ma_unitwlight
+
+.footer_sponsors_block
+  border-top none*/
+
+.footer_block
+  background rgba(255,255,255,0.6)
+
+.footer_sponsors_block
+  border-top none
+
