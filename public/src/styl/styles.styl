@@ -17,6 +17,7 @@
   margin 10px auto
   background-color white
   z-index 999999
+  height 50px
 
 .navigate_styles_block
   width 1272px
@@ -26,6 +27,7 @@
 .navigate_style_block
   //float left
   display table-cell
+  position relative
 
 .navigate_style_title
   cursor pointer
@@ -40,6 +42,7 @@
     color #737373
   &.current
     color red
+    border-color #333
   &:hover
     color red
   &:after
@@ -67,28 +70,32 @@
 
 .navigate_style_progress
   //margin-top 5px
+  position absolute
+  top 24px
   margin-bottom 3px
-  height 0px
+  height 1px
   margin-left 3px
   background-color red
   width 0%
   &.on_scroll
     &:after
       display block
-      margin-top -2px
+      margin-top 0px
       float right
-      content ''
-      width 4px
-      height 4px
-      border-radius 50%
-      background-color red
+      content '•'
+      font-size 26px
+      line-height 5px
+      color #f00
 
 .navigate_style_ages
   display none
   position absolute
+  white-space nowrap
+  top 30px
 
 .navigate_age
-  float left
+  //float left
+  display inline-block
   cursor pointer
   margin-right 10px
   font-size 18px
