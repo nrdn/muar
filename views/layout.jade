@@ -8,12 +8,12 @@ html
 		//- include counters
 		.header_block
 			.header_block_inner
-				.header_logo
+				a.header_logo(href="/")
 				.logo_description Государственный музей архитектуры имени А. В. Щусева
 				.menu_navigate_block
 					- if (session.user_id)
 						a(href='/auth') ЗВЕЗДОЧЕТ
-					a(href='/') Главная
+					//-a(href='/') Главная
 					a(href='/styles') Стили
 					a(href='/projects') Спецпроекты
 					a(href='/architects') Архитекторы

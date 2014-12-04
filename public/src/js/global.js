@@ -68,7 +68,7 @@ $(document).ready(function() {
 	});
 
 
-	$('.header_logo').on('click', function() {
+	/*$('.header_logo').on('click', function() {
 		$(this).data('clicked', !$(this).data('clicked'));
 
 		if ($(this).data('clicked')) {
@@ -91,5 +91,5 @@ $(document).ready(function() {
 				$('.content_title_block').show();
 				$('.navigate_style_progress').css('opacity', 1);
 		}
-	});
+	});*/
 });
