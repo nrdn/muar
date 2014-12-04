@@ -79,7 +79,7 @@ body > .content_block
   z-index 1000
 
 .styles_inner_block
-  width 1280px
+  width 1272px
   margin 0 auto
   display table
 
@@ -111,6 +111,15 @@ body > .content_block
 .style_item:last-child .style_name:after
   content '>'
   bottom -11px
+
+.style_item:first-child .style_name:before
+  content '◦'
+  display block
+  position absolute
+  right 100%
+  bottom -12px
+  margin-left 2px
+  font-size 13px
 
 .goto_down
   position absolute
@@ -171,7 +180,7 @@ body > .content_block
   text-decoration none
   font 30px/32px 'ma_unitwmedium'
   margin 20px 0 0
-  padding 10px
+  padding 10px 0
   border-bottom 1px solid #333
 
 .description_block
@@ -191,7 +200,7 @@ body > .content_block
   width 40%
   float left
   position relative
-  min-height 300px
+  min-height 280px
 
 .logo_block
   position absolute
@@ -280,8 +289,8 @@ a.styles_line_nav
 
 .style_description_inner
   white-space normal
-  font-size 15px
-  line-height 16px
+  font-size 16px
+  line-height 17px
 
 //-- 4ой Блок --//
 .special_block_background

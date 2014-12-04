@@ -19,8 +19,7 @@
   z-index 999999
 
 .navigate_styles_block
-  overflow hidden
-  width 1280px
+  width 1272px
   margin 0 auto
   display table
 
@@ -38,7 +37,7 @@
   position relative
   padding-bottom 3px
   &.not_sub
-    color #ccc
+    color #737373
   &.current
     color red
   &:hover
@@ -51,6 +50,20 @@
     bottom -13px
     margin-left 2px
     font-size 26px
+
+.navigate_style_block:last-child .navigate_style_title:after
+  content '>'
+  bottom -11px
+
+.navigate_style_block:first-child .navigate_style_title:before
+  content '◦'
+  display block
+  position absolute
+  right 100%
+  bottom -12px
+  margin-left 2px
+  font-size 13px
+
 
 .navigate_style_progress
   //margin-top 5px
@@ -130,8 +143,8 @@
 
 .age_title
 .style_title
-  padding-left 5px
-  padding-right 5px
+  /*padding-left 5px
+  padding-right 5px*/
   font-size 24px
   background-color white
   display inline-block
@@ -144,7 +157,7 @@
   text-decoration none
   font 30px/32px 'ma_unitwmedium'
   //margin 20px 0 0
-  padding 10px
+  padding 0 0 10px
 
   text-align left
 
@@ -164,7 +177,10 @@
   color black
   white-space normal
   font-size 16px
-  hyphens auto
+  line-height 18px
+  //hyphens auto
+  & br
+    line-height 28px
 
 .age_description
   margin-bottom 25px
@@ -181,10 +197,24 @@
   text-decoration none
   margin-right 20px
   margin-bottom 20px
+  position relative
+  &:after
+    display block
+    position absolute
+    top 0
+    height 100%
+    width 100%
+    left 0
+    content ''
+    background #fff
+    opacity 0.2
+    transition: opacity 0.1s ease;
   &:nth-child(5n)
     margin-right 0px
   &:hover .object_description
     color red
+  &:hover:after
+    opacity 0
 
 .object_description
   font-size 16px
@@ -200,6 +230,7 @@
   background-color white
   position absolute
   bottom 0
+  z-index 900
 
 .object_title
   padding-top 3px
