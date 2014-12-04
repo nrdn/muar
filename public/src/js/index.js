@@ -14,7 +14,6 @@ $(document).ready(function() {
 
 	$('.goto_down a').click(function(){
 		scr = $('.intro_block').height();
-		alert(scr);
 		$('body').animate({
      	scrollTop: scr,
     	}, 500 );
