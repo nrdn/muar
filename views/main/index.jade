@@ -11,20 +11,24 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/index.js' + version)
 
 block content_title
-
+	.styles_block
+		.styles_inner_block
+			each age in ages
+				a.style_item(href='/styles/#' + age._id)
+					.style_name=age.i18n.title.get('ru')
 
 block content
 	.screen_block.intro_block
+		.intro_block_title
+			.intro_block_title_inner
+				.main_title
+					| Виртуальный музей
+				.additional_title
+					| Государственного музея архитектуры им. А.В.Щусева
 		.intro_block_background
-		.styles_block
-			.styles_inner_block
-				each age in ages
-					a.style_item(href='/styles/#' + age._id)
-						.style_name=age.i18n.title.get('ru')
 		.goto_down
 			a(href="#description")
 			#description
-
 
 	.screen_block.description_block.screen_block_height
 		.description_inner

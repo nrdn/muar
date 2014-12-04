@@ -13,6 +13,12 @@ body > .content_block
   z-index 100000
   width 100%
 
+.header_block_inner
+  background transparent
+
+.logo_description, .menu_item
+  color #fff
+
 .screen_block
   width 100%
   position relative
@@ -30,6 +36,29 @@ body > .content_block
 
 
 //-- 1ый Блок --//
+.intro_block_title
+  position absolute
+  top 45%
+  width 100%
+  z-index 9999
+
+.intro_block_title_inner
+  width 1280px
+  margin 0 auto
+
+.main_title
+  border-bottom 1px solid #fff
+  color #fff
+  font 46px/66px 'ma_unitwmedium'
+  text-align center
+
+.additional_title
+  text-align center
+  color #fff
+  line-height 41px
+  font-size 21px
+  
+
 .intro_block_background
   background url('/images/design/12.jpg') 50% no-repeat
   background-size cover
@@ -43,8 +72,9 @@ body > .content_block
 .styles_block
   width 100%
   position absolute
-  top 50%
-  margin-top -25px
+  top 56px
+  left 0
+  z-index 1000
 
 .styles_inner_block
   width 1280px
@@ -76,6 +106,10 @@ body > .content_block
   margin-left 2px
   font-size 26px
 
+.style_item:last-child .style_name:after
+  content '>'
+  bottom -11px
+
 .goto_down
   position absolute
   bottom 26px
@@ -97,10 +131,11 @@ body > .content_block
   background-size 42px
   &:hover
     background-position 50% -98px
-    padding-top 10px
 
 
 //-- 2ой Блок --//
+
+
 
 .content_block > .screen_block_height
   height auto
@@ -115,14 +150,12 @@ body > .content_block
   display block
   text-decoration none
   font 30px/32px 'ma_unitwmedium'
-  color #000
   margin 20px 0 0
   padding 10px
-  border-bottom 1px solid #000
+  border-bottom 1px solid #333
 
 .description_text
   background #fff
-  color #000
   margin 20px 0
   padding 14px 10px 20px
   width 60%
@@ -139,7 +172,6 @@ body > .content_block
 //-- 3ой Блок --//
 .styles_line
   background #fff
-  color #000
   margin 20px 0
   padding 14px 10px 20px
   font-size 18px
@@ -164,6 +196,7 @@ body > .content_block
   margin-right 10px
   background-size 100%
   position relative
+  vertical-align top
 
 .style_image
   height 170px
@@ -208,18 +241,6 @@ body > .content_block
   background-color #eee
 
 //--------//
-
-/*.footer_block
-  background transparent
-  bottom 100%
-  position absolute
-  height 50px
-  line-height 50px
-  font-size inherit
-  font-family ma_unitwlight
-
-.footer_sponsors_block
-  border-top none*/
 
 .footer_block
   background rgba(255,255,255,0.6)
