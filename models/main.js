@@ -23,6 +23,10 @@ var ageSchema = new Schema({
 	},
 	parent: { type: Schema.Types.ObjectId, ref: 'Age' },
 	sub: [{ type: Schema.Types.ObjectId, ref: 'Age' }],
+	image: {
+		main: String,
+		thumb: String
+	},
 	date: {type: Date, default: Date.now}
 });
 
