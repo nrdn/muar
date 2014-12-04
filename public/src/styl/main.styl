@@ -34,13 +34,16 @@ body > .content_block
   top 0
   height 100%
 
+.header_logo
+  background-position 0 0
 
 //-- 1ый Блок --//
 .intro_block_title
   position absolute
-  top 45%
+  top 50%
   width 100%
   z-index 9999
+  margin-top -90px
 
 .intro_block_title_inner
   width 1280px
@@ -57,7 +60,6 @@ body > .content_block
   color #fff
   line-height 41px
   font-size 21px
-  
 
 .intro_block_background
   background url('/images/design/12.jpg') 50% no-repeat
@@ -88,7 +90,7 @@ body > .content_block
   color #fff
   display table-cell
   &:hover
-    color red
+    color #ee3124
 
 .style_name
   margin 0 6px
@@ -114,24 +116,40 @@ body > .content_block
   position absolute
   bottom 26px
   width 100%
-  height 40px
-  opacity 0.6
-  &:hover
-    opacity 1
+  height 60px
   & div
     bottom -26px
     position absolute
 
 .goto_down a
-  width 180px
-  height 40px
-  background #fff url('/images/design/down.png') 50% 7px no-repeat
+  width 50px
+  height 50px
   margin 0 auto
   display block
-  background-size 42px
+  text-align center
+  color #fff
+  font: 26px/50px 'menu_icons';
+  text-decoration none
+  border-radius 50%
+  border 1px solid
   &:hover
-    background-position 50% -98px
+    color #EE3124!important
 
+.intro
+  display block
+  border-radius 4px
+  background #EE3124
+  width 300px
+  height 50px
+  line-height 50px
+  font-size 25px
+  text-align center
+  color #fff
+  margin 20px auto 0
+  border 2px solid transparent
+  &:hover
+    //background transparent
+    border-color #fff
 
 //-- 2ой Блок --//
 
@@ -166,7 +184,7 @@ body > .content_block
     padding 0
 
 .description_block .goto_down a
-  background-color #eee
+  color #333
 
 
 //-- 3ой Блок --//
@@ -229,6 +247,9 @@ body > .content_block
 
 .special_block
   background #000
+  & .description_title
+    color #fff
+    border-bottom 1px solid #fff
 
 .special_block_inner
   position absolute
@@ -238,7 +259,7 @@ body > .content_block
 
 
 .periods_block .goto_down a
-  background-color #eee
+  color #333
 
 //--------//
 

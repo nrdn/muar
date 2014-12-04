@@ -25,9 +25,11 @@ block content
 					| Виртуальный музей
 				.additional_title
 					| Государственного музея архитектуры им. А.В.Щусева
+				a.intro(href='/styles')
+					| Войти
 		.intro_block_background
 		.goto_down
-			a(href="#description")
+			a(href="#description") 
 			#description
 
 	.screen_block.description_block.screen_block_height
@@ -39,7 +41,7 @@ block content
 				p Каждый раздел открывают тексты, подготовленные научными сотрудниками Музея, и иллюстрируют материалы из различных фондов: отдела фототеки, графики и трехмерных объектов. При этом каждое изображение подробно аннотировано, а структура сайта позволяет сортировать архитектурные объекты по нескольким основным принципам: автору, стилю, времени и месту постройки.
 				p Таким образом,каждый пользователь и посетитель сайта сможет составить свою собственную подборку изображений, сформированную по одному или понескольким параметрам.
 		.goto_down
-			a(href="#periods")
+			a(href="#periods") 
 			#periods
 
 	.screen_block.periods_block
@@ -55,7 +57,7 @@ block content
 							.style_description
 								.style_description_inner: != age.i18n.description.get('ru')
 		.goto_down
-			a(href="#special")
+			a(href="#special") 
 			#special
 
 	.screen_block.special_block
