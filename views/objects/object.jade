@@ -88,4 +88,5 @@ block footer
 		each subject in object.subjects
 			.description_item.subjects
 				.subject_inventory= subject.meta.inventory
+				.subject_title= subject.i18n.title.get('ru')
 				.subject_description: != subject.i18n.description.get('ru')
