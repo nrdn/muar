@@ -72,7 +72,7 @@ block content
 							.images_arrow &lt;
 						.images_navigate_block_next
 							.images_arrow &gt;
-				.image_description
+				//- .image_description
 					.image_description_inner: != image.description[0].value
 	.object_subjects_block#subjects_view
 	.object_3d_block#unityPlayer
@@ -81,3 +81,13 @@ block content
 				img(alt='Unity Web Player. Install now!', src='http://webplayer.unity3d.com/installation/getunity.png', width='193', height='63')
 		.broken
 			span Broken!
+
+block footer
+	.descriptions_block
+		each image in object.images
+			.description_item.images: != image.description[0].value
+	.descriptions_block
+		each subject in object.subjects
+			.description_item.subjects
+				.subject_inventory= subject.meta.inventory
+				.subject_description: != subject.i18n.description.get('ru')
