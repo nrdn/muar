@@ -26,6 +26,18 @@ a
 .header_block
   width 100%
 
+.screen_width_absolute
+.screen_width
+.header_block_inner
+.footer_block_inner
+  width 1280px
+
+.screen_width_absolute
+  margin-left -640px
+
+.styles_inner_block, .navigate_styles_block
+  width 1272px
+
 .footer_block
   bottom 0
   background #fff
@@ -39,7 +51,6 @@ a
 
 .header_block_inner
 .footer_block_inner
-  width 1280px
   margin 0 auto
 
 .footer_content_block
@@ -225,3 +236,15 @@ a
 
 .sponsor_date
   float right
+
+@media screen and (max-width:1280px) {
+    .screen_width, .screen_width_absolute, .header_block_inner, .footer_block_inner, .content_block, .content_title_block {
+      width: 1000px;
+    }
+    .screen_width_absolute {
+      margin-left: -500px;
+    }
+    .styles_inner_block, .navigate_styles_block {
+      width: 980px;
+    }
+  }

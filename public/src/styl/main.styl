@@ -22,9 +22,6 @@ body > .content_block
 .logo_description, .menu_item
   color #fff
 
-.screen_width
-  width 1280px
-
 .screen_block
   width 100%
   position relative
@@ -73,6 +70,7 @@ body > .content_block
 
 .intro_block_background
   background url('/images/design/12.jpg') 50% 50% no-repeat scroll
+  transition height 0.1s ease
   background-size cover
   height 100%
   //background-attachment fixed
@@ -102,7 +100,6 @@ body > .content_block
   z-index 1000
 
 .styles_inner_block
-  width 1272px
   margin 0 auto
   display table
 
@@ -352,11 +349,4 @@ a.styles_line_nav
 
 //.footer_sponsors_block
   //border-top none
-@media screen and (max-width:1280px) {
-    .screen_width, .header_block_inner, .footer_block_inner {
-      width: 1000px;
-    }
-    .styles_inner_block {
-      width: 980px;
-    }
-  }
+

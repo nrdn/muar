@@ -1,4 +1,4 @@
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1)
+/*@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1)
   .search_inner
   .content_block
   .header_block_inner
@@ -11,16 +11,17 @@
 
   .style_block_inner
     width 1044px
-
+*/
+.content_title_block
+  width 100%
 .navigate_block
-  width 1280px
+  width 100%
   margin 20px auto 10px
   background-color white
   z-index 999999
-  height 50px
+  height 70px
 
 .navigate_styles_block
-  width 1272px
   margin 0 auto
   display table
 
@@ -108,10 +109,10 @@
 .styles_block
   white-space nowrap
   overflow hidden
-  width 1280px
+  //width 1280px
   position absolute
   left 50%
-  margin-left -640px
+  //margin-left -640px
   bottom 25px
   top 125px
 
@@ -123,7 +124,6 @@
 
 .style_block
   overflow hidden
-  width 1280px
 
 .style_block_inner
   overflow auto
@@ -245,3 +245,15 @@
   overflow hidden
   white-space normal
   // hyphens auto
+
+@media screen and (max-width:1280px) {
+    .style_block_inner {
+      width 1040px
+    }
+    .object_block:nth-child(5n) {
+        margin-right: 20px;
+    }
+    .object_block:nth-child(4n) {
+        margin-right: 0px;
+    }
+}

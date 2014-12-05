@@ -21,10 +21,10 @@ block content_title
 							.navigate_age= age_sub.i18n.title.get('ru')
 
 block content
-	.styles_block
+	.styles_block.screen_width_absolute
 		.styles_inner
 			each age in ages
-				.style_block(class=age._id)
+				.style_block(class=age._id).screen_width
 					.style_block_inner
 						.style_inner_height
 							.style_header
