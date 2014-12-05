@@ -15,7 +15,9 @@ block content_scripts
 
 
 block content_title
-	.object_title= object.i18n.title.get('ru')
+	.object_header_block
+		a.object_style(href='/styles/#' + object.ages.main._id)= object.ages.main.i18n.title.get('ru')
+		.object_title= object.i18n.title.get('ru')
 	.object_navigate_block
 		.object_navigate.description.current Описание
 		if (object.images.length > 0)

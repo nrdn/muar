@@ -1,11 +1,25 @@
 .content_block
 	width 100%
 
-.object_title
+.object_header_block
 	width 1280px
 	position relative
+	overflow hidden
 	margin 10px auto 0
 	font-size 24px
+
+.object_style
+	float left
+	display block
+	text-decoration none
+	margin-right 15px
+	&:hover
+		color red
+	&:after
+		content '>'
+		color black
+		font-size 21px
+		margin-left 15px
 
 .object_navigate_block
 	width 1280px
