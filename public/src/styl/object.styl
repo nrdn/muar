@@ -97,6 +97,7 @@
 	overflow hidden
 	position absolute
 	background-color #d5d5d5
+	background url('/images/design/bckg.jpg')
 
 .object_3d_block
 	display none
@@ -207,10 +208,16 @@
 	color white
 
 @media screen and (max-width:1280px) {
-	.description_inner, .image_description_inner {
+	.description_inner, .image_description_inner, .images_navigate_block_inner, .slide_navigate_inner {
 		width: 1000px;
 	}
 	.description_column {
 		width: 490px;
+	}
+	.object_slide_item, .object_slide_item:nth-child(5n) {
+		margin-right: 13px;
+	}
+		.object_slide_item:nth-child(4n) {
+		margin-right: 0px;
 	}
 }

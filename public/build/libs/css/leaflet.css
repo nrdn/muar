@@ -184,6 +184,7 @@
 
 .leaflet-container {
 	background: #ddd;
+	background: url("/images/design/bckg.jpg");
 	outline: 0;
 	}
 .leaflet-container a {
