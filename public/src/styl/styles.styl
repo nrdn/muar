@@ -38,9 +38,9 @@
 .navigate_style_title
   cursor pointer
   //margin-right 15px
-  font-size 24px
-  text-align center
-  margin 0 6px
+  //font-size 24px
+  //text-align center
+  //margin 0 6px
   border-bottom 1px solid
   position relative
   padding-bottom 3px
@@ -52,21 +52,22 @@
   &:hover
     color red
   &:after
-    content '•'
+    content '|'
     display block
     position absolute
     left 100%
-    bottom -13px
+    bottom -12px
     margin-left 2px
-    font-size 26px
+    font-size 8px
     z-index 99999
 
 .navigate_style_block:last-child .navigate_style_title:after
   content '>'
-  bottom -11px
+  bottom -12px
+  font-size 14px
 
 .navigate_style_block:first-child .navigate_style_title:before
-  content '◦'
+  //content '◦'
   display block
   position absolute
   right 100%
@@ -155,7 +156,7 @@
   border-bottom 1px solid #333
 
 .age_header
-  margin-top 25px
+  //margin-top 25px
 
 .style_header
   //margin-top 10px
@@ -258,8 +259,11 @@
   // hyphens auto
 
 @media screen and (max-width:1280px) {
+    .style_description {
+      width: 1000px;
+    }
     .style_block_inner {
-      width 1040px
+      width 1040px;
     }
     .object_block:nth-child(5n) {
         margin-right: 20px;
