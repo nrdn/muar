@@ -51,8 +51,8 @@ block content
 			.styles_line
 				.styles_inner_line
 					each age in ages
-						.style_block
-							.style_image(style="background-image:url("+age.image.thumb+")")
+						a.style_block(href='/styles#' + age._id)
+							.style_image(style="background-image:url(" + age.image.thumb + ")")
 							.style_title
 								.style_title_inner= age.i18n.title.get('ru')
 							.style_description
