@@ -64,7 +64,9 @@ $(document).ready(function() {
 	$('form').submit(function(event) {
 		var areas = $('textarea');
 		areas.each(function() {
-			var newValue = $(this).val().replace(/\n/g, "<br />");
+			// var newValue = $(this).val().replace(/\n/g, "<br />");
+			var newValue = $(this).val();
+			newValue = '<p>' + val.replace(/\n/g, '</p><p>') + '</p>'
 			$(this).val(newValue);
 		});
 		$('form').submit();
