@@ -46,11 +46,11 @@ $(document).ready(function() {
 
 
 	function ageScroll (event) {
-		var scroll_percentage = 100 * $(this).scrollTop() / ($(this).children('.style_inner_height').height() - $(this).height());
+		var scroll_percentage = 100 * $(this).scrollTop() / ($(this).find('.style_inner_height').height() - $(this).height());
 
 		$(this).data({scroll_position: $(this).scrollTop()});
 
-		$('.navigate_style_block').eq(event.data.style_index).children('.navigate_style_progress').addClass('on_scroll').css('width', scroll_percentage + '%');
+		$('.navigate_style_block').eq(event.data.style_index).find('.navigate_style_progress').addClass('on_scroll').css('width', scroll_percentage + '%');
 
 		$(this).find('.age_block').each(function() {
 			var $this = $(this);
@@ -60,7 +60,7 @@ $(document).ready(function() {
 
 			age_offset_top <= outer_offset_bottom
 				? $('.navigate_style_ages')
-					.eq(event.data.style_index).children('.navigate_age').removeClass('current')
+					.eq(event.data.style_index).find('.navigate_age').removeClass('current')
 					.eq($this.index() - $this.length - 1).addClass('current')
 				: false;
 		});
@@ -148,7 +148,7 @@ $(document).ready(function() {
 
 	$('.navigate_style_title').on('click', function(event) {
 		var style_index = $(this).index('.navigate_style_title');
-		var style_id = $(this).parent('.navigate_style_block').attr('class').split(' ')[1];
+		var style_id = $(this).closest('.navigate_style_block').attr('class').split(' ')[1];
 
 		window.location.hash = style_id;
 		$('.navigate_style_ages').hide().eq(style_index).show();
