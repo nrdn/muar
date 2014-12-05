@@ -34,31 +34,11 @@
 	margin-right 10px
 	font-size 18px
 	padding-top 5px
-	&.models
-		width 25px
-		height 22px
-		margin-top 3px
-		padding-top 3px
-		margin-right 0px
-		color red
-		text-align center
-		border-radius 50px
-		border 1px solid red
-		font-size 14px
-		position relative
-		&:hover
-			color white
-			background-color red
-		&.current
-			color white
-			background-color red
 	&:hover
 		color red
 		cursor pointer
 	&.current
 		color red
-
-.object_navigate
 	&:before
 		font-family 'menu_icons'
 		font-size 21px
@@ -75,6 +55,33 @@
 		&:before
 			font-size 16px
 			content ''
+	&.models
+		&:before
+			content '3d'
+			display block
+			font 18px/21px 'ma_unitwlight'
+			float left
+			width 25px
+			height 22px
+			margin-top -3px
+			padding-top 3px
+			margin-right 10px
+			color black
+			text-align center
+			border-radius 50px
+			border 1px solid black
+			font-size 14px
+			position relative
+		&:hover
+			&:before
+				color white
+				background-color red
+				border 1px solid red
+		&.current
+			&:before
+				color white
+				background-color red
+				border 1px solid red
 
 .object_description_block
 	width 100%
