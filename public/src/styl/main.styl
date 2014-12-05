@@ -1,3 +1,6 @@
+
+
+
 body
   height 100%
 
@@ -19,13 +22,16 @@ body > .content_block
 .logo_description, .menu_item
   color #fff
 
+.screen_width
+  width 1280px
+
 .screen_block
   width 100%
   position relative
   overflow hidden
 
 .title_block
-  width 1280px
+  //width 1280px
   margin 0 auto
 
 .content_block
@@ -49,7 +55,7 @@ body > .content_block
   margin-top -90px
 
 .intro_block_title_inner
-  width 1280px
+  //width 1280px
   margin 0 auto
 
 .main_title
@@ -130,9 +136,9 @@ body > .content_block
   bottom 26px
   width 100%
   height 60px
-  & div
-    bottom -26px
-    position absolute
+
+.goto_down_inner
+  margin 0 auto
 
 .goto_down a
   width 50px
@@ -176,7 +182,7 @@ body > .content_block
 
 .description_inner
   background transparent
-  width 1280px
+  //width 1280px
   margin 0 auto
 
 .description_title
@@ -329,7 +335,15 @@ a.styles_line_nav
 
 .footer_block
   display none
+  color #fc0
 
 //.footer_sponsors_block
   //border-top none
-
+@media screen and (max-width:1280px) {
+    .screen_width, .header_block_inner, .footer_block_inner {
+      width: 1000px;
+    }
+    .styles_inner_block {
+      width: 980px;
+    }
+  }
