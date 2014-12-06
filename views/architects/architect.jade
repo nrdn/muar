@@ -11,11 +11,13 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/architect.js' + version)
 
 block content_title
-	.architect_title= architect.i18n.name.get('ru')
+	.architect_header
+		a.architects_all(href='/architects') Архитекторы
+		.architect_title= architect.i18n.name.get('ru')
+
 block content
 	.architect_block= architect.i18n.description.get('ru')
-	.architect_attached_title
-		| Проекты архитектора
+	.architect_attached_title Проекты архитектора
 	.architect_attached_objects
 		each object in objects
 			- var image = object.images.length > 0 ? object.images[0].thumb : ''
