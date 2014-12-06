@@ -173,6 +173,11 @@ $(document).ready(function() {
 		$('.description_item.images').hide().eq(index).show();
 	});
 
+	$('span.show').click(function(event) {
+		$(this).hide();
+		$('span.hide').show();
+	});
+
 	$(document).on('mouseup touchstart', function (event) {
 		var container = $('.object_description_block, .images_slide, .subjects_slide, .models_slide');
 

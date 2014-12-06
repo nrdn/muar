@@ -13,6 +13,22 @@ block content_scripts
 	script(type='text/javascript', src='/build/libs/js/leaflet.js' + version)
 	script(type='text/javascript', src='/build/js/object.js' + version)
 
+mixin trimString(str)
+	- if (/<cut\/>/.test(str))
+		span: != str.split('<cut\/>')[0]
+		span(class='show') Еще...
+		span(class='hide'): != str.split('<cut\/>')[1]
+	- else
+		- if (str.length > 200)
+			- for (var i = 200; i < str.length; i++)
+				- if (str[i] == '.' || str[i] == '?' || str[i] == '!')
+					span: != str.substr(0, i+1)
+					span(class='show') Еще...
+					span(class='hide'): != str.substr(i+1, str.length)
+					- break
+		- else
+			span: != str
+
 
 block content_title
 	.object_header_block
@@ -44,7 +60,7 @@ block content_title
 block content
 	.object_description_block
 		.description_inner
-			.description_column: != object.i18n.description.get('ru')
+			.description_column: +trimString( object.i18n.description.get('ru') )
 			.description_column
 				.column_item.style
 					.column_title Стиль:
