@@ -150,6 +150,14 @@ $(document).ready(function() {
 		var style_index = $(this).index('.navigate_style_title');
 		var style_id = $(this).closest('.navigate_style_block').attr('class').split(' ')[1];
 
+		style_index >= 3
+			? $('.navigate_styles_block').animate({
+				'scrollLeft': '+=50'
+			}, 300)
+			: $('.navigate_styles_block').animate({
+				'scrollLeft': '-=50'
+			}, 300);
+
 		window.location.hash = style_id;
 		$('.navigate_style_ages').hide().eq(style_index).show();
 	});

@@ -5,15 +5,21 @@
 	z-index 999999
 
 .navigate_styles_block
+	white-space nowrap
+	font-size 0
+	width 1280px
 	overflow-y hidden
 	height 70px
 	-webkit-overflow-scrolling touch
+	// outline 1px solid red
 
 .navigate_styles_inner
-	width 150000px
+	display inline-block
+	height 60px
+	overflow hidden
 
 .navigate_style_block
-	float left
+	display inline-block
 
 .navigate_style_title
 	cursor pointer
@@ -51,6 +57,10 @@
 .navigate_style_ages
 	display none
 	position absolute
+
+.navigate_style_ages_inner
+	position relative
+	// width 1280px
 
 .navigate_age
 	float left
@@ -184,6 +194,7 @@
 	.content_block
 	.header_block_inner
 	.navigate_block
+	.navigate_styles_block
 	.styles_block
 	.style_block
 	.age_description
