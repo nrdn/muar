@@ -230,6 +230,7 @@
 .slide_title_inner
 	bottom 0
 	position absolute
+	width 100%
 	background-color white
 
 .description_item
@@ -258,8 +259,11 @@
 		width 980px
 
 	.object_slide_item
-		width 180px
-		height 160px
+		width 230px
+		&:nth-child(5n)
+			margin-right 20px
+		&:nth-child(4n)
+			margin-right 0px
 
 	.description_column
 		width 420px
