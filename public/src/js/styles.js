@@ -165,4 +165,26 @@ $(document).ready(function() {
 		$('.navigate_style_ages').hide().eq(style_index).show();
 	});
 
+	if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		$('.style_block').swipe({
+			swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+				switch (direction) {
+					case 'left':
+						var style_id = $(this).next().attr('class').split(' ')[1];
+						var style_index = $(this).next().index();
+					break;
+					case 'right':
+						var style_id = $(this).prev().attr('class').split(' ')[1];
+						var style_index = $(this).prev().index();
+					break;
+				}
+
+				window.location.hash = style_id;
+				$('.navigate_style_ages').hide().eq(style_index).show();
+			},
+
+			 threshold: 60
+		});
+	}
+
 });
