@@ -136,7 +136,7 @@ $(document).ready(function() {
 		var length = $('.object_image').length - 1;
 
 		if (index != length) {
-			$(this).parents('.object_image').hide().next().show()
+			$(this).parents('.object_image').hide().next().show();
 			$('.description_item.images').eq(index).hide().next().show();
 		}
 		else {
