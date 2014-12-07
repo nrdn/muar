@@ -6,7 +6,7 @@ exports.object = function(req, res) {
 	var id = req.params.id;
 	Object.findById(id).populate('subjects categorys architects ages.main').exec(function(err, object) {
 		Project.find().where('objects').equals(object._id).exec(function(err, projects) {
-			Object.find().where('ages.main').equals(object._id).limit(10).exec(function(err, attach_objects) {
+			Object.find().where('ages.main').equals(object.ages.main._id).limit(10).exec(function(err, attach_objects) {
 				res.render('objects/object.jade', {object: object, projects: projects, attach_objects:attach_objects});
 			});
 		});
