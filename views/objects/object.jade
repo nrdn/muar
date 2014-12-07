@@ -40,10 +40,33 @@ block content_title
 						.slide_title_inner= subject.i18n.title.get('ru').substr(0, 60) + '...'
 
 block content
-	.object_description_block
+	//-.object_description_block
 		.description_inner
-			.description_column: != object.i18n.description.get('ru')
-			.description_column
+			//- .description_column: != object.i18n.description.get('ru')
+			
+	.object_graphics_block
+		.object_images_block
+			each image, i in object.images
+				.object_image(style='background-image:url(' + image.original + ')')
+					.images_navigate_block
+						.images_navigate_block_inner
+							.images_navigate_block_prev
+								.images_arrow &lt;
+							.images_navigate_block_next
+								.images_arrow &gt;
+		.object_subjects_block#subjects_view
+		.object_3d_block#unityPlayer
+			.missing
+				a(href='http://unity3d.com/webplayer/', title='Unity Web Player. Install now!')
+					img(alt='Unity Web Player. Install now!', src='http://webplayer.unity3d.com/installation/getunity.png', width='193', height='63')
+			.broken
+				span Broken!
+	.main_description_block
+		.description_column: != object.i18n.description.get('ru')
+
+block footer
+	.side_description
+		.description_column
 				.column_item.style
 					.column_title Стиль:
 					a.column_content(href='/styles/#' + object.ages.main._id)= object.ages.main.i18n.title.get('ru')
@@ -63,30 +86,12 @@ block content
 						.column_title Термины:
 						each category in object.categorys
 							a.category_item(href='/categorys/' + category._id)= category.i18n.title.get('ru')
-	.object_images_block
-		each image, i in object.images
-			.object_image(style='background-image:url(' + image.original + ')')
-				.images_navigate_block
-					.images_navigate_block_inner
-						.images_navigate_block_prev
-							.images_arrow &lt;
-						.images_navigate_block_next
-							.images_arrow &gt;
-	.object_subjects_block#subjects_view
-	.object_3d_block#unityPlayer
-		.missing
-			a(href='http://unity3d.com/webplayer/', title='Unity Web Player. Install now!')
-				img(alt='Unity Web Player. Install now!', src='http://webplayer.unity3d.com/installation/getunity.png', width='193', height='63')
-		.broken
-			span Broken!
-
-block footer
-	.descriptions_block
-		each image in object.images
-			.description_item.images: != image.description[0].value
-	.descriptions_block
-		each subject in object.subjects
-			.description_item.subjects
-				.subject_inventory= subject.meta.inventory
-				.subject_title= subject.i18n.title.get('ru')
-				.subject_description: != subject.i18n.description.get('ru')
+		.descriptions_block
+			each image in object.images
+				.description_item.images: != image.description[0].value
+		.descriptions_block
+			each subject in object.subjects
+				.description_item.subjects
+					.subject_inventory= subject.meta.inventory
+					.subject_title= subject.i18n.title.get('ru')
+					.subject_description: != subject.i18n.description.get('ru')
