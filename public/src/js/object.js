@@ -2,6 +2,7 @@ $(document).ready(function() {
 	var subjectsGroup;
 	var map;
 	var oldLayer;
+	var oi = 0;
 
 	function UnityLoader (path) {
 		var config = {
@@ -94,6 +95,23 @@ $(document).ready(function() {
 			subjectsGroup.addLayer(layer);
 		});
 	});
+
+	$('.images_zoom').on('click', function(event) {
+		if (oi == 1)
+		{
+			$(this).html('–');
+			$('.object_image').css({'background-size':'cover'});
+			oi = 0;
+			console.log('ooo');
+		}
+		else
+		{
+			$(this).html('+');
+			$('.object_image').css({'background-size':'contain'});
+			oi = 1;
+			console.log('777');
+		}
+	})
 
 	$('.object_slide_item.subjects').on('click', function(event) {
 		$('.object_images_block, .object_3d_block').hide();
