@@ -54,6 +54,8 @@ $(document).ready(function() {
 		$('.content_search_block').hide();
 	}
 
+	$('.search_cross').on('click', hideSearch);
+
 	$('.menu_item.search').on('click', toggleSearch);
 	// $(document).keydown(function(event) {
 	// 	toggleSearch()

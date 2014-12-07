@@ -155,34 +155,46 @@ a
 
 .content_search_block
   position absolute
-  background-color white
+  background rgba(0,0,0,0.9);
   overflow hidden
-  z-index 100
+  z-index 1000000
   width 100%
   display none
+  top 0
+  height 100%
 
 .search_inner
   width 1280px
   padding-bottom 5px
   position relative
-  margin 3px auto
+  margin 0px auto
   overflow hidden
+  height 100%
+
+.search_block
+  position absolute
+  top 40px
+  width 100%
 
 .search_title
-  font-size 24px
-  float left
-  margin-top 7px
-  cursor pointer
-  &:hover
-    color red
+  color #eee
+  font 30px/32px 'ma_unitwmedium'
+  padding 10px 0
+  border-bottom 1px solid #d7d7d7
+  width 100%
 
 .search_field
-  width 1100px
-  font-size 24px
+  width 100%
+  font-size 44px
   font-family ma_unitwlight
   border none
   margin 2px
   padding 0
+  border-bottom 4px solid #eee
+  display block
+  background transparent
+  color #eee
+  margin-top 10px
 
 .objects_context
 .architects_context
@@ -195,12 +207,26 @@ a
 
 .search_result
   overflow hidden
-  margin-top 4px
+  margin-top 16px
+
+.search_cross
+  position absolute
+  top -20px
+  right 0
+  width 40px
+  height 40px
+  background url('/images/design/cross.png') 0 0
+  background-size auto 40px
+  cursor pointer
+
+.search_cross:hover
+  background-position 40px 0
 
 .context_results_block
   display inline
 
 .context_result
+  color #eee
   text-decoration none
   margin-right 5px
   &:last-child
@@ -212,13 +238,14 @@ a
   &:after
     margin-left 5px
     content '・'
-    color black
+    color #eee
 
 .context_title
   font-size 18px
   float left
   margin-right 10px
   font-family ma_unitwmedium
+  color #eee
 
 .content_title_block
   width 100%
@@ -248,7 +275,7 @@ a
   padding-bottom 4px
 
 @media screen and (max-width:1280px) {
-    .screen_width, .screen_width_absolute, .header_block_inner, .footer_block_inner, .content_block, .content_title_block {
+    .search_inner, .screen_width, .screen_width_absolute, .header_block_inner, .footer_block_inner, .content_block, .content_title_block {
       width: 1000px;
     }
     .screen_width_absolute {
