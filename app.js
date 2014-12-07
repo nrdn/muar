@@ -11,6 +11,7 @@ var express = require('express'),
 		methodOverride = require('method-override'),
 			app = express();
 
+mongoose.set('debug', true);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
