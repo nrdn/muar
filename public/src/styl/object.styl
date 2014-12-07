@@ -1,25 +1,100 @@
+// header_block
+.header_logo
+	background-position 0 0
+
+body:after
+	content ''
+	top 0
+	left 0
+	width 100%
+	height 200px
+	display block
+	position absolute
+	background url('/images/design/gr.png') 0 100% repeat-x
+	background-size 1px 290px
+	opacity 0.7
+
+.header_block
+	left 0
+	top 0
+	position absolute
+	z-index 1000
+
+.header_block_inner
+	background transparent
+	color #fff
+	& a
+		color #fff
+
+
+.side_description
+	position absolute
+	top 70px
+	bottom 0px
+	left 0
+	right 0
+	right 0px
+	//z-index 0
+	color #fff
+
+.side_description_inner
+	height 100%
+	width 1280px
+	margin 0 auto
+	position relative
+
+.side_description_column
+	position absolute
+	top 0
+	bottom 0
+	right 0
+	width 360px
+	z-index 100000
+
+//.summary_description_block
+	//background rgba(0, 0, 0, 0.66)
+
+.subject_inventory
+	border-bottom 1px solid
+
+.object_title
+	position relative
+	font-size 24px
+	color #fff
+	font-family ma_unitwmedium
+	padding 20px 20px 5px
+	background: rgba(0,0,0,0.66);
+
+.object_navigate_block
+	z-index 9999
+	position relative
+	overflow hidden
+
+.images_descriptons_block
+	background rgba(255, 255, 255, 0.85)
+	margin-top 10px
+	padding 10px 20px 10px
+	color #000
+
+.content_title_block
+	left 0
+	top 45px
+	position absolute
+	z-index 1000
+	width 100%
+	overflow visible
+
 .content_block
 	width 100%
 
-.object_title
-	width 1280px
-	position relative
-	margin 10px auto 0
-	font-size 24px
-
-.object_navigate_block
-	width 1280px
-	z-index 9999
-	margin 5px auto 0
-	position relative
-	overflow hidden
-	padding-bottom 3px
 
 .object_navigate
-	float left
-	margin-right 10px
 	font-size 18px
 	padding-top 5px
+	padding 5px 10px 0
+	color #fff
+	line-height 28px
+	background rgba(0, 0, 0, 0.66)
 	&.models
 		width 25px
 		height 22px
@@ -41,8 +116,16 @@
 	&:hover
 		color red
 		cursor pointer
+		cursor pointer
+		background #fff
+		//margin-right: 10px;
+			& .item_inner
+				border-color transparent
 	&.current
 		color red
+	& .item_inner
+		border-bottom 1px solid
+		margin 0 10px
 
 .object_description_block
 	width 100%
@@ -62,13 +145,16 @@
 	margin 0 auto
 
 .description_column
-	//width 620px
-	//float left
 	margin-right 20px
 	&:last-child
 		margin-right 0px
 
+.column_item_wrap
+	padding 10px 0
+	background: rgba(0,0,0,0.66);
+
 .column_item
+	margin 6px 20px
 	overflow hidden
 	&:last-child
 		margin-bottom 0px
@@ -86,14 +172,13 @@
 
 .column_title
 	float left
-	font-size 14px
 	font-family 'ma_unitwmedium'
 	margin-right 10px
 
 .object_images_block
 .object_3d_block
 	width 100%
-	top 115px
+	top 0px
 	bottom 0
 	overflow hidden
 	position absolute
@@ -108,6 +193,7 @@
 	width 100%
 	height 100%
 	background-size contain
+	background-size cover
 	background-repeat no-repeat
 	background-position center
 	&:nth-child(1)
@@ -151,7 +237,8 @@
 .object_subjects_block
 	position absolute
 	width 100%
-	top 115px
+	//top 115px
+	top 0
 	bottom 0
 	display none
 
@@ -189,6 +276,7 @@
 	top 100%
 	font-size 16px
 	position relative
+	
 
 .slide_title_inner
 	bottom 0
@@ -215,25 +303,13 @@
 	top 100%
 	height auto
 
-.description_column
-	width 220px
-
-.footer_content_block
-	position absolute
-	bottom 30px
-	background rgba(0, 0, 0, 0.66)
-	width 220px
-	padding 10px
-	right 0px
-
 .footer_block_inner
 	position relative
 
-.subject_inventory
-	border-bottom 1px solid
+
 
 @media screen and (max-width:1280px) {
-	.description_inner, .image_description_inner, .images_navigate_block_inner, .slide_navigate_inner {
+	.description_inner, .image_description_inner, .images_navigate_block_inner, .slide_navigate_inner, .side_description_inner {
 		width: 1000px;
 	}
 	.description_column {

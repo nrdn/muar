@@ -15,15 +15,6 @@ block content_scripts
 
 
 block content_title
-	.object_title= object.i18n.title.get('ru')
-	.object_navigate_block
-		.object_navigate.description.current Описание
-		if (object.images.length > 0)
-			.object_navigate.images Изображения
-		if (object.subjects.length > 0)
-			.object_navigate.subjects Единицы хранения
-		if (projects.length > 0)
-			.object_navigate.models 3d
 	.object_slide_navigate.models_slide
 		.slide_navigate_inner
 			each project in projects
@@ -40,10 +31,58 @@ block content_title
 						.slide_title_inner= subject.i18n.title.get('ru').substr(0, 60) + '...'
 
 block content
-	//-.object_description_block
-		.description_inner
-			//- .description_column: != object.i18n.description.get('ru')
-			
+	.side_description
+		.side_description_inner
+			.side_description_column
+				.summary_description_block
+					.object_title= object.i18n.title.get('ru')
+					.object_navigate_block
+						.object_navigate.description.current
+							.item_inner Описание
+						if (object.images.length > 0)
+							.object_navigate.images
+								.item_inner Изображения
+						if (object.subjects.length > 0)
+							.object_navigate.subjects
+								.item_inner Единицы хранения
+						if (projects.length > 0)
+							.object_navigate.models 3d
+					.column_item_wrap
+						.column_item.style
+							.column_title Стиль:
+							a.column_content(href='/styles/#' + object.ages.main._id)= object.ages.main.i18n.title.get('ru')
+						.column_item.interval
+							.column_title Дата:
+							.column_content= object.meta.interval.start.getUTCFullYear() + ' - ' + object.meta.interval.end.getUTCFullYear()
+						.column_item.adress
+							.column_title Адрес:
+							.column_content= object.meta.i18n.adress.get('ru')
+						if (object.architects.length > 0)
+							.column_item.architects
+								.column_title Архитекторы:
+								each architect in object.architects
+									a.architect_item(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
+						if (object.categorys.length > 0)
+							.column_item.categorys
+								.column_title Термины:
+								each category in object.categorys
+									a.category_item(href='/categorys/' + category._id)= category.i18n.title.get('ru')
+
+
+				.images_descriptons_block
+					.descriptions_block
+						each image in object.images
+							.description_item.images: != image.description[0].value
+					.descriptions_block
+						each subject in object.subjects
+							.description_item.subjects
+								.subject_inventory= subject.meta.inventory
+								.subject_title= subject.i18n.title.get('ru')
+								.subject_description: != subject.i18n.description.get('ru')
+
+
+
+
 	.object_graphics_block
 		.object_images_block
 			each image, i in object.images
@@ -65,33 +104,3 @@ block content
 		.description_column: != object.i18n.description.get('ru')
 
 block footer
-	.side_description
-		.description_column
-				.column_item.style
-					.column_title Стиль:
-					a.column_content(href='/styles/#' + object.ages.main._id)= object.ages.main.i18n.title.get('ru')
-				.column_item.interval
-					.column_title Дата:
-					.column_content= object.meta.interval.start.getUTCFullYear() + ' - ' + object.meta.interval.end.getUTCFullYear()
-				.column_item.adress
-					.column_title Адрес:
-					.column_content= object.meta.i18n.adress.get('ru')
-				if (object.architects.length > 0)
-					.column_item.architects
-						.column_title Архитекторы:
-						each architect in object.architects
-							a.architect_item(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
-				if (object.categorys.length > 0)
-					.column_item.categorys
-						.column_title Термины:
-						each category in object.categorys
-							a.category_item(href='/categorys/' + category._id)= category.i18n.title.get('ru')
-		.descriptions_block
-			each image in object.images
-				.description_item.images: != image.description[0].value
-		.descriptions_block
-			each subject in object.subjects
-				.description_item.subjects
-					.subject_inventory= subject.meta.inventory
-					.subject_title= subject.i18n.title.get('ru')
-					.subject_description: != subject.i18n.description.get('ru')
