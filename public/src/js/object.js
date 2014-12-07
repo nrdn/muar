@@ -99,14 +99,14 @@ $(document).ready(function() {
 	$('.images_zoom').on('click', function(event) {
 		if (oi == 1)
 		{
-			$(this).html('–');
+			$('.images_zoom').html('–');
 			$('.object_image').css({'background-size':'cover'});
 			oi = 0;
 			console.log('ooo');
 		}
 		else
 		{
-			$(this).html('+');
+			$('.images_zoom').html('+');
 			$('.object_image').css({'background-size':'contain'});
 			oi = 1;
 			console.log('777');
