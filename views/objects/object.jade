@@ -17,18 +17,21 @@ block content_scripts
 block content_title
 	.object_slide_navigate.models_slide
 		.slide_navigate_inner
-			each project in projects
-				.object_slide_item.models(path=project.model, style='background-image:url(' + project.photo + ')')
+			.slides_inner_block
+				each project in projects
+					.object_slide_item.models(path=project.model, style='background-image:url(' + project.photo + ')')
 	.object_slide_navigate.images_slide
 		.slide_navigate_inner
-			each image in object.images
-				.object_slide_item.images(style='background-image:url(' + image.thumb + ')')
+			.slides_inner_block
+				each image in object.images
+					.object_slide_item.images(style='background-image:url(' + image.thumb + ')')
 	.object_slide_navigate.subjects_slide
 		.slide_navigate_inner
-			each subject in object.subjects
-				.object_slide_item.subjects(path=subject._id, style='background-image:url(' + subject.image.thumb + ')')
-					.object_slide_title
-						.slide_title_inner= subject.i18n.title.get('ru').substr(0, 60) + '...'
+			.slides_inner_block
+				each subject in object.subjects
+					.object_slide_item.subjects(path=subject._id, style='background-image:url(' + subject.image.thumb + ')')
+						.object_slide_title
+							.slide_title_inner= subject.i18n.title.get('ru').substr(0, 60) + '...'
 
 block content
 	.side_description
@@ -46,7 +49,8 @@ block content
 							.object_navigate.subjects
 								.item_inner Единицы хранения
 						if (projects.length > 0)
-							.object_navigate.models 3d
+							.object_navigate.models 
+								.item_inner 3d
 					.column_item_wrap
 						.column_item.style
 							.column_title Стиль:
@@ -92,7 +96,8 @@ block content
 							.images_navigate_block_prev
 								.images_arrow &lt;
 							.images_navigate_block_next
-								.images_arrow &gt;
+								.images_arrow
+									.next_arrow &gt;
 		.object_subjects_block#subjects_view
 		.object_3d_block#unityPlayer
 			.missing
@@ -101,6 +106,16 @@ block content
 			.broken
 				span Broken!
 	.main_description_block
-		.description_column: != object.i18n.description.get('ru')
+		.main_description_inner
+			.main_description_title Описание
+			.main_description_column: != object.i18n.description.get('ru')
+		.main_attached_objects
+			.main_attached_objects_inner
+				.main_description_title Связанные объекты
+				.main_attached_objects_block
+					each attach_object in attach_objects
+						- var image = attach_object.images.length > 0 ? attach_object.images[0].thumb : ''
+						a.architect_object(href='/objects/' + attach_object._id, style='background-image:url(' + image + ')')
+							.architect_object_name= attach_object.i18n.title.get('ru')
 
 block footer
