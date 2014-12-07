@@ -30,6 +30,7 @@ body:after
 .side_description
 	position absolute
 	top 70px
+	top 55px
 	bottom 0px
 	left 0
 	right 0
@@ -62,8 +63,9 @@ body:after
 	font-size 24px
 	color #fff
 	font-family ma_unitwmedium
-	padding 20px 20px 5px
+	padding 15px 20px 3px
 	background: rgba(0,0,0,0.66);
+	line-height 26px
 
 .object_navigate_block
 	z-index 9999
@@ -95,7 +97,7 @@ body:after
 	color #fff
 	line-height 28px
 	background rgba(0, 0, 0, 0.66)
-	&.models
+	/*&.models
 		width 25px
 		height 22px
 		margin-top 3px
@@ -112,7 +114,7 @@ body:after
 			background-color red
 		&.current
 			color white
-			background-color red
+			background-color red*/
 	&:hover
 		color red
 		cursor pointer
@@ -159,7 +161,7 @@ body:after
 	&:last-child
 		margin-bottom 0px
 	a
-		text-decoration none
+		//text-decoration none
 		color #fff
 		&:hover
 			color red
@@ -196,6 +198,7 @@ body:after
 	background-size cover
 	background-repeat no-repeat
 	background-position center
+	background-attachment fixed
 	&:nth-child(1)
 		display block
 
@@ -234,6 +237,12 @@ body:after
 			position absolute
 			width 100%
 
+.next_arrow
+	position absolute
+	right 400px
+
+
+
 .object_subjects_block
 	position absolute
 	width 100%
@@ -245,29 +254,37 @@ body:after
 .object_slide_navigate
 	position absolute
 	width 100%
-	background-color white
 	z-index 9999
 	display none
-	overflow auto
+	//overflow auto
 	left 0
 
 .slide_navigate_inner
 	width 1280px
-	overflow hidden
+	//overflow hidden
 	position relative
 	padding-top 10px
 	margin 0px auto
 
+.slides_inner_block
+	position absolute
+	top 10px
+	right 370px
+	padding 10px
+	width 780px
+	background #000
+	background: rgba(0, 0, 0, 0.85);
+
 .object_slide_item
-	width 240px
-	height 200px
+	width 180px
+	height 150px
 	margin-right 20px
 	margin-bottom 10px
 	float left
 	background-size cover
 	background-position center
 	background-repeat no-repeat
-	&:nth-child(5n)
+	&:nth-child(4n)
 		margin-right 0
 	&:hover
 		cursor pointer
@@ -276,12 +293,14 @@ body:after
 	top 100%
 	font-size 16px
 	position relative
-	
 
 .slide_title_inner
 	bottom 0
 	position absolute
 	background-color white
+	font-size 13px
+	line-height 15px
+	padding 3px
 
 
 .description_item
@@ -302,15 +321,79 @@ body:after
 	position absolute
 	top 100%
 	height auto
+	width 100%
+
+.main_description_inner, .main_attached_objects_inner
+	margin 0 auto 20px
+	width 1280px
+
+.main_description_column
+	padding 14px 0px 20px
+
+.main_description_title
+	display block
+	text-decoration none
+	font 30px/32px 'ma_unitwmedium'
+	margin 20px 0 0
+	padding 10px 0
+	border-bottom 1px solid #d7d7d7
+
+.main_description_text
+	padding 14px 0px 20px
 
 .footer_block_inner
 	position relative
 
 
+.main_attached_objects
+	position absolute
+	height 100%
+	top 100%
+	width 100%
+
+.architect_block_title
+	font-family ma_unitwmedium
+	font-size 18px
+	text-decoration none
+	&:hover
+		color #f00
+
+.main_attached_objects_block
+	margin 20px 0 20px
+
+.architect_object
+	float left
+	width 240px
+	height 200px
+	display block
+	position relative
+	margin-right 20px
+	background-size cover
+	background-position 50%
+	background-repeat no-repeat
+	margin-bottom 20px
+
+.architect_object:nth-child(5n)
+	margin-right 0px
+
+.architect_object:hover
+	color #f00
+
+.architect_object_name
+	bottom 0
+	width 100%
+	background #fff
+	position absolute
 
 @media screen and (max-width:1280px) {
-	.description_inner, .image_description_inner, .images_navigate_block_inner, .slide_navigate_inner, .side_description_inner {
+	.description_inner, .image_description_inner, .images_navigate_block_inner, .slide_navigate_inner, .side_description_inner, .main_description_inner, .main_attached_objects_inner {
 		width: 1000px;
+	}
+	.architect_object, .architect_object:nth-child(5n) {
+		margin-right: 13px;
+	}
+	.architect_object:nth-child(4n) {
+		margin-right: 0px;
 	}
 	.description_column {
 		width: 220px;
