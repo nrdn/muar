@@ -108,8 +108,16 @@ $(document).ready(function() {
 			$('.images_zoom').html('+');
 			$('.object_image').css({'background-size':'contain'});
 			oi = 1;
-		}
-	})
+		};
+	});
+
+	$('.goto_down a').click(function(){
+		console.log('21');
+		scr = $('.object_images_block').height();
+		$('body').animate({
+     	scrollTop: scr,
+    	}, 500 );
+	});
 
 	$('.object_slide_item.subjects').on('click', function(event) {
 		$('.object_images_block, .object_3d_block').hide();
