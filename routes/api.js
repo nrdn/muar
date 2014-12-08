@@ -96,7 +96,11 @@ exports.v1 = function(req, res) {
     case 'ages':
       var query = params.id ? {'_id': params.id} : {};
       var exclude = params.select ? params.select.replace(/\,/g,' ') : '-__v -_id';
-      Age.find(query).select(exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, ages) {
+      Query = params.tree == 'true'
+        ? Age.find().where('parent').exists(false).populate('sub').select(exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10)
+        : Age.find(query).select(exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10)
+
+      Query.exec(function(err, ages) {
         if (!ages) return res.json({status: 'error', code: 24, description: 'Incorrect id'});
         res.json({status: 'ok', location: params.location, result: ages});
       });
