@@ -3,6 +3,7 @@ $(document).ready(function() {
 	var map;
 	var oldLayer;
 	var oi = 0;
+	var cr = 0;
 
 	function UnityLoader (path) {
 		var config = {
@@ -111,8 +112,27 @@ $(document).ready(function() {
 		};
 	});
 
+
+	$('.side_description_cross').on('click', function(event) {
+		if (cr == 1)
+		{
+			$(this).removeClass('prop');
+			$('.summary_description_block, .images_descriptons_block, .goto_down').show();
+			$('.next_arrow').css({'right':'370px'});
+			$('.side_description_column').css({'bottom':'0px'});
+			cr = 0;
+		}
+		else
+		{
+			$(this).addClass('prop');
+			$('.summary_description_block, .images_descriptons_block, .goto_down').hide();
+			$('.next_arrow').css({'right':'0px'})
+			$('.side_description_column').css({'bottom':'100%'});
+			cr = 1;
+		};
+	});
+
 	$('.goto_down a').click(function(){
-		console.log('21');
 		scr = $('.object_images_block').height();
 		$('body').animate({
      	scrollTop: scr,
