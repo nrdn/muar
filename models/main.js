@@ -127,6 +127,9 @@ architectSchema.index({'name.value': 'text', 'description.value': 'text'}, {lang
 objectSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override:'lg', default_language: 'ru'});
 subjectSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override:'lg', default_language: 'ru'});
 
+architectSchema.set('autoIndex', true);
+objectSchema.set('autoIndex', true);
+subjectSchema.set('autoIndex', true);
 
 // ------------------------
 // *** Exports Block ***

@@ -13,9 +13,9 @@ exports.locale = function(req, res) {
 exports.search = function(req, res) {
 	var search = req.body.search;
 
-	Architect.find({ $text: { $search: search } }, { score : { $meta: 'textScore' } }).exec(function(err, architects) {
-		Object.find({ $text: { $search: search } }, { score : { $meta: 'textScore' } }).exec(function(err, objects) {
-			Subject.find({ $text: { $search: search } }, { score : { $meta: 'textScore' } }).exec(function(err, subjects) {
+	Architect.find({ $text: { $search: search } }, { score : { $meta: 'textScore' } }).sort({ score : { $meta : 'textScore' } }).select('name _id').exec(function(err, architects) {
+		Object.find({ $text: { $search: search } }, { score : { $meta: 'textScore' } }).sort({ score : { $meta : 'textScore' } }).select('title _id').exec(function(err, objects) {
+			Subject.find({ $text: { $search: search } }, { score : { $meta: 'textScore' } }).sort({ score : { $meta : 'textScore' } }).select('title _id').exec(function(err, subjects) {
 				res.send({architects: architects, objects: objects, subjects: subjects});
 			});
 		});
