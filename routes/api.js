@@ -2,6 +2,8 @@ var User = require('../models/main.js').User;
 var Object = require('../models/main.js').Object;
 var Subject = require('../models/main.js').Subject;
 var Architect = require('../models/main.js').Architect;
+var Category = require('../models/main.js').Category;
+var Age = require('../models/main.js').Age;
 
 
 // ------------------------
@@ -81,6 +83,22 @@ exports.v1 = function(req, res) {
       Architect.find(query).select(exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, architects) {
         if (!architects) return res.json({status: 'error', code: 24, description: 'Incorrect id'});
         res.json({status: 'ok', location: params.location, result: architects});
+      });
+    break;
+    case 'categorys':
+      var query = params.id ? {'_id': params.id} : {};
+      var exclude = params.select ? params.select.replace(/\,/g,' ') : '-__v -_id';
+      Category.find(query).select(exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, categorys) {
+        if (!categorys) return res.json({status: 'error', code: 24, description: 'Incorrect id'});
+        res.json({status: 'ok', location: params.location, result: categorys});
+      });
+    break;
+    case 'ages':
+      var query = params.id ? {'_id': params.id} : {};
+      var exclude = params.select ? params.select.replace(/\,/g,' ') : '-__v -_id';
+      Age.find(query).select(exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, ages) {
+        if (!ages) return res.json({status: 'error', code: 24, description: 'Incorrect id'});
+        res.json({status: 'ok', location: params.location, result: ages});
       });
     break;
     default:
