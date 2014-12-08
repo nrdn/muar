@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
 		gulpif = require('gulp-if'),
 		nodemon = require('gulp-nodemon'),
+		mocha = require('gulp-mocha'),
 		autoprefixer = require('gulp-autoprefixer'),
 		uglify = require('gulp-uglify'),
 		stylus = require('gulp-stylus'),
@@ -44,11 +45,11 @@ gulp.task('clean', function() {
 gulp.task('stylus', function() {
 	return gulp.src(paths.stylus.src)
 						 .pipe(stylus({
-						 	compress: shouldMinify
+							compress: shouldMinify
 						 }))
 						 .pipe(autoprefixer({
-						 	browsers: ['last 2 versions'],
-						 	cascade: !shouldMinify
+							browsers: ['last 2 versions'],
+							cascade: !shouldMinify
 						 }))
 						 .pipe(gulp.dest(paths.stylus.dest));
 });
@@ -73,8 +74,14 @@ gulp.task('watch', function() {
 });
 
 
+gulp.task('mocha', function () {
+	return gulp.src('test/*.js', {read: false})
+						 .pipe(mocha({reporter: 'nyan'}));
+});
+
+
 gulp.task('production', function () {
-  shouldMinify = true;
+	shouldMinify = true;
 });
 
 
@@ -96,3 +103,5 @@ gulp.task('dev', function(callback) {
 gulp.task('run', function(callback) {
 	runSequence(['production', 'watch', 'nodemon'],  callback);
 });
+
+gulp.task('test', ['mocha']);
