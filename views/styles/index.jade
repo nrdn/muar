@@ -32,6 +32,7 @@ block content
 							.style_header
 								.style_line
 								.style_title= age.i18n.title.get('ru')
+									.style_date= age.meta.interval.start.getUTCFullYear() + ' – ' + age.meta.interval.end.getUTCFullYear()
 							.style_description: != age.i18n.description.get('ru')
 							each age_sub in age.sub
 								.age_block(id=age_sub._id)
