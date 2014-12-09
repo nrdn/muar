@@ -5,7 +5,10 @@ $(document).ready(function() {
 			height: '100%',
 			params: {
 				enableDebugging: '0',
-				disableContextMenu: true
+				disableContextMenu: true,
+				logoimage: '/images/design/models/models_logo.png',
+				progressbarimage: '/images/design/models/models_progress.png',
+				progressframeimage: '/images/design/models/models_progress_frame.png'
 			}
 		};
 
