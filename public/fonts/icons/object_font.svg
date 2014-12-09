@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2014 by original authors @ fontello.com</metadata>
+<defs>
+<font id="object_font" horiz-adv-x="1000" >
+<font-face font-family="object_font" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="resize-full" unicode="&#xe800;" d="m186 407l-113 116-73-73 0 210 210 0-72-73 115-115z m0-114l67-66-115-114 72-72-210 0 0 210 73-73z m245 114l-65 65 115 115-72 73 210 0 0-210-73 72z m115-229l73 73 0-210-210 0 72 72-115 114 65 66z" horiz-adv-x="619" />
+<glyph glyph-name="resize-small" unicode="&#xe801;" d="m66 672l114-116 73 74 0-210-210 0 72 72-115 115z m0-644l-66 67 115 113-72 73 210 0 0-210-73 72z m513 644l65-65-115-115 72-72-210 0 0 210 73-73z m-115-529l-73-72 0 210 210 0-72-73 115-113-65-67z" horiz-adv-x="644" />
+<glyph glyph-name="zoom-in" unicode="&#xe802;" d="m0 266c-116 118-116 309 0 427 119 117 309 117 428 0 111-112 107-300 13-409l115-40 129-130c23-29 20-71-7-99-27-26-68-29-98-7l-130 130-40 112c-110-92-297-95-410 16z m370 57c88 87 88 227 0 313-86 88-226 88-314 0-86-86-86-226 0-313 88-87 228-87 314 0z m-290 191l100 0 0 101 68 0 0-101 98 0 0-64-98 0 0-100-68 0 0 100-100 0 0 64z" horiz-adv-x="685" />
+<glyph glyph-name="zoom-out" unicode="&#xe803;" d="m0 266c-118 118-118 309 0 427s309 117 426 0c112-112 108-300 15-409l114-40 129-130c22-29 20-71-8-99-26-26-67-29-97-7l-130 130-40 112c-110-92-298-95-409 16z m369 57c87 86 87 227 0 313-85 88-226 88-314 0-86-86-86-227 0-313 88-87 229-87 314 0z m-290 207l266 0 0-95-266 0 0 95z" horiz-adv-x="684" />
+<glyph glyph-name="popup" unicode="&#xe804;" d="m311 504l489 0c36 0 65-30 65-65l0-404c0-35-29-65-65-65l-489 0c-35 0-65 30-65 65l0 404c0 35 30 65 65 65z m454-94l-419 0 0-346 419 0 0 346z m-146 181l-101 0 0 44-417 0 0-336 58 0 0-95-93 0c-36 0-66 30-66 65l0 395c0 36 30 66 66 66l488 0c36 0 65-30 65-66l0-73z" horiz-adv-x="865" />
+<glyph glyph-name="article" unicode="&#xe805;" d="m696 661l0-82-696 0 0 82 696 0z m-182-180l0-82-514 0 0 82 514 0z m182-180l0-82-696 0 0 82 696 0z m-182-180l0-82-514 0 0 82 514 0z" horiz-adv-x="696" />
+</font>
+</defs>
+</svg>
