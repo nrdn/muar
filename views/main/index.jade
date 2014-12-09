@@ -71,4 +71,6 @@ block content
 		.special_block_inner
 			.special_block_title.title_block.screen_width
 				.description_title Виртуальная архитектура
+					each project in projects
+						.object_slide_item.models(path=project.model, style='background-image:url(' + project.photo + ')')
 
