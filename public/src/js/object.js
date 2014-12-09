@@ -15,6 +15,9 @@ $(document).ready(function() {
 			params: {
 				enableDebugging: '0',
 				disableContextMenu: true
+				logoimage: '/images/design/models/models_logo.png',
+				progressbarimage: '/images/design/models/models_progress.png',
+				progressframeimage: '/images/design/models/models_progress_frame.png'
 			}
 		};
 
@@ -169,7 +172,7 @@ $(document).ready(function() {
 
 	$('.object_slide_item.models').on('click', function(event) {
 
-		if (OS.Windows) {
+		if (OS.Windows || OS.Mac) {
 			$('.object_3d_block').addClass('popup');
 			$('.side_description_cross').on('click.popup', function() {
 				$('.popup').hide();
