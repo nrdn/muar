@@ -68,9 +68,19 @@ block content
 
 	.screen_block.special_block
 		.special_block_background
-		.special_block_inner
-			.special_block_title.title_block.screen_width
-				.description_title Виртуальная архитектура
-					each project in projects
-						.special_block(path=project.model, style='background-image:url(' + project.photo + ')')
+			.object_images_block
+				each project, i in projects
+					.object_image(style='background-image:url(' + project.photo + ')')
+						.images_navigate_block
+							.images_navigate_block_inner.screen_width
+								a.images_description(href='/projects/' + project._id)
+									.main_title= project.i18n.title.get('ru')
+									.additional_title
+										| Виртуальная экскурсия
+
+								.images_navigate_block_prev
+									.images_arrow &lt;
+								.images_navigate_block_next
+									.images_arrow
+										.next_arrow &gt;
 

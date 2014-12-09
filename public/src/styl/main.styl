@@ -299,9 +299,6 @@ a.styles_line_nav
 
 //-- 4ой Блок --//
 .special_block_background
-  background url('/images/design/13.jpg') 50% no-repeat
-  background-size cover
-  opacity 0.6
   height 100%
 
 .special_block
@@ -315,6 +312,89 @@ a.styles_line_nav
   z-index 100
   top 0
   width 100%
+
+.object_images_block
+  width 100%
+  top 0px
+  bottom 0
+  overflow hidden
+  position absolute
+  background-color #d5d5d5
+  background url('/images/design/bckg.jpg')
+
+.object_image
+  display none
+  width 100%
+  height 100%
+  background-size contain
+  background-size cover
+  background-repeat no-repeat
+  background-position center
+  &:nth-child(1)
+    display block
+
+.images_navigate_block
+  position absolute
+  top 0
+  width 100%
+  height 100%
+  &:after
+    content ''
+    top 0
+    left 0
+    width 100%
+    height 200px
+    display block
+    position absolute
+    background url('/images/design/gr.png') 0 100% repeat-x
+    background-size 1px 290px
+    opacity 0.7
+
+.images_navigate_block_inner
+  margin 0 auto
+  height 100%
+  position relative
+  &>div
+    position absolute
+    font-size 120px
+    color #fff
+    text-shadow 0 0 1px #000
+    user-select none
+    opacity 0
+    width 30%
+    height 100%
+    margin-top -60px
+    &:hover
+      opacity 0.9
+      cursor pointer
+    &.images_navigate_block_prev
+      left -4px
+    &.images_navigate_block_next
+      right 10px
+      text-align right
+      width 70%
+    & .images_arrow
+      top 50%
+      position absolute
+      width 100%
+
+  a.images_description
+    position absolute
+    width 100%
+    left 0
+    top 140px
+    //font-size 36px
+    text-align center
+    //border-bottom 1px solid #fff
+    color #fff
+    //font 46px/66px 'ma_unitwmedium'
+    text-align center
+    text-decoration none
+    margin-top -100px
+    z-index 10000
+    &:hover
+      & .main_title
+        color #ee3124
 
 //--------//
 
