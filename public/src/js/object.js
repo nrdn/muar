@@ -7,6 +7,7 @@ $(document).ready(function() {
 		Mac: navigator.platform.indexOf("Mac") > -1,
 		Linux: navigator.platform.indexOf("Linux") > -1
 	}
+	var cross = 0;
 
 	function UnityLoader (path) {
 		var config = {
@@ -132,7 +133,12 @@ $(document).ready(function() {
 			$('.summary_description_block, .images_descriptons_block, .goto_down').show();
 			$('.next_arrow').css({'right':'370px'});
 			$('.side_description_column').css({'bottom':'0px'});
-			$('body').css({'height':'auto','overflow':'auto'});
+			if (cross == 1) {
+				$('body').css({'height':'100%','overflow':'hidden'});
+			}
+			else {
+				$('body').css({'height':'auto','overflow':'auto'});
+			}
 		}
 		else {
 			$(this).addClass('prop');
@@ -158,7 +164,8 @@ $(document).ready(function() {
 		$('.subjects_slide').hide();
 		$('.object_navigate').removeClass('current');
 		$('.description_item.images').hide();
-		$('.object_navigate.subjects').addClass('current');
+		//$('.object_navigate.subjects').addClass('current');
+		cross = 1;
 
 		var index = $(this).index();
 		$('.description_item.subjects').hide().eq(index).show();
@@ -245,7 +252,9 @@ $(document).ready(function() {
 		$('.object_image').hide().eq(index).show();
 		$('.description_item.subjects').hide();
 		$('.description_item.images').hide().eq(index).show();
-		$('.object_navigate.images').addClass('current');
+		//$('.object_navigate.images').addClass('current');
+		$('body').css({'height':'auto','overflow':'auto'});
+		cross = 0;
 	});
 
 	$(document).on('mouseup touchstart', function (event) {
@@ -255,7 +264,7 @@ $(document).ready(function() {
 			&& container.has(event.target).length === 0)
 		{
 				container.hide();
-				//$('.object_navigate').removeClass('current');
+				$('.object_navigate').removeClass('current');
 		}
 	});
 });
