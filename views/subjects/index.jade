@@ -14,7 +14,6 @@ block content_title
 	.subject_title_block Единицы хранения
 
 block content
-	.subjects_block
 	each subject in subjects
 		a.subject_item(href='/subjects/' + subject._id)
 			.subject_image(style='background-image: url(' + subject.image.thumb + ')')
