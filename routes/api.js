@@ -64,7 +64,20 @@ exports.v1 = function(req, res) {
       var query = params.id ? {'_id': params.id} : {};
       var exclude = params.select ? params.select.replace(/\,/g,' ') : '-__v -_id';
       var populated = params.populate ? params.populate.replace(/\,/g,' ') : '';
-      Object.find(query).select(exclude).populate(populated).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, objects) {
+      var Query;
+
+      if (params.interval) {
+        var interval = {
+          start: new Date(Date.UTC(+params.interval.split(',')[0], 0, 1)),
+          end: new Date(Date.UTC(+params.interval.split(',')[1], 0, 1))
+        };
+        Query = Object.find().select(exclude).populate(populated).sort(params.sort).where('meta.interval.start').gte(interval.start).where('meta.interval.end').lte(interval.end).skip(params.skip).limit(params.limit || 10)
+      }
+      else {
+        Query = Object.find(query).select(exclude).populate(populated).sort(params.sort).skip(params.skip).limit(params.limit || 10)
+      }
+
+      Query.exec(function(err, objects) {
         if (!objects) return res.json({status: 'error', code: 24, description: 'Incorrect id'});
         res.json({status: 'ok', location: params.location, result: objects});
       });
@@ -96,7 +109,7 @@ exports.v1 = function(req, res) {
     case 'ages':
       var query = params.id ? {'_id': params.id} : {};
       var exclude = params.select ? params.select.replace(/\,/g,' ') : '-__v -_id';
-      Query = params.tree == 'true'
+      var Query = params.tree == 'true'
         ? Age.find().where('parent').exists(false).populate('sub').select(exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10)
         : Age.find(query).select(exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10)
 
