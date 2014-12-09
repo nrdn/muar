@@ -3,6 +3,7 @@ $(document).ready(function() {
 	var map;
 	var oldLayer;
 	var oi = 0;
+	var cr = 0;
 
 	function UnityLoader (path) {
 		var config = {
@@ -57,6 +58,7 @@ $(document).ready(function() {
 		$('.object_navigate').removeClass('current');
 		$(this).addClass('current');
 		$('.models_slide').show();
+		$('.column_item').hide();
 	});
 
 
@@ -64,12 +66,14 @@ $(document).ready(function() {
 		$('.object_navigate').removeClass('current');
 		$(this).addClass('current');
 		$('.object_description_block').show();
+		$('.column_item').hide();
 	});
 
 	$('.object_navigate.images').on('click', function(event) {
 		$('.object_navigate').removeClass('current');
 		$(this).addClass('current');
 		$('.images_slide').show();
+		$('.column_item').show();
 	});
 
 	$('.object_navigate.subjects').on('click', function(event) {
@@ -108,8 +112,35 @@ $(document).ready(function() {
 			$('.images_zoom').html('+');
 			$('.object_image').css({'background-size':'contain'});
 			oi = 1;
+		};
+	});
+
+
+	$('.side_description_cross').on('click', function(event) {
+		if (cr == 1)
+		{
+			$(this).removeClass('prop');
+			$('.summary_description_block, .images_descriptons_block, .goto_down').show();
+			$('.next_arrow').css({'right':'370px'});
+			$('.side_description_column').css({'bottom':'0px'});
+			cr = 0;
 		}
-	})
+		else
+		{
+			$(this).addClass('prop');
+			$('.summary_description_block, .images_descriptons_block, .goto_down').hide();
+			$('.next_arrow').css({'right':'0px'})
+			$('.side_description_column').css({'bottom':'100%'});
+			cr = 1;
+		};
+	});
+
+	$('.goto_down a').click(function(){
+		scr = $('.object_images_block').height();
+		$('body').animate({
+     	scrollTop: scr,
+    	}, 500 );
+	});
 
 	$('.object_slide_item.subjects').on('click', function(event) {
 		$('.object_images_block, .object_3d_block').hide();
@@ -137,6 +168,13 @@ $(document).ready(function() {
 
 	$('.object_slide_item.models').on('click', function(event) {
 		$('.object_images_block, .object_subjects_block').hide();
+
+		$('.summary_description_block, .images_descriptons_block, .goto_down').hide();
+		$('.side_description_column').css({'bottom':'100%'});
+		$('.object_slide_navigate').hide();
+		cr = 1;
+
+		$('.side_description_column').css({'bottom':'100%'});
 		$('.object_3d_block').show();
 		$('.subjects_slide').hide();
 		$('.object_navigate').removeClass('current');

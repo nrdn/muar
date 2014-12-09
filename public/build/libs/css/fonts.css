@@ -43,3 +43,12 @@
                  url('/fonts/icons/menu.woff') format('woff'),
                  url('/fonts/icons/menu.ttf') format('truetype');
 }
+@font-face {
+    font-family: 'object_icons';
+    font-weight: normal;
+    font-style: normal;
+    src: url('/fonts/icons/object_font.eot');
+    src: url('/fonts/icons/object_font.eot#iefix') format('embedded-opentype'),
+                 url('/fonts/icons/object_font.woff') format('woff'),
+                 url('/fonts/icons/object_font.ttf') format('truetype');
+}
