@@ -120,6 +120,7 @@ $(document).ready(function() {
 
 	$('.side_description_cross').on('click', function(event) {
 		$(this).data('clicked', !$(this).data('clicked'));
+		$(this).off('click.popup')
 
 		if ($(this).data('clicked')) {
 			$(this).removeClass('prop');
@@ -170,7 +171,7 @@ $(document).ready(function() {
 
 		if (OS.Windows) {
 			$('.object_3d_block').addClass('popup');
-			$('.side_description_cross').on('click', function() {
+			$('.side_description_cross').on('click.popup', function() {
 				$('.popup').hide();
 				$('.summary_description_block, .images_descriptons_block').show();
 			});
