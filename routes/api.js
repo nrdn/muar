@@ -2,6 +2,8 @@ var User = require('../models/main.js').User;
 var Object = require('../models/main.js').Object;
 var Subject = require('../models/main.js').Subject;
 var Architect = require('../models/main.js').Architect;
+var Category = require('../models/main.js').Category;
+var Age = require('../models/main.js').Age;
 
 
 // ------------------------
@@ -62,7 +64,20 @@ exports.v1 = function(req, res) {
       var query = params.id ? {'_id': params.id} : {};
       var exclude = params.select ? params.select.replace(/\,/g,' ') : '-__v -_id';
       var populated = params.populate ? params.populate.replace(/\,/g,' ') : '';
-      Object.find(query).select(exclude).populate(populated).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, objects) {
+      var Query;
+
+      if (params.interval) {
+        var interval = {
+          start: new Date(Date.UTC(+params.interval.split(',')[0], 0, 1)),
+          end: new Date(Date.UTC(+params.interval.split(',')[1], 0, 1))
+        };
+        Query = Object.find().select(exclude).populate(populated).sort(params.sort).where('meta.interval.start').gte(interval.start).where('meta.interval.end').lte(interval.end).skip(params.skip).limit(params.limit || 10)
+      }
+      else {
+        Query = Object.find(query).select(exclude).populate(populated).sort(params.sort).skip(params.skip).limit(params.limit || 10)
+      }
+
+      Query.exec(function(err, objects) {
         if (!objects) return res.json({status: 'error', code: 24, description: 'Incorrect id'});
         res.json({status: 'ok', location: params.location, result: objects});
       });
@@ -81,6 +96,26 @@ exports.v1 = function(req, res) {
       Architect.find(query).select(exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, architects) {
         if (!architects) return res.json({status: 'error', code: 24, description: 'Incorrect id'});
         res.json({status: 'ok', location: params.location, result: architects});
+      });
+    break;
+    case 'categorys':
+      var query = params.id ? {'_id': params.id} : {};
+      var exclude = params.select ? params.select.replace(/\,/g,' ') : '-__v -_id';
+      Category.find(query).select(exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10).exec(function(err, categorys) {
+        if (!categorys) return res.json({status: 'error', code: 24, description: 'Incorrect id'});
+        res.json({status: 'ok', location: params.location, result: categorys});
+      });
+    break;
+    case 'ages':
+      var query = params.id ? {'_id': params.id} : {};
+      var exclude = params.select ? params.select.replace(/\,/g,' ') : '-__v -_id';
+      var Query = params.tree == 'true'
+        ? Age.find().where('parent').exists(false).populate('sub').select(exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10)
+        : Age.find(query).select(exclude).sort(params.sort).skip(params.skip).limit(params.limit || 10)
+
+      Query.exec(function(err, ages) {
+        if (!ages) return res.json({status: 'error', code: 24, description: 'Incorrect id'});
+        res.json({status: 'ok', location: params.location, result: ages});
       });
     break;
     default:
