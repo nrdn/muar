@@ -19,4 +19,24 @@ $(document).ready(function() {
     	}, 500 );
 	});
 
-})
+	if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		$('.styles_line').swipe({
+			swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+				switch (direction) {
+					case 'left':
+						$(this).animate({
+							scrollLeft: '+=240'
+						}, 300);
+					break;
+					case 'right':
+						$(this).animate({
+							scrollLeft: '-=240'
+						}, 300);
+					break;
+				}
+			},
+			 threshold: 60
+		});
+	}
+
+});
