@@ -25,17 +25,17 @@ $(document).ready(function() {
 				switch (direction) {
 					case 'left':
 						$(this).animate({
-							scrollLeft: '+=240'
+							scrollLeft: '-=120'
 						}, 300);
 					break;
 					case 'right':
 						$(this).animate({
-							scrollLeft: '-=240'
+							scrollLeft: '+=120'
 						}, 300);
 					break;
 				}
 			},
-			 threshold: 60
+			 threshold: 10
 		});
 	}
 
