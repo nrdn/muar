@@ -112,11 +112,11 @@ $(document).ready(function() {
 		$(this).data('clicked', !$(this).data('clicked'));
 
 		if ($(this).data('clicked')) {
-			$('.images_zoom').html('–');
+			$('.images_zoom').html('');
 			$('.object_image').css({'background-size':'cover'});
 		}
 		else {
-			$('.images_zoom').html('+');
+			$('.images_zoom').html('');
 			$('.object_image').css({'background-size':'contain'});
 		}
 	});

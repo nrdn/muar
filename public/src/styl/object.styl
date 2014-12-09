@@ -112,7 +112,7 @@ body:after
 			& .item_inner
 				border-color transparent
 	&.current
-		color red
+		color #ee3124
 	& .item_inner
 		border-bottom 1px solid
 		margin 0 10px
@@ -265,22 +265,26 @@ body:after
 	padding 10px
 	width 780px
 	background #000
-	background: rgba(0, 0, 0, 0.85);
+	background rgba(0, 0, 0, 0.85)
 
 .images_zoom
-	top 60px
-	left 0
+	top 67px
+	left -6px
 	height 40px!important
 	width 40px!important
 	background transparent!important
 	opacity 1!important
 	margin 0!important
 	z-index 10000
-	border-radius 50%
-	border 1px solid #fff
+	/*border-radius 50%
+	border 1px solid #fff*/
+	text-shadow none!important
 	line-height 36px
 	text-align center
-	font-size 54px!important
+	font-size 40px!important
+	font-family object_icons
+	&:hover
+		color #ee3124
 
 .object_slide_item
 	width 180px
@@ -418,7 +422,7 @@ body:after
 	position absolute
 
 @media screen and (max-width:1280px) {
-	.description_inner, .image_description_inner, .images_navigate_block_inner, .slide_navigate_inner, .side_description_inner, .main_description_inner, .main_attached_objects_inner {
+	.description_inner, .image_description_inner, .images_navigate_block_inner, .slide_navigate_inner, .side_description_inner, .main_description_inner, .main_attached_objects_inner, .leaflet-control-container {
 		width: 1000px;
 	}
 	.architect_object, .architect_object:nth-child(5n) {
