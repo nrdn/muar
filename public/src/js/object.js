@@ -58,6 +58,7 @@ $(document).ready(function() {
 		$('.object_navigate').removeClass('current');
 		$(this).addClass('current');
 		$('.models_slide').show();
+		$('.column_item').hide();
 	});
 
 
@@ -65,12 +66,14 @@ $(document).ready(function() {
 		$('.object_navigate').removeClass('current');
 		$(this).addClass('current');
 		$('.object_description_block').show();
+		$('.column_item').hide();
 	});
 
 	$('.object_navigate.images').on('click', function(event) {
 		$('.object_navigate').removeClass('current');
 		$(this).addClass('current');
 		$('.images_slide').show();
+		$('.column_item').show();
 	});
 
 	$('.object_navigate.subjects').on('click', function(event) {
@@ -165,6 +168,13 @@ $(document).ready(function() {
 
 	$('.object_slide_item.models').on('click', function(event) {
 		$('.object_images_block, .object_subjects_block').hide();
+
+		$('.summary_description_block, .images_descriptons_block, .goto_down').hide();
+		$('.side_description_column').css({'bottom':'100%'});
+		$('.object_slide_navigate').hide();
+		cr = 1;
+
+		$('.side_description_column').css({'bottom':'100%'});
 		$('.object_3d_block').show();
 		$('.subjects_slide').hide();
 		$('.object_navigate').removeClass('current');
