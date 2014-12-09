@@ -124,7 +124,8 @@ $(document).ready(function() {
 
 	$('.side_description_cross').on('click', function(event) {
 		$(this).data('clicked', !$(this).data('clicked'));
-		$(this).off('click.popup')
+		$(this).off('click.popup');
+		$('.next_arrow').css({'right':'370px'});
 
 		if ($(this).data('clicked')) {
 			$(this).removeClass('prop');
@@ -157,6 +158,7 @@ $(document).ready(function() {
 		$('.subjects_slide').hide();
 		$('.object_navigate').removeClass('current');
 		$('.description_item.images').hide();
+		$('.object_navigate.subjects').addClass('current');
 
 		var index = $(this).index();
 		$('.description_item.subjects').hide().eq(index).show();
@@ -243,6 +245,7 @@ $(document).ready(function() {
 		$('.object_image').hide().eq(index).show();
 		$('.description_item.subjects').hide();
 		$('.description_item.images').hide().eq(index).show();
+		$('.object_navigate.images').addClass('current');
 	});
 
 	$(document).on('mouseup touchstart', function (event) {
@@ -252,7 +255,7 @@ $(document).ready(function() {
 			&& container.has(event.target).length === 0)
 		{
 				container.hide();
-				$('.object_navigate').removeClass('current');
+				//$('.object_navigate').removeClass('current');
 		}
 	});
 });
