@@ -1,10 +1,25 @@
+html, body
+  height 100%
+
+.header_block
+  left 0
+  top 0
+  position absolute
+  z-index 1000
+
+.header_block_inner
+  background transparent
+
 .content_title_block
   width 100%
+  position absolute
+  top 46px
+  z-index 100000
+  min-width 1000px
 
 .navigate_block
   width 100%
   margin 10px auto 10px
-  background-color white
   z-index 999999
   height 70px
 
@@ -66,7 +81,7 @@
   display none
   position absolute
   white-space nowrap
-  top 84px
+  top 40px
   left 0
   width 100%
 
@@ -83,6 +98,11 @@
     color red
   &:hover
     color red
+
+body > .content_block
+  margin 0 auto
+  position relative
+  height 100%
 
 .styles_block
   white-space nowrap
