@@ -83,7 +83,7 @@
 .leaflet-control {
 	position: relative;
 	z-index: 7;
-	pointer-events: auto;
+	/*pointer-events: auto;*/
 	}
 .leaflet-top,
 .leaflet-bottom {
