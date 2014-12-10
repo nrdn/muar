@@ -15,7 +15,8 @@ block content_title
 			each age in ages
 				.navigate_style_block(class=age._id)
 					.navigate_style_inner
-						.navigate_style_title(class=age.sub.length == 0 ? 'not_sub' : '')= age.i18n.title.get('ru')
+						.navigate_style_title(class=age.sub.length == 0 ? 'not_sub' : '')
+							.navigate_style_title_inner= age.i18n.title.get('ru')
 						.navigate_style_progress
 					.navigate_style_ages
 						.navigate_style_ages_inner.screen_width
