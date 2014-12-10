@@ -16,9 +16,20 @@ block content_title
 	.subject_title= subject.i18n.title.get('ru')
 
 block content
+	.side_description
+		.side_description_inner
+			.side_description_column
+				.side_description_cross
+				.summary_description_block
+					.object_title= subject.i18n.title.get('ru')
+					.column_item_wrap
+						.column_item.number
+							.column_content= subject.meta.inventory
+						.column_item.descr
+							.column_content: != subject.i18n.description.get('ru')
+
+
+
 	.subject_map(id='subject_view', path=subject._id)
 
 block footer
-	.subject_inventory= subject.meta.inventory
-	.subject_title= subject.i18n.title.get('ru')
-	.subject_description: != subject.i18n.description.get('ru')

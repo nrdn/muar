@@ -1,4 +1,15 @@
 $(document).ready(function() {
+
+$('.side_description_cross').on('click', function(event) {
+		$(this).data('clicked', !$(this).data('clicked'));
+		if ($(this).data('clicked')) {
+			$('.summary_description_block').hide();
+		}
+		else {
+			$('.summary_description_block').show();
+		};
+});
+
 	var map = L.map('subject_view').setView([0, 0], 3);
 
 	var path = $('.subject_map').attr('path');
