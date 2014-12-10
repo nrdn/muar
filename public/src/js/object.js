@@ -135,9 +135,11 @@ $(document).ready(function() {
 			//$('.side_description_column').css({'bottom':'0px'});
 			if (cross == 1) {
 				$('body').css({'height':'100%','overflow':'hidden'});
+				$('.main_description_block').hide();
 			}
 			else {
 				$('body').css({'height':'auto','overflow':'auto'});
+				$('.main_description_block').show();
 			}
 		}
 		else {
@@ -146,6 +148,7 @@ $(document).ready(function() {
 			$('.next_arrow').css({'right':'0px'})
 			//$('.side_description_column').css({'bottom':'100%'});
 			$('body').css({'height':'100%','overflow':'hidden'});
+			$('.main_description_block').hide();
 		}
 	});
 
@@ -158,6 +161,7 @@ $(document).ready(function() {
 
 	$('.object_slide_item.subjects').on('click', function(event) {
 		$('body').css({'height':'100%','overflow':'hidden'});
+		$('.main_description_block').hide();
 		$('.goto_down').hide();
 		$('.object_images_block, .object_3d_block').hide();
 		$('.object_subjects_block').show();
@@ -186,6 +190,7 @@ $(document).ready(function() {
 
 	$('.object_slide_item.models').on('click', function(event) {
 		$('body').css({'height':'100%','overflow':'hidden'});
+		$('.main_description_block').hide();
 		if (OS.Windows || OS.Mac) {
 			$('.object_3d_block').addClass('popup');
 			$('.side_description_cross').on('click.popup', function() {
@@ -198,10 +203,7 @@ $(document).ready(function() {
 		}
 
 		$('.summary_description_block, .images_descriptons_block, .goto_down').hide();
-		//$('.side_description_column').css({'bottom':'100%'});
 		$('.object_slide_navigate').hide();
-
-		//$('.side_description_column').css({'bottom':'100%'});
 		$('.object_3d_block').show();
 		$('.subjects_slide').hide();
 		$('.object_navigate').removeClass('current');
@@ -252,8 +254,9 @@ $(document).ready(function() {
 		$('.object_image').hide().eq(index).show();
 		$('.description_item.subjects').hide();
 		$('.description_item.images').hide().eq(index).show();
-		//$('.object_navigate.images').addClass('current');
+		$('.goto_down').show();
 		$('body').css({'height':'auto','overflow':'auto'});
+		$('.main_description_block').show();
 		cross = 0;
 	});
 
