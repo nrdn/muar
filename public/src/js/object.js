@@ -254,6 +254,7 @@ $(document).ready(function() {
 		$('.object_image').hide().eq(index).show();
 		$('.description_item.subjects').hide();
 		$('.description_item.images').hide().eq(index).show();
+		$('.goto_down').show();
 		$('body').css({'height':'auto','overflow':'auto'});
 		$('.main_description_block').show();
 		cross = 0;
