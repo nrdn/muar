@@ -13,7 +13,7 @@ block content_title
 	.navigate_block
 		.navigate_styles_block
 			each age in ages
-				.navigate_style_block(class=age._id)
+				.navigate_style_block(class=age._id.toString())
 					.navigate_style_inner
 						.navigate_style_title(class=age.sub.length == 0 ? 'not_sub' : '')= age.i18n.title.get('ru')
 						.navigate_style_progress
@@ -26,7 +26,7 @@ block content
 	.styles_block.screen_width_absolute
 		.styles_inner
 			each age in ages
-				.style_block(class=age._id).screen_width
+				.style_block(class=age._id.toString()).screen_width
 					.style_block_inner
 						.style_inner_height
 							.style_header
@@ -35,7 +35,7 @@ block content
 									.style_date= age.meta.interval.start.getUTCFullYear() + ' – ' + age.meta.interval.end.getUTCFullYear()
 							.style_description: != age.i18n.description.get('ru')
 							each age_sub in age.sub
-								.age_block(id=age_sub._id)
+								.age_block(id=age_sub._id.toString())
 									.age_header
 										.age_line
 										.age_title= age_sub.i18n.title.get('ru')
