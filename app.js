@@ -384,6 +384,6 @@ app.use(function(err, req, res, next) {
 // *** Connect server Block ***
 // ------------------------
 
-
-app.listen(3000);
+var port = process.env.NODE_ENV == 'development' ? 3000 : 80;
+app.listen(port);
 console.log('http://127.0.0.1:3000')
