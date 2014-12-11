@@ -15,10 +15,9 @@ mongoose.set('debug', false);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
-app.set('json spaces', 2);
-app.locals.pretty = true;
-
 if (process.env.NODE_ENV == 'development') {
+	app.set('json spaces', 2);
+	app.locals.pretty = true;
 	app.use(express.static(__dirname + '/public'));
 }
 
@@ -74,6 +73,7 @@ var a_projects = require('./routes/admin/projects.js');
 
 var options = require('./routes/admin/options.js');
 var globals = require('./routes/globals.js');
+
 
 // ------------------------
 // *** Midleware Block ***
