@@ -11,11 +11,12 @@ var express = require('express'),
 		methodOverride = require('method-override'),
 			app = express();
 
-mongoose.set('debug', false);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 if (process.env.NODE_ENV == 'development') {
+	var skip_auth = true;
+	mongoose.set('debug', false);
 	app.set('json spaces', 2);
 	app.locals.pretty = true;
 	app.use(express.static(__dirname + '/public'));
@@ -38,7 +39,6 @@ app.use(session({
 	},
 	store: sessionMongoose
 }));
-
 
 app.use(function(req, res, next) {
 	res.locals.session = req.session;
@@ -81,7 +81,7 @@ var globals = require('./routes/globals.js');
 
 
 function checkAuth (req, res, next) {
-	if (req.session.user_id || process.env.NODE_ENV == 'development') {
+	if (req.session.user_id || skip_auth) {
 		res.locals.admin = true;
 		next();
 	}
