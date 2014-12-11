@@ -18,7 +18,10 @@ app.set('view engine', 'jade');
 app.set('json spaces', 2);
 app.locals.pretty = true;
 
-app.use(express.static(__dirname + '/public'));
+if (process.env.NODE_ENV == 'development') {
+	app.use(express.static(__dirname + '/public'));
+}
+
 app.use(multer({ dest: __dirname + '/uploads'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -348,36 +351,36 @@ app.route('/api/v1').get(api.check, api.v1);
 // ------------------------
 
 
-// app.use(function(req, res, next) {
-// 	var accept = accepts(req);
-// 	res.status(404);
+app.use(function(req, res, next) {
+	var accept = accepts(req);
+	res.status(404);
 
-// 	// respond with html page
-// 	if (accept.types('html')) {
-// 		res.render('error', { url: req.url, status: 404 });
-// 		return;
-// 	}
+	// respond with html page
+	if (accept.types('html')) {
+		res.render('error', { url: req.url, status: 404 });
+		return;
+	}
 
-// 	// respond with json
-// 	if (accept.types('json')) {
-// 			res.send({
-// 			error: {
-// 				status: 'Not found'
-// 			}
-// 		});
-// 		return;
-// 	}
+	// respond with json
+	if (accept.types('json')) {
+			res.send({
+			error: {
+				status: 'Not found'
+			}
+		});
+		return;
+	}
 
-// 	// default to plain-text
-// 	res.type('txt').send('Not found');
-// });
+	// default to plain-text
+	res.type('txt').send('Not found');
+});
 
-// app.use(function(err, req, res, next) {
-// 	var status = err.status || 500;
+app.use(function(err, req, res, next) {
+	var status = err.status || 500;
 
-// 	res.status(status);
-// 	res.render('error', { error: err, status: status });
-// });
+	res.status(status);
+	res.render('error', { error: err, status: status });
+});
 
 
 // ------------------------
