@@ -19,6 +19,14 @@ $(document).ready(function() {
     	}, 500 );
 	});
 
+	$('.styles_btn').click(function(){
+		scr = $('.intro_block').height() + $('.description_block.screen_block_height').height()+60+20;
+		$('body').animate({
+     	scrollTop: scr,
+    	}, 500 );
+	});
+
+
 
 	$('.images_navigate_block_next').on('click', function(event) {
 		var index = $(this).parents('.object_image').index();
