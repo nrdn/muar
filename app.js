@@ -18,7 +18,10 @@ app.set('view engine', 'jade');
 app.set('json spaces', 2);
 app.locals.pretty = true;
 
-app.use(express.static(__dirname + '/public'));
+if (process.env.NODE_ENV == 'development') {
+	app.use(express.static(__dirname + '/public'));
+}
+
 app.use(multer({ dest: __dirname + '/uploads'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -384,6 +387,6 @@ app.use(function(err, req, res, next) {
 // *** Connect server Block ***
 // ------------------------
 
-var port = process.env.NODE_ENV == 'development' ? 3000 : 80;
-app.listen(port);
+
+app.listen(3000);
 console.log('http://127.0.0.1:3000')
