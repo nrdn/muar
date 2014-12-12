@@ -46,6 +46,21 @@ app.use(function(req, res, next) {
 	next();
 });
 
+app.use(function(req, res, next) {
+	if (req.query.partner && req.query.referrer) {
+		res.locals.ref = '?referrer=' + req.query.referrer + '&' + 'partner=' + req.query.partner;
+		res.cookie('partner', req.query.partner);
+		res.cookie('referrer', req.query.referrer);
+	}
+	else if (req.cookies.partner && req.cookies.referrer) {
+		res.locals.ref = '?referrer=' + req.cookies.referrer + '&' + 'partner=' + req.cookies.partner;
+	}
+	else {
+		res.locals.ref = ''
+	}
+	next();
+});
+
 
 // -------------------
 // *** Routes Block ***
