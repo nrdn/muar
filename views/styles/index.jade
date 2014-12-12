@@ -19,7 +19,8 @@ block content_title
 						.navigate_style_title(class=age.sub.length == 0 ? 'not_sub' : '')
 							span=age.i18n.title.get('ru')
 							.navigate_style_inner
-								.navigate_style_progress
+								.navigate_style_progress_outer
+									.navigate_style_progress
 								.navigate_style_inner_ages
 									span(class='start_age')= age.meta.interval.start.getUTCFullYear()
 									span(class='end_age')= age.meta.interval.end.getUTCFullYear()
