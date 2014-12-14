@@ -47,7 +47,7 @@ exports.login_form = function(req, res) {
 
 exports.logout = function(req, res) {
   req.session.destroy();
-  req.session = null;
+  res.clearCookie('session');
   res.redirect('/login');
 }
 
