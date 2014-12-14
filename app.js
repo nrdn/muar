@@ -156,7 +156,7 @@ app.route('/projects').get(projects.index);
 
 
 // === Projects Route
-app.route('/projects/:id').get(projects.project);
+app.route('/projects/:id').get(projects.hard_links, projects.project);
 
 
 // ------------------------
