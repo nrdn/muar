@@ -29,7 +29,7 @@ app.use(methodOverride());
 app.use(cookieParser());
 
 app.use(session({
-	key: 'muar.sess',
+	key: 'session',
 	resave: false,
 	saveUninitialized: false,
 	secret: 'keyboard cat',
