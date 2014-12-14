@@ -15,8 +15,9 @@ block content_title
 
 block content
 	.projects_block
+		- var projects_hard = {'5487420c7fb6fa000081e885': 'chudov-i-voznesenskiy-monastyri-kremlya', '548496fb1fcde50000be2f14': 'proekt-bolshogo-kremlyovskogo-dvortsa'}
 		each project in projects
-			a.project_block(href='/projects/' + project._id)
+			a.project_block(href='/projects/' + (projects_hard[project._id] || project._id) )
 				.project_image(style="background-image:url("+project.photo+")")
 				.project_description_block
 					.project_title= project.i18n.title.get('ru')
