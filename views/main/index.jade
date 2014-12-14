@@ -57,18 +57,19 @@ block content
 			.description_title Представленные периоды
 			a.styles_line_nav.prev 
 			a.styles_line_nav.next 
-			.styles_line
-				.styles_inner_line
-					each age in ages
-						a.style_block(href='/styles/#' + age._id)
-							.style_image(style="background-image:url("+age.image.thumb+")")
-							.style_title
-								.style_title_inner= age.i18n.title.get('ru')
-								.style_title_date= age.meta.interval.start.getUTCFullYear() + ' – ' + age.meta.interval.end.getUTCFullYear()
-							.style_description
-								.style_description_inner
-									-var text_d = new String(age.i18n.description.get('ru'))
-									span= text_d.replace(/<\/?[^>]+>/g,'').substr(0, 400) + '...'
+			.styles_line_outer
+				.styles_line
+					.styles_inner_line
+						each age in ages
+							a.style_block(href='/styles/#' + age._id)
+								.style_image(style="background-image:url("+age.image.thumb+")")
+								.style_title
+									.style_title_inner= age.i18n.title.get('ru')
+									.style_title_date= age.meta.interval.start.getUTCFullYear() + ' – ' + age.meta.interval.end.getUTCFullYear()
+								.style_description
+									.style_description_inner
+										-var text_d = new String(age.i18n.description.get('ru'))
+										span= text_d.replace(/<\/?[^>]+>/g,'').substr(0, 400) + '...'
 
 	.screen_block.special_block
 		.special_block_background
