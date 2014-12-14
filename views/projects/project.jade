@@ -22,7 +22,4 @@ block content
 		.broken
 			span Broken!
 	.project_description: !=  project.i18n.description.get('ru')
-	.project_attached_objects
-		each object in project.objects
-			a.architect_object(href='/objects/' + object._id, style='background-image:url(' + object.images[0].thumb + ')')
-				.architect_object_name= object.i18n.title.get('ru')
+	
