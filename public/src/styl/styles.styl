@@ -1,257 +1,288 @@
 html, body
-  height 100%
+	height 100%
 
 .header_block
-  left 0
-  top 0
-  position absolute
-  z-index 1000
+	left 0
+	top 0
+	position absolute
+	z-index 1000
 
 .header_block_inner
-  background transparent
+	background transparent
 
 .content_title_block
-  width 100%
-  position absolute
-  top 46px
-  z-index 100000
-  min-width 1000px
+	width 100%
+	position absolute
+	top 46px
+	z-index 100000
+	min-width 1000px
 
 .navigate_block
-  width 100%
-  margin 10px auto 10px
-  z-index 999999
-  height 70px
+	width 100%
+	margin 10px auto 10px
+	z-index 999999
+	height 70px
 
 .navigate_styles_block
-  margin 0 auto
-  display table
+	margin 0 auto
+	display table
 
 .navigate_style_block
-  display table-cell
+	display table-cell
 
 .navigate_style_inner
-  position relative
+	position relative
 
 .navigate_style_title
-  cursor pointer
-  border-bottom 1px solid
-  position relative
-  padding-bottom 3px
-  &.not_sub
-    color #737373
-  &.current
-    color red
-    border-color #333
-  &:hover
-    color red
-  &:after
-    content '|'
-    display block
-    position absolute
-    left 100%
-    bottom -12px
-    font-size 8px
-    z-index 99999
+	cursor pointer
+	border-bottom 1px solid
+	position relative
+	padding-bottom 3px
+	&.not_sub
+		color #737373
+	&.current
+		color red
+		border-color #333
+	&:hover
+		color red
+	&:after
+		content '|'
+		display block
+		position absolute
+		left 100%
+		bottom -12px
+		font-size 8px
+		z-index 99999
 
 .navigate_style_block:last-child .navigate_style_title:after
-  content '>'
-  bottom -12px
-  font-size 14px
+	content '>'
+	bottom -12px
+	font-size 14px
 
 .navigate_style_progress
-  position absolute
-  top 24px
-  margin-bottom 3px
-  height 1px
-  margin-left 3px
-  background-color red
-  width 0%
-  &.on_scroll
-    &:after
-      display block
-      margin-top 0px
-      float right
-      content '•'
-      font-size 26px
-      line-height 5px
-      color #f00
+	position absolute
+	top 24px
+	margin-bottom 3px
+	height 1px
+	margin-left 3px
+	background-color red
+	width 0%
+	&.on_scroll
+		&:after
+			display block
+			margin-top 0px
+			float right
+			content '•'
+			font-size 26px
+			line-height 5px
+			color #f00
 
 .navigate_style_ages
-  display none
-  position absolute
-  white-space nowrap
-  top 40px
-  left 0
-  width 100%
+	display none
+	position absolute
+	white-space nowrap
+	top 40px
+	left 0
+	width 100%
 
 .navigate_style_ages_inner
-  margin 0 auto
-  text-align center
+	margin 0 auto
+	text-align center
 
 .navigate_age
-  display inline-block
-  cursor pointer
-  margin-right 10px
-  font-size 18px
-  &.current
-    color red
-  &:hover
-    color red
+	display inline-block
+	cursor pointer
+	margin-right 10px
+	font-size 18px
+	&.current
+		color red
+	&:hover
+		color red
 
 body > .content_block
-  margin 0 auto
-  position relative
-  height 100%
+	margin 0 auto
+	position relative
+	height 100%
 
 .styles_block
-  white-space nowrap
-  overflow hidden
-  position absolute
-  left 50%
-  bottom 25px
-  top 115px
+	white-space nowrap
+	overflow hidden
+	position absolute
+	left 50%
+	bottom 25px
+	top 115px
 
 .styles_inner, .style_block, .style_block_inner
-  display inline-block
-  vertical-align top
-  font-size 0
-  height: 100%
+	display inline-block
+	vertical-align top
+	font-size 0
+	height: 100%
 
 .style_block
-  overflow hidden
+	overflow hidden
 
 .style_block_inner
-  overflow auto
-  width 1300px
-  -webkit-overflow-scrolling touch
+	overflow auto
+	width 1300px
+	-webkit-overflow-scrolling touch
 
 .style_inner_height
-  overflow hidden
-  min-height 800px  // !!!!!!!!!!!!!!
-  display block
+	overflow hidden
+	min-height 800px  // !!!!!!!!!!!!!!
+	display block
 
 .age_block
-  overflow hidden
-  min-height 300px  // !!!!!!!!!!!!!!
+	overflow hidden
+	min-height 300px  // !!!!!!!!!!!!!!
 
 .age_header
 .style_header
-  margin-bottom 10px
-  border-bottom 1px solid #d7d7d7
+	margin-bottom 10px
+	border-bottom 1px solid #d7d7d7
 
 
 .age_title
 .style_title
-  font-size 24px
-  background-color white
-  display inline-block
-  position relative
-  font-family 'ma_unitwmedium'
-  line-height 24px
+	font-size 24px
+	background-color white
+	display inline-block
+	position relative
+	font-family 'ma_unitwmedium'
+	line-height 24px
 
 .style_title
-  display block
-  text-decoration none
-  font 30px/32px 'ma_unitwmedium'
-  padding 0 0 10px
-  text-align left
+	display block
+	text-decoration none
+	font 30px/32px 'ma_unitwmedium'
+	padding 0 0 10px
+	text-align left
 
 .age_description
 .style_description
-  width 1280px
-  margin-bottom 15px
-  position relative
-  color black
-  white-space normal
-  font-size 16px
-  line-height 18px
-  & br
-    content ''
-    display block
-    height 15px
+	width 1280px
+	margin-bottom 15px
+	position relative
+	color black
+	white-space normal
+	font-size 16px
+	line-height 18px
+	& br
+		content ''
+		display block
+		height 15px
 
 .age_description
-  margin-bottom 25px
+	margin-bottom 25px
 
 .object_block
-  width 240px
-  height 220px
-  background-size cover
-  background-position center
-  font-size 18px
-  display block
-  float left
-  background-color #ececec
-  text-decoration none
-  margin-right 20px
-  margin-bottom 20px
-  position relative
-  &:hover
-    //background-size  auto 130%
-  &:after
-    display block
-    position absolute
-    top 0
-    height 100%
-    width 100%
-    left 0
-    content ''
-    background #fff
-    opacity 0.1
-    transition: opacity 0.1s ease;
-  &:nth-child(5n)
-    margin-right 0px
-  &:hover .object_description
-    color #ee3124
-  &:hover:after
-    opacity 0
-  &[href='/objects/546b516bbe5f5200007cb8cd']
-    & .object_description_inner
-        color #ee3124
+	width 240px
+	height 220px
+	background-size cover
+	background-position center
+	font-size 18px
+	display block
+	float left
+	background-color #ececec
+	text-decoration none
+	margin-right 20px
+	margin-bottom 20px
+	position relative
+	&:hover
+		//background-size  auto 130%
+	&:after
+		display block
+		position absolute
+		top 0
+		height 100%
+		width 100%
+		left 0
+		content ''
+		background #fff
+		opacity 0.1
+		transition: opacity 0.1s ease;
+	&:nth-child(5n)
+		margin-right 0px
+	&:hover .object_description
+		color #ee3124
+	&:hover:after
+		opacity 0
+	&[href='/objects/546b516bbe5f5200007cb8cd']
+		& .object_description_inner
+				color #ee3124
 
 .object_description
-  font-size 16px
-  line-height 18px
-  position relative
-  top 100%
+	font-size 16px
+	line-height 18px
+	position relative
+	top 100%
 
 .object_date
-  font-size 16px
+	font-size 16px
 
 .object_description_inner
-  width 100%
-  background-color white
-  position absolute
-  bottom 0
-  z-index 900
+	width 100%
+	background-color white
+	position absolute
+	bottom 0
+	z-index 900
 
 .object_title
-  padding-top 3px
-  overflow hidden
-  white-space normal
+	padding-top 3px
+	overflow hidden
+	white-space normal
 
 
 .style_date
-  font-family 'ma_unitwlight'
-  border-top 1px solid #d7d7d7
-  margin-top 5px
-  padding-top 5px
+	font-family 'ma_unitwlight'
+	border-top 1px solid #d7d7d7
+	margin-top 5px
+	padding-top 5px
+
+
+//---------------
+
+.age_title.sub_age546a2a28c77affd5f518e52f
+.age_title.sub_age546b5f565233a000009a6e07
+.age_title.sub_age546b7e1ffd55b68509ebd36b
+.age_title.sub_age547504a08bc16e192e97dc4b
+	font-size 0
+	&:after
+		font-size 24px
+		background-color #fff
+		display inline-block
+		position relative;
+		font-family 'ma_unitwmedium'
+		line-height 24px
+
+.age_title.sub_age546a2a28c77affd5f518e52f:after
+	content 'Ранний и строгий классицизм в Москве'
+
+.age_title.sub_age546b5f565233a000009a6e07:after
+	content 'Ранний и строгий классицизм в Петербурге'
+
+.age_title.sub_age546b7e1ffd55b68509ebd36b:after
+	content 'Поздний классицизм (Ампир) в Петербурге'
+
+.age_title.sub_age547504a08bc16e192e97dc4b:after
+	content 'Поздний классицизм (Ампир) в Москве'
+
+//----------------
+
 
 @media screen and (max-width:1280px) {
-    .navigate_style_title {
-      font-size: 20px;
-    }
-    .style_description {
-      width: 1000px;
-    }
-    .style_block_inner {
-      width 1040px;
-    }
-    .object_block:nth-child(5n) {
-        margin-right: 20px;
-    }
-    .object_block:nth-child(4n) {
-        margin-right: 0px;
-    }
+		.navigate_style_title {
+			font-size: 20px;
+		}
+		.style_description {
+			width: 1000px;
+		}
+		.style_block_inner {
+			width 1040px;
+		}
+		.object_block:nth-child(5n) {
+				margin-right: 20px;
+		}
+		.object_block:nth-child(4n) {
+				margin-right: 0px;
+		}
 }
