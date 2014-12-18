@@ -110,7 +110,7 @@ $(document).ready(function() {
 					var object_description = $('<div/>', {'class': 'object_description'});
 					var object_description_inner = $('<div/>', {'class': 'object_description_inner'});
 					var object_title = $('<div/>', {'class': 'object_title', 'text': object.title[0].value});
-					var object_date= $('<div/>', {'class': 'object_date', 'text': start + ' - ' + end});
+					var object_date= $('<div/>', {'class': 'object_date', 'text': start + '—' + end});
 
 					var obj = object_block.append(object_description.append(object_description_inner.append(object_title, object_date)));
 					var object_ages = object.ages.sub.map(function(age) {
