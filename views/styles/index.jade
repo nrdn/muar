@@ -33,13 +33,14 @@ block content
 							.style_header
 								.style_line
 								.style_title= age.i18n.title.get('ru')
-									.style_date= age.meta.interval.start.getUTCFullYear() + '—' + age.meta.interval.end.getUTCFullYear()
+									.style_date(class='date_age' + age._id.toString())= age.meta.interval.start.getUTCFullYear() + '-е—' + age.meta.interval.end.getUTCFullYear() + '-е'
 							.style_description: != age.i18n.description.get('ru')
 							each age_sub in age.sub
 								.age_block(id=age_sub._id.toString())
 									.age_header
 										.age_line
 										.age_title(class='sub_age' + age_sub._id.toString())= age_sub.i18n.title.get('ru')
+										.age_date= age.meta.interval.start.getUTCFullYear() + '-е—' + age.meta.interval.end.getUTCFullYear() + '-е'
 									.age_description: != age_sub.i18n.description.get('ru')
 									.age_objects
 										//- each object in age_sub.objects

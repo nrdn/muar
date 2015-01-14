@@ -125,10 +125,10 @@ $(document).ready(function() {
 
 		$style_inner.scrollTop(0).animate({
 			'scrollTop': history.state ? history.state.scroll_position : $style_inner.data('scroll_position')
-		}, 400);
+		}, 0);
 		$('.styles_block').animate({
 			'scrollLeft': style_index * $('.styles_block').width()
-		}, 400);
+		}, 0);
 	}
 
 	$(window).on('hashchange', stylesSlide).trigger('hashchange');
@@ -143,7 +143,7 @@ $(document).ready(function() {
 
 		$style.animate({
 			'scrollTop': age_offset_top + style_scroll_top - style_offset_top
-		}, 300);
+		}, 0);
 	});
 
 	$('.navigate_style_title').on('click', function(event) {
