@@ -33,7 +33,7 @@ block content
 			each age in ages
 				span.sub
 					each age_sub in age.sub
-						input(type='checkbox', name='history[sub][]', value=age_sub._id, disabled=true)
+						input(type='checkbox', name='history[sub][]', value=age_sub._id, disabled=true, checked=object.ages.sub.some(function(sub) { return sub == age_sub._id.toString() }))
 						!= age_sub.i18n.title.get('ru')
 			.form_title Архитекторы:
 			.snake

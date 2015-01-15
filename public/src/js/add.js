@@ -39,7 +39,7 @@ $(document).ready(function() {
 	  $('.sub').hide().eq(index).show();
 	  $('.sub').children('input').attr('disabled', true);
 	  $('.sub').eq(index).children('input').attr('disabled', false);
-	});
+	}).trigger('change');
 
 
 	function snakeForward () {
