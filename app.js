@@ -283,9 +283,13 @@ app.route('/auth/projects/edit/:id')
 	 .post(checkAuth, a_projects.edit_form);
 
 
-// === Admin print Route
+// === Admin print ages Route
 app.route('/auth/print/')
 	 .get(checkAuth, a_print.index)
+
+// === Admin print list Route
+app.route('/auth/print/list/:sub_id')
+	 .get(checkAuth, a_print.list)
 
 
 // ------------------------
