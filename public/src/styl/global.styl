@@ -19,6 +19,10 @@ html, body, .content_block
 a
   color #333
 
+a.m_item.menu_arch, a.m_item.menu_term {
+display: none;
+}
+
 .content_block
   width 1280px
   margin 0 auto
@@ -30,7 +34,9 @@ a
 .screen_width
 .header_block_inner
 .footer_block_inner
-  width 1280px
+  //width 1280px
+  width 100%
+  max-width 1280px
 
 .screen_width_absolute
   margin-left -640px
@@ -268,7 +274,6 @@ a
 
 a[href='/styles/#546f52adefcff44843391164'] .style_title_date
 a[href='/styles/#546f57ca1238740a476aa789'] .style_title_date
-  height 50px
   overflow hidden
   position relative
   font-size 0

@@ -55,8 +55,9 @@ block content
 	#styles.screen_block.periods_block
 		.description_inner.screen_width
 			.description_title Представленные периоды
-			a.styles_line_nav.prev 
-			a.styles_line_nav.next 
+			.styles_nav_block.screen_width
+				a.styles_line_nav.prev 
+				a.styles_line_nav.next 
 			.styles_line_outer
 				.styles_line
 					.styles_inner_line
@@ -70,7 +71,7 @@ block content
 									.style_description_inner
 										- var text_d = new String(age.i18n.description.get('ru'))
 										span= text_d.replace(/<\/?[^>]+>/g,'').substr(0, 400) + '...'
-									.style_readmore Подробнее...
+									.style_readmore ...
 
 	.screen_block.special_block
 		.special_block_background

@@ -32,6 +32,7 @@ block content
 						.style_inner_height
 							.style_header
 								.style_line
+								.style_block_background(style='background-image:url('+age.image.main+')')
 								.style_title= age.i18n.title.get('ru')
 									.style_date(class='date_age' + age._id.toString())= age.meta.interval.start.getUTCFullYear() + '-е—' + age.meta.interval.end.getUTCFullYear() + '-е'
 							.style_description: != age.i18n.description.get('ru')

@@ -277,8 +277,9 @@
 
 
 .leaflet-control-container {
-  width: 1280px;
-  margin: 0 auto;
+  /*width: 1280px;*/
+  max-width: 1280px;
+	margin: 0 auto;
   height: 20px;
   position: relative;
 }

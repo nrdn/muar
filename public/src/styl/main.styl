@@ -6,6 +6,8 @@ body > .content_block
 
 .content_block > .screen_block
   height 100%
+  height 50%
+  min-height 400px
 
 .header_block
   position absolute
@@ -55,7 +57,7 @@ body > .content_block
 .main_title
   border-bottom 1px solid #fff
   color #fff
-  font 46px/66px 'ma_unitwmedium'
+  font 46px/66px 'ma_unitwlight'
   text-align center
 
 .additional_title
@@ -130,29 +132,30 @@ body > .content_block
   font-family 'ma_unitwmedium'
   text-align center
   border-top 1px solid #ccc
-  margin-top 5px
-  padding-top 5px
+  margin-top 10px
+  font-size 43px
+  letter-spacing 4px
+  height 30px
 
 .goto_down
   position absolute
-  bottom 26px
+  bottom 0px
   width 100%
-  height 60px
+  height 42px
 
 .goto_down_inner
   margin 0 auto
 
 .goto_down a
-  width 50px
-  height 50px
+  width 140px
+  height 42px
   margin 0 auto
   display block
   text-align center
-  color #fff
-  font 26px/56px 'menu_icons'
+  background #fff
+  color #000
+  font 30px/44px 'menu_icons'
   text-decoration none
-  border-radius 50%
-  border 1px solid
   cursor pointer
   &:hover
     color #EE3124!important
@@ -179,18 +182,26 @@ body > .content_block
 
 .content_block > .screen_block_height
   height auto
-  padding-bottom 60px
+  padding-bottom 0px
+
+.screen_block_height
+  background-image url('/images/design/trace/actual-01.jpg') 50% -897px no-repeat
 
 .description_inner
   background transparent
   margin 0 auto
 
+.description_block .description_inner
+  overflow hidden
+  //border-bottom 1px solid #ccc
+  padding-bottom 30px
+
 .description_title
   display block
   text-decoration none
-  font 30px/32px 'ma_unitwmedium'
-  margin 20px 0 0
-  padding 10px 0
+  font 34px/32px 'ma_unitwlight'
+  margin 20px 0px 0
+  padding 10px 25px
   border-bottom 1px solid #d7d7d7
 
 .description_block
@@ -198,23 +209,23 @@ body > .content_block
 
 .description_text
   width 60%
-  font-size 18px
-  line-height 22px
+  font-size 17px
+  line-height 19px
   float left
   p
-    margin 0 0 10px
+    margin 0 25px 10px
     padding 0
 
 .description_text2
   width 40%
   float left
   position relative
-  min-height 421px
+  min-height 321px
 
 .logo_block
   position absolute
   bottom -10px
-  right 0
+  right 25px
 
 .description_text2 img
   width 160px
@@ -224,39 +235,49 @@ body > .content_block
 
 
 //-- 3ой Блок --//
+.periods_block
+  //background url('/images/design/trace/actual-01.jpg') 50% -1800px no-repeat
+  min-height 697px!important
+
 .styles_line_outer
   background #fff
-  margin 20px 0
+  margin 0 0 20px
   padding 14px 0px 20px
   font-size 18px
   line-height 22px
   overflow hidden
   position absolute
-  top 72px
+  top 73px
   bottom 80px
   left 0px
   right 0px
-  height 540px
+  height 560px
 
 .styles_line
-  height 580px
+  height 600px
   overflow-x scroll
+  width 1230px
+  margin 0 auto
+
+.styles_nav_block.screen_width
+  position relative
 
 a.styles_line_nav
   display block
   position absolute
   font 46px/100px 'menu_icons'
   z-index 10000
-  width 48px
+  width 39px
+  background #fff
   height 100px
   text-align center
-  color #fff
+  color #000
   top 144px
   cursor pointer
   &.prev
-    left 0px
+    left -14px
   &.next
-    right 0px
+    right -14px
   &:hover
     color #EE3124
 
@@ -264,7 +285,7 @@ a.styles_line_nav
   white-space nowrap
 
 .style_block
-  width 260px
+  width 300px
   overflow hidden
   display inline-block
   margin-right 10px
@@ -274,12 +295,15 @@ a.styles_line_nav
   text-decoration none
   &:hover .style_title
     color #EE3124
+  &:last-child
+    margin-right 0
 
-.style_block:nth-child(1)
-  margin-left 10px
+.style_block:hover .style_readmore
+  color #ee3124
+
 
 .style_image
-  height 170px
+  height 200px
   background-position 50%
   background-repeat no-repeat
   background-size cover
@@ -287,28 +311,28 @@ a.styles_line_nav
 
 .style_title
   background #fff
-  padding 10px
-  height 58px
+  padding 15px 0 0
+  //height 58px
 
 .style_title_inner
-  font 22px/24px 'ma_unitwlight'
-  border-bottom 1px solid
-  padding-bottom 10px
-  padding-top 5px
-  text-align center
+  font 27px/24px 'ma_unitwlight'
+  padding 5px 10px 0
+  white-space normal
 
 .style_title_date
-  text-align center
   line-height 34px
+  padding 0 10px
+  border-bottom: 1px solid #d7d7d7;
+  margin-bottom 10px
 
 .style_description
-  padding 10px 7px
   background #fff
 
 .style_description_inner
   white-space normal
   font-size 16px
   line-height 17px
+  padding 0 10px
 
 //-- 4ой Блок --//
 .special_block_background

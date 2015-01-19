@@ -9,6 +9,7 @@ html, body
 
 .header_block_inner
 	background transparent
+	color #fff
 
 .content_title_block
 	width 100%
@@ -16,6 +17,11 @@ html, body
 	top 46px
 	z-index 100000
 	min-width 1000px
+
+.styles_inner_block, .navigate_styles_block {
+	width 100%
+	max-width 1280px
+}
 
 .navigate_block
 	width 100%
@@ -104,13 +110,21 @@ body > .content_block
 	position relative
 	height 100%
 
+.content_block
+	width: 100%;
+	max-width: 1280px;
+
 .styles_block
 	white-space nowrap
 	overflow hidden
 	position absolute
-	left 50%
+	left 0
 	bottom 25px
 	top 115px
+	//top 0
+	right 0
+	&.screen_width_absolute
+		margin-left 0
 
 .styles_inner, .style_block, .style_block_inner
 	display inline-block
@@ -122,13 +136,34 @@ body > .content_block
 	font-size 22px
 	line-height 20px
 	padding-bottom 7px
+	margin 0 25px
+
+.style_block_background
+	height: 50%
+	background-position 50%
+	min-height 400px
+	position relative
+	background-attachment fixed
+	display none
+	&:after
+		content ''
+		top 0
+		left 0
+		width 100%
+		height 200px
+		display block
+		position absolute
+		background url("/images/design/gr.png") 0 100% repeat-x
+		background-size 1px 290px
+		opacity 0.7
 
 .style_block
 	overflow hidden
 
 .style_block_inner
 	overflow auto
-	width 1300px
+	//width 1300px
+	width 105%
 	-webkit-overflow-scrolling touch
 
 .style_inner_height
@@ -145,32 +180,36 @@ body > .content_block
 	margin-bottom 10px
 	border-bottom 1px solid #d7d7d7
 
+.age_header
+	margin-top 40px
 
 .age_title
 .style_title
 	font-size 24px
-	background-color white
 	display inline-block
 	position relative
-	font-family 'ma_unitwmedium'
+	font-family 'ma_unitwlight'
 	line-height 24px
+	margin 0 25px
 
 .style_title
 	display block
 	text-decoration none
-	font 30px/32px 'ma_unitwmedium'
+	font 30px/32px 'ma_unitwlight'
 	padding 0 0 10px
 	text-align left
+	margin 5px 25px 0
 
 .age_description
 .style_description
-	width 1280px
-	margin-bottom 15px
+	width 1190px
+	margin-bottom 55px
 	position relative
 	color black
 	white-space normal
-	font-size 16px
-	line-height 18px
+	font-size 17px
+	line-height 19px
+	margin 0 25px
 	& br
 		content ''
 		display block
@@ -180,8 +219,8 @@ body > .content_block
 	margin-bottom 25px
 
 .object_block
-	width 240px
-	height 220px
+	width 294px
+	height 240px
 	background-size cover
 	background-position center
 	font-size 18px
@@ -205,7 +244,7 @@ body > .content_block
 		background #fff
 		opacity 0.1
 		transition: opacity 0.1s ease;
-	&:nth-child(5n)
+	&:nth-child(4n)
 		margin-right 0px
 	&:hover .object_description
 		color #ee3124
@@ -239,8 +278,8 @@ body > .content_block
 
 .style_date
 	font-family 'ma_unitwlight'
-	padding-top 5px
-
+	//padding-top 5px
+	font-size 22px
 
 //---------------
 
@@ -254,7 +293,7 @@ body > .content_block
 		background-color #fff
 		display inline-block
 		position relative;
-		font-family 'ma_unitwmedium'
+		font-family 'ma_unitwlight'
 		line-height 24px
 
 .age_title.sub_age546a2a28c77affd5f518e52f:after
@@ -275,7 +314,7 @@ body > .content_block
 	font-size 0
 	&:after
 		font-family ma_unitwlight
-		font-size 30px
+		font-size 22px
 		background-color #fff
 		display inline-block
 		position relative
@@ -288,16 +327,25 @@ body > .content_block
 .style_date.date_age546f57ca1238740a476aa789:after
 	content 'XVII–XVIII вв.'
 
+.menu_item
+	color #000
 
 //----------------
 
 
 @media screen and (max-width:1280px) {
+	.styles_block.screen_width_absolute {
+			margin-left: -500px;
+			left:50%;
+		}
+	.styles_inner_block, .navigate_styles_block {
+			width: 1000px;
+		}
 		.navigate_style_title {
 			font-size: 20px;
 		}
 		.age_description, .style_description {
-			width: 1000px;
+			width: 950px;
 		}
 		.style_block_inner {
 			width 1040px;
@@ -305,7 +353,7 @@ body > .content_block
 		.object_block:nth-child(5n) {
 				margin-right: 20px;
 		}
-		.object_block:nth-child(4n) {
+		.object_block:nth-child(3n) {
 				margin-right: 0px;
 		}
 }
