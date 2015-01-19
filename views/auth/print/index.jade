@@ -1,0 +1,21 @@
+extends ../../layout
+
+block title
+	title ПЕЧАТЬ
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
+	link(rel='stylesheet', type='text/css', href='/build/css/print.css')
+
+block content
+	h3.list_title Стили:
+	br
+	.ages_block
+		each age in ages
+			.age_item
+				.age_title= age.i18n.title.get('ru')
+				.age_sub
+					each sub in age.sub
+						a.sub_title(href='/auth/print/list/' + sub._id)= sub.i18n.title.get('ru')
+						br
+			br

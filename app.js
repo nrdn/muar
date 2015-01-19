@@ -85,6 +85,7 @@ var a_subjects = require('./routes/admin/subjects.js');
 var a_architects = require('./routes/admin/architects.js');
 var a_categorys = require('./routes/admin/categorys.js');
 var a_projects = require('./routes/admin/projects.js');
+var a_print = require('./routes/admin/print.js');
 
 var options = require('./routes/admin/options.js');
 var globals = require('./routes/globals.js');
@@ -281,6 +282,14 @@ app.route('/auth/projects/edit/:id')
 	 .get(checkAuth, a_projects.edit)
 	 .post(checkAuth, a_projects.edit_form);
 
+
+// === Admin print ages Route
+app.route('/auth/print/')
+	 .get(checkAuth, a_print.index)
+
+// === Admin print list Route
+app.route('/auth/print/list/:sub_id')
+	 .get(checkAuth, a_print.list)
 
 
 // ------------------------
