@@ -33,7 +33,7 @@ body > .content_block
 
 .content_block
   width 100%
-  position absolute
+  /*position absolute*/
   top 0
   height 100%
 
@@ -242,7 +242,7 @@ body > .content_block
 .styles_line_outer
   background #fff
   margin 0 0 20px
-  padding 14px 0px 20px
+  padding 10px 0px 20px
   font-size 18px
   line-height 22px
   overflow hidden
@@ -335,111 +335,80 @@ a.styles_line_nav
   padding 0 10px
 
 //-- 4ой Блок --//
+.screen_block.special_block
+ height auto
+
 .special_block_background
   height 100%
-
-.special_block
-  background #000
-  & .description_title
-    color #fff
-    border-bottom 1px solid #fff
-
-.special_block_inner
-  position absolute
-  z-index 100
-  top 0
-  width 100%
+  margin 0 auto
 
 .object_images_block
-  width 100%
-  top 0px
-  bottom 0
-  overflow hidden
-  position absolute
-  background-color #d5d5d5
-  background url('/images/design/bckg.jpg')
+  margin 0 25px
 
-.object_image
-  display none
-  width 100%
-  height 100%
-  background-size contain
-  background-size cover
+.special_item_block
+  display block
+  float left
+  margin-top 10px
+  width 610px
   background-repeat no-repeat
   background-position center
-  &:nth-child(1)
-    display block
+  margin-right 10px
+  margin-bottom 50px
+  text-decoration none
+  &:nth-child(2n)
+    margin-right 0
+  &:nth-child(3)
+    display none
+  &:hover
+    .special_title
+    .special_readmore
+      color #ee3124
 
-.images_navigate_block
-  position absolute
-  top 0
+.special_image
   width 100%
-  height 100%
-  &:after
-    content ''
-    top 0
-    left 0
-    width 100%
-    height 200px
-    display block
-    position absolute
-    background url('/images/design/gr.png') 0 100% repeat-x
-    background-size 1px 290px
-    opacity 0.7
+  height 260px
+  background-size cover
+  background-repeat no-repeat
+  background-position 50%
+  margin-bottom 14px
 
-.images_navigate_block_inner
-  margin 0 auto
-  height 100%
-  position relative
-  &>div
-    position absolute
-    font-size 120px
-    color #fff
-    text-shadow 0 0 1px #000
-    user-select none
-    opacity 0
-    width 30%
-    height 100%
-    margin-top -60px
-    &:hover
-      opacity 0.9
-      cursor pointer
-    &.images_navigate_block_prev
-      left -4px
-    &.images_navigate_block_next
-      right 10px
-      text-align right
-      width 70%
-    & .images_arrow
-      top 50%
-      position absolute
-      width 100%
+.special_title
+  font 27px/24px 'ma_unitwlight'
+  padding 5px 10px 10px
+  white-space normal
+  border-bottom 1px solid #d7d7d7
+  margin-bottom 10px
 
-  a.images_description
-    position absolute
-    width 100%
-    left 0
-    top 140px
-    //font-size 36px
-    text-align center
-    //border-bottom 1px solid #fff
-    color #fff
-    //font 46px/66px 'ma_unitwmedium'
-    text-align center
-    text-decoration none
-    margin-top -100px
-    z-index 10000
-    &:hover
-      & .main_title
-        color #ee3124
+.special_description_inner
+  white-space normal
+  font-size 16px
+  line-height 17px
+  padding 0 10px
+
+.special_readmore
+  font-family 'ma_unitwmedium'
+  text-align center
+  border-top 1px solid #ccc
+  margin-top 10px
+  font-size 43px
+  letter-spacing 4px
+  height 30px
 
 //--------//
 
 .footer_block
-  display none
-  color #fc0
+  position static
+  font 14px/16px 'ma_unitwlight'
+
+.footer_sponsors_block
+  border-top 1px solid #d7d7d7
+  padding 10px 25px 10px
+
 
 @media screen and (max-width:1280px) {
+  .special_item_block {
+    width: 470px;
+  }
   .style_title_inner {
     font-size: 22px;
   }

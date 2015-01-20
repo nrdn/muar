@@ -73,22 +73,20 @@ block content
 										span= text_d.replace(/<\/?[^>]+>/g,'').substr(0, 400) + '...'
 									.style_readmore ...
 
-	.screen_block.special_block
-		.special_block_background
+	#projects.screen_block.special_block
+		.description_inner.screen_width
+			.description_title Спецпроекты
+			.styles_nav_block.screen_width
+		.special_block_background.screen_width
 			.object_images_block
 				- var projects_hard = {'5487420c7fb6fa000081e885': 'chudov-i-voznesenskiy-monastyri-kremlya', '548496fb1fcde50000be2f14': 'proekt-bolshogo-kremlyovskogo-dvortsa'}
 				each project, i in projects
-					.object_image(style='background-image:url(' + project.photo + ')')
-						.images_navigate_block
-							.images_navigate_block_inner.screen_width
-								a.images_description(href='/projects/' + (projects_hard[project._id] || project._id) )
-									.main_title= project.i18n.title.get('ru')
-									.additional_title
-										| Спецпроекты
+					a.special_item_block(href='/projects/' + (projects_hard[project._id] || project._id) )
+						.special_image(style='background-image:url(' + project.photo + ')')
+						.special_title= project.i18n.title.get('ru')
+						.special_description
+							.special_description_inner: != project.i18n.description.get('ru').substr(0, 600) + '...'
 
-								.images_navigate_block_prev
-									.images_arrow &lt;
-								.images_navigate_block_next
-									.images_arrow
-										.next_arrow &gt;
+						.special_readmore ...
+
 
