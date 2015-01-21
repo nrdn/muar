@@ -18,4 +18,4 @@ block content
 		a.subject_item(href='/subjects/' + subject._id)
 			.subject_image(style='background-image: url(' + subject.image.thumb + ')')
 			.subject_title= subject.i18n.title.get('ru')
-			.subject_description= subject.i18n.description.get('ru')
+			.subject_description: != subject.i18n.description.get('ru')
