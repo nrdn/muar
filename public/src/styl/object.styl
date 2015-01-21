@@ -266,10 +266,10 @@
 	position absolute
 	top 10px
 	right 370px
-	padding 10px
-	width 753px
+	padding 10px 10px 10px 0
 	background #000
 	background rgba(0, 0, 0, 0.85)
+	max-width 764px
 
 .images_zoom
 	top 67px
@@ -300,8 +300,6 @@
 	background-position center
 	background-repeat no-repeat
 	cursor pointer
-	&:nth-child(4n)
-		margin-left 0
 
 .object_slide_title
 	top 100%
@@ -427,9 +425,6 @@
 	display none
 
 @media screen and (max-width:1280px) {
-	.slides_inner_block {
-		width: 562px;
-	}
 	.description_inner, .image_description_inner, .images_navigate_block_inner, .slide_navigate_inner, .side_description_inner, .main_description_inner, .main_attached_objects_inner, .leaflet-control-container {
 		width: 1000px;
 	}
@@ -441,12 +436,6 @@
 	}
 	.description_column {
 		width: 220px;
-	}
-	.object_slide_item, .object_slide_item:nth-child(4n) {
-		margin-left: 11px;
-	}
-	.object_slide_item:nth-child(3n) {
-		margin-left: 0px;
 	}
 	.object_image {
 		background-attachment: scroll;
