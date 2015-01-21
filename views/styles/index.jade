@@ -41,7 +41,7 @@ block content
 									.age_header
 										.age_line
 										.age_title(class='sub_age' + age_sub._id.toString())= age_sub.i18n.title.get('ru')
-										.age_date= age.meta.interval.start.getUTCFullYear() + '-е—' + age.meta.interval.end.getUTCFullYear() + '-е'
+										.age_date= age_sub.meta.interval.start.getUTCFullYear() + '-е—' + age_sub.meta.interval.end.getUTCFullYear() + '-е'
 									.age_description: != age_sub.i18n.description.get('ru')
 									.age_objects
 										//- each object in age_sub.objects
