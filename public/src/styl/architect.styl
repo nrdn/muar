@@ -2,7 +2,9 @@
 	margin-bottom 40px
 
 .architect_title
-	margin-top 10px
+	margin 10px 0 15px
+	font 34px/32px 'ma_unitwlight'
+	padding 20px 25px 10px
 
 .content_block
 	//margin-top 10px
@@ -19,18 +21,20 @@
 	content '－'
 
 .architect_block_title
-	font-family ma_unitwmedium
+	padding 0 25px
+	font-family 'ma_unitwlight'
 	font-size 18px
 	text-decoration none
 	&:hover
 		color #f00
+
 .architect_attached_objects
-	width 1300px
+	margin 20px 25px 20px
 
 .architect_object
 	float left
-	width 240px
-	height 200px
+	width 230px
+	height 190px
 	display block
 	position relative
 	margin-right 20px
@@ -38,6 +42,8 @@
 	background-position 50%
 	background-repeat no-repeat
 	margin-bottom 20px
+	&:nth-child(5n)
+		margin-right 0
 
 .architect_object:hover
 	color #f00
@@ -49,9 +55,27 @@
 	position absolute
 
 .architect_attached_title
-	font-family ma_unitwmedium
+	font-family 'ma_unitwlight'	
 	font-size 24px
-	line-height 26px
-	border-bottom 1px solid #d7d7d7
 	margin-bottom 10px
-	padding 3px 0
+	padding 0px 25px
+
+.footer_block
+	font 14px/16px 'ma_unitwlight'
+
+.footer_sponsors_block
+	border-top 1px solid #d7d7d7
+	padding 10px 25px 10px
+
+
+@media screen and (max-width: 1280px) {
+		.architect_object, .architect_object:nth-child(5n) {
+				margin-right: 10px
+		}
+
+		.architect_object:nth-child(4n) {
+				margin-right: 0
+		}
+
+}
+

@@ -1,7 +1,7 @@
 extends ../layout
 
 block title
-	title КАТЕГОРИЯ
+	title= category.i18n.title.get('ru') + ' | АРХИТЕКТУРНЫЙ ТЕРМИН'
 
 
 block content_style
@@ -14,7 +14,7 @@ block content_title
 	.category_title= category.i18n.title.get('ru')
 block content
 	.category_block= category.i18n.description.get('ru')
-	.category_attached_title
+	//.category_attached_title
 		| Привязанные объекты
 	.category_attached_objects
 		each object in objects

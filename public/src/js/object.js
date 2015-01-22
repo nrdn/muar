@@ -95,6 +95,7 @@ $(document).ready(function() {
 			var path = $(this).attr('path');
 
 			var layer = L.tileLayer('/images/subjects/' + path + '/tiles/{z}/image_tile_{y}_{x}.jpg', {
+				fitToMarkers: true,
 				minZoom: 1,
 				maxZoom: 4,
 				attribution: '',
@@ -179,10 +180,12 @@ $(document).ready(function() {
 
 		if (map === undefined) {
 			map = L.map('subjects_view').setView([0, 0], 3).addLayer(currentLayer);
+			alert('вариант 1')
 			oldLayer = currentLayer;
 		}
 		else {
 			map.removeLayer(oldLayer).setView([0, 0], 3).addLayer(currentLayer);
+			alert('вариант 1')
 			oldLayer = currentLayer;
 		}
 

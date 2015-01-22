@@ -5,14 +5,16 @@
 	margin-top 10px
 
 .category_title
-	margin-top 10px
+	margin: 10px 0 15px;
+	font: 34px/32px 'ma_unitwlight';
+	padding: 20px 25px 10px;
 
 .content_block
 	//margin-top 10px
 	overflow hidden
 
 .category_block
-	margin-bottom 10px
+	margin 0 25px 10px
 
 .category_block_text
 	display inline
@@ -28,12 +30,12 @@
 		color #f00
 
 .category_attached_objects
-	width 1300px
+	margin 20px 25px 20px
 
 .category_object
 	float left
-	width 240px
-	height 200px
+	width 230px
+	height 190px
 	display block
 	position relative
 	margin-right 20px
@@ -41,6 +43,8 @@
 	background-position 50%
 	background-repeat no-repeat
 	margin-bottom 20px
+	&:nth-child(5n)
+		margin-right 0
 
 .category_object:hover
 	color #f00
@@ -58,3 +62,21 @@
 	border-bottom 1px solid #d7d7d7
 	margin-bottom 10px
 	padding 3px 0
+
+.footer_block
+	font 14px/16px 'ma_unitwlight'
+
+.footer_sponsors_block
+	border-top 1px solid #d7d7d7
+	padding 10px 25px 10px
+
+@media screen and (max-width: 1280px) {
+		.category_object, .category_object:nth-child(5n) {
+				margin-right: 10px
+		}
+
+		.category_object:nth-child(4n) {
+				margin-right: 0
+		}
+
+}
