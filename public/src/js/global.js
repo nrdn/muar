@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	var menu_navigation = function menu_navigation() {
 	 var scroll_top = $(document).scrollTop();
-			if (scroll_top > 200) {
+			if (scroll_top > 150) {
 					$('.header_block').addClass('fixed_header');
 					$('body').addClass('scrolled_page');
 				} else {
