@@ -29,7 +29,7 @@ $(document).ready(function() {
 	});
 
 	$('.goto_down a').click(function(){
-		scr = $('.intro_block').height();
+		scr = $('.screen_block.intro_block').height() - 28;
 		$('body').animate({
      	scrollTop: scr,
     	}, 500 );
