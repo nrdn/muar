@@ -61,6 +61,9 @@ $(document).ready(function() {
 		u.initPlugin($('#unityPlayer')[0], path);
 	}
 
+	foot = $('.footer_block');
+	$('.main_attached_objects').append(foot);
+
 	$('.object_navigate.models').on('click', function(event) {
 		$('.object_navigate').removeClass('current');
 		$(this).addClass('current');

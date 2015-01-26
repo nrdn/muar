@@ -121,42 +121,17 @@ display: none;
 	line-height 14px
 
 .menu_navigate_block
-	//background-color white
-	//width 1280px
-	//padding-top 10px
 	z-index 999
-	//position relative
 	overflow hidden
 	position absolute
 	right 62px
 	top 13px
 	a
 		margin-right 11px
-		//font-size 16px
 		text-decoration none
 		&:hover
 			color red
-		/*&:before
-			margin-right 5px
-			font 21px/28px 'menu_icons'
-			cursor pointer
-			content ''
 
-	.menu_styles:before
-		content ''
-
-	.menu_special:before
-		content ''
-
-	.menu_arch:before
-		content ''
-
-	.menu_subjects:before
-		content ''
-
-	.menu_term:before
-		content ''
-*/
 .menu_block
 	position absolute
 	right 0
@@ -167,16 +142,14 @@ display: none;
 	margin-left 5px
 	font 26px/28px 'menu_icons'
 	cursor pointer
-	&.lang
-		//margin-right 5px
 	&:hover
 		color red
 
 .content_search_block
-	position absolute
+	position fixed
 	background rgba(0,0,0,0.9);
 	overflow hidden
-	z-index 1000000
+	z-index 10000000
 	width 100%
 	display none
 	top 0
@@ -197,10 +170,10 @@ display: none;
 
 .search_title
 	color #eee
-	font 30px/32px 'ma_unitwmedium'
-	padding 10px 0
-	border-bottom 1px solid #d7d7d7
+	font 44px/44px 'ma_unitwlight'
 	width 100%
+	padding-top 100px
+	padding-bottom 10px
 
 .search_field
 	width 100%
@@ -209,11 +182,10 @@ display: none;
 	border none
 	margin 2px
 	padding 0
-	border-bottom 4px solid #eee
+	border-bottom 1px solid #eee
 	display block
 	background transparent
 	color #eee
-	margin-top 10px
 
 .objects_context
 .architects_context
@@ -283,8 +255,6 @@ display: none;
 .sponsor_date
 	float right
 
-//-----
-
 a[href='/styles/#546f52adefcff44843391164'] .style_title_date
 a[href='/styles/#546f57ca1238740a476aa789'] .style_title_date
 	overflow hidden
@@ -315,13 +285,6 @@ a[href='/styles/#546f57ca1238740a476aa789'] .style_title_date:after
 
 
 .projects_title, .architects_title, .subject_title_block, .object_title_block, .architect_title, .category_title, .project_title
- /* font 30px/32px 'ma_unitwmedium'
-	padding 20px 0 10px
-	border-bottom 1px solid
-	margin 10px 0
-	font-size 22px
-	border-bottom 1px solid
-	padding-bottom 4px*/
 	margin 10px 0
 	font-size 30px
 	border-bottom 1px solid #d7d7d7
