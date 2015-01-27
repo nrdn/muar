@@ -15,6 +15,7 @@ block content_title
 			each age in ages
 				.navigate_style_block(class=age._id.toString())
 					.navigate_style_inner
+						.navigate_style_image(style="background-image:url("+age.image.thumb+")")
 						.navigate_style_title(class=age.sub.length == 0 ? 'not_sub' : '')
 							.navigate_style_title_inner= age.i18n.title.get('ru')
 						.navigate_style_progress
@@ -22,6 +23,7 @@ block content_title
 						.navigate_style_ages_inner.screen_width
 							each age_sub in age.sub
 								.navigate_age= age_sub.i18n.title.get('ru')
+
 
 block content
 	.styles_block.screen_width_absolute
