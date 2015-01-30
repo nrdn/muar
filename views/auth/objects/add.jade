@@ -26,6 +26,9 @@ block content
 			.form_title Описание:
 			textarea.ru(name="ru[description]", rows="8",)
 			textarea.en(name="en[description]", rows="8", disabled)
+			.form_title Видимость
+			input(type='checkbox', name='hidden', value='true')
+			|скрыть
 			.form_title Стили:
 			select.glob(name='history[main]')
 				each age in ages
@@ -52,9 +55,9 @@ block content
 						option(value=category._id)= category.i18n.title.get('ru')
 				button(type='button').forward +
 			.form_title Интервал начало:
-			input.ru(type="text", name="interval[start]", value)
+			input(type="text", name="interval[start]", value)
 			.form_title Интервал конец:
-			input.ru(type="text", name="interval[end]", value)
+			input(type="text", name="interval[end]", value)
 			.form_title Изображения:
 			.form_images_upload
 				.form_desc_title Нажми или перетащи
@@ -62,3 +65,4 @@ block content
 			br
 			br
 			input(type='submit', value='отправить')
+			button.toggle_eng(type='button') перевод

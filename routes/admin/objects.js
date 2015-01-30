@@ -70,6 +70,8 @@ exports.add_form = function(req, res) {
   object.ages.main = post.history.main;
   object.ages.sub = post.history.sub;
 
+  object.hidden = post.hidden;
+
   object.architects = post.architects != '' ? post.architects : []
   object.categorys = post.categorys != '' ? post.categorys : []
 
@@ -180,6 +182,8 @@ exports.edit_form = function(req, res) {
 
     object.architects = post.architects != '' ? post.architects : []
     object.categorys = post.categorys != '' ? post.categorys : []
+
+    object.hidden = post.hidden;
 
     object.meta.interval.start = set_date(post.interval.start);
     object.meta.interval.end = set_date(post.interval.end);

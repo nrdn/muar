@@ -52,6 +52,7 @@ var objectSchema = new Schema({
 		original: String,
 		thumb: String
 	}],
+	hidden: Boolean,
 	date: {type: Date, default: Date.now}
 });
 
