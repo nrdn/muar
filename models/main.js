@@ -59,7 +59,19 @@ var objectSchema = new Schema({
 var subjectSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
+	categorys: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
 	meta: {
+		view: {  // Предустановленный
+			main: String,
+			comment: String
+		},
+		material: String,  // Не предустановленный
+		size: String,  // Не предустановленный
+		genre: String, // Не предустановленный
+		technique: {   // Предустановленный
+			main: String,
+			comment: String
+		},
 		inventory: String,
 		interval: {
 			start: Date,
@@ -77,6 +89,7 @@ var subjectSchema = new Schema({
 var architectSchema = new Schema({
 	name: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
+	alt_type: String,
 	meta: {
 		interval: {
 			start: Date,
