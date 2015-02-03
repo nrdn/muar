@@ -11,6 +11,9 @@ html, body
 	background transparent
 	color #fff
 
+.logo_description
+	color #000
+
 .content_title_block
 	width 100%
 	position absolute
@@ -18,47 +21,59 @@ html, body
 	z-index 100000
 	min-width 1000px
 
-.styles_inner_block, .navigate_styles_block {
+.styles_inner_block
+.navigate_styles_block
 	width 100%
 	max-width 1280px
-}
 
 .navigate_block
-	width 100%
-	margin 10px auto 10px
+	max-width 1230px
+	margin 0 auto
 	z-index 999999
-	height 70px
+	height 165px
+	overflow hidden
+	margin-top 20px
 
 .navigate_styles_block
 	margin 0 auto
-	display table
+	white-space nowrap
+	font-size 0
+	line-height 0
 
 .navigate_style_block
-	display table-cell
+	display inline-block
+	width 200px
+	margin-right 0px
+	vertical-align top
 
 .navigate_style_inner
 	position relative
 
+.navigate_style_image
+	height 110px
+	background-position 0 50%
+	background-repeat no-repeat
+	background-size 200px
+	background-color #ccc
+	filter: grayscale(1)
+
 .navigate_style_title
 	cursor pointer
-	border-bottom 1px solid
+	border-bottom 1px solid #d7d7d7
 	position relative
-	padding-bottom 3px
+	margin-top 9px
+	padding-bottom 10px
+	width 200px
+	white-space normal
+	height 35px
+	font-size 20px
+	line-height 20px
 	&.not_sub
 		color #737373
 	&.current
 		color red
-		border-color #333
 	&:hover
 		color red
-	&:after
-		content '|'
-		display block
-		position absolute
-		left 100%
-		bottom -12px
-		font-size 8px
-		z-index 99999
 
 .navigate_style_block:last-child .navigate_style_title:after
 	content '>'
@@ -67,21 +82,26 @@ html, body
 
 .navigate_style_progress
 	position absolute
-	top 24px
-	margin-bottom 3px
-	height 1px
-	margin-left 3px
-	background-color red
+	top 0px
+	height 110px
+	background-position 0 50%
+	background-repeat no-repeat
+	background-size 200px
+	background-color rgba(255, 255, 255, 0.6)
 	width 0%
+	&:after
+			display block
+			content ''
+			background transparent
+			height 110px
+			width 1px
+			position absolute
+			top 0
+			right 0
 	&.on_scroll
 		&:after
-			display block
-			margin-top 0px
-			float right
-			content '•'
-			font-size 26px
-			line-height 5px
-			color #f00
+			background rgba(255,255,255,0.5)
+
 
 .navigate_style_ages
 	display none
@@ -120,13 +140,14 @@ body > .content_block
 	position absolute
 	left 0
 	bottom 25px
-	top 115px
-	//top 0
+	top 235px
 	right 0
 	&.screen_width_absolute
 		margin-left 0
 
-.styles_inner, .style_block, .style_block_inner
+.styles_inner
+.style_block
+.style_block_inner
 	display inline-block
 	vertical-align top
 	font-size 0
@@ -214,6 +235,17 @@ body > .content_block
 		content ''
 		display block
 		height 15px
+
+.style_description_readmore
+	color #f00
+	cursor pointer
+	margin-top 10px
+
+.style_description_preview
+	display block
+
+.style_description_full
+	display none
 
 .age_description
 	margin-bottom 25px

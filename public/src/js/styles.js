@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
 	$('.age_block').data({skip: 0});
 
 	$.fn.scrollStopped = function(callback) {
@@ -23,7 +24,7 @@ $(document).ready(function() {
 			var age_offset_bottom = age_offset_top + $this.height();
 
 
-			if (age_offset_top <= outer_offset_top + 115) {
+			if (age_offset_top <= outer_offset_top + 500) {
 				var skip = $this.data('skip');
 				var lim = limit || event.data.limit;
 
@@ -47,6 +48,10 @@ $(document).ready(function() {
 
 	function ageScroll (event) {
 		var scroll_percentage = 100 * $(this).scrollTop() / ($(this).find('.style_inner_height').height() - $(this).height());
+
+		scroll_percentage > 5
+			? $('body').addClass('scrolled_body')
+			: $('body').removeClass('scrolled_body');
 
 		$(this).data({scroll_position: $(this).scrollTop()});
 
@@ -145,7 +150,11 @@ $(document).ready(function() {
 			'scrollTop': age_offset_top + style_scroll_top - style_offset_top
 		}, 0);
 	});
-
+	$('.style_description_readmore').click(function(event) {
+		$(this).hide();
+		$('.style_description_preview').hide();
+		$('.style_description_full').show();
+	});
 	$('.navigate_style_title').on('click', function(event) {
 		var style_index = $(this).index('.navigate_style_title');
 		var style_id = $(this).closest('.navigate_style_block').attr('class').split(' ')[1];

@@ -18,11 +18,14 @@ block content_title
 						.navigate_style_image(style="background-image:url("+age.image.thumb+")")
 						.navigate_style_title(class=age.sub.length == 0 ? 'not_sub' : '')
 							.navigate_style_title_inner= age.i18n.title.get('ru')
-						.navigate_style_progress
+						.navigate_style_progress(style="background-image:url("+age.image.thumb+")")
 					.navigate_style_ages
 						.navigate_style_ages_inner.screen_width
 							each age_sub in age.sub
 								.navigate_age= age_sub.i18n.title.get('ru')
+			.styles_nav_block.screen_width
+				a.styles_line_nav.prev 
+				a.styles_line_nav.next 
 
 
 block content
@@ -37,7 +40,10 @@ block content
 								.style_block_background(style='background-image:url('+age.image.main+')')
 								.style_title= age.i18n.title.get('ru')
 									.style_date(class='date_age' + age._id.toString())= age.meta.interval.start.getUTCFullYear() + '-е—' + age.meta.interval.end.getUTCFullYear() + '-е'
-							.style_description: != age.i18n.description.get('ru')
+							.style_description
+								.style_description_preview: != age.i18n.description.get('ru').substr(0, 1600) + '...'
+									.style_description_readmore='Подробнее...'
+								.style_description_full: != age.i18n.description.get('ru')
 							each age_sub in age.sub
 								.age_block(id=age_sub._id.toString())
 									.age_header
