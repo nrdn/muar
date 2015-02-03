@@ -57,15 +57,22 @@ exports.add_form = function(req, res) {
 	var files = req.files;
 	var subject = new Subject();
 
-	subject.title =[{
-		lg: 'ru',
-		value: post.ru.title
-	}];
-	subject.description = [{
-		lg: 'ru',
-		value: post.ru.description
-	}];
+	var locales = post.en ? ['ru', 'en'] : ['ru'];
 
+	locales.forEach(function(locale) {
+		subject.setPropertyLocalised('title', post[locale].title, locale);
+		subject.setPropertyLocalised('description', post[locale].description, locale);
+
+		subject.setPropertyLocalised('meta.genre', post[locale].genre, locale);
+		subject.setPropertyLocalised('meta.size', post[locale].size, locale);
+		subject.setPropertyLocalised('meta.material', post[locale].material, locale);
+
+		subject.setPropertyLocalised('meta.technique.comment', post[locale].technique.comment, locale);
+		subject.setPropertyLocalised('meta.view.comment', post[locale].view.comment, locale);
+	});
+
+	subject.meta.technique.tag = post.technique.tag;
+	subject.meta.view.tag = post.view.tag;
 	subject.meta.inventory = post.inventory;
 	subject.meta.interval.start = set_date(post.interval.start);
 	subject.meta.interval.end = set_date(post.interval.end);
@@ -126,9 +133,22 @@ exports.edit_form = function(req, res) {
 
 	Subject.findById(id).exec(function(err, subject) {
 
-    subject.i18n.title.set(post.ru.title, 'ru');
-    subject.i18n.description.set(post.ru.description, 'ru');
+		var locales = post.en ? ['ru', 'en'] : ['ru'];
 
+		locales.forEach(function(locale) {
+			subject.setPropertyLocalised('title', post[locale].title, locale);
+			subject.setPropertyLocalised('description', post[locale].description, locale);
+
+			subject.setPropertyLocalised('meta.genre', post[locale].genre, locale);
+			subject.setPropertyLocalised('meta.size', post[locale].size, locale);
+			subject.setPropertyLocalised('meta.material', post[locale].material, locale);
+
+			subject.setPropertyLocalised('meta.technique.comment', post[locale].technique.comment, locale);
+			subject.setPropertyLocalised('meta.view.comment', post[locale].view.comment, locale);
+		});
+
+		subject.meta.technique.tag = post.technique.tag;
+		subject.meta.view.tag = post.view.tag;
     subject.meta.inventory = post.inventory;
 		subject.meta.interval.start = set_date(post.interval.start);
 		subject.meta.interval.end = set_date(post.interval.end);

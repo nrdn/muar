@@ -61,17 +61,17 @@ var subjectSchema = new Schema({
 	description: { type: String, trim: true, locale: true },
 	categorys: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
 	meta: {
-		view: {  // Предустановленный
-			main: String,
-			comment: String
+		view: {
+			tag: String,
+			comment: { type: String, trim: true, locale: true }
 		},
-		material: String,  // Не предустановленный
-		size: String,  // Не предустановленный
-		genre: String, // Не предустановленный
-		technique: {   // Предустановленный
-			main: String,
-			comment: String
+		technique: {
+			tag: String,
+			comment: { type: String, trim: true, locale: true }
 		},
+		material: { type: String, trim: true, locale: true },
+		size: { type: String, trim: true, locale: true },
+		genre: { type: String, trim: true, locale: true },
 		inventory: String,
 		interval: {
 			start: Date,
@@ -89,7 +89,6 @@ var subjectSchema = new Schema({
 var architectSchema = new Schema({
 	name: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
-	alt_type: String,
 	meta: {
 		interval: {
 			start: Date,
