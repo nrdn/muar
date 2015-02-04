@@ -9,6 +9,7 @@ var appDir = path.dirname(require.main.filename);
 var Object = require('../../models/main.js').Object;
 var Subject = require('../../models/main.js').Subject;
 
+
 // ------------------------
 // *** Handlers Block ***
 // ------------------------
@@ -16,6 +17,21 @@ var Subject = require('../../models/main.js').Subject;
 
 var set_date = function(year) {
 	return new Date(Date.UTC(year, 0, 1));
+}
+
+var checkNested = function (obj, layers) {
+
+	if (typeof layers == 'string') {
+		layers = layers.split('.');
+	}
+
+	for (var i = 0; i < layers.length; i++) {
+		if (!obj || !obj.hasOwnProperty(layers[i])) {
+			return false;
+		}
+		obj = obj[layers[i]];
+	}
+	return true;
 }
 
 
@@ -60,15 +76,26 @@ exports.add_form = function(req, res) {
 	var locales = post.en ? ['ru', 'en'] : ['ru'];
 
 	locales.forEach(function(locale) {
-		subject.setPropertyLocalised('title', post[locale].title, locale);
-		subject.setPropertyLocalised('description', post[locale].description, locale);
+		checkNested(post, [locale, 'title'])
+			&& subject.setPropertyLocalised('title', post[locale].title, locale);
 
-		subject.setPropertyLocalised('meta.genre', post[locale].genre, locale);
-		subject.setPropertyLocalised('meta.size', post[locale].size, locale);
-		subject.setPropertyLocalised('meta.material', post[locale].material, locale);
+		checkNested(post, [locale, 'description'])
+			&& subject.setPropertyLocalised('description', post[locale].description, locale);
 
-		subject.setPropertyLocalised('meta.technique.comment', post[locale].technique.comment, locale);
-		subject.setPropertyLocalised('meta.view.comment', post[locale].view.comment, locale);
+		checkNested(post, [locale, 'genre'])
+			&& subject.setPropertyLocalised('meta.genre', post[locale].genre, locale);
+
+		checkNested(post, [locale, 'size'])
+			&& subject.setPropertyLocalised('meta.size', post[locale].size, locale);
+
+		checkNested(post, [locale, 'material'])
+			&& subject.setPropertyLocalised('meta.material', post[locale].material, locale);
+
+		checkNested(post, [locale, 'technique', 'comment'])
+			&& subject.setPropertyLocalised('meta.technique.comment', post[locale].technique.comment, locale);
+
+		checkNested(post, [locale, 'view', 'comment'])
+			&& subject.setPropertyLocalised('meta.view.comment', post[locale].view.comment, locale);
 	});
 
 	subject.meta.technique.tag = post.technique.tag;
@@ -136,15 +163,26 @@ exports.edit_form = function(req, res) {
 		var locales = post.en ? ['ru', 'en'] : ['ru'];
 
 		locales.forEach(function(locale) {
-			subject.setPropertyLocalised('title', post[locale].title, locale);
-			subject.setPropertyLocalised('description', post[locale].description, locale);
+			checkNested(post, [locale, 'title'])
+				&& subject.setPropertyLocalised('title', post[locale].title, locale);
 
-			subject.setPropertyLocalised('meta.genre', post[locale].genre, locale);
-			subject.setPropertyLocalised('meta.size', post[locale].size, locale);
-			subject.setPropertyLocalised('meta.material', post[locale].material, locale);
+			checkNested(post, [locale, 'description'])
+				&& subject.setPropertyLocalised('description', post[locale].description, locale);
 
-			subject.setPropertyLocalised('meta.technique.comment', post[locale].technique.comment, locale);
-			subject.setPropertyLocalised('meta.view.comment', post[locale].view.comment, locale);
+			checkNested(post, [locale, 'genre'])
+				&& subject.setPropertyLocalised('meta.genre', post[locale].genre, locale);
+
+			checkNested(post, [locale, 'size'])
+				&& subject.setPropertyLocalised('meta.size', post[locale].size, locale);
+
+			checkNested(post, [locale, 'material'])
+				&& subject.setPropertyLocalised('meta.material', post[locale].material, locale);
+
+			checkNested(post, [locale, 'technique', 'comment'])
+				&& subject.setPropertyLocalised('meta.technique.comment', post[locale].technique.comment, locale);
+
+			checkNested(post, [locale, 'view', 'comment'])
+				&& subject.setPropertyLocalised('meta.view.comment', post[locale].view.comment, locale);
 		});
 
 		subject.meta.technique.tag = post.technique.tag;
