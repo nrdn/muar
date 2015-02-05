@@ -49,7 +49,7 @@ block content
 
 	.main_menu_block
 		each object in objects
-			.object(class=object.ages.main, class=object.ages.sub, class=object.hidden && 'hidden')
+			.object(class=object.ages.main.toString(), class=object.ages.sub.toString(), class=object.hidden && 'hidden')
 				a.rm_object(href='#', id=object._id)= 'удалить '
 				!=' | '
 				a.object_title(href='/auth/objects/edit/' + object._id)= object.i18n.title.get('ru')
