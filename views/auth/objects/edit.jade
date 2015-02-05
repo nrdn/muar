@@ -19,13 +19,13 @@ block content
 		form(action="", method="post")
 			.form_title Название:
 			input.ru(type="text", name="ru[title]", value=object.i18n.title.get('ru'))
-			input.en(type="text", name="en[title]", disabled)
+			input.en(type="text", name="en[title]", disabled, value=object.i18n.title.get('en'))
 			.form_title Адрес:
 			input.ru(type="text", name="ru[adress]", value=object.meta.i18n.adress.get('ru'))
-			input.en(type="text", name="en[adress]", disabled)
+			input.en(type="text", name="en[adress]", disabled, value=object.meta.i18n.adress.get('en'))
 			.form_title Описание:
 			textarea.ru(name="ru[description]", rows="8",)=object.i18n.description.get('ru')
-			textarea.en(name="en[description]", rows="8", disabled)
+			textarea.en(name="en[description]", rows="8", disabled)=object.i18n.description.get('en')
 			.form_title Видимость:
 			input(type='checkbox', name='hidden', value='true', checked=object.hidden)
 			|скрыть

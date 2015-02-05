@@ -16,12 +16,13 @@ block content
 		form(action="", method="post", enctype="multipart/form-data")
 			.form_title Название:
 			input.ru(type="text", name="ru[title]", value=category.i18n.title.get('ru'))
-			input.en(type="text", name="en[title]", disabled)
+			input.en(type="text", name="en[title]", disabled, value=category.i18n.title.get('en'))
 			.form_title Описание:
 			textarea.ru(name="ru[description]", rows="8",)= category.i18n.description.get('ru')
-			textarea.en(name="en[description]", rows="8", disabled)
+			textarea.en(name="en[description]", rows="8", disabled)= category.i18n.description.get('en')
 			.form_title Фото:
 			input(type="file", name="photo")
 			br
 			br
 			input(type='submit', value='сохранить')
+			button.toggle_eng(type='button') перевод

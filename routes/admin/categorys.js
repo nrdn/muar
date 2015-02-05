@@ -4,8 +4,28 @@ var gm = require('gm').subClass({ imageMagick: true });
 var async = require('async');
 var appDir = path.dirname(require.main.filename);
 
-
 var Category = require('../../models/main.js').Category;
+
+
+// ------------------------
+// *** Handlers Block ***
+// ------------------------
+
+
+var checkNested = function (obj, layers) {
+
+  if (typeof layers == 'string') {
+    layers = layers.split('.');
+  }
+
+  for (var i = 0; i < layers.length; i++) {
+    if (!obj || !obj.hasOwnProperty(layers[i])) {
+      return false;
+    }
+    obj = obj[layers[i]];
+  }
+  return true;
+}
 
 
 // ------------------------
@@ -34,14 +54,15 @@ exports.add_form = function(req, res) {
   var files = req.files;
   var category = new Category();
 
-  category.title =[{
-  	lg: 'ru',
-  	value: post.ru.title
-  }];
-  category.description = [{
-  	lg: 'ru',
-  	value: post.ru.description
-  }];
+  var locales = post.en ? ['ru', 'en'] : ['ru'];
+
+  locales.forEach(function(locale) {
+    checkNested(post, [locale, 'title'])
+      && category.setPropertyLocalised('title', post[locale].title, locale);
+
+    checkNested(post, [locale, 'description'])
+      && category.setPropertyLocalised('description', post[locale].description, locale);
+  });
 
   if (files.photo) {
     fs.mkdir(appDir + '/public/images/categorys/' + category._id, function() {
@@ -83,8 +104,15 @@ exports.edit_form = function(req, res) {
 
   Category.findById(id).exec(function(err, category) {
 
-    category.i18n.title.set(post.ru.title, 'ru');
-    category.i18n.description.set(post.ru.description, 'ru');
+    var locales = post.en ? ['ru', 'en'] : ['ru'];
+
+    locales.forEach(function(locale) {
+      checkNested(post, [locale, 'title'])
+        && category.setPropertyLocalised('title', post[locale].title, locale);
+
+      checkNested(post, [locale, 'description'])
+        && category.setPropertyLocalised('description', post[locale].description, locale);
+    });
 
     if (files.photo) {
       fs.mkdir(appDir + '/public/images/categorys/' + category._id, function() {

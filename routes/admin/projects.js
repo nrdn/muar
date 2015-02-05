@@ -10,6 +10,27 @@ var Object = require('../../models/main.js').Object;
 
 
 // ------------------------
+// *** Handlers Block ***
+// ------------------------
+
+
+var checkNested = function (obj, layers) {
+
+  if (typeof layers == 'string') {
+    layers = layers.split('.');
+  }
+
+  for (var i = 0; i < layers.length; i++) {
+    if (!obj || !obj.hasOwnProperty(layers[i])) {
+      return false;
+    }
+    obj = obj[layers[i]];
+  }
+  return true;
+}
+
+
+// ------------------------
 // *** Admin Projects Block ***
 // ------------------------
 
@@ -37,14 +58,15 @@ exports.add_form = function(req, res) {
   var files = req.files;
   var project = new Project();
 
-  project.title =[{
-  	lg: 'ru',
-  	value: post.ru.title
-  }];
-  project.description = [{
-  	lg: 'ru',
-  	value: post.ru.description
-  }];
+  var locales = post.en ? ['ru', 'en'] : ['ru'];
+
+  locales.forEach(function(locale) {
+    checkNested(post, [locale, 'title'])
+      && project.setPropertyLocalised('title', post[locale].title, locale);
+
+    checkNested(post, [locale, 'description'])
+      && project.setPropertyLocalised('description', post[locale].description, locale);
+  });
 
   project.objects = post.objects != '' ? post.objects : []
 
@@ -94,8 +116,15 @@ exports.edit_form = function(req, res) {
 
   Project.findById(id).exec(function(err, project) {
 
-    project.i18n.title.set(post.ru.title, 'ru');
-    project.i18n.description.set(post.ru.description, 'ru');
+    var locales = post.en ? ['ru', 'en'] : ['ru'];
+
+    locales.forEach(function(locale) {
+      checkNested(post, [locale, 'title'])
+        && project.setPropertyLocalised('title', post[locale].title, locale);
+
+      checkNested(post, [locale, 'description'])
+        && project.setPropertyLocalised('description', post[locale].description, locale);
+    });
 
     project.objects = post.objects != '' ? post.objects : []
 

@@ -16,16 +16,17 @@ block content
 		form(action="", method="post", enctype="multipart/form-data")
 			.form_title Имя:
 			input.ru(type="text", name="ru[name]", value=architect.i18n.name.get('ru'))
-			input.en(type="text", name="en[name]", disabled)
+			input.en(type="text", name="en[name]", disabled, value=architect.i18n.name.get('en'))
 			.form_title Описание:
 			textarea.ru(name="ru[description]", rows="8",)= architect.i18n.description.get('ru')
-			textarea.en(name="en[description]", rows="8", disabled)
+			textarea.en(name="en[description]", rows="8", disabled)= architect.i18n.description.get('en')
 			.form_title Интервал начало:
-			input.ru(type="text", name="interval[start]", value=architect.meta.interval.start.getUTCFullYear())
+			input(type="text", name="interval[start]", value=architect.meta.interval.start.getUTCFullYear())
 			.form_title Интервал конец:
-			input.ru(type="text", name="interval[end]", value=architect.meta.interval.end.getUTCFullYear())
+			input(type="text", name="interval[end]", value=architect.meta.interval.end.getUTCFullYear())
 			.form_title Фото:
 			input(type="file", name="photo")
 			br
 			br
 			input(type='submit', value='сохранить')
+			button.toggle_eng(type='button') перевод

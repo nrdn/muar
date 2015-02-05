@@ -18,6 +18,22 @@ var set_date = function(year) {
 }
 
 
+var checkNested = function (obj, layers) {
+
+  if (typeof layers == 'string') {
+    layers = layers.split('.');
+  }
+
+  for (var i = 0; i < layers.length; i++) {
+    if (!obj || !obj.hasOwnProperty(layers[i])) {
+      return false;
+    }
+    obj = obj[layers[i]];
+  }
+  return true;
+}
+
+
 // ------------------------
 // *** Admin Architects Block ***
 // ------------------------
@@ -44,14 +60,15 @@ exports.add_form = function(req, res) {
   var files = req.files;
   var architect = new Architect();
 
-  architect.name =[{
-  	lg: 'ru',
-  	value: post.ru.name
-  }];
-  architect.description = [{
-  	lg: 'ru',
-  	value: post.ru.description
-  }];
+  var locales = post.en ? ['ru', 'en'] : ['ru'];
+
+  locales.forEach(function(locale) {
+    checkNested(post, [locale, 'name'])
+      && architect.setPropertyLocalised('name', post[locale].name, locale);
+
+    checkNested(post, [locale, 'description'])
+      && architect.setPropertyLocalised('description', post[locale].description, locale);
+  });
 
   architect.meta.interval.start = set_date(post.interval.start);
   architect.meta.interval.end = set_date(post.interval.end);
@@ -96,8 +113,15 @@ exports.edit_form = function(req, res) {
 
   Architect.findById(id).exec(function(err, architect) {
 
-    architect.i18n.name.set(post.ru.name, 'ru');
-    architect.i18n.description.set(post.ru.description, 'ru');
+    var locales = post.en ? ['ru', 'en'] : ['ru'];
+
+    locales.forEach(function(locale) {
+      checkNested(post, [locale, 'name'])
+        && architect.setPropertyLocalised('name', post[locale].name, locale);
+
+      checkNested(post, [locale, 'description'])
+        && architect.setPropertyLocalised('description', post[locale].description, locale);
+    });
 
     architect.meta.interval.start = set_date(post.interval.start);
     architect.meta.interval.end = set_date(post.interval.end);

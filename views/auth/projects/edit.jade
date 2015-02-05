@@ -16,10 +16,10 @@ block content
 		form(action="", method="post", enctype="multipart/form-data")
 			.form_title Имя:
 			input.ru(type="text", name="ru[title]", value=project.i18n.title.get('ru'))
-			input.en(type="text", name="en[title]", disabled)
+			input.en(type="text", name="en[title]", disabled, value=project.i18n.title.get('en'))
 			.form_title Описание:
 			textarea.ru(name="ru[description]", rows="8",)= project.i18n.description.get('ru')
-			textarea.en(name="en[description]", rows="8", disabled)
+			textarea.en(name="en[description]", rows="8", disabled)= project.i18n.description.get('en')
 			.form_title Объекты:
 			.snake
 				button(type='button').back -
@@ -40,3 +40,4 @@ block content
 			br
 			br
 			input(type='submit', value='сохранить')
+			button.toggle_eng(type='button') перевод

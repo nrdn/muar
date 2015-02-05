@@ -16,6 +16,21 @@ var set_date = function(year) {
   return new Date(Date.UTC(year, 0, 1));
 }
 
+var checkNested = function (obj, layers) {
+
+  if (typeof layers == 'string') {
+    layers = layers.split('.');
+  }
+
+  for (var i = 0; i < layers.length; i++) {
+    if (!obj || !obj.hasOwnProperty(layers[i])) {
+      return false;
+    }
+    obj = obj[layers[i]];
+  }
+  return true;
+}
+
 
 // ------------------------
 // *** Admin Ages Block ***
@@ -54,14 +69,15 @@ exports.add_form = function(req, res) {
     age.parent = req.params.age_id;
   }
 
-  age.title = [{
-    lg: 'ru',
-    value: post.ru.title
-  }];
-  age.description = [{
-    lg: 'ru',
-    value: post.ru.description
-  }];
+  var locales = post.en ? ['ru', 'en'] : ['ru'];
+
+  locales.forEach(function(locale) {
+    checkNested(post, [locale, 'title'])
+      && age.setPropertyLocalised('title', post[locale].title, locale);
+
+    checkNested(post, [locale, 'description'])
+      && age.setPropertyLocalised('description', post[locale].description, locale);
+  });
 
   age.meta.interval.start = set_date(post.interval.start);
   age.meta.interval.end = set_date(post.interval.end);
@@ -130,8 +146,17 @@ exports.edit_form = function(req, res) {
 
   Age.findById(id).exec(function(err, age) {
 
-    age.i18n.title.set(post.ru.title, 'ru');
-    age.i18n.description.set(post.ru.description, 'ru');
+    var locales = post.en ? ['ru', 'en'] : ['ru'];
+
+    locales.forEach(function(locale) {
+      checkNested(post, [locale, 'title'])
+        && age.setPropertyLocalised('title', post[locale].title, locale);
+
+      checkNested(post, [locale, 'description'])
+        && age.setPropertyLocalised('description', post[locale].description, locale);
+    });
+
+
     age.meta.interval.start = set_date(post.interval.start);
     age.meta.interval.end = set_date(post.interval.end);
 

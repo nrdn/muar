@@ -22,6 +22,21 @@ var set_date = function(year) {
   return new Date(Date.UTC(year, 0, 1));
 }
 
+var checkNested = function (obj, layers) {
+
+  if (typeof layers == 'string') {
+    layers = layers.split('.');
+  }
+
+  for (var i = 0; i < layers.length; i++) {
+    if (!obj || !obj.hasOwnProperty(layers[i])) {
+      return false;
+    }
+    obj = obj[layers[i]];
+  }
+  return true;
+}
+
 
 // ------------------------
 // *** Admin Objects Block ***
@@ -58,14 +73,18 @@ exports.add_form = function(req, res) {
   var object = new Object();
   var images = [];
 
-  object.title =[{
-    lg: 'ru',
-    value: post.ru.title
-  }];
-  object.description = [{
-    lg: 'ru',
-    value: post.ru.description
-  }];
+  var locales = post.en ? ['ru', 'en'] : ['ru'];
+
+  locales.forEach(function(locale) {
+    checkNested(post, [locale, 'title'])
+      && object.setPropertyLocalised('title', post[locale].title, locale);
+
+    checkNested(post, [locale, 'description'])
+      && object.setPropertyLocalised('description', post[locale].description, locale);
+
+    checkNested(post, [locale, 'adress'])
+      && object.setPropertyLocalised('meta.adress', post[locale].adress, locale);
+  });
 
   object.ages.main = post.history.main;
   object.ages.sub = post.history.sub;
@@ -77,10 +96,7 @@ exports.add_form = function(req, res) {
 
   object.meta.interval.start = set_date(post.interval.start);
   object.meta.interval.end = set_date(post.interval.end);
-  object.meta.adress = [{
-    lg: 'ru',
-    value: post.ru.adress
-  }];
+
 
   if (!post.images) {
     return (function () {
@@ -174,8 +190,18 @@ exports.edit_form = function(req, res) {
 
   Object.findById(id).exec(function(err, object) {
 
-    object.i18n.title.set(post.ru.title, 'ru');
-    object.i18n.description.set(post.ru.description, 'ru');
+    var locales = post.en ? ['ru', 'en'] : ['ru'];
+
+    locales.forEach(function(locale) {
+      checkNested(post, [locale, 'title'])
+        && object.setPropertyLocalised('title', post[locale].title, locale);
+
+      checkNested(post, [locale, 'description'])
+        && object.setPropertyLocalised('description', post[locale].description, locale);
+
+      checkNested(post, [locale, 'adress'])
+        && object.setPropertyLocalised('meta.adress', post[locale].adress, locale);
+    });
 
     object.ages.main = post.history.main;
     object.ages.sub = post.history.sub;
@@ -187,7 +213,6 @@ exports.edit_form = function(req, res) {
 
     object.meta.interval.start = set_date(post.interval.start);
     object.meta.interval.end = set_date(post.interval.end);
-    object.meta.i18n.adress.set(post.ru.adress, 'ru');
 
 
     var public_path = appDir + '/public';
