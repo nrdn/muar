@@ -77,6 +77,9 @@ exports.add_form = function(req, res) {
 
     checkNested(post, [locale, 'description'])
       && age.setPropertyLocalised('description', post[locale].description, locale);
+
+    checkNested(post, [locale, 'description_alt'])
+      && age.setPropertyLocalised('description_alt', post[locale].description_alt, locale);
   });
 
   age.meta.interval.start = set_date(post.interval.start);
@@ -154,6 +157,9 @@ exports.edit_form = function(req, res) {
 
       checkNested(post, [locale, 'description'])
         && age.setPropertyLocalised('description', post[locale].description, locale);
+
+      checkNested(post, [locale, 'description_alt'])
+        && age.setPropertyLocalised('description_alt', post[locale].description_alt, locale);
     });
 
 

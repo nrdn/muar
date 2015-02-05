@@ -20,6 +20,9 @@ block content
 			.form_title Описание:
 			textarea.ru(name="ru[description]", rows="8",)= age.i18n.description.get('ru')
 			textarea.en(name="en[description]", rows="8", disabled)= age.i18n.description.get('en')
+			.form_title Описание (Вводное):
+			textarea.ru(name="ru[description_alt]", rows="8",)= age.i18n.description_alt.get('ru')
+			textarea.en(name="en[description_alt]", rows="8", disabled)= age.i18n.description_alt.get('en')
 			.form_title Интервал начало:
 			input(type="text", name="interval[start]", value=age.meta.interval.start.getUTCFullYear())
 			.form_title Интервал конец:

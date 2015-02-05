@@ -20,10 +20,13 @@ block content
 			.form_title Описание:
 			textarea.ru(name="ru[description]", rows="8",)
 			textarea.en(name="en[description]", rows="8", disabled)
+			.form_title Описание (Вводное):
+			textarea.ru(name="ru[description_alt]", rows="8",)
+			textarea.en(name="en[description_alt]", rows="8", disabled)
 			.form_title Интервал начало:
-			input.ru(type="text", name="interval[start]",)
+			input(type="text", name="interval[start]",)
 			.form_title Интервал конец:
-			input.ru(type="text", name="interval[end]",)
+			input(type="text", name="interval[end]",)
 			.form_title Изображение:
 			input(type='file', name='photo')
 			br

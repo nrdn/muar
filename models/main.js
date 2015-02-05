@@ -15,6 +15,7 @@ var userSchema = new Schema({
 var ageSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
+	description_alt: { type: String, trim: true, locale: true },
 	meta: {
 		interval: {
 			start: Date,
