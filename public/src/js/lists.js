@@ -42,7 +42,6 @@ $(document).ready(function() {
 
 	$('.option').click(function(event) {
 		var option = $(this).attr('class').split(' ')[1];
-		console.log(option)
 
 		$('.object').show().not(':has(.' + option + ')').hide();
 	});
