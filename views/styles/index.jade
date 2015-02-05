@@ -21,7 +21,7 @@ block content_title
 					.navigate_style_ages
 						.navigate_style_ages_inner.screen_width
 							each age_sub in age.sub
-								.navigate_age= age_sub.i18n.title.get('ru')
+								.navigate_age(class='age'+age._id.toString())= age_sub.i18n.title.get('ru')
 
 block content
 	.styles_block.screen_width_absolute
