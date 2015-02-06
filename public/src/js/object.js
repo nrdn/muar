@@ -42,6 +42,7 @@ $(document).ready(function() {
 					$brokenScreen.show();
 				break;
 				case 'missing':
+				case 'unsupported':
 					$missingScreen.find('a').click(function (e) {
 						e.stopPropagation();
 						e.preventDefault();
