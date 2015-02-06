@@ -16,9 +16,11 @@ $(document).ready(function() {
 
 		var $missingScreen = $('#unityPlayer').find('.missing');
 		var $brokenScreen = $('#unityPlayer').find('.broken');
+		var $unsupportedScreen = $('#unityPlayer').find('.unsupported');
 
 		$missingScreen.hide();
 		$brokenScreen.hide();
+		$unsupportedScreen.hide();
 
 		u.observeProgress(function (progress) {
 			switch(progress.pluginStatus) {
@@ -31,8 +33,10 @@ $(document).ready(function() {
 					});
 					$brokenScreen.show();
 				break;
-				case 'missing':
 				case 'unsupported':
+					$unsupportedScreen.show();
+				break;
+				case 'missing':
 					$missingScreen.find('a').click(function (e) {
 						e.stopPropagation();
 						e.preventDefault();
