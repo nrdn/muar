@@ -22,32 +22,32 @@ block content
 			textarea.en(name="en[description]", rows="8", disabled,)=subject.i18n.description.get('en')
 			.form_title Вид:
 			select(name='view[tag]')
-				option(value='plan') План
-				option(value='front') Фасад
-				option(value='perspective') Аксонометрия
-				option(value='general_view') Общий вид
-				option(value='master_plan') Генеральный план
-				option(value='panorama') Панорама
-				option(value='main_front') Главный фасад
-				option(value='short_form') Малая форма
-				option(value='sculpture') Скульптура
-				option(value='interior') Интерьер
-				option(value='part') Деталь
-				option(value='other') Другое
+				option(value='plan', selected=subject.meta.view.tag=='plan') План
+				option(value='front', selected=subject.meta.view.tag=='front') Фасад
+				option(value='perspective', selected=subject.meta.view.tag=='perspective') Аксонометрия
+				option(value='general_view', selected=subject.meta.view.tag=='general_view') Общий вид
+				option(value='master_plan', selected=subject.meta.view.tag=='master_plan') Генеральный план
+				option(value='panorama', selected=subject.meta.view.tag=='panorama') Панорама
+				option(value='main_front', selected=subject.meta.view.tag=='main_front') Главный фасад
+				option(value='short_form', selected=subject.meta.view.tag=='short_form') Малая форма
+				option(value='sculpture', selected=subject.meta.view.tag=='sculpture') Скульптура
+				option(value='interior', selected=subject.meta.view.tag=='interior') Интерьер
+				option(value='part', selected=subject.meta.view.tag=='part') Деталь
+				option(value='other', selected=subject.meta.view.tag=='other') Другое
 			br
 			input.ru(type="text", name="ru[view][comment]", placeholder='Комментарий к виду', value=subject.meta.view.i18n.comment.get('ru'))
 			input.en(type="text", name="en[view][comment]", placeholder='Comment view', disabled, value=subject.meta.view.i18n.comment.get('en'))
 			.form_title Техника:
 			select(name='technique[tag]')
-				option(value='plan') Гравюра
-				option(value='front') Литография
-				option(value='perspective') Фотография
-				option(value='general_view') Чертеж
-				option(value='master_plan') Живопись
-				option(value='panorama') Рисунок
-				option(value='main_front') Скульптура
-				option(value='short_form') Макет
-				option(value='other') Другое
+				option(value='engraving', selected=subject.meta.technique.tag=='engraving') Гравюра
+				option(value='lithography', selected=subject.meta.technique.tag=='lithography') Литография
+				option(value='photo', selected=subject.meta.technique.tag=='photo') Фотография
+				option(value='drawing', selected=subject.meta.technique.tag=='drawing') Чертеж
+				option(value='painting', selected=subject.meta.technique.tag=='painting') Живопись
+				option(value='picture', selected=subject.meta.technique.tag=='picture') Рисунок
+				option(value='sculpture', selected=subject.meta.technique.tag=='sculpture') Скульптура
+				option(value='maket', selected=subject.meta.technique.tag=='maket') Макет
+				option(value='other', selected=subject.meta.technique.tag=='other') Другое
 			br
 			input.ru(type="text", name="ru[technique][comment]", placeholder='Комментарий к технике', value=subject.meta.technique.i18n.comment.get('ru'))
 			input.en(type="text", name="en[technique][comment]", placeholder='Comment technique', disabled, value=subject.meta.technique.i18n.comment.get('en'))
