@@ -34,6 +34,8 @@ block content_title
 							.slide_title_inner= subject.i18n.title.get('ru').substr(0, 60) + '...'
 
 block content
+	- var views = {plan: 'План', front: 'Фасад', perspective: 'Аксонометрия', general_view: 'Общий вид', master_plan: 'Генеральный план',  panorama: 'Панорама', main_front: 'Главный фасад', short_form: 'Малая форма', sculpture: 'Скульптура', interior: 'Интерьер', part: 'Деталь', other: 'Другое'}
+	- var technique = {engraving: 'Гравюра', lithography: 'Литография', photo: 'Фотография', drawing: 'Чертеж', painting: 'Живопись', picture: 'Рисунок', sculpture: 'Скульптура', maket: 'Макет', other: 'Другое'}
 	.side_description
 		.side_description_inner
 			.side_description_column
@@ -81,7 +83,27 @@ block content
 					.descriptions_block
 						each subject in object.subjects
 							.description_item.subjects
-								.subject_inventory= subject.meta.inventory
+								if (subject.meta.inventory)
+									.subject_description_title Инвентарный номер:
+									.subject_description_item= subject.meta.inventory
+								if (subject.meta.size && subject.meta.size.length > 0)
+									.subject_description_title Размер:
+									.subject_description_item= subject.meta.i18n.size.get('ru')
+								if (subject.meta.size && subject.meta.size.length > 0)
+									.subject_description_title Жанр:
+									.subject_description_item= subject.meta.i18n.genre.get('ru')
+								if (subject.meta.size && subject.meta.size.length > 0)
+									.subject_description_title Материал:
+									.subject_description_item= subject.meta.i18n.material.get('ru')
+								if (subject.meta.view.tag)
+									.subject_description_title Вид:
+									.subject_description_item= views[subject.meta.view.tag]
+									.subject_description_comment= subject.meta.view.i18n.comment.get('ru')
+								if (subject.meta.technique.tag)
+									.subject_description_title Техника:
+									.subject_description_item= technique[subject.meta.technique.tag]
+									.subject_description_comment= subject.meta.technique.i18n.comment.get('ru')
+
 								.subject_title= subject.i18n.title.get('ru')
 								.subject_description: != subject.i18n.description.get('ru')
 
