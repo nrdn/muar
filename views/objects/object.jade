@@ -83,7 +83,15 @@ block content
 							.description_item.subjects
 								.subject_inventory= subject.meta.inventory
 								.subject_title= subject.i18n.title.get('ru')
-								.subject_description: != subject.i18n.description.get('ru')
+								.subject_description= subject.i18n.description.get('ru')
+								if (subject.meta.i18n.size.get('ru') !=='undefined')
+									.subject_additonal.size= subject.meta.i18n.size.get('ru')
+								.subject_additonal= subject.meta.i18n.material.get('ru')
+								.subject_additonal= subject.meta.i18n.genre.get('ru')
+								.subject_additonal= subject.meta.technique.tag
+								.subject_additonal= subject.meta.technique.i18n.comment.get('ru')
+								.subject_additonal= subject.meta.view.tag
+								.subject_additonal= subject.meta.view.i18n.comment.get('ru')
 
 
 
