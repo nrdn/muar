@@ -164,25 +164,32 @@ exports.edit_form = function(req, res) {
 
 		locales.forEach(function(locale) {
 			checkNested(post, [locale, 'title'])
-				&& subject.setPropertyLocalised('title', post[locale].title, locale);
+				? subject.setPropertyLocalised('title', post[locale].title, locale)
+				: subject.removePropertyLocale('title', locale);
 
 			checkNested(post, [locale, 'description'])
-				&& subject.setPropertyLocalised('description', post[locale].description, locale);
+				? subject.setPropertyLocalised('description', post[locale].description, locale)
+				: subject.removePropertyLocale('description', locale);
 
 			checkNested(post, [locale, 'genre'])
-				&& subject.setPropertyLocalised('meta.genre', post[locale].genre, locale);
+				? subject.setPropertyLocalised('meta.genre', post[locale].genre, locale)
+				: subject.removePropertyLocale('meta.genre', locale);
 
 			checkNested(post, [locale, 'size'])
-				&& subject.setPropertyLocalised('meta.size', post[locale].size, locale);
+				? subject.setPropertyLocalised('meta.size', post[locale].size, locale)
+				: subject.removePropertyLocale('meta.size', locale);
 
 			checkNested(post, [locale, 'material'])
-				&& subject.setPropertyLocalised('meta.material', post[locale].material, locale);
+				? subject.setPropertyLocalised('meta.material', post[locale].material, locale)
+				: subject.removePropertyLocale('meta.material', locale);
 
 			checkNested(post, [locale, 'technique', 'comment'])
-				&& subject.setPropertyLocalised('meta.technique.comment', post[locale].technique.comment, locale);
+				? subject.setPropertyLocalised('meta.technique.comment', post[locale].technique.comment, locale)
+				: subject.removePropertyLocale('meta.technique.comment', locale);
 
 			checkNested(post, [locale, 'view', 'comment'])
-				&& subject.setPropertyLocalised('meta.view.comment', post[locale].view.comment, locale);
+				? subject.setPropertyLocalised('meta.view.comment', post[locale].view.comment, locale)
+				: subject.removePropertyLocale('meta.view.comment', locale);
 		});
 
 		subject.meta.technique.tag = post.technique.tag;

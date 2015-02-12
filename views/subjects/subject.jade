@@ -35,11 +35,11 @@ block content
 							.description_item_block
 								.subject_description_title Размер:
 								.subject_description_item= subject.meta.i18n.size.get('ru')
-						if (subject.meta.size && subject.meta.size.length > 0)
+						if (subject.meta.genre && subject.meta.genre.length > 0)
 							.description_item_block
 								.subject_description_title Жанр:
 								.subject_description_item= subject.meta.i18n.genre.get('ru')
-						if (subject.meta.size && subject.meta.size.length > 0)
+						if (subject.meta.material && subject.meta.material.length > 0)
 							.description_item_block
 								.subject_description_title Материал:
 								.subject_description_item= subject.meta.i18n.material.get('ru')
@@ -53,7 +53,7 @@ block content
 								.subject_description_title Техника:
 								.subject_description_item= technique[subject.meta.technique.tag]
 								.subject_description_comment= subject.meta.technique.i18n.comment.get('ru')
-						
+
 
 
 

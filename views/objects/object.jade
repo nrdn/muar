@@ -97,19 +97,6 @@ block content
 									.description_item_block
 										.subject_description_title Размер:
 										.subject_description_item= subject.meta.i18n.size.get('ru')
-								//if (subject.meta.size && subject.meta.size.length > 0)
-									.description_item_block
-										.subject_description_title Жанр:
-										.subject_description_item= subject.meta.i18n.genre.get('ru')
-								//if (subject.meta.size && subject.meta.size.length > 0)
-									.description_item_block
-										.subject_description_title Материал:
-										.subject_description_item= subject.meta.i18n.material.get('ru')
-								//if (subject.meta.view.tag)
-									.description_item_block
-										.subject_description_title Вид:
-										.subject_description_item= views[subject.meta.view.tag]
-										.subject_description_comment= subject.meta.view.i18n.comment.get('ru')
 								if (subject.meta.technique.tag)
 									.description_item_block
 										.subject_description_title Техника:
