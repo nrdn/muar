@@ -20,23 +20,6 @@ block content
 			.form_title Описание:
 			textarea.ru(name="ru[description]", rows="8",)
 			textarea.en(name="en[description]", rows="8", disabled)
-			.form_title Вид:
-			select(name='view[tag]')
-				option(value='plan') План
-				option(value='front') Фасад
-				option(value='perspective') Аксонометрия
-				option(value='general_view') Общий вид
-				option(value='master_plan') Генеральный план
-				option(value='panorama') Панорама
-				option(value='main_front') Главный фасад
-				option(value='short_form') Малая форма
-				option(value='sculpture') Скульптура
-				option(value='interior') Интерьер
-				option(value='part') Деталь
-				option(value='other') Другое
-			br
-			input.ru(type="text", name="ru[view][comment]", placeholder='Комментарий к виду')
-			input.en(type="text", name="en[view][comment]", placeholder='Comment view', disabled)
 			.form_title Техника:
 			select(name='technique[tag]')
 				option(value='engraving') Гравюра
@@ -51,15 +34,9 @@ block content
 			br
 			input.ru(type="text", name="ru[technique][comment]", placeholder='Комментарий к технике')
 			input.en(type="text", name="en[technique][comment]", placeholder='Comment technique', disabled)
-			.form_title Материал:
-			input.ru(type="text", name="ru[material]",)
-			input.en(type="text", name="en[material]", disabled)
 			.form_title Размер:
 			input.ru(type="text", name="ru[size]",)
 			input.en(type="text", name="en[size]", disabled)
-			.form_title Жанр:
-			input.ru(type="text", name="ru[genre]",)
-			input.en(type="text", name="en[genre]", disabled)
 			.form_title Инвентарный номер:
 			input(type="text", name="inventory",)
 			.form_title Интервал начало:

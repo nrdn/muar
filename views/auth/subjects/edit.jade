@@ -20,23 +20,6 @@ block content
 			.form_title Описание:
 			textarea.ru(name="ru[description]", rows="8",)= subject.i18n.description.get('ru')
 			textarea.en(name="en[description]", rows="8", disabled,)=subject.i18n.description.get('en')
-			.form_title Вид:
-			select(name='view[tag]')
-				option(value='plan', selected=subject.meta.view.tag=='plan') План
-				option(value='front', selected=subject.meta.view.tag=='front') Фасад
-				option(value='perspective', selected=subject.meta.view.tag=='perspective') Аксонометрия
-				option(value='general_view', selected=subject.meta.view.tag=='general_view') Общий вид
-				option(value='master_plan', selected=subject.meta.view.tag=='master_plan') Генеральный план
-				option(value='panorama', selected=subject.meta.view.tag=='panorama') Панорама
-				option(value='main_front', selected=subject.meta.view.tag=='main_front') Главный фасад
-				option(value='short_form', selected=subject.meta.view.tag=='short_form') Малая форма
-				option(value='sculpture', selected=subject.meta.view.tag=='sculpture') Скульптура
-				option(value='interior', selected=subject.meta.view.tag=='interior') Интерьер
-				option(value='part', selected=subject.meta.view.tag=='part') Деталь
-				option(value='other', selected=subject.meta.view.tag=='other') Другое
-			br
-			input.ru(type="text", name="ru[view][comment]", placeholder='Комментарий к виду', value=subject.meta.view.i18n.comment.get('ru'))
-			input.en(type="text", name="en[view][comment]", placeholder='Comment view', disabled, value=subject.meta.view.i18n.comment.get('en'))
 			.form_title Техника:
 			select(name='technique[tag]')
 				option(value='engraving', selected=subject.meta.technique.tag=='engraving') Гравюра
@@ -51,15 +34,9 @@ block content
 			br
 			input.ru(type="text", name="ru[technique][comment]", placeholder='Комментарий к технике', value=subject.meta.technique.i18n.comment.get('ru'))
 			input.en(type="text", name="en[technique][comment]", placeholder='Comment technique', disabled, value=subject.meta.technique.i18n.comment.get('en'))
-			.form_title Материал:
-			input.ru(type="text", name="ru[material]", value=subject.meta.i18n.material.get('ru'))
-			input.en(type="text", name="en[material]", disabled, value=subject.meta.i18n.material.get('en'))
 			.form_title Размер:
 			input.ru(type="text", name="ru[size]", value=subject.meta.i18n.size.get('ru'))
 			input.en(type="text", name="en[size]", disabled, value=subject.meta.i18n.size.get('en'))
-			.form_title Жанр:
-			input.ru(type="text", name="ru[genre]", value=subject.meta.i18n.genre.get('ru'))
-			input.en(type="text", name="en[genre]", disabled, value=subject.meta.i18n.genre.get('en'))
 			.form_title Инвентарный номер:
 			input(type="text", name="inventory", value=subject.meta.inventory)
 			.form_title Интервал начало:

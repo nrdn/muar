@@ -87,8 +87,6 @@ block content
 									.subject_title= subject.i18n.title.get('ru')
 								.description_item_block
 									.subject_description: != subject.i18n.description.get('ru')
-									if (subject.meta.i18n.size.get('ru') !=='undefined')
-										.subject_additonal.size= subject.meta.i18n.size.get('ru')
 								if (subject.meta.inventory)
 									.description_item_block
 										.subject_description_title Инвентарный номер:

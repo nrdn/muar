@@ -82,24 +82,14 @@ exports.add_form = function(req, res) {
 		checkNested(post, [locale, 'description'])
 			&& subject.setPropertyLocalised('description', post[locale].description, locale);
 
-		checkNested(post, [locale, 'genre'])
-			&& subject.setPropertyLocalised('meta.genre', post[locale].genre, locale);
-
 		checkNested(post, [locale, 'size'])
 			&& subject.setPropertyLocalised('meta.size', post[locale].size, locale);
 
-		checkNested(post, [locale, 'material'])
-			&& subject.setPropertyLocalised('meta.material', post[locale].material, locale);
-
 		checkNested(post, [locale, 'technique', 'comment'])
 			&& subject.setPropertyLocalised('meta.technique.comment', post[locale].technique.comment, locale);
-
-		checkNested(post, [locale, 'view', 'comment'])
-			&& subject.setPropertyLocalised('meta.view.comment', post[locale].view.comment, locale);
 	});
 
 	subject.meta.technique.tag = post.technique.tag;
-	subject.meta.view.tag = post.view.tag;
 	subject.meta.inventory = post.inventory;
 	subject.meta.interval.start = set_date(post.interval.start);
 	subject.meta.interval.end = set_date(post.interval.end);
@@ -171,29 +161,16 @@ exports.edit_form = function(req, res) {
 				? subject.setPropertyLocalised('description', post[locale].description, locale)
 				: subject.removePropertyLocale('description', locale);
 
-			checkNested(post, [locale, 'genre'])
-				? subject.setPropertyLocalised('meta.genre', post[locale].genre, locale)
-				: subject.removePropertyLocale('meta.genre', locale);
-
 			checkNested(post, [locale, 'size'])
 				? subject.setPropertyLocalised('meta.size', post[locale].size, locale)
 				: subject.removePropertyLocale('meta.size', locale);
 
-			checkNested(post, [locale, 'material'])
-				? subject.setPropertyLocalised('meta.material', post[locale].material, locale)
-				: subject.removePropertyLocale('meta.material', locale);
-
 			checkNested(post, [locale, 'technique', 'comment'])
 				? subject.setPropertyLocalised('meta.technique.comment', post[locale].technique.comment, locale)
 				: subject.removePropertyLocale('meta.technique.comment', locale);
-
-			checkNested(post, [locale, 'view', 'comment'])
-				? subject.setPropertyLocalised('meta.view.comment', post[locale].view.comment, locale)
-				: subject.removePropertyLocale('meta.view.comment', locale);
 		});
 
 		subject.meta.technique.tag = post.technique.tag;
-		subject.meta.view.tag = post.view.tag;
     subject.meta.inventory = post.inventory;
 		subject.meta.interval.start = set_date(post.interval.start);
 		subject.meta.interval.end = set_date(post.interval.end);
