@@ -34,6 +34,9 @@ block content
 			br
 			input.ru(type="text", name="ru[technique][comment]", placeholder='Комментарий к технике', value=subject.meta.technique.i18n.comment.get('ru'))
 			input.en(type="text", name="en[technique][comment]", placeholder='Comment technique', disabled, value=subject.meta.technique.i18n.comment.get('en'))
+			.form_title Автор:
+			input.ru(type="text", name="ru[author]", value=subject.meta.i18n.author.get('ru'))
+			input.en(type="text", name="en[author]", disabled, value=subject.meta.i18n.author.get('en'))
 			.form_title Размер:
 			input.ru(type="text", name="ru[size]", value=subject.meta.i18n.size.get('ru'))
 			input.en(type="text", name="en[size]", disabled, value=subject.meta.i18n.size.get('en'))

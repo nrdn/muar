@@ -31,6 +31,10 @@ block content
 							.description_item_block
 								.subject_description_title Инвентарный номер:
 								.subject_description_item= subject.meta.inventory
+						if (subject.meta.author && subject.meta.author.length > 0)
+							.description_item_block
+								.subject_description_title Автор:
+								.subject_description_item= subject.meta.i18n.author.get('ru')
 						if (subject.meta.size && subject.meta.size.length > 0)
 							.description_item_block
 								.subject_description_title Размер:

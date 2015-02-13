@@ -62,17 +62,12 @@ var subjectSchema = new Schema({
 	description: { type: String, trim: true, locale: true },
 	categorys: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
 	meta: {
-		view: {
-			tag: String,
-			comment: { type: String, trim: true, locale: true }
-		},
 		technique: {
 			tag: String,
 			comment: { type: String, trim: true, locale: true }
 		},
-		material: { type: String, trim: true, locale: true },
 		size: { type: String, trim: true, locale: true },
-		genre: { type: String, trim: true, locale: true },
+		author: { type: String, trim: true, locale: true },
 		inventory: String,
 		interval: {
 			start: Date,

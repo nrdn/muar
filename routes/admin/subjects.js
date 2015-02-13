@@ -85,6 +85,9 @@ exports.add_form = function(req, res) {
 		checkNested(post, [locale, 'size'])
 			&& subject.setPropertyLocalised('meta.size', post[locale].size, locale);
 
+		checkNested(post, [locale, 'author'])
+			&& subject.setPropertyLocalised('meta.author', post[locale].author, locale);
+
 		checkNested(post, [locale, 'technique', 'comment'])
 			&& subject.setPropertyLocalised('meta.technique.comment', post[locale].technique.comment, locale);
 	});
@@ -164,6 +167,10 @@ exports.edit_form = function(req, res) {
 			checkNested(post, [locale, 'size'])
 				? subject.setPropertyLocalised('meta.size', post[locale].size, locale)
 				: subject.removePropertyLocale('meta.size', locale);
+
+			checkNested(post, [locale, 'author'])
+				? subject.setPropertyLocalised('meta.author', post[locale].author, locale)
+				: subject.removePropertyLocale('meta.author', locale);
 
 			checkNested(post, [locale, 'technique', 'comment'])
 				? subject.setPropertyLocalised('meta.technique.comment', post[locale].technique.comment, locale)
