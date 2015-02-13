@@ -26,20 +26,20 @@ block content
 					.object_title
 						if (subject.meta.author && subject.meta.author.length > 0)
 							.subject_description_author= subject.meta.i18n.author.get('ru')
-							.subject_description_title= subject.i18n.title.get('ru')
+						.subject_description_title= subject.i18n.title.get('ru')
 					.column_item_wrap
-						.column_item.descr
-							.column_content: != subject.i18n.description.get('ru')
 						.description_item_block
-							if (subject.meta.inventory)
-								.subject_description_item= subject.meta.inventory
-							if (subject.meta.size && subject.meta.size.length > 0)
-								.subject_description_item= subject.meta.i18n.size.get('ru')
-							if (subject.meta.technique.tag)
-								.subject_description_item= technique[subject.meta.technique.tag]
-								.subject_description_comment= subject.meta.technique.i18n.comment.get('ru')
+							.style_title_date= subject.meta.interval.start.getUTCFullYear() + '—' + subject.meta.interval.end.getUTCFullYear() + '-е'
 
-
+								if (subject.meta.technique.tag)
+									.subject_item_block
+										.subject_description_item= technique[subject.meta.technique.tag]
+										.subject_description_comment= subject.meta.technique.i18n.comment.get('ru')
+								if (subject.meta.size && subject.meta.size.length > 0)
+									.subject_description_item= subject.meta.i18n.size.get('ru')
+								if (subject.meta.inventory)
+									.subject_description_item= subject.meta.inventory
+								.subject_description_description: != subject.i18n.description.get('ru')
 
 
 	.subject_map(id='subject_view', path=subject._id)
