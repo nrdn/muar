@@ -23,25 +23,19 @@ block content
 			.side_description_column
 				.side_description_cross
 				.summary_description_block
-					.object_title= subject.i18n.title.get('ru')
+					.object_title
+						if (subject.meta.author && subject.meta.author.length > 0)
+							.subject_description_author= subject.meta.i18n.author.get('ru')
+							.subject_description_title= subject.i18n.title.get('ru')
 					.column_item_wrap
 						.column_item.descr
 							.column_content: != subject.i18n.description.get('ru')
-						if (subject.meta.inventory)
-							.description_item_block
-								.subject_description_title Инвентарный номер:
+						.description_item_block
+							if (subject.meta.inventory)
 								.subject_description_item= subject.meta.inventory
-						if (subject.meta.author && subject.meta.author.length > 0)
-							.description_item_block
-								.subject_description_title Автор:
-								.subject_description_item= subject.meta.i18n.author.get('ru')
-						if (subject.meta.size && subject.meta.size.length > 0)
-							.description_item_block
-								.subject_description_title Размер:
+							if (subject.meta.size && subject.meta.size.length > 0)
 								.subject_description_item= subject.meta.i18n.size.get('ru')
-						if (subject.meta.technique.tag)
-							.description_item_block
-								.subject_description_title Техника:
+							if (subject.meta.technique.tag)
 								.subject_description_item= technique[subject.meta.technique.tag]
 								.subject_description_comment= subject.meta.technique.i18n.comment.get('ru')
 

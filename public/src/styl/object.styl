@@ -367,15 +367,26 @@
 	padding-right 4px
 
 .description_item_block
-	clear both
-	margin 0 0 4px
-	float none
 	overflow hidden
 
+.subject_description_comment
+	font-weight bold
+
+.subject_description_item
+	float left
+	font-weight bold
+	&:after
+		content ','
+		margin-right 5px
+
 .subject_title
+.subject_author
 	font-size 21px
 	margin-bottom 5px
 	margin-top 7px
+
+.subject_description
+	margin-bottom 5px
 
 .footer_block
 	background rgba(0,0,0,0.6)
@@ -468,7 +479,7 @@
 .footer_sponsors_block
 	border-top 1px solid #d7d7d7
 	padding 10px 25px 10px
-	
+
 
 
 .broken
