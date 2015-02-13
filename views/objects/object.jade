@@ -89,9 +89,8 @@ block content
 								.description_item_block
 									.subject_title= subject.i18n.title.get('ru')
 								.description_item_block
-
-									.style_title_date= subject.meta.interval.start.getUTCFullYear() + '—' + subject.meta.interval.end.getUTCFullYear() + '-е'
-
+									if (subject.meta.date && subject.meta.date.length > 0)
+										.style_title_date= subject.meta.i18n.date.get('ru')
 									if (subject.meta.technique.tag)
 										.subject_item_block
 											.subject_description_item= technique[subject.meta.technique.tag]
