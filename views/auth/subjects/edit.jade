@@ -33,7 +33,7 @@ block content
 				option(value='maket', selected=subject.meta.technique.tag=='maket') Макет
 				option(value='other', selected=subject.meta.technique.tag=='other') Другое
 			input(type='checkbox', name='technique[hidden]', value='true', checked=subject.meta.technique.hidden && true)
-			|скрыть
+			|скрыть категорию
 			br
 			input.ru(type="text", name="ru[technique][comment]", placeholder='Комментарий к технике', value=subject.meta.technique.i18n.comment.get('ru'))
 			input.en(type="text", name="en[technique][comment]", placeholder='Comment technique', disabled, value=subject.meta.technique.i18n.comment.get('en'))
