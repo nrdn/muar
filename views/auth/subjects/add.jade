@@ -28,6 +28,7 @@ block content
 				option(value='drawing') Чертеж
 				option(value='painting') Живопись
 				option(value='picture') Рисунок
+				option(value='watercolor') Акварель
 				option(value='sculpture') Скульптура
 				option(value='maket') Макет
 				option(value='other') Другое
@@ -40,6 +41,9 @@ block content
 			.form_title Размер:
 			input.ru(type="text", name="ru[size]",)
 			input.en(type="text", name="en[size]", disabled)
+			.form_title Дата:
+			input.ru(type="text", name="ru[date]",)
+			input.en(type="text", name="en[date]", disabled)
 			.form_title Инвентарный номер:
 			input(type="text", name="inventory",)
 			.form_title Интервал начало:

@@ -67,6 +67,7 @@ var subjectSchema = new Schema({
 			comment: { type: String, trim: true, locale: true }
 		},
 		size: { type: String, trim: true, locale: true },
+		date: { type: String, trim: true, locale: true },
 		author: { type: String, trim: true, locale: true },
 		inventory: String,
 		interval: {

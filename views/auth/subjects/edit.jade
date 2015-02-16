@@ -28,6 +28,7 @@ block content
 				option(value='drawing', selected=subject.meta.technique.tag=='drawing') Чертеж
 				option(value='painting', selected=subject.meta.technique.tag=='painting') Живопись
 				option(value='picture', selected=subject.meta.technique.tag=='picture') Рисунок
+				option(value='watercolor', selected=subject.meta.technique.tag=='watercolor') Акварель
 				option(value='sculpture', selected=subject.meta.technique.tag=='sculpture') Скульптура
 				option(value='maket', selected=subject.meta.technique.tag=='maket') Макет
 				option(value='other', selected=subject.meta.technique.tag=='other') Другое
@@ -40,6 +41,9 @@ block content
 			.form_title Размер:
 			input.ru(type="text", name="ru[size]", value=subject.meta.i18n.size.get('ru'))
 			input.en(type="text", name="en[size]", disabled, value=subject.meta.i18n.size.get('en'))
+			.form_title Дата:
+			input.ru(type="text", name="ru[date]", value=subject.meta.i18n.date.get('ru'))
+			input.en(type="text", name="en[date]", disabled, value=subject.meta.i18n.date.get('en'))
 			.form_title Инвентарный номер:
 			input(type="text", name="inventory", value=subject.meta.inventory)
 			.form_title Интервал начало:
