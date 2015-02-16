@@ -95,6 +95,7 @@ exports.add_form = function(req, res) {
 			&& subject.setPropertyLocalised('meta.technique.comment', post[locale].technique.comment, locale);
 	});
 
+	subject.meta.technique.hidden = post.technique.hidden;
 	subject.meta.technique.tag = post.technique.tag;
 	subject.meta.inventory = post.inventory;
 	subject.meta.interval.start = set_date(post.interval.start);
@@ -184,6 +185,7 @@ exports.edit_form = function(req, res) {
 				: subject.removePropertyLocale('meta.technique.comment', locale);
 		});
 
+		subject.meta.technique.hidden = post.technique.hidden;
 		subject.meta.technique.tag = post.technique.tag;
     subject.meta.inventory = post.inventory;
 		subject.meta.interval.start = set_date(post.interval.start);
