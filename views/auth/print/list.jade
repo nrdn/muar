@@ -12,7 +12,8 @@ block content
 		each object in objects
 			.object_item
 				.object_description_block
-					a.object_title(href='/auth/objects/edit/' + object._id, target='_blank')= object.i18n.title.get('ru')
+					- var link = session.user_id ? '/auth/objects/edit/' + object._id : '/objects/' + object._id
+					a.object_title(href=link, target='_blank')= object.i18n.title.get('ru')
 					.object_interval= object.meta.interval.start.getFullYear() + ' - ' + object.meta.interval.end.getFullYear()
 					.object_architects
 						each architect in object.architects
