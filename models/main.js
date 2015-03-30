@@ -17,6 +17,10 @@ var ageSchema = new Schema({
 	description: { type: String, trim: true, locale: true },
 	description_alt: { type: String, trim: true, locale: true },
 	meta: {
+		archive: {
+			position: String,
+			id: String
+		},
 		interval: {
 			start: Date,
 			end: Date

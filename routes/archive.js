@@ -11,35 +11,22 @@ var meta_base = function() {
 	return {
 		'head': {
 			'StateContractContractor': 'ООО "Народный архитектор"',
-			'StateContractDate': '2014-12-22T00:00:00+04:00',
+			'StateContractDate': '2014-12-22T00:00:00+03:00',
 			'StateContractNo': '6368-01-41/14-14'
 		}
 	}
 }
 
-exports.upload = function(req, res) {
+
+exports.ages = function(req, res) {
 	var cookie = req.session.cookie_string;
+	var id = req.body.id;
 	var meta = meta_base();
 
-	Subject.findById('547b605dcad81c00000b4e23').exec(function(err, subject) {
-		meta.head['Title'] = subject.i18n.title.get('ru');
-
-		meta.body = subject.i18n.description.get('ru').replace(/<br \/>/g, '\n');
-
-		vmalib.upload_file(cookie, appDir + '/public/' + subject.image.original, meta, function(err, id) {
-			res.send(id);
-		});
-	});
-}
-
-exports.create = function(req, res) {
-	var cookie = req.session.cookie_string;
-	var meta = meta_base();
-
-	Age.findById('54758b0ffa3ffc1bcbe1793e').exec(function(err, age) {
+	Age.findById(id).exec(function(err, age) {
 
 		meta.head['StoryType'] = {'topic': 'storytype-architecture_epoch'};
-		meta.head['Architecture'] = {'topic': 'architecture_6jkbzv9ncjlh2ms3gag'};
+		meta.head['Architecture'] = {'topic': age.meta.archive.position};
 		meta.head['Owner'] = 'mkrf';
 		meta.head['RigthUse'] = 'Разрешено';
 
@@ -49,33 +36,23 @@ exports.create = function(req, res) {
 		meta.head['DateStart'] = age.meta.interval.start.getUTCFullYear().toString();
 		meta.head['DateEnd'] = age.meta.interval.end.getUTCFullYear().toString();
 
-		meta.body = age.i18n.description.get('ru').replace(/<br \/>/g, '\n');
+		meta.body = age.i18n.description.get('ru');
 
 		vmalib.create_document(cookie, meta, function(err, id) {
-			res.send(id);
+			age.meta.archive.id = id;
+			age.save(function(err, age) {
+				res.send(id);
+			});
 		});
 	});
 }
 
-exports.connect = function(req, res) {
-	var cookie = req.session.cookie_string;
-	var meta = meta_base();
 
-	var doc_id = 'doc6jt8tcv49dk184qweut';
-	var story_id = 'doc6jtrsj4990y1al4yi3iq';
-
-	vmalib.document_to_story(cookie, doc_id, story_id, null, function(err, result) {
-		res.send(result);
-	});
-}
-
-
-
-exports.sync = function(req, res) {
+exports.objects = function(req, res) {
 	var cookie = req.session.cookie_string;
 	var id = req.params.id;
 
-	Object.findById(id).populate('architects subjects').exec(function(err, object) {
+	Object.findById(id).populate('architects subjects ages.sub').exec(function(err, object) {
 
 
 		async.series({
@@ -97,7 +74,7 @@ exports.sync = function(req, res) {
 					var img_path = appDir + '/public' + subject.image.original;
 					meta.head['Title'] = subject.i18n.title.get('ru');
 					meta.head['NumberInventory'] = subject.meta.inventory;
-					meta['body'] = subject.i18n.description.get('ru') || '';
+					meta['body'] = subject.i18n.description.get('ru');
 
 					vmalib.upload_file(cookie, img_path, meta, function(err, id) {
 						callback(null, id);
@@ -115,11 +92,23 @@ exports.sync = function(req, res) {
 			meta.head['RigthUse'] = 'Разрешено';
 
 			meta.head['Title'] = object.i18n.title.get('ru');
-			meta.body = object.i18n.description.get('ru').replace(/<br \/>/g, '\n');
+			meta.body = object.i18n.description.get('ru');
 
 			vmalib.create_document(cookie, meta, function(err, story_id) {
 
 				async.series({
+					link_ages: function(call_link_ages) {
+						async.each(object.ages.sub, function(age, callback) {
+							if (age.meta.archive.id) {
+								var doc_id = age.meta.archive.id;
+								vmalib.document_to_story(cookie, story_id, doc_id, null, function(err, result) {
+									callback();
+								});
+							}
+						}, function() {
+							call_link_ages(null, 'ok');
+						});
+					},
 					link_images: function(call_link_images) {
 						async.each(results.images, function(doc_id, callback) {
 							vmalib.document_to_story(cookie, doc_id, story_id, null, function(err, result) {
@@ -139,7 +128,12 @@ exports.sync = function(req, res) {
 						});
 					}
 				}, function(err, final_results) {
-					res.send(final_results);
+					var out = {
+						vma_id: object._id,
+						archive_id: story_id,
+						status: final_results
+					}
+					res.send(out);
 				});
 
 			});

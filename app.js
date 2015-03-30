@@ -363,7 +363,7 @@ app.route('/search').post(globals.search);
 
 
 // ------------------------
-// *** Globals Routers Block ***
+// *** API Routers Block ***
 // ------------------------
 
 
@@ -371,15 +371,16 @@ app.route('/search').post(globals.search);
 app.route('/api/v1').get(api.check, api.v1);
 
 
-// === Archive Route
+// ------------------------
+// *** Archive Routers Block ***
+// ------------------------
 
-app.route('/archive/upload').get(checkAuth, archive.upload);
 
-app.route('/archive/create').get(checkAuth, archive.create);
+// Archive @add age Route
+app.route('/archive/ages').post(checkAuth, archive.ages);
 
-app.route('/archive/connect').get(checkAuth, archive.connect);
-
-app.route('/archive/sync/:id').get(checkAuth, archive.sync);
+// Archive @add object Route
+app.route('/archive/objects/:id').get(checkAuth, archive.objects);
 
 
 // ------------------------

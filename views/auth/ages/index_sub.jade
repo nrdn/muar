@@ -23,3 +23,6 @@ block content
 					a.rm_age(href='#', id=age_sub._id)= 'удалить '
 					!=' | '
 					a(href='/auth/ages/' + age._id + '/sub/edit/' + age_sub._id)= age_sub.i18n.title.get('ru')
+					if (age_sub.meta.archive.position)
+						!=' --> '
+						a.to_archive.ages(href='#', id=age_sub._id) в архив
