@@ -78,6 +78,7 @@ var auth = require('./routes/auth.js');
 var content = require('./routes/content.js');
 var files = require('./routes/files.js');
 var api = require('./routes/api.js');
+var archive = require('./routes/archive.js');
 
 var a_ages = require('./routes/admin/ages.js');
 var a_objects = require('./routes/admin/objects.js');
@@ -368,6 +369,17 @@ app.route('/search').post(globals.search);
 
 // === API v1 Route
 app.route('/api/v1').get(api.check, api.v1);
+
+
+// === Archive Route
+
+app.route('/archive/upload').get(checkAuth, archive.upload);
+
+app.route('/archive/create').get(checkAuth, archive.create);
+
+app.route('/archive/connect').get(checkAuth, archive.connect);
+
+app.route('/archive/sync/:id').get(checkAuth, archive.sync);
 
 
 // ------------------------

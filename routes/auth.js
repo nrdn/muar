@@ -1,4 +1,5 @@
 var User = require('../models/main.js').User;
+var vmalib = require('vmalib');
 
 
 // ------------------------
@@ -30,7 +31,10 @@ exports.login_form = function(req, res) {
         req.session.user_id = person._id;
         req.session.status = person.status;
         req.session.login = person.login;
-        res.redirect('/auth');
+        vmalib.auth({user: 'robot.architect', pass: '37DksT82'}, function(err, cookie) {
+          req.session.cookie_string = cookie;
+          res.redirect('/auth');
+        });
       }
       else {
         res.redirect('back');
