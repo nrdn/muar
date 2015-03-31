@@ -92,6 +92,10 @@ var architectSchema = new Schema({
 	name: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
 	meta: {
+		archive: {
+			id: String,
+			position: String
+		},
 		interval: {
 			start: Date,
 			end: Date

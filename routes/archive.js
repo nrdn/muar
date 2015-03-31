@@ -6,6 +6,7 @@ var appDir = path.dirname(require.main.filename);
 var Subject = require('../models/main.js').Subject;
 var Age = require('../models/main.js').Age;
 var Object = require('../models/main.js').Object;
+var Architect = require('../models/main.js').Architect;
 
 var meta_base = function() {
 	return {
@@ -42,6 +43,38 @@ exports.ages = function(req, res) {
 			age.meta.archive.id = id;
 			age.save(function(err, age) {
 				res.send(id);
+			});
+		});
+	});
+}
+
+
+exports.architects = function(req, res) {
+	var cookie = req.session.cookie_string;
+	var id = req.body.id;
+	var meta = meta_base();
+
+	Architect.findById(id).exec(function(err, architect) {
+		meta.head['StoryType'] = {'topic': 'storytype-architecture_architect'};
+		meta.head['Owner'] = 'mkrf';
+		meta.head['RigthUse'] = 'Разрешено';
+
+		meta.head['Title'] = architect.i18n.name.get('ru');
+		meta.head['Architect'] = architect.i18n.name.get('ru');
+		meta.head['URI'] = 'http://vma.muar.ru/architects/' + architect._id;
+		meta.head['DatesOfLife'] = architect.meta.interval.start.getUTCFullYear() + ' - ' + architect.meta.interval.end.getUTCFullYear();
+
+		meta.body = architect.i18n.description.get('ru');
+
+		vmalib.create_document(cookie, meta, function(err, id) {
+			vmalib.get_document(cookie, id, function(err, obj) {
+				var position = obj['entry']['document'][0]['head'][0]['Architect'][0]['$']['topic'];
+
+				architect.meta.archive.id = id;
+				architect.meta.archive.position = position;
+				architect.save(function(err, architect) {
+					res.send(id);
+				});
 			});
 		});
 	});
@@ -97,6 +130,18 @@ exports.objects = function(req, res) {
 			vmalib.create_document(cookie, meta, function(err, story_id) {
 
 				async.series({
+					link_architects: function(call_link_architects) {
+						async.each(object.architects, function(architect, callback) {
+							if (architect.meta.archive.id) {
+								var doc_id = architect.meta.archive.id;
+								vmalib.document_to_story(cookie, story_id, doc_id, null, function(err, result) {
+									callback();
+								});
+							}
+						}, function() {
+							call_link_architects(null, 'ok');
+						});
+					},
 					link_ages: function(call_link_ages) {
 						async.each(object.ages.sub, function(age, callback) {
 							if (age.meta.archive.id) {

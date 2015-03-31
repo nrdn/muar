@@ -379,6 +379,9 @@ app.route('/api/v1').get(api.check, api.v1);
 // Archive @add age Route
 app.route('/archive/ages').post(checkAuth, archive.ages);
 
+// Archive @add architect Route
+app.route('/archive/architects').post(checkAuth, archive.architects);
+
 // Archive @add object Route
 app.route('/archive/objects/:id').get(checkAuth, archive.objects);
 
