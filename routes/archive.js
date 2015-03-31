@@ -87,7 +87,7 @@ exports.objects = function(req, res) {
 	var cookie = req.session.cookie_string;
 	var id = req.params.id;
 
-	Object.findById(id).populate('architects subjects ages.sub').exec(function(err, object) {
+	Object.findById(id).populate('architects categorys subjects ages.sub').exec(function(err, object) {
 
 
 		async.series({
@@ -132,6 +132,14 @@ exports.objects = function(req, res) {
 			meta.head['StoryType'] = {'topic': 'storytype-architecture_object'};
 			meta.head['Owner'] = 'mkrf';
 			meta.head['RigthUse'] = 'Разрешено';
+
+			if (object.categorys.length > 0) {
+				meta.head['Keywords'] = [];
+				for (var i = object.categorys.length - 1; i >= 0; i--) {
+					var category = object.categorys[i].i18n.title.get('ru');
+					meta.head['Keywords'].push(category);
+				}
+			}
 
 			meta.head['Title'] = object.i18n.title.get('ru');
 			meta.head['DateStart'] = object.meta.interval.start.getUTCFullYear().toString();
