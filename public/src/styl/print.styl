@@ -1,14 +1,28 @@
+body
+	font 12pt/15pt Times, sans
+
+.main_menu_block
+.content_block
+	width 1100px
+	padding 20px 0
+
+.header_block
+.content_title_block
+	display none
+
 .object_item
 	width 1100px
-	border 1px solid black
+	border 1px solid #000
 	margin 0 auto
 	position relative
 	overflow hidden
-	margin-bottom 20px
+	border-bottom 0
+	&:last-child
+		border-bottom 1px solid #000
+
 
 .object_description_block
-	width 540px
-	border 1px solid black
+	width 680px
 	float left
 	padding 5px
 
@@ -22,10 +36,9 @@
 
 .object_architects
 	font-weight bold
-	margin-bottom 10px
 	&:before
 		content 'Архитекторы:'
-		margin-top 10px
+		margin-top 5px
 		display block
 		font-weight normal
 
@@ -33,7 +46,7 @@
 	margin-bottom 10px
 	&:before
 		content 'Категории:'
-		margin-top 10px
+		margin-top 5px
 		display block
 
 .category_item
@@ -41,8 +54,8 @@
 	font-weight bold
 
 .object_graphics_block
-	width 540px
-	border 1px solid black
+	width 390px
+	border-left 1px solid black
 	float left
 	overflow hidden
 
@@ -50,18 +63,21 @@
 .object_subjects
 .subject_image
 .image_img
-	width 260px
+	width 185px
+
 
 .image_item
 .subject_item
-	margin-bottom 20px
+	margin-bottom 10px
+	font-size 10pt
+	line-height 12pt
 
 .subject_inventory
 	font-weight bold
 
 .object_images
 	float left
-	margin-right 20px
+	margin 0 10px
 	&:before
 		content 'Изображения:'
 		display block
