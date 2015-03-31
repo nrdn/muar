@@ -8,6 +8,8 @@ var Age = require('../models/main.js').Age;
 var Object = require('../models/main.js').Object;
 var Architect = require('../models/main.js').Architect;
 
+var technique = {engraving: 'Гравюра', lithography: 'Литография', photo: 'Фотография', drawing: 'Чертеж', painting: 'Живопись', picture: 'Рисунок', sculpture: 'Скульптура', maket: 'Макет', other: 'Другое'}
+
 var meta_base = function() {
 	return {
 		'head': {
@@ -105,9 +107,16 @@ exports.objects = function(req, res) {
 				async.map(object.subjects, function(subject, callback) {
 					var meta = meta_base();
 					var img_path = appDir + '/public' + subject.image.original;
+
 					meta.head['Title'] = subject.i18n.title.get('ru');
 					meta.head['NumberInventory'] = subject.meta.inventory;
-					meta['body'] = subject.i18n.description.get('ru');
+
+					if (subject.meta.technique) {
+						meta.head['Technique'] = technique[subject.meta.technique.tag];
+						meta.head['TechniqueNote'] = subject.meta.technique.i18n.comment.get('ru');
+					}
+
+					meta.body = subject.i18n.description.get('ru');
 
 					vmalib.upload_file(cookie, img_path, meta, function(err, id) {
 						callback(null, id);
@@ -125,6 +134,11 @@ exports.objects = function(req, res) {
 			meta.head['RigthUse'] = 'Разрешено';
 
 			meta.head['Title'] = object.i18n.title.get('ru');
+			meta.head['DateStart'] = object.meta.interval.start.getUTCFullYear().toString();
+			meta.head['DateEnd'] = object.meta.interval.end.getUTCFullYear().toString();
+			meta.head['URI'] = 'http://vma.muar.ru/objects/' + object._id;
+			// meta.head['Adress'] = object.meta.i18n.adress.get('ru');
+
 			meta.body = object.i18n.description.get('ru');
 
 			vmalib.create_document(cookie, meta, function(err, story_id) {
