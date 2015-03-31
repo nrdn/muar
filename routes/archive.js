@@ -133,9 +133,16 @@ exports.objects = function(req, res) {
 					link_architects: function(call_link_architects) {
 						async.each(object.architects, function(architect, callback) {
 							if (architect.meta.archive.id) {
-								var doc_id = architect.meta.archive.id;
-								vmalib.document_to_story(cookie, story_id, doc_id, null, function(err, result) {
-									callback();
+								var architect_position = architect.meta.archive.position;
+
+								vmalib.get_document(cookie, story_id, function(err, obj) {
+									var meta = {'head': {'Architect': { 'topic': architect_position } } };
+
+									vmalib.set_meta(meta, obj, function(err, obj) {
+										vmalib.update_document(cookie, story_id, obj, function(err, result) {
+											callback();
+										});
+									});
 								});
 							}
 						}, function() {
@@ -145,9 +152,16 @@ exports.objects = function(req, res) {
 					link_ages: function(call_link_ages) {
 						async.each(object.ages.sub, function(age, callback) {
 							if (age.meta.archive.id) {
-								var doc_id = age.meta.archive.id;
-								vmalib.document_to_story(cookie, story_id, doc_id, null, function(err, result) {
-									callback();
+								var age_position = age.meta.archive.position;
+
+								vmalib.get_document(cookie, story_id, function(err, obj) {
+									var meta = {'head': {'Architecture': { 'topic': age_position } } };
+
+									vmalib.set_meta(meta, obj, function(err, obj) {
+										vmalib.update_document(cookie, story_id, obj, function(err, result) {
+											callback();
+										});
+									});
 								});
 							}
 						}, function() {
