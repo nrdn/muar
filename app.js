@@ -285,11 +285,11 @@ app.route('/auth/projects/edit/:id')
 
 // === Admin print ages Route
 app.route('/auth/print/')
-	 .get(checkAuth, a_print.index)
+	 .get(a_print.index)
 
 // === Admin print list Route
 app.route('/auth/print/list/:sub_id')
-	 .get(checkAuth, a_print.list)
+	 .get(a_print.list)
 
 
 // ------------------------

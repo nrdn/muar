@@ -64,6 +64,7 @@ var subjectSchema = new Schema({
 	meta: {
 		technique: {
 			tag: String,
+			hidden: Boolean,
 			comment: { type: String, trim: true, locale: true }
 		},
 		size: { type: String, trim: true, locale: true },

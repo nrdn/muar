@@ -32,6 +32,8 @@ block content
 				option(value='sculpture') Скульптура
 				option(value='maket') Макет
 				option(value='other') Другое
+			input(type='checkbox', name='technique[hidden]', value='true')
+			|скрыть категорию
 			br
 			input.ru(type="text", name="ru[technique][comment]", placeholder='Комментарий к технике')
 			input.en(type="text", name="en[technique][comment]", placeholder='Comment technique', disabled)
