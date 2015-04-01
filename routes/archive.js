@@ -15,7 +15,7 @@ var meta_base = function() {
 		'head': {
 			'StateContractContractor': 'ООО "Народный архитектор"',
 			'StateContractDate': '2014-12-22T00:00:00+03:00',
-			'StateContractNo': '6368-01-41/14-14'
+			'StateContractNo': '6369-01-41/14-14'
 		}
 	}
 }
