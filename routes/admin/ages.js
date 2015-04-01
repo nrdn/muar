@@ -84,6 +84,7 @@ exports.add_form = function(req, res) {
 
   age.meta.interval.start = set_date(post.interval.start);
   age.meta.interval.end = set_date(post.interval.end);
+  age.meta.archive.position = post.archive.position;
 
   if (!files.photo) {
     return (function () {
@@ -165,6 +166,7 @@ exports.edit_form = function(req, res) {
 
     age.meta.interval.start = set_date(post.interval.start);
     age.meta.interval.end = set_date(post.interval.end);
+    age.meta.archive.position = post.archive.position;
 
 
     if (!files.photo) {

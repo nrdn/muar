@@ -19,6 +19,20 @@ $(document).ready(function() {
 		});
 	}
 
+	function toArchive (event) {
+		$('.to_archive').off();
+		var $this = $(this);
+		$this.css('color', 'red');
+		var id = $this.attr('id');
+
+		var path = $this.attr('class').split(' ')[1];
+
+		$.post('/archive/' + path, {id: id}).done(function(data) {
+			$this.removeAttr('style');
+			$('.to_archive').on('click', toArchive);
+		});
+	}
+
 	$('.rm_event').on('click', {path: '/rm_event', description: 'Удалить событие?'}, remove);
 	$('.rm_partner').on('click', {path: '/rm_partner', description: 'Удалить партнера?'}, remove);
 	$('.rm_member').on('click', {path:'/rm_member', description:'Удалить?\n\nУчастник будет удален из всех событий!'}, remove);
@@ -29,6 +43,7 @@ $(document).ready(function() {
 	$('.rm_project').on('click', {path: '/rm_project', description: 'Удалить спецпроект?'}, remove);
 
 	$('.tiles_gen').on('click', tiles_gen);
+	$('.to_archive').on('click', toArchive);
 
 	$('.ages_all').click(function(event) {
 		$('.object').show();

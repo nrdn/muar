@@ -22,3 +22,5 @@ block content
 				a.rm_architect(href='#', id=architect._id)= 'удалить '
 				!=' | '
 				a(href='/auth/architects/edit/' + architect._id)= architect.i18n.name.get('ru')
+				!=' ---> '
+				a.to_archive.architects(href='#', id=architect._id) в архив
