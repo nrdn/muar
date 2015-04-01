@@ -214,7 +214,11 @@ exports.objects = function(req, res) {
 						archive_id: story_id,
 						status: final_results
 					}
-					res.send(out);
+
+					object.meta.archive.id = story_id;
+					object.save(function(err, object) {
+						res.send(out);
+					});
 				});
 
 			});

@@ -43,6 +43,9 @@ var objectSchema = new Schema({
 		sub: [{ type: Schema.Types.ObjectId, ref: 'Age' }],
 	},
 	meta: {
+		archive: {
+			id: String
+		},
 		adress: { type: String, trim: true, locale: true },
 		interval: {
 			start: Date,
