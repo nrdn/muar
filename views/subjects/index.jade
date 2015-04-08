@@ -1,7 +1,7 @@
 extends ../layout
 
 block title
-	title ЕДИНИЦЫ ХРАНЕНИЯ
+	title #{__('ЕДИНИЦЫ ХРАНЕНИЯ')}
 
 
 block content_style
@@ -11,11 +11,11 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/subjects.js' + version)
 
 block content_title
-	.subject_title_block Единицы хранения
+	.subject_title_block #{__('Единицы хранения')}
 
 block content
 	each subject in subjects
 		a.subject_item(href='/subjects/' + subject._id)
 			.subject_image(style='background-image: url(' + subject.image.thumb + ')')
-			.subject_title= subject.i18n.title.get('ru')
-			.subject_description: != subject.i18n.description.get('ru')
+			.subject_title= subject.i18n.title.get(locale)
+			.subject_description: != subject.i18n.description.get(locale)

@@ -1,7 +1,7 @@
 extends ../layout
 
 block title
-	title= object.i18n.title.get('ru').toUpperCase() + ' | ОБЪЕКТЫ'
+	title= object.i18n.title.get(locale).toUpperCase() + ' | ' + __('ОБЪЕКТЫ')
 
 
 block content_style
@@ -30,8 +30,9 @@ block content_title
 			.slides_inner_block
 				each subject in object.subjects
 					.object_slide_item.subjects(path=subject._id, style='background-image:url(' + subject.image.thumb + ')')
-						.object_slide_title
-							.slide_title_inner= subject.i18n.title.get('ru').substr(0, 60) + '...'
+						if (subject.i18n.title.get(locale))
+							.object_slide_title
+								.slide_title_inner= subject.i18n.title.get(locale).substr(0, 60) + '...'
 
 block content
 	- var views = {plan: 'План', front: 'Фасад', perspective: 'Аксонометрия', general_view: 'Общий вид', master_plan: 'Генеральный план',  panorama: 'Панорама', main_front: 'Главный фасад', short_form: 'Малая форма', sculpture: 'Скульптура', interior: 'Интерьер', part: 'Деталь', other: 'Другое'}
@@ -41,39 +42,39 @@ block content
 			.side_description_column
 				.side_description_cross
 				.summary_description_block
-					.object_title= object.i18n.title.get('ru')
+					.object_title= object.i18n.title.get(locale)
 					.object_navigate_block
 						.object_navigate.description
 							//-.item_inner Описание
 						if (object.images.length > 0)
 							.object_navigate.images
-								.item_inner Изображения
+								.item_inner= __('Изображения')
 						if (object.subjects.length > 0)
 							.object_navigate.subjects
-								.item_inner Коллекция музея
+								.item_inner= __('Коллекция музея')
 						if (projects.length > 0)
 							.object_navigate.models
-								.item_inner Виртуальная архитектура
+								.item_inner= __('Виртуальная архитектура')
 					.column_item_wrap
 						.column_item.style
-							.column_title Стиль:
-							a.column_content(href='/styles/#' + object.ages.main._id)= object.ages.main.i18n.title.get('ru')
+							.column_title= __('Стиль:')
+							a.column_content(href='/styles/#' + object.ages.main._id)= object.ages.main.i18n.title.get(locale)
 						.column_item.interval
-							.column_title Дата:
+							.column_title= __('Дата:')
 							.column_content= object.meta.interval.start.getUTCFullYear() + ' - ' + object.meta.interval.end.getUTCFullYear()
 						.column_item.adress
-							.column_title Адрес:
-							.column_content= object.meta.i18n.adress.get('ru')
+							.column_title= __('Адрес:')
+							.column_content= object.meta.i18n.adress.get(locale)
 						if (object.architects.length > 0)
 							.column_item.architects
-								.column_title Архитекторы:
+								.column_title= __('Архитекторы:')
 								each architect in object.architects
-									a.architect_item(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
+									a.architect_item(href='/architects/' + architect._id)= architect.i18n.name.get(locale)
 						if (object.categorys.length > 0)
 							.column_item.categorys
-								.column_title Термины:
+								.column_title= __('Термины:')
 								each category in object.categorys
-									a.category_item(href='/categorys/' + category._id)= category.i18n.title.get('ru')
+									a.category_item(href='/categorys/' + category._id)= category.i18n.title.get(locale)
 
 
 				.images_descriptons_block
@@ -85,23 +86,23 @@ block content
 							.description_item.subjects
 								.description_item_block
 									if (subject.meta.author && subject.meta.author.length > 0)
-											.subject_author= subject.meta.i18n.author.get('ru')
+											.subject_author= subject.meta.i18n.author.get(locale)
 								.description_item_block
-									.subject_title= subject.i18n.title.get('ru')
+									.subject_title= subject.i18n.title.get(locale)
 								.description_item_block
 									if (subject.meta.date && subject.meta.date.length > 0)
-										.style_title_date= subject.meta.i18n.date.get('ru')
+										.style_title_date= subject.meta.i18n.date.get(locale)
 									if (subject.meta.technique.tag)
 										.subject_item_block
 											if (!subject.meta.technique.hidden)
 												.subject_description_item= technique[subject.meta.technique.tag]
-											.subject_description_comment= subject.meta.technique.i18n.comment.get('ru')
+											.subject_description_comment= subject.meta.technique.i18n.comment.get(locale)
 									if (subject.meta.size && subject.meta.size.length > 0)
-										.subject_description_item= subject.meta.i18n.size.get('ru')
+										.subject_description_item= subject.meta.i18n.size.get(locale)
 									if (subject.meta.inventory)
 										.subject_description_item= subject.meta.inventory
 									.description_item_block
-										.subject_description: != subject.i18n.description.get('ru')
+										.subject_description: != subject.i18n.description.get(locale)
 
 
 
@@ -124,7 +125,7 @@ block content
 			.missing
 				a.broken_background(href='http://unity3d.com/webplayer/', title='Для правильного воспроизвеления моделей в браузере, необходимо скачать Unity Player') Для правильного воспроизведения моделей в браузере, необходимо установить Unity Player.
 			.broken
-				.broken_background Извините, при загрузке произошла ошибка.
+				.broken_background= __('Извините, при загрузке произошла ошибка.')
 			.unsupported
 				iframe(width="1100", height="600", src="https://www.youtube.com/embed/2CmJhzTq0vk", frameborder="0", allowfullscreen)
 		.goto_down
@@ -132,15 +133,15 @@ block content
 				a 
 	.main_description_block
 		.main_description_inner
-			.main_description_title Описание
-			.main_description_column: != object.i18n.description.get('ru')
+			.main_description_title= __('Описание')
+			.main_description_column: != object.i18n.description.get(locale)
 		.main_attached_objects
 			.main_attached_objects_inner
-				.main_description_title Связанные объекты
+				.main_description_title= __('Связанные объекты')
 				.main_attached_objects_block
 					each attach_object in attach_objects
 						- var image = attach_object.images.length > 0 ? attach_object.images[0].thumb : ''
 						a.architect_object(href='/objects/' + attach_object._id, style='background-image:url(' + image + ')')
-							.architect_object_name= attach_object.i18n.title.get('ru')
+							.architect_object_name= attach_object.i18n.title.get(locale)
 
 block footer

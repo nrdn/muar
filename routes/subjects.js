@@ -2,7 +2,7 @@ var Subject = require('../models/main.js').Subject;
 
 
 exports.index = function(req, res) {
-	Subject.find().exec(function(err, subjects) {
+	Subject.setLocale(req.locale, 'title description').exec(function(err, subjects) {
 		res.render('subjects', {subjects: subjects});
 	});
 }

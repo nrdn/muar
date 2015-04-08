@@ -9,19 +9,22 @@ html
 		.header_block
 			.header_block_inner
 				a.header_logo(href="/")
-				.logo_description Государственный музей архитектуры имени А. В. Щусева
+				.logo_description= __('Государственный музей архитектуры имени А. В. Щусева')
 				.menu_navigate_block
 					- if (session.user_id)
 						a(href='/auth') ЗВЕЗДОЧЕТ
 					//-a(href='/') Главная
-					a.styles_btn.m_item.menu_styles(href='/#styles') Периоды
-					a.m_item.menu_special(href='/#projects') Спецпроекты
-					a.m_item.menu_arch(href='/architects') Архитекторы
-					a.m_item.menu_subjects(href='/subjects') Коллекция музея
-					a.m_item.menu_term(href='/categorys') Термины
+					a.styles_btn.m_item.menu_styles(href='/#styles')= __('Периоды')
+					a.m_item.menu_special(href='/#projects')= __('Спецпроекты')
+					a.m_item.menu_arch(href='/architects')= __('Архитекторы')
+					a.m_item.menu_subjects(href='/subjects')= __('Коллекция музея')
+					a.m_item.menu_term(href='/categorys')= __('Термины')
 				.menu_block
 					.menu_item.search 
-					.menu_item.lang 
+					if (locale == 'ru')
+						a.menu_item.lang(href='/lang/en') 
+					else
+						a.menu_item.lang(href='/lang/ru') 
 		.content_title_block
 			- if (admin)
 				a(href='/auth') ЗВЕЗДОЧЕТ
@@ -36,17 +39,17 @@ html
 			.search_inner
 				.search_block
 					.search_cross
-					.search_title Найти:
+					.search_title= __('Найти:')
 					input.search_field(type='text', placeholder='...')
 					.search_result
 						.objects_context
-							.context_title Объекты:
+							.context_title= __('Объекты:')
 							.context_results_block
 						.architects_context
-							.context_title Архитекторы:
+							.context_title= __('Архитекторы:')
 							.context_results_block
 						.subjects_context
-							.context_title Единицы хранения:
+							.context_title= __('Единицы хранения:')
 							.context_results_block
 		.content_block
 			block content
@@ -55,6 +58,6 @@ html
 				.footer_content_block
 					block footer
 				.footer_sponsors_block
-					a.sponsor_info(href='http://culture.ru' + ref, target='_blank',) Культура.рф
-					a.sponsor_info(href='http://muar.ru', target='_blank') Музей архитектуры имени А.В. Щусева
+					a.sponsor_info(href='http://culture.ru' + ref, target='_blank',)= __('Культура.рф')
+					a.sponsor_info(href='http://muar.ru', target='_blank')= __('Музей архитектуры имени А.В. Щусева')
 					span.sponsor_date &copy; 2014
