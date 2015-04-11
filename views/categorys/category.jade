@@ -1,7 +1,7 @@
 extends ../layout
 
 block title
-	title= category.i18n.title.get('ru') + ' | АРХИТЕКТУРНЫЙ ТЕРМИН'
+	title= category.i18n.title.get(locale) + ' | ' + __('АРХИТЕКТУРНЫЙ ТЕРМИН')
 
 
 block content_style
@@ -11,12 +11,12 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/category.js' + version)
 
 block content_title
-	.category_title= category.i18n.title.get('ru')
+	.category_title= category.i18n.title.get(locale)
 block content
-	.category_block= category.i18n.description.get('ru')
-	//.category_attached_title
+	.category_block= category.i18n.description.get(locale)
+	//- .category_attached_title
 		| Привязанные объекты
 	.category_attached_objects
 		each object in objects
-			a.category_object(href='/objects/'+object._id, style='background-image:url('+object.images[0].thumb+')')
-				.category_object_name= object.i18n.title.get('ru')
+			a.category_object(href='/objects/' + object._id, style='background-image:url(' + object.images[0].thumb + ')' )
+				.category_object_name= object.i18n.title.get(locale)

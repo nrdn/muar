@@ -1,7 +1,7 @@
 extends ../layout
 
 block title
-	title= architect.i18n.name.get('ru') + ' | АРХИТЕКТОРЫ'
+	title= architect.i18n.name.get(locale) + ' | ' + __('АРХИТЕКТОРЫ')
 
 
 block content_style
@@ -11,13 +11,13 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/architect.js' + version)
 
 block content_title
-	.architect_title= architect.i18n.name.get('ru')
+	.architect_title= architect.i18n.name.get(locale)
 block content
-	.architect_block= architect.i18n.description.get('ru')
+	.architect_block= architect.i18n.description.get(locale)
 	.architect_attached_title
 		| Проекты архитектора
 	.architect_attached_objects
 		each object in objects
 			- var image = object.images.length > 0 ? object.images[0].thumb : ''
 			a.architect_object(href='/objects/' + object._id, style='background-image:url(' + image + ')')
-				.architect_object_name= object.i18n.title.get('ru')
+				.architect_object_name= object.i18n.title.get(locale)

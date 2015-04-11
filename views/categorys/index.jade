@@ -1,7 +1,7 @@
 extends ../layout
 
 block title
-	title СЛОВАРЬ АРХИТЕКТУРНЫХ ТЕРМИНОВ
+	title= __('СЛОВАРЬ АРХИТЕКТУРНЫХ ТЕРМИНОВ')
 
 
 block content_style
@@ -11,9 +11,9 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/categorys.js' + version)
 
 block content_title
-	.object_title_block Словарь архитектурных терминов
+	.object_title_block= __('Словарь архитектурных терминов')
 block content
 	each category in categorys
 		.category_block
-			a.category_block_title(href='/categorys/' + category._id)= category.i18n.title.get('ru')
-			.category_block_text= category.i18n.description.get('ru')
+			a.category_block_title(href='/categorys/' + category._id)= category.i18n.title.get(locale)
+			.category_block_text= category.i18n.description.get(locale)

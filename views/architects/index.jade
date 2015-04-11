@@ -1,7 +1,7 @@
 extends ../layout
 
 block title
-	title АРХИТЕКТОРЫ
+	title= __('АРХИТЕКТОРЫ')
 
 
 block content_style
@@ -21,4 +21,4 @@ block content
 				.letter_architects
 					each architect in item.objects
 						.architect_block
-							a.architect_name(href='/architects/' + architect._id)= architect.i18n.name.get('ru')
+							a.architect_name(href='/architects/' + architect._id)= architect.i18n.name.get(locale)
