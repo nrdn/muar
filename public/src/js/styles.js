@@ -1,4 +1,20 @@
+function getCookie(name) {
+  var matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+function getProperty (field, locale) {
+	var value = field.filter(function(v) {
+		return v.lg === locale;
+	})[0].value;
+
+	return value;
+}
+
 $(document).ready(function() {
+	var locale = getCookie('locale') || 'ru';
 	$('.age_block').data({skip: 0});
 
 	$.fn.scrollStopped = function(callback) {
@@ -109,7 +125,7 @@ $(document).ready(function() {
 					var object_block = $('<a/>', {'href': '/objects/' + object._id, 'class': 'object_block', 'image_path':  image_thumb });
 					var object_description = $('<div/>', {'class': 'object_description'});
 					var object_description_inner = $('<div/>', {'class': 'object_description_inner'});
-					var object_title = $('<div/>', {'class': 'object_title', 'text': object.title[0].value});
+					var object_title = $('<div/>', {'class': 'object_title', 'text': getProperty(object.title, locale)});
 					var object_date= $('<div/>', {'class': 'object_date', 'text': start + '—' + end});
 
 					var obj = object_block.append(object_description.append(object_description_inner.append(object_title, object_date)));

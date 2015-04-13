@@ -14,7 +14,8 @@ exports.index = function(req, res) {
 
 exports.get_objects = function(req, res) {
 	var post = req.body;
-	Object.find().where('ages.main').equals(post.style_id).where('hidden').exists(false).sort('meta.interval.start meta.interval.end').exec(function(err, objects) {
+
+	Object.setLocale(req.locale, 'title description').where('ages.main').equals(post.style_id).where('hidden').exists(false).sort('meta.interval.start meta.interval.end').exec(function(err, objects) {
 		res.send(objects);
 	});
 }
