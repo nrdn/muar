@@ -31,7 +31,7 @@ block content
 
 	.screen_block.description_block.screen_block_height
 		.description_inner.screen_width
-			.description_title= ('Виртуальный музей')
+			.description_title= __('Виртуальный музей')
 			.description_block
 				.description_text
 					p= __('Виртуальный музей архитектуры – это проект Государственного музея архитектуры имени А.В. Щусева, реализованный по инициативе и поддержке Министерства культуры Российской Федерации.')
@@ -61,11 +61,11 @@ block content
 							a.style_block(href='/styles/#' + age._id)
 								.style_image(style="background-image:url("+age.image.thumb+")")
 								.style_title
-									.style_title_inner= age.i18n.title.get('ru')
+									.style_title_inner= age.i18n.title.get(locale)
 									.style_title_date= age.meta.interval.start.getUTCFullYear() + '-е—' + age.meta.interval.end.getUTCFullYear() + '-е'
 								.style_description
 									.style_description_inner
-										- var text_d = new String(age.i18n.description.get('ru'))
+										- var text_d = new String(age.i18n.description.get(locale))
 										span= text_d.replace(/<\/?[^>]+>/g,'').substr(0, 400) + '...'
 									.style_readmore ...
 
@@ -79,9 +79,9 @@ block content
 				each project, i in projects
 					a.special_item_block(href='/projects/' + (projects_hard[project._id] || project._id) )
 						.special_image(style='background-image:url(' + project.photo + ')')
-						.special_title= project.i18n.title.get('ru')
+						.special_title= project.i18n.title.get(locale)
 						.special_description
-							.special_description_inner: != project.i18n.description.get('ru').substr(0, 600) + '...'
+							.special_description_inner: != project.i18n.description.get(locale) && project.i18n.description.get(locale).substr(0, 600) + '...'
 
 						.special_readmore ...
 
