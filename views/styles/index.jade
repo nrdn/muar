@@ -1,7 +1,7 @@
 extends ../layout
 
 block title
-	title= 'ПЕРИОДЫ | ВИРТУАЛЬНЫЙ МУЗЕЙ АРХИТЕКТУРЫ'
+	title= __('ПЕРИОДЫ') + ' | ' + __('ВИРТУАЛЬНЫЙ МУЗЕЙ АРХИТЕКТУРЫ')
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/styles.css' + version)
@@ -16,12 +16,12 @@ block content_title
 				.navigate_style_block(class=age._id.toString())
 					.navigate_style_inner
 						.navigate_style_title(class=age.sub.length == 0 ? 'not_sub' : '')
-							.navigate_style_title_inner= age.i18n.title.get('ru')
+							.navigate_style_title_inner= age.i18n.title.get(locale)
 						.navigate_style_progress
 					.navigate_style_ages
 						.navigate_style_ages_inner.screen_width
 							each age_sub in age.sub
-								.navigate_age(class='age'+age._id.toString())= age_sub.i18n.title.get('ru')
+								.navigate_age(class='age' + age._id.toString())= age_sub.i18n.title.get(locale)
 
 block content
 	.styles_block.screen_width_absolute
@@ -32,17 +32,17 @@ block content
 						.style_inner_height
 							.style_header
 								.style_line
-								.style_block_background(style='background-image:url('+age.image.main+')')
-								.style_title= age.i18n.title.get('ru')
+								.style_block_background(style='background-image:url(' + age.image.main + ')')
+								.style_title= age.i18n.title.get(locale)
 									.style_date(class='date_age' + age._id.toString())= age.meta.interval.start.getUTCFullYear() + '-е—' + age.meta.interval.end.getUTCFullYear() + '-е'
-							.style_description: != age.i18n.description.get('ru')
+							.style_description: != age.i18n.description.get(locale)
 							each age_sub in age.sub
 								.age_block(class='sub_age'+age._id.toString(), id=age_sub._id.toString())
 									.age_header
 										.age_line
-										.age_title(class='sub_age' + age_sub._id.toString())= age_sub.i18n.title.get('ru')
+										.age_title= age_sub.i18n.title_sub.get(locale) ? age_sub.i18n.title_sub.get(locale) : age_sub.i18n.title.get(locale)
 										.age_date= age_sub.meta.interval.start.getUTCFullYear() + '-е—' + age_sub.meta.interval.end.getUTCFullYear() + '-е'
-									.age_description: != age_sub.i18n.description.get('ru')
+									.age_description: != age_sub.i18n.description.get(locale)
 									.age_objects
 										//- each object in age_sub.objects
 											a.object_block(href='/objects/' + object._id, style='background-image:url(' + object.images[0].thumb + ')')

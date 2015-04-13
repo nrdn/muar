@@ -17,6 +17,9 @@ block content
 			.form_title Название:
 			input.ru(type="text", name="ru[title]", value=age.i18n.title.get('ru'))
 			input.en(type="text", name="en[title]", disabled, value=age.i18n.title.get('en'))
+			.form_title Название (Дополнительное):
+			input.ru(type="text", name="ru[title_sub]",  value=age.i18n.title_sub.get('ru'))
+			input.en(type="text", name="en[title_sub]", disabled, value=age.i18n.title_sub.get('en'))
 			.form_title Описание:
 			textarea.ru(name="ru[description]", rows="8",)= age.i18n.description.get('ru')
 			textarea.en(name="en[description]", rows="8", disabled)= age.i18n.description.get('en')
