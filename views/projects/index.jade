@@ -1,7 +1,7 @@
 extends ../layout
 
 block title
-	title ВИРТУАЛЬНАЯ АРХИТЕКТУРА
+	title= __('ВИРТУАЛЬНАЯ АРХИТЕКТУРА')
 
 
 block content_style
@@ -11,7 +11,7 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/architects.js' + version)
 
 block content_title
-	.projects_title Спецпроекты
+	.projects_title= __('Спецпроекты')
 
 block content
 	.projects_block
@@ -20,4 +20,4 @@ block content
 			a.project_block(href='/projects/' + (projects_hard[project._id] || project._id) )
 				.project_image(style="background-image:url("+project.photo+")")
 				.project_description_block
-					.project_title= project.i18n.title.get('ru')
+					.project_title= project.i18n.title.get(locale)
