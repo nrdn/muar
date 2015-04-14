@@ -48,7 +48,7 @@ $(document).ready(function() {
 				});
 
 				data.architects.forEach(function(architect) {
-					var context_result = $('<a/>', {'class': 'context_result', 'href': '/architects/' + architect._id, 'text': getProperty(architect.title, locale) });
+					var context_result = $('<a/>', {'class': 'context_result', 'href': '/architects/' + architect._id, 'text': getProperty(architect.name, locale) });
 					$('.architects_context').show().children('.context_results_block').append(context_result);
 				});
 
