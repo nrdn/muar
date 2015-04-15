@@ -131,7 +131,6 @@ body > .content_block
 .style_readmore
 	font-family 'ma_unitwmedium'
 	text-align center
-	border-top 1px solid #ccc
 	margin-top 10px
 	font-size 43px
 	letter-spacing 4px
@@ -260,9 +259,11 @@ body > .content_block
 	margin 0 auto
 
 .styles_nav_block.screen_width
+.special_nav_block.screen_width
 	position relative
 
 a.styles_line_nav
+a.special_line_nav
 	display block
 	position absolute
 	font 46px/100px 'menu_icons'
@@ -337,18 +338,20 @@ a.styles_line_nav
 
 //-- 4ой Блок --//
 .screen_block.special_block
- height auto
+	height auto
 
 .special_block_background
-	height 100%
+	height 580px
 	margin 0 auto
+	overflow hidden
 
 .object_images_block
 	margin 0 25px
+	white-space nowrap
+	overflow-x scroll
 
 .special_item_block
-	display block
-	float left
+	display inline-block
 	margin-top 10px
 	width 610px
 	background-repeat no-repeat
@@ -356,12 +359,9 @@ a.styles_line_nav
 	margin-right 10px
 	margin-bottom 50px
 	text-decoration none
+	vertical-align top
 	.special_image
 		filter grayscale(0.7)
-	&:nth-child(2n)
-		margin-right 0
-	&:nth-child(3)
-		display none
 	&:hover
 		.special_title
 		.special_readmore
@@ -393,7 +393,6 @@ a.styles_line_nav
 .special_readmore
 	font-family 'ma_unitwmedium'
 	text-align center
-	border-top 1px solid #ccc
 	margin-top 10px
 	font-size 43px
 	letter-spacing 4px

@@ -16,17 +16,31 @@ $(document).ready(function() {
     	}, 50 );
  }
 
-	$('.prev').click(function(){
+	$('.styles_line_nav.prev').click(function(){
 		$('.styles_line').animate({
      	scrollLeft: '-=240',
     	}, 500 );
     });
 
-	$('.next').click(function(){
+	$('.styles_line_nav.next').click(function(){
 		$('.styles_line').animate({
      	scrollLeft: '+=240',
     	}, 500 );
 	});
+
+	$('.special_line_nav.prev').click(function(){
+		$('.object_images_block').animate({
+     	scrollLeft: '-=630',
+    	}, 500 );
+    });
+
+	$('.special_line_nav.next').click(function(){
+		$('.object_images_block').animate({
+     	scrollLeft: '+=630',
+    	}, 500 );
+	});
+
+
 
 	$('.goto_down a').click(function(){
 		scr = $('.screen_block.intro_block').height() - 28;

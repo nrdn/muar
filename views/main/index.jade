@@ -67,12 +67,14 @@ block content
 									.style_description_inner
 										- var text_d = new String(age.i18n.description.get(locale))
 										span= text_d.replace(/<\/?[^>]+>/g,'').substr(0, 400) + '...'
-									.style_readmore ...
+									.style_readmore
 
 	#projects.screen_block.special_block
 		.description_inner.screen_width
 			.description_title= __('Спецпроекты')
-			.styles_nav_block.screen_width
+			.special_nav_block.screen_width
+				a.special_line_nav.prev 
+				a.special_line_nav.next 
 		.special_block_background.screen_width
 			.object_images_block
 				- var projects_hard = {'5487420c7fb6fa000081e885': 'chudov-i-voznesenskiy-monastyri-kremlya', '548496fb1fcde50000be2f14': 'proekt-bolshogo-kremlyovskogo-dvortsa'}
@@ -83,6 +85,6 @@ block content
 						.special_description
 							.special_description_inner: != project.i18n.description.get(locale) && project.i18n.description.get(locale).substr(0, 600) + '...'
 
-						.special_readmore ...
+						.special_readmore
 
 
