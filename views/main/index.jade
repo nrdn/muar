@@ -66,8 +66,7 @@ block content
 								.style_description
 									.style_description_inner
 										- var text_d = new String(age.i18n.description.get(locale))
-										span= text_d.replace(/<\/?[^>]+>/g,'').substr(0, 400) + '...'
-									.style_readmore
+										span= text_d.replace(/<\/?[^>]+>/g,'').substr(0, 480) + '...'
 
 	#projects.screen_block.special_block
 		.description_inner.screen_width
