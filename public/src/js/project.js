@@ -1,13 +1,8 @@
 $(document).ready(function() {
 	var ua = detect.parse(navigator.userAgent);
 	var path = $('.project_model').attr('path');
-	console.log(ua);
-
 	if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
 	if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
-
-	console.log(ua.os);
-	console.log(ua.browser.family);
 	if (ua.browser.family == 'Chrome' && ua.isMobile == false && (OSName == 'MacOS' || OSName == 'Windows')) {
 		console.log(OSName);
 		$('.missing, .broken').remove();
