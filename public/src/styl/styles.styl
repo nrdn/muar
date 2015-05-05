@@ -98,12 +98,17 @@ html, body
 .navigate_age
 	display inline-block
 	cursor pointer
-	margin-right 10px
 	font-size 18px
+	&:after
+		content '∙'
+		display inline-block
+		margin-left 5px
 	&.current
 		color red
 	&:hover
 		color red
+	&:last-child:after
+		display none
 
 body > .content_block
 	margin 0 auto
@@ -170,6 +175,7 @@ body > .content_block
 	overflow hidden
 	min-height 800px  // !!!!!!!!!!!!!!
 	display block
+	margin-bottom 100px
 
 .age_block
 	overflow hidden
