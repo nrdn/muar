@@ -170,11 +170,25 @@ body
 .description_inner
 	background transparent
 	margin 0 auto
+	height 100%
+	.description_title
+		height 50%
+		background #f00
+		position relative
+		.description_title_inner
+			position absolute
+			top 50%
+			border-top 1px solid #ccc
+			width 100%
+			.description_title_name
+				position absolute
+				bottom 0
+				text-align center
+				width 100%
 
 .description_block .description_inner
 	overflow hidden
 	//border-bottom 1px solid #ccc
-	padding-bottom 30px
 
 .description_text
 	font-size 20px
@@ -201,19 +215,22 @@ body
 
 //-- 3ой Блок --//
 .periods_block
-	//background url('/images/design/trace/actual-01.jpg') 50% -1800px no-repeat
 	min-height 790px!important
+	height 100%
+	background #fc0
 
 .styles_line_outer
 	background #fff
 	font-size 18px
 	line-height 22px
 	overflow hidden
+	/*!
 	position absolute
 	top 130px
 	bottom 80px
 	left 0px
 	right 0px
+	*/
 	height 560px
 
 .styles_line
