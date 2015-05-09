@@ -95,7 +95,7 @@ $(document).ready(function() {
 
 		$('.navigate_style_title').removeClass('current').eq(style_index).addClass('current');
 		$('.navigate_style_block .navigate_style_ages').hide().eq(style_index).show();
-		$('.navigate_styles_block .navigate_style_block:nth-child(' + (style_index+1) + ') .navigate_style_ages').show().css({'background':'green'});
+		$('.navigate_styles_block .navigate_style_block:nth-child(' + (style_index+1) + ') .navigate_style_ages').show();
 
 		console.log('eq' + style_index);
 		$('.style_block_inner')
