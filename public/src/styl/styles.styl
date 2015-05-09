@@ -32,30 +32,50 @@ html, body
 .content_title_block
 	width 100%
 	position absolute
-	top 0px
 	z-index 100000
 	min-width 1000px
-	height 50%
-	min-height 400px
-	max-height 800px
-	&.styles_fixed
-		height auto
-		top 40px
+	height auto
+	top 40px
+	min-height 70px
+	max-height 70px
 
-.styles_inner_block, .navigate_styles_block {
+.styles_inner_block
+.navigate_styles_block
 	width 100%
 	max-width 1280px
-}
 
-.navigate_block
+
+.top_navigate.navigate_block
+	width 100%
+	margin 0px auto
+	z-index 999999
+	height 59px
+	border-bottom 1px solid #ccc
+	padding-top 10px
+	height 59px
+	display none
+	&.styles_fixed
+		display block
+
+
+.style_navigate.navigate_block
 	width 100%
 	margin 0px auto
 	z-index 999999
 	height 100%
 	&.styles_fixed
-		border-bottom 1px solid #ccc
-		padding-top 10px
-		height 55px
+		display none
+
+.navigate_block_inner
+	position absolute
+	top 50%
+	z-index 1000
+	width 100%
+	margin-top 82px
+	border-top 1px solid #fff
+	padding-top 13px
+	&.styles_fixed
+		position static
 
 .navigate_styles_block
 	margin 0 auto
@@ -240,7 +260,6 @@ body > .style_header
 	margin-top -90px
 
 .style_name
-	border-bottom 1px solid #fff
 	color #fff
 	font 65px/95px 'ma_unitwmedium'
 	text-align center

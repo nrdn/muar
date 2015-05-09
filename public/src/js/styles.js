@@ -64,10 +64,10 @@ $(document).ready(function() {
 	function ageScroll (event) {
 
 		if ($(this).scrollTop() > 150) {
-			$('.header_block, .navigate_block, .content_title_block').addClass('styles_fixed');
+			$('.header_block, .top_navigate.navigate_block, .style_navigate.navigate_block, .navigate_block_inner, .content_title_block').addClass('styles_fixed');
 			}
 		else {
-			$('.header_block, .navigate_block, .content_title_block').removeClass('styles_fixed');
+			$('.header_block, .top_navigate.navigate_block, .style_navigate.navigate_block, .navigate_block_inner, .content_title_block').removeClass('styles_fixed');
 		}
 		var scroll_percentage = 100 * $(this).scrollTop() / ($(this).find('.style_inner_height').height() - $(this).height());
 
