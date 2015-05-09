@@ -42,14 +42,14 @@ $(document).ready(function() {
 
 
 	$('.styles_btn').click(function(){
-		scr = $('.intro_block').height() + $('.description_block.screen_block_height').height() - 28;
+		scr = $('.intro_block').height() + $('.description_block.screen_block_height').height();
 		$('body').animate({
      	scrollTop: scr,
     	}, 300 );
 	});
 
 	$('.menu_special').click(function(){
-		scr = $('.intro_block').height() + $('.description_block.screen_block_height').height() + $('#styles').height() - 28;
+		scr = $('.intro_block').height() + $('.description_block.screen_block_height').height() + $('#styles').height();
 		$('body').animate({
      	scrollTop: scr,
     	}, 300 );
