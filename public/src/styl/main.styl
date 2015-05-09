@@ -165,7 +165,6 @@ body
 	text-decoration: none
 	font 65px/95px 'ma_unitwmedium'
 	text-align center
-	border-bottom: 1px solid #d7d7d7
 
 .description_inner
 	background transparent
@@ -173,7 +172,6 @@ body
 	height 100%
 	.description_title
 		height 50%
-		background #f00
 		position relative
 		.description_title_inner
 			position absolute
@@ -217,7 +215,6 @@ body
 .periods_block
 	min-height 790px!important
 	height 100%
-	background #fc0
 
 .styles_line_outer
 	background #fff
@@ -319,11 +316,17 @@ a.special_line_nav
 //-- 4ой Блок --//
 .screen_block.special_block
 	height auto
+	min-height: 790px !important;
+	height 100%
 
 .special_block_background
 	height 580px
 	margin 0 auto
 	overflow hidden
+	position absolute
+	top 50%
+	margin-left: -640px
+	left 50%
 
 .object_images_block
 	white-space nowrap
@@ -331,7 +334,6 @@ a.special_line_nav
 
 .special_item_block
 	display inline-block
-	margin-top 40px
 	width 610px
 	background-repeat no-repeat
 	background-position center
