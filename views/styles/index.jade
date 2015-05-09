@@ -19,30 +19,33 @@ block content_title
 							.navigate_style_title_inner= age.i18n.title.get(locale)
 						.navigate_style_progress
 					.navigate_style_ages
-						.navigate_style_ages_inner.screen_width
+						.navigate_style_ages_inner.screen_width_s
 							each age_sub in age.sub
 								.navigate_age(class='age' + age._id.toString())= age_sub.i18n.title.get(locale)
 
 block content
-	.styles_block.screen_width_absolute
+	.styles_block.screen_width_absolute_s
 		.styles_inner
 			each age in ages
-				.style_block(class=age._id.toString()).screen_width
+				.style_block(class=age._id.toString()).screen_width_s
 					.style_block_inner
-						.style_inner_height
-							.style_header
-								.style_line
-								.style_block_background(style='background-image:url(' + age.image.main + ')')
-								.style_title= age.i18n.title.get(locale)
+						.style_header
+							.style_line
+							.style_block_background(style='background-image:url(' + age.image.main + ')')
+								.style_title
+									.style_name= age.i18n.title.get(locale)
 									.style_date(class='date_age' + age._id.toString())= age.meta.interval.start.getUTCFullYear() + '-е—' + age.meta.interval.end.getUTCFullYear() + '-е'
-							.style_description: != age.i18n.description.get(locale)
+						.style_inner_height
+							.style_description
+								.style_description_inner: != age.i18n.description.get(locale)
 							each age_sub in age.sub
 								.age_block(class='sub_age'+age._id.toString(), id=age_sub._id.toString())
 									.age_header
 										.age_line
 										.age_title= age_sub.i18n.title_sub.get(locale) ? age_sub.i18n.title_sub.get(locale) : age_sub.i18n.title.get(locale)
 										.age_date= age_sub.meta.interval.start.getUTCFullYear() + '-е—' + age_sub.meta.interval.end.getUTCFullYear() + '-е'
-									.age_description: != age_sub.i18n.description.get(locale)
+									.age_description
+										.age_description_inner: != age_sub.i18n.description.get(locale)
 									.age_objects
 										//- each object in age_sub.objects
 											a.object_block(href='/objects/' + object._id, style='background-image:url(' + object.images[0].thumb + ')')

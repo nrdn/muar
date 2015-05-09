@@ -1,13 +1,10 @@
+
+html
 body
 	height 100%
 
-body > .content_block
+.content_block
 	height 100%
-
-.content_block > .screen_block
-	height 100%
-	height 50%
-	min-height 400px
 
 .header_block
 	position absolute
@@ -22,7 +19,6 @@ body > .content_block
 	color #fff
 
 .screen_block
-	width 100%
 	position relative
 	overflow hidden
 	background #fff
@@ -57,14 +53,13 @@ body > .content_block
 .main_title
 	border-bottom 1px solid #fff
 	color #fff
-	font 46px/66px 'ma_unitwlight'
+	font 65px/95px 'ma_unitwmedium'
 	text-align center
 
 .additional_title
 	text-align center
 	color #fff
-	line-height 41px
-	font-size 21px
+	font 40px/60px 'ma_unitwlight'
 
 .intro_block_background
 	background url('/images/design/14.jpg') 50% 50% no-repeat scroll
@@ -87,6 +82,9 @@ body > .content_block
 
 .intro_block
 	background transparent
+	height 50%
+	min-height 400px
+	max-height 800px
 
 .styles_block
 	width 100%
@@ -155,6 +153,13 @@ body > .content_block
 .screen_block_height
 	background-image url('/images/design/trace/actual-01.jpg') 50% -897px no-repeat
 
+.description_title
+	display: block
+	text-decoration: none
+	font 65px/95px 'ma_unitwmedium'
+	text-align center
+	border-bottom: 1px solid #d7d7d7
+
 .description_inner
 	background transparent
 	margin 0 auto
@@ -164,58 +169,41 @@ body > .content_block
 	//border-bottom 1px solid #ccc
 	padding-bottom 30px
 
-.description_title
-	display block
-	text-decoration none
-	font 34px/32px 'ma_unitwlight'
-	margin 20px 0px 0
-	padding 10px 25px
-	border-bottom 1px solid #d7d7d7
-
-.description_block
-	padding 14px 0px 20px
-
 .description_text
-	width 60%
-	font-size 17px
-	line-height 19px
-	float left
+	font-size 20px
+	line-height 25px
+	margin 100px auto 50px
+	width 850px
 	p
-		margin 0 25px 10px
 		padding 0
 
 .description_text2
-	width 40%
-	float left
 	position relative
-	min-height 390px
-
-.logo_block
-	position absolute
-	bottom -10px
-	right 25px
+	text-align center
+	margin 100px 0
+	border-top 1px solid #ccc
+	border-bottom 1px solid #ccc
 
 .description_text2 img
 	width 160px
 	margin-top 20px
-	margin-bottom 10px
-	display block
-
+	margin-bottom 40px
+	display inline-block
+	margin-left 20px
+	margin-right 20px
 
 //-- 3ой Блок --//
 .periods_block
 	//background url('/images/design/trace/actual-01.jpg') 50% -1800px no-repeat
-	min-height 697px!important
+	min-height 790px!important
 
 .styles_line_outer
 	background #fff
-	margin 0 0 20px
-	padding 10px 0px 20px
 	font-size 18px
 	line-height 22px
 	overflow hidden
 	position absolute
-	top 73px
+	top 130px
 	bottom 80px
 	left 0px
 	right 0px
@@ -224,7 +212,7 @@ body > .content_block
 .styles_line
 	height 600px
 	overflow-x scroll
-	width 1230px
+	width 1280px
 	margin 0 auto
 
 .styles_nav_block.screen_width
@@ -258,7 +246,7 @@ a.special_line_nav
 	width 300px
 	overflow hidden
 	display inline-block
-	margin-right 10px
+	margin-right 40px
 	background-size 100%
 	position relative
 	vertical-align top
@@ -300,8 +288,8 @@ a.special_line_nav
 
 .style_description_inner
 	white-space normal
-	font-size 16px
-	line-height 17px
+	font-size 20px
+	line-height 23px
 	padding 0 10px
 
 //-- 4ой Блок --//
@@ -314,13 +302,12 @@ a.special_line_nav
 	overflow hidden
 
 .object_images_block
-	margin 0 25px
 	white-space nowrap
 	overflow-x scroll
 
 .special_item_block
 	display inline-block
-	margin-top 10px
+	margin-top 40px
 	width 610px
 	background-repeat no-repeat
 	background-position center

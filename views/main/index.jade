@@ -20,7 +20,7 @@ block content_title
 block content
 	.screen_block.intro_block
 		.intro_block_title
-			.intro_block_title_inner.screen_width
+			.intro_block_title_inner.screen_width_s
 				.main_title= __('Виртуальный музей')
 				.additional_title= __('Государственного музея архитектуры им. А.В.Щусева')
 				a.intro(href='/styles#546a29e8c77affd5f518e52e')= __('Войти')
@@ -28,8 +28,6 @@ block content
 
 	.screen_block.description_block.screen_block_height
 		.description_inner.screen_width
-			.description_title= __('Виртуальный музей')
-			.description_block
 				.description_text
 					p= __('Виртуальный музей архитектуры – это проект Государственного музея архитектуры имени А.В. Щусева, реализованный по инициативе и поддержке Министерства культуры Российской Федерации.')
 					p= __('Архитектура как особый вид искусства нуждается в специальных и современных способах представления. Формат интернет-портала и 3D-экскурсий становятся новой, высокотехнологичной и адекватной формой репрезентации архитектуры. История создания отдельных зданий в эскизах, чертежах и макетах, а также проектные материалы нереализованных построек, фотографические снимки и обмерные чертежи утраченных сооружений позволяют зрителю наглядно представить развитие отечественной архитектуры.')
@@ -65,7 +63,7 @@ block content
 								.style_description
 									.style_description_inner
 										- var text_d = new String(age.i18n.description.get(locale))
-										span= text_d.replace(/<\/?[^>]+>/g,'').substr(0, 480) + '...'
+										span= text_d.replace(/<\/?[^>]+>/g,'').substr(0, 280) + '...'
 
 	#projects.screen_block.special_block
 		.description_inner.screen_width

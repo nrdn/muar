@@ -62,6 +62,13 @@ $(document).ready(function() {
 
 
 	function ageScroll (event) {
+
+		if ($(this).scrollTop() > 150) {
+			$('.header_block, .navigate_block').addClass('styles_fixed');
+			}
+		else {
+			$('.header_block, .navigate_block').removeClass('styles_fixed');
+		}
 		var scroll_percentage = 100 * $(this).scrollTop() / ($(this).find('.style_inner_height').height() - $(this).height());
 
 		$(this).data({scroll_position: $(this).scrollTop()});
