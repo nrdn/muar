@@ -1,5 +1,6 @@
 html, body
 	height 100%
+	min-width 1000px
 
 body
 	&.load
@@ -480,5 +481,17 @@ body > .style_header
 		.top_navigate.navigate_block,
 		.navigate_style_ages_inner {
 			width 1000px;
+		}
+
+	}
+	@media screen and (max-width:1000px) {
+		.content_title_block,
+		.header_block {
+			left:0;
+			right:0;
+		}
+		.header_block_inner,
+		.header_block_menu {
+			width:960px;
 		}
 	}
