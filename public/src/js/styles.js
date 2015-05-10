@@ -15,7 +15,7 @@ function getProperty (field, locale) {
 
 $(document).ready(function() {
 	$(window).resize(function(){
-		$('body').empty();
+		$('body').empty().addClass('load');
 		location.reload();
 	});
 	var locale = getCookie('locale') || 'ru';
@@ -35,7 +35,6 @@ $(document).ready(function() {
 
 
 	function ageLoader (event, limit) {
-		console.log('7878');
 		$(this).find('.age_block').each(function() {
 			var $this = $(this);
 			var outer_offset_top = $('.styles_block').offset().top;
@@ -68,7 +67,7 @@ $(document).ready(function() {
 
 	function ageScroll (event) {
 
-		if ($(this).scrollTop() > 150) {
+		if ($(this).scrollTop() > 50) {
 			$('.header_block, .top_navigate.navigate_block, .style_navigate.navigate_block, .navigate_block_inner, .content_title_block, .navigate_style_ages').addClass('styles_fixed');
 			}
 		else {
