@@ -30,6 +30,8 @@ display: none;
 
 .header_block
 	width 100%
+	position absolute
+	z-index 100000
 	&.fixed_header
 		position fixed
 		background #fff
@@ -37,6 +39,7 @@ display: none;
 		.header_block_inner
 			margin 0px auto
 			color #000
+			position relative
 			.logo_description
 			.menu_item
 			a

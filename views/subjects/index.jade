@@ -5,13 +5,15 @@ block title
 
 
 block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/static.css' + version)
 	link(rel='stylesheet', type='text/css', href='/build/css/subjects.css' + version)
 
 block content_scripts
 	script(type='text/javascript', src='/build/js/subjects.js' + version)
 
 block content_title
-	.subject_title_block #{__('Единицы хранения')}
+	.title_block_outer
+		.subject_title_block #{__('Единицы хранения')}
 
 block content
 	each subject in subjects

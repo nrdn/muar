@@ -5,13 +5,15 @@ block title
 
 
 block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/static.css' + version)
 	link(rel='stylesheet', type='text/css', href='/build/css/categorys.css' + version)
 
 block content_scripts
 	script(type='text/javascript', src='/build/js/categorys.js' + version)
 
 block content_title
-	.object_title_block= __('Словарь архитектурных терминов')
+	.title_block_outer
+		.object_title_block= __('Словарь архитектурных терминов')
 block content
 	each category in categorys
 		.category_block
