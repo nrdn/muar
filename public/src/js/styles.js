@@ -31,6 +31,7 @@ $(document).ready(function() {
 
 
 	function ageLoader (event, limit) {
+		console.log('7878');
 		$(this).find('.age_block').each(function() {
 			var $this = $(this);
 			var outer_offset_top = $('.styles_block').offset().top;
@@ -168,7 +169,7 @@ $(document).ready(function() {
 		var style_offset_top = $style.offset().top;
 
 		$style.animate({
-			'scrollTop': age_offset_top + style_scroll_top - style_offset_top
+			'scrollTop': age_offset_top + style_scroll_top - style_offset_top - 130
 		}, 0);
 	});
 

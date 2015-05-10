@@ -16,11 +16,18 @@ html, body
 	.navigate_age
 	.logo_description
 		color #000
-	.navigate_style_title.current
-		border-color #000
+		border-color #ccc
+	.navigate_style_title
+		&.current
+		&:hover
+			border-color #000
+			color #fff
+			background #000
 
 .header_block
-	left 0
+	left 40px
+	right 40px
+	width auto!important
 	top 0
 	position absolute
 	z-index 10000
@@ -30,7 +37,8 @@ html, body
 	color #fff
 
 .content_title_block
-	width 100%
+	left 40px
+	right 40px
 	position absolute
 	z-index 100000
 	min-width 1000px
@@ -38,6 +46,7 @@ html, body
 	top 40px
 	min-height 70px
 	max-height 70px
+	width auto
 
 .styles_inner_block
 .navigate_styles_block
@@ -67,6 +76,7 @@ html, body
 
 .style_navigate .navigate_style_title
 	visibility hidden
+	display none
 	color transparent
 	&:hover
 		color transparent
@@ -98,15 +108,25 @@ html, body
 
 .navigate_style_title
 	cursor pointer
-	border-bottom 1px solid
+	border-bottom 1px solid #9E9D9D
+	border-top 1px solid #9E9D9D
 	position relative
 	padding-bottom 3px
+	padding-top 3px
+	font 20px/22px 'ma_unitwlight'
+	text-align center
 	&.current
-		color red
+		//color red
 		border-color #fff
+		color #333
+		background #fff
 	&:hover
-		color red
-	&:after
+		border-color #fff
+		color #333
+		background #fff
+
+/*!
+		&:after
 		content '|'
 		display block
 		position absolute
@@ -114,13 +134,14 @@ html, body
 		bottom -12px
 		font-size 8px
 		z-index 99999
-
 .navigate_style_block:last-child .navigate_style_title:after
 	content '>'
 	bottom -12px
 	font-size 14px
+*/
 
 .navigate_style_progress
+	display none
 	position absolute
 	top 24px
 	margin-bottom 3px
@@ -142,11 +163,11 @@ html, body
 	display none
 	position absolute
 	white-space nowrap
-	top 205px
+	top 155px
 	left 0
 	width 100%
 	&.styles_fixed
-		top 40px
+		top 42px
 
 .navigate_style_ages_inner
 	margin 0 auto
@@ -156,7 +177,7 @@ html, body
 .navigate_age
 	display inline-block
 	cursor pointer
-	font-size 18px
+	font-size 20px
 	&:after
 		content '∙'
 		display inline-block
