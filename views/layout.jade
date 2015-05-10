@@ -8,23 +8,24 @@ html
 		include counters
 		.header_block
 			.header_block_inner
-				a.header_logo(href="/")
-				.logo_description= __('Государственный музей архитектуры имени А. В. Щусева')
-				.menu_navigate_block
-					- if (session.user_id)
-						a(href='/auth') ЗВЕЗДОЧЕТ
-					//-a(href='/') Главная
-					a.styles_btn.m_item.menu_styles(href='/#styles')= __('Периоды')
-					a.m_item.menu_special(href='/#projects')= __('Спецпроекты')
-					a.m_item.menu_arch(href='/architects')= __('Архитекторы')
-					a.m_item.menu_subjects(href='/subjects')= __('Коллекция музея')
-					a.m_item.menu_term(href='/categorys')= __('Термины')
-				.menu_block
-					.menu_item.search 
-					if (locale == 'ru')
-						a.menu_item.lang(href='/lang/en') 
-					else
-						a.menu_item.lang(href='/lang/ru') 
+				.header_block_menu
+					a.header_logo(href="/")
+					.logo_description= __('Государственный музей архитектуры имени А. В. Щусева')
+					.menu_navigate_block
+						- if (session.user_id)
+							a(href='/auth') ЗВЕЗДОЧЕТ
+						//-a(href='/') Главная
+						a.styles_btn.m_item.menu_styles(href='/#styles')= __('Периоды')
+						a.m_item.menu_special(href='/#projects')= __('Спецпроекты')
+						a.m_item.menu_arch(href='/architects')= __('Архитекторы')
+						a.m_item.menu_subjects(href='/subjects')= __('Коллекция музея')
+						a.m_item.menu_term(href='/categorys')= __('Термины')
+					.menu_block
+						.menu_item.search 
+						if (locale == 'ru')
+							a.menu_item.lang(href='/lang/en') 
+						else
+							a.menu_item.lang(href='/lang/ru') 
 		.content_title_block
 			- if (admin)
 				a(href='/auth') ЗВЕЗДОЧЕТ
