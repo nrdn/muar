@@ -3,17 +3,13 @@ $(document).ready(function() {
 	console.log(loc_hash);
 	if (loc_hash == '#styles') {
 		//alert('styles');
-		scr = $('.intro_block').height() + $('.description_block.screen_block_height').height() - 28;
-		$('body').animate({
-     	scrollTop: scr,
-    	}, 50 );
+		scr = $('.intro_block').height() + $('.description_block.screen_block_height').height();
+			$('body').scrollTop(scr);
 	}
 	if (loc_hash == '#projects') {
 		//alert('projects');
-		scr = $('.intro_block').height() + $('.description_block.screen_block_height').height() + $('#styles').height() - 28;
-		$('body').animate({
-     	scrollTop: scr,
-    	}, 50 );
+		scr = $('.intro_block').height() + $('.description_block.screen_block_height').height() + $('#styles').height();
+		$('body').scrollTop(scr);
  }
 
 	$('.styles_line_nav.prev').click(function(){
@@ -43,17 +39,11 @@ $(document).ready(function() {
 
 	$('.styles_btn').click(function(){
 		scr = $('.intro_block').height() + $('.description_block.screen_block_height').height();
-		$('body').animate({
-     	scrollTop: scr,
-    	}, 300 );
+		$('body').scrollTop(scr);
 	});
 
 	$('.menu_special').click(function(){
 		scr = $('.intro_block').height() + $('.description_block.screen_block_height').height() + $('#styles').height();
-		$('body').animate({
-     	scrollTop: scr,
-    	}, 300 );
+		$('body').scrollTop(scr);
 	});
-
-
 });
