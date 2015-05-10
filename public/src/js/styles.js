@@ -14,6 +14,10 @@ function getProperty (field, locale) {
 }
 
 $(document).ready(function() {
+	$(window).resize(function(){
+		$('body').empty();
+		location.reload();
+	});
 	var locale = getCookie('locale') || 'ru';
 	$('.age_block').data({skip: 0});
 
@@ -85,7 +89,7 @@ $(document).ready(function() {
 			age_offset_top <= outer_offset_bottom
 				? $('.navigate_style_ages')
 					.eq(event.data.style_index).find('.navigate_age').removeClass('current')
-					.eq($this.index() - $this.length - 1).addClass('current')
+					.eq($this.index() - $this.length).addClass('current')
 				: false;
 		});
 	}

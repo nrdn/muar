@@ -46,6 +46,7 @@ html, body
 	top 0
 	position absolute
 	z-index 10000
+	overflow hidden
 
 .header_block_inner
 	background transparent
@@ -63,6 +64,9 @@ html, body
 	max-height 70px
 	width auto
 
+.content_title_block.styles_fixed
+	overflow visible
+
 .styles_inner_block
 .navigate_styles_block
 	width 100%
@@ -70,13 +74,12 @@ html, body
 
 
 .top_navigate.navigate_block
-	//width 100%
 	margin 0px auto
 	z-index 999999
-	height 59px
 	margin-top 10px
-	height 59px
-	width 1310px
+	height 31px
+	max-width 1310px
+	width 100%
 	&.styles_fixed
 		background #fff
 
@@ -178,31 +181,46 @@ html, body
 .navigate_style_ages
 	display none
 	position absolute
-	white-space nowrap
+	white-space normal
 	top 155px
 	left 0
 	width 100%
+	line-height 26px
+	z-index -1000
 	&.styles_fixed
-		top 42px
+		top 17px
+		.navigate_style_ages_inner
+			background #fff
+			box-shadow 0 2px 8px rgba(204, 204, 204, 0.49)
+			padding-top 27px
+			padding-bottom 4px
 
 .navigate_style_ages_inner
 	margin 0 auto
 	text-align center
 	overflow hidden
+	max-width 1310px
 
 .navigate_age
 	display inline-block
 	cursor pointer
 	font-size 20px
-	&:after
-		content '∙'
-		display inline-block
+	//line-height 30px
+	color #fff
+	padding 0 10px
 	&.current
-		color red
 	&:hover
-		color red
+		color #000
+		background #ccc
 	&:last-child:after
 		display none
+
+.styles_fixed
+	.navigate_age
+		color #000
+		&.current
+		&:hover
+			color #fff
 
 body > .content_block
 	margin 0 auto
@@ -443,7 +461,8 @@ body > .style_header
 */
 
 	@media screen and (max-width:1280px) {
-		.top_navigate.navigate_block {
+		.top_navigate.navigate_block,
+		.navigate_style_ages_inner {
 			width 1000px;
 		}
 	}
