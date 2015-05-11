@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	var scr;
 	var subjectsGroup;
 	var map;
 	var oldLayer;
@@ -161,12 +162,32 @@ $(document).ready(function() {
 		}
 	});
 
-	$('.goto_down a').click(function(){
-		scr = $('.object_images_block').height();
-		$('body').animate({
-			scrollTop: scr,
+
+
+	$('.goto_down a').on('click', function(event) {
+		console.log($(this).attr('class'));
+		if ($(this).attr('class') == 'scrolled') {
+			scr = 0
+		}
+		else {
+			scr = $('.object_images_block').height() / 1.5;
+		}
+			$('body').animate({
+				scrollTop: scr,
 			}, 500 );
+			console.log('uiu');
 	});
+
+	var goto_down_navigation = function goto_down_navigation() {
+	var scroll_top = $(document).scrollTop();
+	if (scroll_top > ($('.object_images_block').height() / 1.5 - 100)) {
+			$('.goto_down a').addClass('scrolled');
+		} else {
+			$('.goto_down a').removeClass('scrolled');
+		}
+	}
+
+	$(document).on('scroll', goto_down_navigation)
 
 	$('.object_slide_item.subjects').on('click', function(event) {
 		$('body').css({'height':'100%','overflow':'hidden'});
