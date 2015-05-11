@@ -16,16 +16,31 @@ block content_title
 		.subject_title_block #{__('Единицы хранения')}
 
 block content
+
 	- var views = {plan: 'План', front: 'Фасад', perspective: 'Аксонометрия', general_view: 'Общий вид', master_plan: 'Генеральный план',  panorama: 'Панорама', main_front: 'Главный фасад', short_form: 'Малая форма', sculpture: 'Скульптура', interior: 'Интерьер', part: 'Деталь', other: 'Другое'}
 	- var technique = {engraving: 'Гравюра', lithography: 'Литография', photo: 'Фотография', drawing: 'Чертеж', painting: 'Живопись', picture: 'Рисунок', sculpture: 'Скульптура', maket: 'Макет', other: 'Другое'}
-	each subject in subjects
-		a.subject_item(href='/subjects/' + subject._id)
-			.subject_image(style='background-image: url(' + subject.image.thumb + ')')
-			.subject_title= subject.i18n.title.get(locale)
-			if (subject.meta.inventory)
-				.subject_description_item= subject.meta.inventory
-			if (!subject.meta.technique.hidden)
-					.subject_description_item= technique[subject.meta.technique.tag]
-				.subject_description_comment= subject.meta.technique.i18n.comment.get(locale)
-			.subject_description: != subject.i18n.description.get(locale)
 
+	.technique_sort_menu
+		a.technique_sort(data-technique='Гравюра')= 'Гравюра'
+		a.technique_sort(data-technique='Литография')= 'Литография'
+		a.technique_sort(data-technique='Фотография')= 'Фотография'
+		a.technique_sort(data-technique='Чертеж')= 'Чертеж'
+		a.technique_sort(data-technique='Живопись')= 'Живопись'
+		a.technique_sort(data-technique='Рисунок')= 'Рисунок'
+		a.technique_sort(data-technique='Скульптура')= 'Скульптура'
+		a.technique_sort(data-technique='Макет')= 'Макет'
+		a.technique_sort(data-technique='Другое')= 'Другое'
+
+	.subject_content_inner
+		each subject in subjects
+			if (subject.meta.inventory)
+				- var section_inventory = subject.meta.inventory; var section_inventory2 = section_inventory.split('-');
+			a.subject_item(href='/subjects/' + subject._id, data-inventory=''+ section_inventory2[0] +'', data-technique=''+ technique[subject.meta.technique.tag] +'')
+				.subject_image(style='background-image: url(' + subject.image.thumb + ')')
+				.subject_title= subject.i18n.title.get(locale)
+				if (subject.meta.inventory)
+					.subject_description_item= subject.meta.inventory
+				if (!subject.meta.technique.hidden)
+						.subject_description_item= technique[subject.meta.technique.tag]
+					.subject_description_comment= subject.meta.technique.i18n.comment.get(locale)
+				.subject_description: != subject.i18n.description.get(locale)
