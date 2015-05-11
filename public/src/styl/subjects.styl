@@ -1,3 +1,33 @@
+.header_block.fixed_header
+	.header_block_inner
+		box-shadow none;
+	.sub_header_block
+		box-shadow 0 2px 8px rgba(204,204,204,0.49)
+		.sort_menu_block
+			display block
+			background #e4e4e4
+			border-bottom 0
+
+.sub_header_block
+	height auto
+	position relative
+	margin 10px auto 0
+	background #fff
+	max-width 1310px
+	width 100%
+	.sort_menu_block
+		display none
+	.header_block_inner
+		margin 0
+		background transparent
+		max-width 1310px
+
+body
+	&.scrolled_page
+		.content_block
+			.sort_menu_block
+				visibility hidden
+
 .content_title_block
 	width 100%
 	max-width 1280px
@@ -5,18 +35,25 @@
 .content_block
 	margin 0 auto 40px
 	width 100%
-	max-width 1230px
+	max-width 1280px
 
 .content_block
 	margin-bottom 40px
 
-.technique_sort_menu
+.sort_menu_block
 	border-top 1px solid #ccc
 	border-bottom 1px solid #ccc
 	.technique_sort
 		display inline-block
 		cursor pointer
-		padding 0 10px
+		padding 3px 10px
+		font 20px/22px 'ma_unitwlight'
+		&:hover
+			color #fff
+			background #c3c3c3
+		&.current
+			background #b3b3b3
+			color #fff
 
 .subject_item
 	overflow hidden

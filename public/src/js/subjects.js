@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	function sortSubjects() {
-		//$('.subject_item').hide();
-		console.log($(this).attr('data-technique'));
+		$('.technique_sort').removeClass('current');
+		$(this).addClass('current');
 		$('.subject_item').hide();
 		$('.subject_item[data-technique='+ $(this).attr('data-technique') +']').show();
 	}

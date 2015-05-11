@@ -11,16 +11,8 @@ block content_style
 block content_scripts
 	script(type='text/javascript', src='/build/js/subjects.js' + version)
 
-block content_title
-	.title_block_outer
-		.subject_title_block #{__('Единицы хранения')}
-
-block content
-
-	- var views = {plan: 'План', front: 'Фасад', perspective: 'Аксонометрия', general_view: 'Общий вид', master_plan: 'Генеральный план',  panorama: 'Панорама', main_front: 'Главный фасад', short_form: 'Малая форма', sculpture: 'Скульптура', interior: 'Интерьер', part: 'Деталь', other: 'Другое'}
-	- var technique = {engraving: 'Гравюра', lithography: 'Литография', photo: 'Фотография', drawing: 'Чертеж', painting: 'Живопись', picture: 'Рисунок', sculpture: 'Скульптура', maket: 'Макет', other: 'Другое'}
-
-	.technique_sort_menu
+block header_submenu
+	.sort_menu_block
 		a.technique_sort(data-technique='Гравюра')= 'Гравюра'
 		a.technique_sort(data-technique='Литография')= 'Литография'
 		a.technique_sort(data-technique='Фотография')= 'Фотография'
@@ -31,6 +23,26 @@ block content
 		a.technique_sort(data-technique='Макет')= 'Макет'
 		a.technique_sort(data-technique='Другое')= 'Другое'
 
+block content_title
+	.title_block_outer
+		.subject_title_block #{__('Единицы хранения')}
+
+block content
+
+	- var views = {plan: 'План', front: 'Фасад', perspective: 'Аксонометрия', general_view: 'Общий вид', master_plan: 'Генеральный план',  panorama: 'Панорама', main_front: 'Главный фасад', short_form: 'Малая форма', sculpture: 'Скульптура', interior: 'Интерьер', part: 'Деталь', other: 'Другое'}
+	- var technique = {engraving: 'Гравюра', lithography: 'Литография', photo: 'Фотография', drawing: 'Чертеж', painting: 'Живопись', picture: 'Рисунок', sculpture: 'Скульптура', maket: 'Макет', other: 'Другое'}
+
+
+	.sort_menu_block
+		a.technique_sort(data-technique='Гравюра')= 'Гравюра'
+		a.technique_sort(data-technique='Литография')= 'Литография'
+		a.technique_sort(data-technique='Фотография')= 'Фотография'
+		a.technique_sort(data-technique='Чертеж')= 'Чертеж'
+		a.technique_sort(data-technique='Живопись')= 'Живопись'
+		a.technique_sort(data-technique='Рисунок')= 'Рисунок'
+		a.technique_sort(data-technique='Скульптура')= 'Скульптура'
+		a.technique_sort(data-technique='Макет')= 'Макет'
+		a.technique_sort(data-technique='Другое')= 'Другое'
 	.subject_content_inner
 		each subject in subjects
 			if (subject.meta.inventory)
