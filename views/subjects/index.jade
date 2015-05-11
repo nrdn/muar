@@ -16,8 +16,16 @@ block content_title
 		.subject_title_block #{__('Единицы хранения')}
 
 block content
+	- var views = {plan: 'План', front: 'Фасад', perspective: 'Аксонометрия', general_view: 'Общий вид', master_plan: 'Генеральный план',  panorama: 'Панорама', main_front: 'Главный фасад', short_form: 'Малая форма', sculpture: 'Скульптура', interior: 'Интерьер', part: 'Деталь', other: 'Другое'}
+	- var technique = {engraving: 'Гравюра', lithography: 'Литография', photo: 'Фотография', drawing: 'Чертеж', painting: 'Живопись', picture: 'Рисунок', sculpture: 'Скульптура', maket: 'Макет', other: 'Другое'}
 	each subject in subjects
 		a.subject_item(href='/subjects/' + subject._id)
 			.subject_image(style='background-image: url(' + subject.image.thumb + ')')
 			.subject_title= subject.i18n.title.get(locale)
+			if (subject.meta.inventory)
+				.subject_description_item= subject.meta.inventory
+			if (!subject.meta.technique.hidden)
+					.subject_description_item= technique[subject.meta.technique.tag]
+				.subject_description_comment= subject.meta.technique.i18n.comment.get(locale)
 			.subject_description: != subject.i18n.description.get(locale)
+

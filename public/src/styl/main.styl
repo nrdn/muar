@@ -23,13 +23,13 @@ body
 	overflow hidden
 	background #fff
 	min-width 1000px
+	max-height 1000px
 
 .title_block
 	margin 0 auto
 
 .content_block
 	width 100%
-	/*position absolute*/
 	top 0
 	height 100%
 
@@ -186,7 +186,6 @@ body
 
 .description_block .description_inner
 	overflow hidden
-	//border-bottom 1px solid #ccc
 
 .description_text
 	font-size 20px
@@ -221,13 +220,6 @@ body
 	font-size 18px
 	line-height 22px
 	overflow hidden
-	/*!
-	position absolute
-	top 130px
-	bottom 80px
-	left 0px
-	right 0px
-	*/
 	height 560px
 	margin-top -130px
 
@@ -257,7 +249,7 @@ a.special_line_nav
 	&.prev
 		left -14px
 	&.next
-		right -14px
+		right -7px
 	&:hover
 		color #EE3124
 
@@ -265,7 +257,7 @@ a.special_line_nav
 	white-space nowrap
 
 .style_block
-	width 300px
+	width 287px
 	overflow hidden
 	display inline-block
 	margin-right 40px
@@ -273,6 +265,7 @@ a.special_line_nav
 	position relative
 	vertical-align top
 	text-decoration none
+	height 570px
 	.style_image
 		height 200px
 		background-position 50%
@@ -293,17 +286,21 @@ a.special_line_nav
 	background #fff
 	padding 15px 0 0
 	//height 58px
+	height 90px
+	border-bottom 1px solid #ccc
+	margin-bottom 20px
 
 .style_title_inner
-	font 27px/24px 'ma_unitwlight'
-	padding 5px 10px 0
+.special_title
+	font 27px/24px 'ma_unitwmedium'
+	padding 5px 0px 0
 	white-space normal
+	text-align center
 
 .style_title_date
 	line-height 34px
-	padding 0 10px
-	border-bottom: 1px solid #d7d7d7;
 	margin-bottom 10px
+	text-align center
 
 .style_description
 	background #fff
@@ -312,7 +309,6 @@ a.special_line_nav
 	white-space normal
 	font-size 20px
 	line-height 23px
-	padding 0 10px
 
 //-- 4ой Блок --//
 .screen_block.special_block
@@ -338,10 +334,10 @@ a.special_line_nav
 
 .special_item_block
 	display inline-block
-	width 610px
+	width 621px
 	background-repeat no-repeat
 	background-position center
-	margin-right 10px
+	margin-right 36px
 	text-decoration none
 	vertical-align top
 	.special_image
@@ -361,17 +357,19 @@ a.special_line_nav
 	margin-bottom 14px
 
 .special_title
-	font 27px/24px 'ma_unitwlight'
-	padding 5px 10px 10px
+	font 27px/24px 'ma_unitwmedium'
+	padding 5px 0px 10px
 	white-space normal
 	border-bottom 1px solid #d7d7d7
 	margin-bottom 10px
 
 .special_description_inner
 	white-space normal
+	/*!
 	font-size 16px
 	line-height 17px
 	padding 0 10px
+	*/
 
 .special_readmore
 	font-family 'ma_unitwmedium'
@@ -401,9 +399,9 @@ a.special_line_nav
 	.special_item_block {
 		width: 470px;
 	}
-	.style_title_inner {
+	/*.style_title_inner {
 		font-size: 22px;
-	}
+	}*/
 	.intro_block_background {
 		position: absolute;
 	}
