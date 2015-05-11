@@ -119,7 +119,7 @@ $(document).ready(function() {
 
 	$('.images_zoom, .side_description_cross').data('clicked', true)
 
-	$('.images_zoom').on('click', function(event) {
+	/*$('.images_zoom').on('click', function(event) {
 		$(this).data('clicked', !$(this).data('clicked'));
 
 		if ($(this).data('clicked')) {
@@ -130,7 +130,7 @@ $(document).ready(function() {
 			$('.images_zoom').html('');
 			$('.object_image').css({'background-size':'contain'});
 		}
-	});
+	});*/
 
 	$('.side_description_cross').on('click', function(event) {
 		$(this).data('clicked', !$(this).data('clicked'));
