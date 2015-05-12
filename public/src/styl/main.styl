@@ -1,3 +1,7 @@
+.m_item
+	&.current_menu
+		background #000
+		color #fff!important
 
 html
 body
@@ -91,7 +95,36 @@ body
 	background transparent
 	height 50%
 	min-height 400px
-	max-height 800px
+	//max-height 800px
+	height 100%
+
+.goto_down
+	position absolute
+	bottom 0px
+	width 100%
+	height 42px
+
+.goto_down_inner
+	margin 0 auto
+
+.goto_down
+	a
+		width 140px
+		height 42px
+		margin 0 auto
+		display block
+		text-align center
+		background rgba(255, 255, 255, .75)
+		color #000
+		font 30px/44px 'menu_icons'
+		text-decoration none
+		cursor pointer
+		transform scale(1, -1)
+		&:hover
+			color #EE3124!important
+			background #fff
+		&.scrolled
+			transform scale(1, 1)
 
 .styles_block
 	width 100%
@@ -380,6 +413,7 @@ a.special_line_nav
 .footer_block
 	//position static
 	font 14px/16px 'ma_unitwlight'
+	display none
 
 .footer_sponsors_block
 	border-top 1px solid #d7d7d7

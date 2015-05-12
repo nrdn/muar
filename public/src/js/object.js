@@ -175,7 +175,6 @@ $(document).ready(function() {
 			$('body').animate({
 				scrollTop: scr,
 			}, 500 );
-			console.log('uiu');
 	});
 
 	var goto_down_navigation = function goto_down_navigation() {
