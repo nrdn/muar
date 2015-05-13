@@ -4,7 +4,9 @@ $(document).ready(function() {
 		window.location.hash = $(this).index();
 	}
 	function loadSubjects(technique_id) {
-			technique_id_nth = parseInt(technique_id)+1;
+			console.log('tech' + technique_id);
+			if (technique_id == '') {technique_id_nth = 1}
+			else {technique_id_nth = parseInt(technique_id)+1}
 			$('.technique_sort').removeClass('current');
 			$('.technique_sort:nth-child(' + technique_id_nth + ')').addClass('current');
 			$('.subject_item').hide();
