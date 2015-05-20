@@ -337,6 +337,9 @@ app.route('/registr')
 // === Contacts Route
 app.route('/contacts').get(content.contacts);
 
+// === Demo Route
+app.route('/palace-of-the-soviets').get(content.demo);
+
 
 // ------------------------
 // *** Old Routers Block ***
