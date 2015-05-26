@@ -4,6 +4,7 @@ block title
 	title Конкурс на проект Дворца Советов (1931–1933)
 
 block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/iframe.css' + version)
 	link(rel='stylesheet', type='text/css', href='/build/css/demo.css' + version)
 	link(rel='stylesheet', type='text/css', href='/build/css/project.css' + version)
 
@@ -16,9 +17,9 @@ block content_scripts
 
 block content
 	.project_model#unityPlayer(path='/files/models/_04_iofan_final.unity3d')
-		.missing(style='background-image:url(00)')
+		.missing(style='background-image:url(/images/design/special/iofan-final.jpg)')
 			a.broken_background(href='http://unity3d.com/webplayer/') Для правильного воспроизведения моделей в браузере, необходимо установить Unity Player.
-		.broken(style='background-image:url(00)')
+		.broken(style='background-image:url(/images/design/special/iofan-final.jpg)')
 			.broken_background Извините, при загрузке  произошла ошибка.
-		.unsupported(style='background-image:url(00)')
+		.unsupported(style='background-image:url(/images/design/special/iofan-final.jpg)')
 			.broken_background К сожалению, мы пока не можем обеспечить корректное воспроизведение 3D на Вашем устройстве. Используйте устройства на базе Windows или MacOS X.
