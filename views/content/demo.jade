@@ -1,13 +1,16 @@
 extends ../layout
 
 block title
-	title ДЕМО
+	title Конкурс на проект Дворца Советов (1931–1933)
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/demo.css' + version)
 
 block content_scripts
 	script(type='text/javascript', src='/build/js/demo.js' + version)
+	script(type='text/javascript', src='/build/libs/js/detect.min.js' + version)
+	script(type='text/javascript', src='/build/libs/js/UnityObject2.js' + version)
+	script(type='text/javascript', src='/build/js/project.js' + version)
 
 
 block content
