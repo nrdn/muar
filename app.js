@@ -340,6 +340,11 @@ app.route('/contacts').get(content.contacts);
 // === Demo Route
 app.route('/palace-of-the-soviets').get(content.demo);
 
+app.route('/zholtovskiy').get(content.zholtovskiy);
+app.route('/iofan').get(content.iofan);
+app.route('/hamilton').get(content.hamilton);
+app.route('/lecorbusier').get(content.lecorbusier);
+app.route('/iofan-final').get(content.iofanfinal);
 
 // ------------------------
 // *** Old Routers Block ***

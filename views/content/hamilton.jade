@@ -1,0 +1,24 @@
+extends ../layout
+
+block title
+	title Конкурс на проект Дворца Советов (1931–1933)
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/demo.css' + version)
+	link(rel='stylesheet', type='text/css', href='/build/css/project.css' + version)
+
+block content_scripts
+	script(type='text/javascript', src='/build/js/demo.js' + version)
+	script(type='text/javascript', src='/build/libs/js/detect.min.js' + version)
+	script(type='text/javascript', src='/build/libs/js/UnityObject2.js' + version)
+	script(type='text/javascript', src='/build/js/project.js' + version)
+
+
+block content
+	.project_model#unityPlayer(path='/files/models/_02_hamilton.unity3d')
+		.missing(style='background-image:url(00)')
+			a.broken_background(href='http://unity3d.com/webplayer/') Для правильного воспроизведения моделей в браузере, необходимо установить Unity Player.
+		.broken(style='background-image:url(00)')
+			.broken_background Извините, при загрузке  произошла ошибка.
+		.unsupported(style='background-image:url(00)')
+			.broken_background К сожалению, мы пока не можем обеспечить корректное воспроизведение 3D на Вашем устройстве. Используйте устройства на базе Windows или MacOS X.
