@@ -81,6 +81,11 @@ block content
 		.special_block_background.screen_width
 			.object_images_block
 				- var projects_hard = {'5487420c7fb6fa000081e885': 'chudov-i-voznesenskiy-monastyri-kremlya', '548496fb1fcde50000be2f14': 'proekt-bolshogo-kremlyovskogo-dvortsa'}
+				a.special_item_block(href='palace-of-the-soviets')
+					.special_image(style='background-image:url(/images/design/special/iofan-final.jpg)')
+					.special_title Конкурс на проект Дворца Советов
+					.special_description
+						.special_description_inner Конкурс на здание Дворца Советов в Москве – ключевое событие в истории отечественной культуры. Проектирование Дворца продлилось несколько десятилетий, здание так и не было построено, но история конкурсных предложений, их демонстрация и обсуждение оказали решающее влияние на формирование и развитие всей советской архитектуры...
 				each project, i in projects
 					a.special_item_block(href='/projects/' + (projects_hard[project._id] || project._id) )
 						.special_image(style='background-image:url(' + project.photo + ')')
