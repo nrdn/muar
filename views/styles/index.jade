@@ -58,7 +58,7 @@ block content
 								.age_block(class='sub_age'+age._id.toString(), id=age_sub._id.toString())
 									.age_header
 										.age_line
-										.age_title= age_sub.i18n.title_sub.get(locale) ? age_sub.i18n.title_sub.get(locale) : age_sub.i18n.title.get(locale)
+										.age_title: != age_sub.i18n.title_sub.get(locale) ? age_sub.i18n.title_sub.get(locale) : age_sub.i18n.title.get(locale)
 										.age_date= age_sub.meta.interval.start.getUTCFullYear() + '-е—' + age_sub.meta.interval.end.getUTCFullYear() + '-е'
 									.age_description
 										.age_description_inner: != age_sub.i18n.description.get(locale)
