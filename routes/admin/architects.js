@@ -33,6 +33,18 @@ var checkNested = function (obj, layers) {
   return true;
 }
 
+var alphabetSort = function(field, arr) {
+  arr.sort(function(a, b) {
+    var a = a.i18n[field].get('ru');
+    var b = b.i18n[field].get('ru');
+
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
+  });
+  return arr;
+}
+
 
 // ------------------------
 // *** Admin Architects Block ***
@@ -41,14 +53,7 @@ var checkNested = function (obj, layers) {
 
 exports.list = function(req, res) {
   Architect.find().exec(function(err, architects) {
-    architects.sort(function(a, b) {
-      var a = a.i18n.name.get('ru');
-      var b = b.i18n.name.get('ru');
-
-      if (a < b) return -1;
-      if (a > b) return 1;
-      return 0;
-    });
+    architects = alphabetSort('name', architects);
     res.render('auth/architects/', {architects: architects});
   });
 }
