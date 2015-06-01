@@ -346,6 +346,14 @@ app.route('/hamilton').get(content.hamilton);
 app.route('/lecorbusier').get(content.lecorbusier);
 app.route('/iofan-final').get(content.iofanfinal);
 
+
+app.route('/zholtovskiystatic').get(content.zholtovskiystatic);
+app.route('/iofanstatic').get(content.iofanstatic);
+app.route('/hamiltonstatic').get(content.hamiltonstatic);
+app.route('/lecorbusierstatic').get(content.lecorbusierstatic);
+app.route('/iofan-finalstatic').get(content.iofanfinalstatic);
+
+
 // ------------------------
 // *** Old Routers Block ***
 // ------------------------

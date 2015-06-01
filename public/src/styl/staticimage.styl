@@ -1,0 +1,39 @@
+.project_model
+	width 900px
+	margin 0 auto!important
+
+.broken_background
+	padding 0
+	position relative
+	&:after
+		top 0
+		height 70px
+		content ''
+		position absolute
+		z-index 10000
+		background #fff
+		width 100%
+		left 0
+	&:before
+		bottom 0
+		height 40px
+		content ''
+		position absolute
+		z-index 10000
+		background #fff
+		width 100%
+		left 0
+
+.broken_inner
+	position absolute
+	top 50%
+	left 50%
+	line-height 60px
+	font-size 60px
+	height 60px
+	width 60px
+	margin-left -43px
+	margin-top -43px
+	border 3px solid
+	border-radius 50%
+	padding 16px

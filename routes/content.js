@@ -22,3 +22,21 @@ exports.lecorbusier = function(req, res) {
 exports.iofanfinal = function(req, res) {
   res.render('content/iofanfinal.jade');
 }
+
+
+exports.zholtovskiystatic = function(req, res) {
+  res.render('content/zholtovskiystatic.jade');
+}
+exports.iofanstatic = function(req, res) {
+  res.render('content/iofanstatic.jade');
+}
+exports.hamiltonstatic = function(req, res) {
+  res.render('content/hamiltonstatic.jade');
+}
+exports.lecorbusierstatic = function(req, res) {
+  res.render('content/lecorbusierstatic.jade');
+}
+exports.iofanfinalstatic = function(req, res) {
+  res.render('content/iofanfinalstatic.jade');
+}
+
