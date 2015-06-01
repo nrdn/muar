@@ -1,0 +1,15 @@
+extends ../layout
+
+block title
+	title Конкурс на проект Дворца Советов (1931–1933)
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/iframe.css' + version)
+	link(rel='stylesheet', type='text/css', href='/build/css/project.css' + version)
+	link(rel='stylesheet', type='text/css', href='/build/css/staticimage.css' + version)
+
+block content
+	.project_model
+		.missing(style='background-image:url(/images/design/special/lecorbusier.jpg)')
+			a.broken_background(href='lecorbusier', target='_self')
+				.broken_inner 3D

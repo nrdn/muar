@@ -22,11 +22,11 @@ block content
 		.broken(style='background-image:url(' + project.photo + ')')
 			.broken_background= __('Извините, при загрузке  произошла ошибка.')
 		.unsupported(class=project._id, style='background-image:url(' + project.photo + ')')
-			if project._id == '5487420c7fb6fa000081e885'
+			//- if project._id == '5487420c7fb6fa000081e885'
 				iframe(src="https://www.youtube.com/embed/rj1Zcu8m4zM", frameborder="0", allowfullscreen)
-			else if project._id == '548496fb1fcde50000be2f14'
+			//- else if project._id == '548496fb1fcde50000be2f14'
 				iframe(src="https://www.youtube.com/embed/2CmJhzTq0vk", frameborder="0", allowfullscreen)
-			else
-				.broken_background= __('К сожалению, мы пока не можем обеспечить корректное воспроизведение 3D на Вашем устройстве. Используйте устройства на базе Windows или MacOS X.')
+			//- else
+			.broken_background= __('К сожалению, мы пока не можем обеспечить корректное воспроизведение 3D на Вашем устройстве. Используйте устройства на базе Windows или MacOS X.')
 
 	.project_description: !=  project.i18n.description.get(locale)
