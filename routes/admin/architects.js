@@ -41,6 +41,14 @@ var checkNested = function (obj, layers) {
 
 exports.list = function(req, res) {
   Architect.find().exec(function(err, architects) {
+    architects.sort(function(a, b) {
+      var a = a.i18n.name.get('ru');
+      var b = b.i18n.name.get('ru');
+
+      if (a < b) return -1;
+      if (a > b) return 1;
+      return 0;
+    });
     res.render('auth/architects/', {architects: architects});
   });
 }
