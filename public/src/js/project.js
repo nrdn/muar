@@ -10,9 +10,17 @@ $(document).ready(function() {
 			ext = '_mac.zip';
 		}
 		else if (OSName == 'Windows') {
-			ext = '_pc.zip';
+			ext = '_pc.exe';
 		}
 		$('.broken_background').html('<a href='+path.substring(0, path.length - 8) + ext + '>К сожалению, мы пока не можем обеспечить корректное воспроизведение 3D на Вашем устройстве. Предлагаем вам скачать локальную версию модели.</a>')
+	}
+	else if (ua.isMobile == true && ua.os.family == 'iOS') {
+		$('.missing, .broken').remove();
+		$('.broken_background').html('<a href="https://itunes.apple.com/ru/app/virtual-nyj-muzej-arhitektury/id978672309">12К сожалению, мы пока не можем обеспечить корректное воспроизведение 3D на Вашем устройстве. Предлагаем вам скачать локальную версию модели.</a>')
+	}
+	else if (ua.os.family == 'Android') {
+		$('.missing, .broken').remove();
+		$('.broken_background').html('<a href="https://play.google.com/store/apps/details?id=com.vizerra.muar">К сожалению, мы пока не можем обеспечить корректное воспроизведение 3D на Вашем устройстве. Предлагаем вам скачать локальную версию модели.</a>')
 	}
 	else {
 		function UnityLoader (path) {
