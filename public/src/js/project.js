@@ -16,11 +16,11 @@ $(document).ready(function() {
 	}
 	else if (ua.isMobile == true && ua.os.family == 'iOS') {
 		$('.missing, .broken').remove();
-		$('.broken_background').html('<a href="https://itunes.apple.com/ru/app/virtual-nyj-muzej-arhitektury/id978672309">12К сожалению, мы пока не можем обеспечить корректное воспроизведение 3D на Вашем устройстве. Предлагаем вам скачать локальную версию модели.</a>')
+		$('.broken_background').html('<a href="https://itunes.apple.com/ru/app/virtual-nyj-muzej-arhitektury/id978672309">К сожалению, мы пока не можем обеспечить корректное воспроизведение 3D на Вашем устройстве. Предлагаем вам скачать версию модели для вашего устройства.<div class="apps appstore"></div></a>')
 	}
 	else if (ua.os.family == 'Android') {
 		$('.missing, .broken').remove();
-		$('.broken_background').html('<a href="https://play.google.com/store/apps/details?id=com.vizerra.muar">К сожалению, мы пока не можем обеспечить корректное воспроизведение 3D на Вашем устройстве. Предлагаем вам скачать локальную версию модели.</a>')
+		$('.broken_background').html('<a href="https://play.google.com/store/apps/details?id=com.vizerra.muar">К сожалению, мы пока не можем обеспечить корректное воспроизведение 3D на Вашем устройстве. Предлагаем вам скачать версию модели для вашего устройства.<div class="apps gplay"></div</a>')
 	}
 	else {
 		function UnityLoader (path) {
