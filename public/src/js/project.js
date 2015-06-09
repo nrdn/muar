@@ -1,13 +1,17 @@
 $(document).ready(function() {
 	var addBr=0;
+	console.log(navigator.userAgent);
 	var ua = detect.parse(navigator.userAgent);
 	var path = $('.project_model').attr('path');
 	if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
 	if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
-	if (navigator.userAgent.match(/Yandex/)) addBr=1
-	if (navigator.userAgent.match(/OPP/)) addBr=1
+	if (navigator.userAgent.match(/YaBrowser/i) || navigator.userAgent.match(/(Opera|OPR)\//i))
+		{
+		addBr = 1;
+		}
 	//console.log(ua);
-	if (ua.browser.family == 'Chrome' && ua.isMobile == false && (OSName == 'MacOS' || OSName == 'Windows') && addBr == 1) {
+	if (ua.browser.family == 'Chrome' && ua.isMobile == false && (OSName == 'MacOS' || OSName == 'Windows') && addBr == 0) {
+		console.log('chrome');
 		$('.missing, .broken').remove();
 		if (OSName == 'MacOS') {
 			ext = '_mac.zip';
